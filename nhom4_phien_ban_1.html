@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ĐƠN XIN NGHỈ HỌC</title>
+</head>
+<body>
+  <!-- Nhóm 4: SỔ LIÊN LẠC SỐ – ĐƠN XIN NGHỈ HỌC TRỰC TUYẾN -->
+  <!-- Phiên bản 1 – bản chế tạo đầu tiên, CÓ LỖI để nhóm phát hiện khi thử nghiệm -->
+  <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
+       Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
+  <h2>ĐƠN XIN NGHỈ HỌC</h2>
+  <form action="ketqua.html" method="get">
+    <p><label for="tenhs">Họ tên học sinh:</label>
+      <input type="text" id="tenhs" name="tenhs"></p>
+    <p><label for="ngaynghi">Ngày nghỉ:</label>
+      <input type="date" id="ngaynghi" name="ngaynghi"></p>
+    <p><label for="lydo">Lí do:</label>
+      <input type="text" id="lydo" name="lydo"></p>
+    <p><input type="submit" value="Gửi đơn"></p>
+  </form>
+  <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>
+</body>
+</html>

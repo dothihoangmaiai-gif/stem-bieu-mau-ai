@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ĐƠN XIN NGHỈ HỌC</title>
+</head>
+<body>
+  <!-- Nhóm 4: SỔ LIÊN LẠC SỐ – ĐƠN XIN NGHỈ HỌC TRỰC TUYẾN -->
+  <!-- Phiên bản 2 – đã cải tiến sau thử nghiệm -->
+  <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
+       Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
+  <h2>ĐƠN XIN NGHỈ HỌC</h2>
+  <form action="ketqua.html" method="get" enctype="multipart/form-data">
+    <fieldset>
+      <legend>Thông tin học sinh</legend>
+    <p><label for="tenhs">Họ tên học sinh:</label>
+      <input type="text" id="tenhs" name="tenhs"></p>
+    <p><label for="lop">Lớp:</label>
+      <select id="lop" name="lop">
+        <option value="12A1">12A1</option>
+        <option value="12A3">12A3</option>
+        <option value="12A8">12A8</option>
+        <option value="11A7">11A7</option>
+        <option value="11A12">11A12</option>
+        <option value="10A1">10A1</option>
+      </select></p>
+    <p><label for="phuhuynh">Họ tên phụ huynh:</label>
+      <input type="text" id="phuhuynh" name="phuhuynh"></p>
+    <p><label for="sdt">Số điện thoại phụ huynh:</label>
+      <input type="text" id="sdt" name="sdt"></p>
+    </fieldset>
+    <fieldset>
+      <legend>Thông tin nghỉ học</legend>
+    <p><label for="tungay">Nghỉ từ ngày:</label>
+      <input type="date" id="tungay" name="tungay"></p>
+    <p><label for="denngay">Đến ngày:</label>
+      <input type="date" id="denngay" name="denngay"></p>
+    <p>Buổi nghỉ:<br>
+      <input type="radio" id="buoi1" name="buoi" value="Sáng">
+      <label for="buoi1">Sáng</label><br>
+      <input type="radio" id="buoi2" name="buoi" value="Chiều">
+      <label for="buoi2">Chiều</label><br>
+      <input type="radio" id="buoi3" name="buoi" value="Cả ngày">
+      <label for="buoi3">Cả ngày</label><br>
+    </p>
+    <p><label for="lydo">Lí do:</label><br>
+      <textarea id="lydo" name="lydo" rows="4" cols="40"></textarea></p>
+    <p><label for="minhchung">Minh chứng (nếu có):</label>
+      <input type="file" id="minhchung" name="minhchung"></p>
+    </fieldset>
+    <p><input type="submit" value="Gửi đơn">
+    <input type="reset" value="Nhập lại"></p>
+  </form>
+  <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>
+</body>
+</html>

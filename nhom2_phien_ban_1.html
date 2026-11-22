@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>KHẢO SÁT Ý KIẾN VỀ CĂNG TIN</title>
+</head>
+<body>
+  <!-- Nhóm 2: CĂNG TIN XANH – KHẢO SÁT Ý KIẾN HỌC SINH -->
+  <!-- Phiên bản 1 – bản chế tạo đầu tiên, CÓ LỖI để nhóm phát hiện khi thử nghiệm -->
+  <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
+       Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
+  <h2>KHẢO SÁT Ý KIẾN VỀ CĂNG TIN</h2>
+  <form action="ketqua.html" method="get">
+    <p>Khối:<br>
+      <input type="radio" id="khoi1" name="khoi1" value="10">
+      <label for="khoi1">10</label><br>
+      <input type="radio" id="khoi2" name="khoi2" value="11">
+      <label for="khoi2">11</label><br>
+      <input type="radio" id="khoi3" name="khoi3" value="12">
+      <label for="khoi3">12</label><br>
+    </p>
+    <p>Mức độ hài lòng:<br>
+      <input type="radio" id="hailong1" name="hailong" value="Rất hài lòng">
+      <label for="hailong1">Rất hài lòng</label><br>
+      <input type="radio" id="hailong2" name="hailong" value="Hài lòng">
+      <label for="hailong2">Hài lòng</label><br>
+      <input type="radio" id="hailong3" name="hailong" value="Bình thường">
+      <label for="hailong3">Bình thường</label><br>
+      <input type="radio" id="hailong4" name="hailong" value="Chưa hài lòng">
+      <label for="hailong4">Chưa hài lòng</label><br>
+    </p>
+    <p><label for="mon">Món em hay mua:</label>
+      <input type="text" id="mon" name="mon"></p>
+    <p><input type="submit" value="Gửi"></p>
+  </form>
+  <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>
+</body>
+</html>

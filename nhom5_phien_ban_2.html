@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>KHẢO SÁT THÓI QUEN DÙNG ĐỒ NHỰA</title>
+</head>
+<body>
+  <!-- Nhóm 5: SỐNG XANH – KHẢO SÁT THÓI QUEN SỬ DỤNG ĐỒ NHỰA DÙNG MỘT LẦN -->
+  <!-- Phiên bản 2 – đã cải tiến sau thử nghiệm -->
+  <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
+       Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
+  <h2>KHẢO SÁT THÓI QUEN DÙNG ĐỒ NHỰA</h2>
+  <form action="ketqua.html" method="get">
+    <fieldset>
+      <legend>Thói quen của em</legend>
+    <p>Khối:<br>
+      <input type="radio" id="khoi1" name="khoi" value="10">
+      <label for="khoi1">10</label><br>
+      <input type="radio" id="khoi2" name="khoi" value="11">
+      <label for="khoi2">11</label><br>
+      <input type="radio" id="khoi3" name="khoi" value="12">
+      <label for="khoi3">12</label><br>
+    </p>
+    <p><label for="soluong">Số đồ nhựa dùng mỗi ngày:</label>
+      <select id="soluong" name="soluong">
+        <option value="0">0</option>
+        <option value="1–2">1–2</option>
+        <option value="3–5">3–5</option>
+        <option value="Trên 5">Trên 5</option>
+      </select></p>
+    <p>Loại đồ nhựa thường dùng:<br>
+      <input type="checkbox" id="donhua1" name="donhua" value="Chai nhựa">
+      <label for="donhua1">Chai nhựa</label><br>
+      <input type="checkbox" id="donhua2" name="donhua" value="Ly nhựa">
+      <label for="donhua2">Ly nhựa</label><br>
+      <input type="checkbox" id="donhua3" name="donhua" value="Ống hút">
+      <label for="donhua3">Ống hút</label><br>
+      <input type="checkbox" id="donhua4" name="donhua" value="Túi nilon">
+      <label for="donhua4">Túi nilon</label><br>
+      <input type="checkbox" id="donhua5" name="donhua" value="Hộp xốp">
+      <label for="donhua5">Hộp xốp</label><br>
+    </p>
+    <p>Em có phân loại rác không?:<br>
+      <input type="radio" id="phanloai1" name="phanloai" value="Luôn luôn">
+      <label for="phanloai1">Luôn luôn</label><br>
+      <input type="radio" id="phanloai2" name="phanloai" value="Thỉnh thoảng">
+      <label for="phanloai2">Thỉnh thoảng</label><br>
+      <input type="radio" id="phanloai3" name="phanloai" value="Chưa bao giờ">
+      <label for="phanloai3">Chưa bao giờ</label><br>
+    </p>
+    </fieldset>
+    <fieldset>
+      <legend>Hành động xanh</legend>
+    <p>Cam kết:<br>
+      <input type="checkbox" id="camket1" name="camket" value="Em sẽ mang bình nước cá nhân">
+      <label for="camket1">Em sẽ mang bình nước cá nhân</label><br>
+    </p>
+    <p><label for="ytuong">Ý tưởng giảm rác nhựa ở trường:</label><br>
+      <textarea id="ytuong" name="ytuong" rows="4" cols="40"></textarea></p>
+    </fieldset>
+    <p><input type="submit" value="Gửi khảo sát"></p>
+  </form>
+  <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>
+</body>
+</html>

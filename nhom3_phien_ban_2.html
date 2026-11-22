@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>BÁO HỎNG CƠ SỞ VẬT CHẤT</title>
+</head>
+<body>
+  <!-- Nhóm 3: PHÒNG HỌC AN TOÀN – BIỂU MẪU BÁO HỎNG CƠ SỞ VẬT CHẤT -->
+  <!-- Phiên bản 2 – đã cải tiến sau thử nghiệm -->
+  <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
+       Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
+  <h2>BÁO HỎNG CƠ SỞ VẬT CHẤT</h2>
+  <form action="ketqua.html" method="get" enctype="multipart/form-data">
+    <fieldset>
+      <legend>Người báo</legend>
+    <p><label for="nguoibao">Họ và tên:</label>
+      <input type="text" id="nguoibao" name="nguoibao"></p>
+    <p><label for="lop">Lớp:</label>
+      <select id="lop" name="lop">
+        <option value="12A1">12A1</option>
+        <option value="12A3">12A3</option>
+        <option value="12A8">12A8</option>
+        <option value="11A7">11A7</option>
+        <option value="11A12">11A12</option>
+        <option value="10A1">10A1</option>
+      </select></p>
+    <p><label for="phong">Phòng học:</label>
+      <input type="text" id="phong" name="phong"></p>
+    <p><label for="ngay">Ngày phát hiện:</label>
+      <input type="date" id="ngay" name="ngay"></p>
+    </fieldset>
+    <fieldset>
+      <legend>Sự cố</legend>
+    <p>Loại thiết bị:<br>
+      <input type="radio" id="loai1" name="loai" value="Điện – ổ cắm">
+      <label for="loai1">Điện – ổ cắm</label><br>
+      <input type="radio" id="loai2" name="loai" value="Quạt – đèn">
+      <label for="loai2">Quạt – đèn</label><br>
+      <input type="radio" id="loai3" name="loai" value="Bàn ghế">
+      <label for="loai3">Bàn ghế</label><br>
+      <input type="radio" id="loai4" name="loai" value="Máy chiếu – tivi">
+      <label for="loai4">Máy chiếu – tivi</label><br>
+      <input type="radio" id="loai5" name="loai" value="Khác">
+      <label for="loai5">Khác</label><br>
+    </p>
+    <p><label for="mucdo">Mức độ:</label>
+      <select id="mucdo" name="mucdo">
+        <option value="Khẩn cấp (nguy hiểm)">Khẩn cấp (nguy hiểm)</option>
+        <option value="Cần sửa sớm">Cần sửa sớm</option>
+        <option value="Bình thường">Bình thường</option>
+      </select></p>
+    <p><label for="mota">Mô tả hư hỏng:</label><br>
+      <textarea id="mota" name="mota" rows="4" cols="40"></textarea></p>
+    <p><label for="anh">Ảnh chụp sự cố:</label>
+      <input type="file" id="anh" name="anh"></p>
+    </fieldset>
+    <p><input type="submit" value="Gửi báo hỏng"></p>
+  </form>
+  <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>
+</body>
+</html>
