@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>PHIẾU TÍNH DINH DƯỠNG BỮA ĂN</title>
+  <link rel="stylesheet" href="theme.css">
 </head>
-<body>
+<body class="nhom2">
+  <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
+  <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
   <!-- Nhóm 2: BỮA ĂN CÂN BẰNG – TÍNH NĂNG LƯỢNG VÀ TỈ LỆ CHẤT DINH DƯỠNG BỮA ĂN Ở CĂN TIN -->
   <!-- Phiên bản 1 – bản chế tạo đầu tiên, CÓ LỖI để nhóm phát hiện khi thử nghiệm -->
   <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
@@ -25,6 +28,10 @@
       <input type="text" id="nangluong" name="nangluong"></p>
     <p><input type="submit" value="Gửi"></p>
   </form>
-  <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>
+  <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
+  <script>
+    document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
+    if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
+  </script>
 </body>
 </html>

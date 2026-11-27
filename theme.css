@@ -1,0 +1,157 @@
+/* Giao diện chung cho các biểu mẫu – chủ đề STEM Tin học 12 (giáo viên cung cấp).
+   Học sinh viết HTML (Bài 12); phần trang trí CSS sẽ học ở Bài 13 – 17. */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap&subset=vietnamese");
+
+:root {
+  --nhan: #8a2c12;        /* màu nhấn chính */
+  --nhan-2: #c0761b;      /* màu nhấn phụ */
+  --go: #3a2314;          /* màu gỗ */
+  --giay: #fffaf1;        /* màu giấy */
+  --vien: #d8bb92;
+  --chu: #2c1d12;
+}
+body.nhom1 { --nhan: #b45309; --nhan-2: #f59e0b; }   /* điện – hổ phách */
+body.nhom2 { --nhan: #15803d; --nhan-2: #f97316; }   /* dinh dưỡng – lá, cam */
+body.nhom3 { --nhan: #0f766e; --nhan-2: #0ea5e9; }   /* môi trường – xanh ngọc */
+body.nhom4 { --nhan: #4338ca; --nhan-2: #a855f7; }   /* giấc ngủ – chàm, tím */
+
+/* Nền "kệ sách": các gáy sách nhiều màu và các tấm kệ gỗ */
+html {
+  min-height: 100%;
+  background-color: #1d120a;
+  background-image:
+    radial-gradient(ellipse at center, rgba(0,0,0,0) 35%, rgba(0,0,0,.55) 100%),
+    repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 172px, #2a180c 172px 176px, #5b3820 176px 190px, #2a180c 190px 196px),
+    repeating-linear-gradient(90deg,
+      #9b2c22 0 22px, #1f2a22 22px 25px, #1d5c45 25px 44px, #d4a12a 44px 54px, #1f2a22 54px 56px,
+      #24518a 56px 80px, #6b3b1f 80px 90px, #c2410c 90px 112px, #1f2a22 112px 114px, #0f6b6b 114px 132px,
+      #7c2d6b 132px 146px, #b8862b 146px 158px, #1f2a22 158px 161px, #2f3e86 161px 184px, #8f4a20 184px 198px);
+  background-attachment: fixed;
+}
+body {
+  font-family: "Be Vietnam Pro", Arial, sans-serif;
+  color: var(--chu);
+  line-height: 1.55;
+  max-width: 900px;
+  margin: 36px auto;
+  padding: 30px 40px 34px;
+  background: var(--giay);
+  border-radius: 10px;
+  outline: 1px solid var(--vien);
+  outline-offset: -12px;
+  box-shadow: 0 0 0 6px rgba(255,250,241,.25), 0 18px 50px rgba(0,0,0,.6);
+}
+h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  color: var(--nhan);
+  text-align: center;
+  font-size: 30px;
+  letter-spacing: .5px;
+  margin: 6px 0 18px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--vien);
+}
+h2::before {
+  content: "TRƯỜNG THPT HÀN THUYÊN • STEM TIN HỌC 12 • ĐO – TÍNH – CẢI TIẾN";
+  display: block;
+  font-family: "Be Vietnam Pro", Arial, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #8a6a4a;
+  margin-bottom: 10px;
+}
+h3 { font-family: "Playfair Display", Georgia, serif; color: var(--nhan); }
+fieldset {
+  border: 1px solid var(--vien);
+  border-radius: 8px;
+  background: #fffdf8;
+  margin: 22px 0;
+  padding: 14px 20px 10px;
+}
+legend {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #5a2e14;
+  background: #fff;
+  border: 1px solid var(--vien);
+  border-left: 5px solid var(--nhan);
+  border-radius: 4px;
+  padding: 6px 16px;
+}
+label { font-weight: 600; color: #4a2c18; }
+input[type=text], input[type=number], input[type=date], input[type=time], select, textarea {
+  font: inherit;
+  font-size: 15px;
+  padding: 8px 10px;
+  border: 1px solid #cdb08b;
+  border-radius: 5px;
+  background: #fff;
+  color: var(--chu);
+  margin: 4px 0;
+}
+input[type=text] { min-width: 240px; }
+textarea { width: 100%; box-sizing: border-box; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--nhan-2); box-shadow: 0 0 0 3px rgba(245,158,11,.25); }
+input[type=radio], input[type=checkbox] { accent-color: var(--nhan); transform: scale(1.15); margin: 0 4px 0 10px; }
+input[type=submit], input[type=reset], input[type=button], button {
+  font: inherit; font-weight: 600; font-size: 15px;
+  padding: 10px 20px; border-radius: 6px; cursor: pointer;
+  border: 1px solid var(--nhan);
+  background: linear-gradient(180deg, var(--nhan-2), var(--nhan));
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.18);
+}
+input[type=reset] { background: #fff; color: var(--nhan); }
+input[type=submit]:hover, input[type=button]:hover, button:hover { filter: brightness(1.08); }
+table { border-collapse: collapse; margin: 8px 0; background: #fff; }
+th, td { border: 1px solid #e3cfb2; padding: 6px 9px; text-align: left; font-size: 14.5px; }
+th { background: #f6e8d2; color: #4a2c18; }
+td input[type=number] { width: 100px; min-width: 0; }
+a { color: var(--nhan); }
+
+/* Khung phiên bản 3 */
+.lm { background: #fff7e6; border-left: 5px solid var(--nhan-2); border-radius: 6px; padding: 8px 16px; margin: 12px 0; font-size: 14px; }
+.kq { background: linear-gradient(180deg, #f4fbf2, #ffffff); border: 2px solid var(--nhan); border-radius: 10px; padding: 12px 18px; margin: 16px 0; }
+.kq h3 { margin: 4px 0 8px; }
+.ct { background: #fbf5ea; border: 1px dashed var(--vien); border-radius: 6px; padding: 8px 12px; white-space: pre-wrap; font-size: 14px; }
+.tot { color: #15803d; font-weight: 700; } .chu { color: #c2410c; font-weight: 700; } .xau { color: #b91c1c; font-weight: 700; }
+.mau { color: #7a6450; font-size: 13.5px; text-align: center; }
+.canh { color: #b91c1c; font-size: 14px; }
+
+/* Thanh công cụ: in phiếu, về trang lớp */
+.thanh-cong-cu { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: -6px 0 6px; font-size: 14px; }
+.thanh-cong-cu a { text-decoration: none; font-weight: 600; }
+.thanh-cong-cu button { padding: 7px 16px; font-size: 14px; }
+.dau-in { display: none; }
+
+@media (max-width: 640px) {
+  body { margin: 0; border-radius: 0; padding: 18px 16px; outline: none; }
+  h2 { font-size: 23px; }
+  input[type=text] { min-width: 0; width: 100%; box-sizing: border-box; }
+  table { display: block; overflow-x: auto; }
+}
+
+/* Khi in: nền trắng, ẩn nút, giữ giá trị đã nhập và kết quả tính */
+@media print {
+  @page { size: A4; margin: 14mm; }
+  html { background: #fff !important; }
+  body { max-width: none; margin: 0; padding: 0; box-shadow: none; outline: none; background: #fff; font-size: 11pt; line-height: 1.4; }
+  h2 { font-size: 20pt; margin: 0 0 8px; padding-bottom: 8px; }
+  fieldset { margin: 10px 0; padding: 6px 12px; background: #fff; }
+  legend { font-size: 12pt; padding: 3px 10px; }
+  .lm { font-size: 9.5pt; padding: 4px 12px; }
+  .lm ul { margin: 4px 0; }
+  .mau, .canh { font-size: 9.5pt; }
+  th, td { padding: 3px 7px; font-size: 10.5pt; }
+  .thanh-cong-cu, input[type=submit], input[type=reset], input[type=button], button, .khong-in { display: none !important; }
+  .dau-in { display: block; text-align: right; font-size: 10.5pt; color: #444; margin-bottom: 4px; }
+  fieldset, .kq, .lm, table { break-inside: avoid; }
+  input, select, textarea { border: none !important; border-bottom: 1px dotted #888 !important; border-radius: 0 !important; box-shadow: none !important; padding: 2px 4px !important; margin: 0 !important; background: transparent !important; font-size: 11pt !important; }
+  select { appearance: none; -webkit-appearance: none; }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .ky { display: flex !important; }
+}
+.ky { display: none; justify-content: space-around; margin-top: 28px; text-align: center; font-size: 12pt; }
+.ky div { width: 40%; }

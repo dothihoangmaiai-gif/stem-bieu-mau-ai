@@ -4,25 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU TÍNH DINH DƯỠNG BỮA ĂN – phiên bản 3</title>
-  <style>
-    body { font-family: Arial, sans-serif; max-width: 860px; margin: 16px auto; padding: 0 12px; color: #1f2a3a; line-height: 1.45; }
-    h2 { color: #1f3a68; margin-bottom: 4px; }
-    fieldset { margin: 12px 0; border: 1px solid #9fb3cf; border-radius: 6px; }
-    legend { font-weight: bold; color: #1f3a68; }
-    table { border-collapse: collapse; margin: 6px 0; }
-    th, td { border: 1px solid #b8c4d6; padding: 4px 7px; text-align: left; font-size: 14px; }
-    th { background: #e8edf5; }
-    input[type=number] { width: 88px; }
-    .lm { background: #fff8e1; border-left: 5px solid #f0a500; padding: 8px 14px; margin: 10px 0; font-size: 14px; }
-    .kq { background: #eef7ee; border: 2px solid #2e7d32; border-radius: 8px; padding: 10px 16px; margin: 12px 0; }
-    .kq h3 { margin: 4px 0 8px; color: #2e7d32; }
-    .ct { background: #f5f5f5; border-radius: 4px; padding: 8px 10px; white-space: pre-wrap; font-size: 13.5px; }
-    .tot { color: #2e7d32; font-weight: bold; } .chu { color: #d17a00; font-weight: bold; } .xau { color: #c62828; font-weight: bold; }
-    .mau { color: #777; font-size: 13px; }
-    .canh { color: #c62828; font-size: 14px; }
-  </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
-<body>
+<body class="nhom2">
+  <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
+  <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
   <!-- Nhóm 2: BỮA ĂN CÂN BẰNG – TÍNH NĂNG LƯỢNG VÀ TỈ LỆ CHẤT DINH DƯỠNG BỮA ĂN Ở CĂN TIN -->
   <!-- Phiên bản 3 – thêm phần TÍNH TOÁN LIÊN MÔN.
        Phần HTML (biểu mẫu) do nhóm viết theo Bài 12. Phần <script> do nhóm viết cùng trợ lí AI;
@@ -87,7 +73,6 @@
     <input type="hidden" id="kq_pc" name="kq_phan_tram_carbohydrate">
     <p><input type="submit" value="Gửi phiếu"> <input type="reset" value="Nhập lại"></p>
   </form>
-  <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>
   <script>
     function so(id) { var x = parseFloat(document.getElementById(id).value); return isNaN(x) ? 0 : x; }
     function f(x, n) { return Number(x).toLocaleString("vi-VN", { maximumFractionDigits: n === undefined ? 2 : n }); }
@@ -129,6 +114,11 @@
     document.querySelector("form").addEventListener("input", tinh);
     document.querySelector("form").addEventListener("reset", function () { setTimeout(tinh, 0); });
     tinh();
+  </script>
+  <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
+  <script>
+    document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
+    if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
 </body>
 </html>

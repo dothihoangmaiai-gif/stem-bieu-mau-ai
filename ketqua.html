@@ -10,8 +10,11 @@
     th { background: #dce6f2; }
     .trong { color: #c00; font-weight: bold; }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
+  <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
+  <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
   <!-- TRANG DO GIÁO VIÊN CUNG CẤP – học sinh KHÔNG cần viết.
        Trang đọc dữ liệu biểu mẫu gửi tới (method="get") và hiển thị thành bảng
        để nhóm kiểm tra: trường nào có dữ liệu, trường nào trống, giá trị gửi đi là gì. -->
@@ -34,6 +37,11 @@
     document.getElementById("tong").textContent = i === 0
       ? "Chưa nhận được dữ liệu nào. Hãy điền biểu mẫu và bấm nút gửi."
       : "Tổng cộng " + i + " giá trị, trong đó " + trong + " trường để trống.";
+  </script>
+  <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
+  <script>
+    document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
+    if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
 </body>
 </html>

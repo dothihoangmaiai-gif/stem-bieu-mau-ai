@@ -2,14 +2,17 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>PHIẾU KIỂM TRA AN TOÀN Ổ CẮM</title>
+  <title>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG HỌC</title>
+  <link rel="stylesheet" href="theme.css">
 </head>
-<body>
-  <!-- Nhóm 1: Ổ ĐIỆN AN TOÀN – KIỂM TRA QUÁ TẢI Ổ CẮM VÀ ĐIỆN NĂNG LÃNG PHÍ TRONG LỚP HỌC -->
+<body class="nhom1">
+  <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
+  <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
+  <!-- Nhóm 1: Ổ ĐIỆN AN TOÀN – KIỂM TRA TẢI ĐIỆN VÀ ĐIỆN NĂNG LÃNG PHÍ TRONG PHÒNG HỌC -->
   <!-- Phiên bản 2 – đã cải tiến sau thử nghiệm -->
   <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
        Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
-  <h2>PHIẾU KIỂM TRA AN TOÀN Ổ CẮM</h2>
+  <h2>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG HỌC</h2>
   <form action="ketqua.html" method="get">
     <fieldset>
       <legend>Thông tin chung</legend>
@@ -28,14 +31,14 @@
       <input type="date" id="ngay" name="ngay"></p>
     </fieldset>
     <fieldset>
-      <legend>Ổ cắm</legend>
-    <p><label for="dongdm">Dòng điện định mức ghi trên ổ cắm (A):</label>
-      <input type="number" id="dongdm" name="dongdm" min="1" max="32" step="1"></p>
+      <legend>Nguồn điện phòng học</legend>
+    <p><label for="dongdm">Dòng điện định mức của cầu dao (CB) phòng học (A):</label>
+      <input type="number" id="dongdm" name="dongdm" min="1" max="63" step="1"></p>
     <p><label for="dienap">Hiệu điện thế (V):</label>
       <input type="number" id="dienap" name="dienap" min="100" max="250" step="1"></p>
     </fieldset>
     <fieldset>
-      <legend>Thiết bị đang cắm vào ổ</legend>
+      <legend>Thiết bị điện trong phòng</legend>
     <p>Thiết bị:<br>
       <input type="checkbox" id="thietbi1" name="thietbi" value="Tivi">
       <label for="thietbi1">Tivi</label><br>
@@ -45,6 +48,8 @@
       <label for="thietbi3">Máy lạnh</label><br>
       <input type="checkbox" id="thietbi4" name="thietbi" value="Quạt trần">
       <label for="thietbi4">Quạt trần</label><br>
+      <input type="checkbox" id="thietbi5" name="thietbi" value="Đèn tuýp">
+      <label for="thietbi5">Đèn tuýp</label><br>
     </p>
     <p><label for="congsuat">Tổng công suất ghi trên nhãn các thiết bị (W):</label>
       <input type="number" id="congsuat" name="congsuat" min="0" max="10000" step="1"></p>
@@ -61,6 +66,10 @@
     <p><input type="submit" value="Gửi phiếu">
     <input type="reset" value="Nhập lại"></p>
   </form>
-  <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>
+  <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
+  <script>
+    document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
+    if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
+  </script>
 </body>
 </html>
