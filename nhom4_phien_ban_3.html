@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU THEO DÕI MÀN HÌNH VÀ GIẤC NGỦ – phiên bản 3</title>
-  <link rel="stylesheet" href="theme.css?v=8">
-  <link rel="stylesheet" href="theme-nhom4.css?v=8">
+  <link rel="stylesheet" href="theme.css?v=9">
+  <link rel="stylesheet" href="theme-nhom4.css?v=9">
 </head>
 <body class="nhom4">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
@@ -16,16 +16,18 @@
        mọi công thức đã được chuyên gia liên môn của nhóm kiểm chứng bằng tính tay (xem báo cáo, mục Kiểm chứng).
        Khi thử nghiệm, dữ liệu và kết quả tính được gửi bằng GET tới ketqua.html. -->
   <h2>PHIẾU THEO DÕI MÀN HÌNH VÀ GIẤC NGỦ</h2>
-  <p class="mau">Phiên bản 3 – có tính toán tự động. Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
-  <div class="lm"><b>Kiến thức liên môn sử dụng</b>
-    <ul>
-      <li><b>S – Khoa học:</b> Sinh học – Hệ thần kinh, nhịp sinh học; Giáo dục thể chất – sức khỏe – Giấc ngủ giúp phục hồi, ghi nhớ; ánh sáng màn hình buổi tối có thể làm khó ngủ; tuổi 13 – 18 được khuyến nghị ngủ 8 – 10 giờ/đêm</li>
-      <li><b>T – Công nghệ:</b> Tin học 12 – Bài 12. Tạo biểu mẫu; tính năng Thời gian sử dụng / Digital Wellbeing của điện thoại – input time, number, radio, checkbox; phần tính toán do trợ lí AI hỗ trợ viết</li>
-      <li><b>E – Kĩ thuật:</b> Quy trình thiết kế kĩ thuật; thực nghiệm có đối chứng – Tuần 1 đo bình thường; tuần 2 thử “tắt màn hình 30 phút trước khi ngủ”; so sánh</li>
-      <li><b>M – Toán học:</b> Toán 11 – Các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm – Giá trị đại diện cᵢ; số trung bình x̄; trung vị Me; mốt Mo</li>
-    </ul>
-  </div>
-  <p class="canh"><b>An toàn:</b> Phiếu ẩn danh, không hỏi họ tên; kết quả chỉ là số liệu thống kê, không phải chẩn đoán sức khỏe; học sinh thường xuyên mệt mỏi nên trao đổi với GVCN, phụ huynh hoặc nhân viên y tế.</p>
+  <section class="cau-hoi-stem">
+    <span class="nhan-chq">❓ Câu hỏi STEM</span>
+    <p class="chq">Làm thế nào để thu thập ẩn danh số liệu đo thật về thời gian màn hình, giấc ngủ và tính ngay các số đặc trưng của lớp?</p>
+    <div class="stem4">
+      <div class="o-stem o-s"><b>S</b><small>Sinh học</small><p>Ánh sáng màn hình ảnh hưởng thế nào đến nhịp sinh học và giấc ngủ?</p></div>
+      <div class="o-stem o-t"><b>T</b><small>Tin học 12</small><p>Dùng ô time thế nào để tính đúng số giờ ngủ qua nửa đêm?</p></div>
+      <div class="o-stem o-e"><b>E</b><small>Kĩ thuật</small><p>Làm thực nghiệm đối chứng “tắt màn hình 30 phút trước khi ngủ” ra sao?</p></div>
+      <div class="o-stem o-m"><b>M</b><small>Toán 11</small><p>Tính số trung bình, trung vị, mốt của mẫu số liệu ghép nhóm thế nào?</p></div>
+    </div>
+  </section>
+  <p class="canh">⚠ <b>An toàn:</b> Phiếu ẩn danh; kết quả chỉ là số liệu thống kê, không phải chẩn đoán sức khỏe.</p>
+  <p class="mau">Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
   <h3>A. PHIẾU CÁ NHÂN (ẩn danh – không ghi họ tên)</h3>
   <form action="ketqua.html" method="get">
     <fieldset>
@@ -57,15 +59,16 @@
       <h3>KẾT QUẢ CỦA EM</h3>
       <div id="kq"></div>
       <div class="bieu-do" id="bd"></div>
-      <div class="ct" id="ct"></div>
-      <p class="mau">Đây là số liệu thống kê, không phải chẩn đoán sức khỏe. Nếu em thường xuyên mệt mỏi, hãy trao đổi với GVCN, phụ huynh hoặc nhân viên y tế trường.</p>
+      <details class="cach-tinh"><summary>Xem cách tính (thay số)</summary>
+      <div class="ct" id="ct"></div></details>
+      <p class="mau">Nếu thường xuyên mệt mỏi, em hãy trao đổi với GVCN hoặc nhân viên y tế trường.</p>
     </div>
     <input type="hidden" id="kq_tb" name="kq_gio_ngu_trung_binh">
     <p><input type="submit" value="Gửi phiếu (ẩn danh)"> <input type="reset" value="Nhập lại"></p>
   </form>
 
   <h3>B. THỐNG KÊ CỦA LỚP – MẪU SỐ LIỆU GHÉP NHÓM (Toán 11)</h3>
-  <p class="mau">Nhóm đếm số bạn có giờ ngủ trung bình (hoặc thời gian màn hình) thuộc từng khoảng rồi nhập tần số. Số liệu điền sẵn là số liệu mẫu.</p>
+  <p class="mau">Nhập số bạn thuộc từng khoảng (tần số).</p>
   <fieldset>
     <legend>Giờ ngủ trung bình mỗi đêm (giờ)</legend>
       <table>
@@ -77,7 +80,8 @@
         <tr><td>[8; 9)</td><td><input type="number" id="a4" min="0" step="1" value="6"></td><td id="ac4"></td><td id="ak4"></td></tr>
         <tr><td>[9; 10)</td><td><input type="number" id="a5" min="0" step="1" value="1"></td><td id="ac5"></td><td id="ak5"></td></tr>
       </table>
-      <div class="ct" id="akq"></div>
+      <details class="cach-tinh" open><summary>Kết quả và cách tính</summary>
+      <div class="ct" id="akq"></div></details>
   </fieldset>
   <fieldset>
     <legend>Thời gian màn hình mỗi ngày (giờ)</legend>
@@ -89,7 +93,8 @@
         <tr><td>[6; 8)</td><td><input type="number" id="b3" min="0" step="1" value="9"></td><td id="bc3"></td><td id="bk3"></td></tr>
         <tr><td>[8; 10)</td><td><input type="number" id="b4" min="0" step="1" value="3"></td><td id="bc4"></td><td id="bk4"></td></tr>
       </table>
-      <div class="ct" id="bkq"></div>
+      <details class="cach-tinh" open><summary>Kết quả và cách tính</summary>
+      <div class="ct" id="bkq"></div></details>
   </fieldset>
   <script>
     function so(id) { var x = parseFloat(document.getElementById(id).value); return isNaN(x) ? 0 : x; }
@@ -146,7 +151,9 @@
   <div class="ky"><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
   <script>
     document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
+    window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
+  <script src="luu-tru.js?v=9"></script>
 </body>
 </html>

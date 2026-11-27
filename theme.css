@@ -181,7 +181,7 @@ body[class^="nhom"] .thanh-cong-cu::before { content: var(--thuong-hieu); font-w
 body[class^="nhom"] .thanh-cong-cu a { color: var(--nav-chu); margin-left: auto; opacity: .92; padding-bottom: 3px; border-bottom: 2px solid var(--nav-gach); }
 body[class^="nhom"] .thanh-cong-cu button { background: var(--nav-nut); border: none; color: var(--nav-nut-chu); border-radius: 999px; box-shadow: none; }
 body[class^="nhom"] h2 {
-  margin: 0 calc(-1 * var(--px)) 22px; padding: 46px var(--px) 54px;
+  margin: 0 calc(-1 * var(--px)) 22px; padding: 34px var(--px) 44px;
   background: var(--hero-bg); color: var(--hero-chu); text-align: left;
   font-family: var(--font-tieu-de); font-size: 34px; line-height: 1.2; border: none;
   position: relative; clip-path: var(--hero-cat, none);
@@ -197,3 +197,23 @@ body[class^="nhom"] fieldset table { width: 100%; }
   body[class^="nhom"] h2::before { color: #555 !important; margin-bottom: 4px; }
   body[class^="nhom"] h2::after { display: none; }
 }
+
+/* ===== Hộp CÂU HỎI STEM ===== */
+.cau-hoi-stem { margin: 4px 0 14px; padding: 18px 20px 16px; border-radius: 14px; background: #fff; border: 1px solid var(--vien); box-shadow: 0 6px 18px rgba(0,0,0,.05); }
+.nhan-chq { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #fff; background: var(--nhan); padding: 4px 12px; border-radius: 999px; }
+.chq { font-family: var(--font-tieu-de, inherit); font-size: 19px; font-weight: 700; line-height: 1.4; color: var(--nhan); margin: 10px 0 14px; }
+.stem4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.o-stem { border-radius: 12px; padding: 10px 12px; font-size: 13.5px; line-height: 1.45; }
+.o-stem b { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; color: #fff; font-size: 15px; margin-right: 6px; }
+.o-stem small { font-weight: 600; font-size: 12px; opacity: .85; }
+.o-stem p { margin: 6px 0 0; }
+.o-s { background: #e6f4ea; } .o-s b { background: #2e7d4f; }
+.o-t { background: #e3edfb; } .o-t b { background: #2f5fb3; }
+.o-e { background: #fdf0dc; } .o-e b { background: #c9781a; }
+.o-m { background: #efe7fa; } .o-m b { background: #6b46b5; }
+.canh { font-size: 13.5px; }
+details.cach-tinh { margin: 8px 0; }
+details.cach-tinh summary { cursor: pointer; font-weight: 600; color: var(--nhan); padding: 4px 0; }
+@media (max-width: 760px) { .stem4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 460px) { .stem4 { grid-template-columns: 1fr; } }
+@media print { .cau-hoi-stem { box-shadow: none; padding: 8px 10px; break-inside: avoid; } .chq { font-size: 12pt; margin: 4px 0 6px; } .o-stem { font-size: 9pt; padding: 5px 8px; } details.cach-tinh summary { display: none; } }

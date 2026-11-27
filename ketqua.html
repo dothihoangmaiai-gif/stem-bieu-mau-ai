@@ -10,7 +10,7 @@
     th { background: #dce6f2; }
     .trong { color: #c00; font-weight: bold; }
   </style>
-  <link rel="stylesheet" href="theme.css?v=8">
+  <link rel="stylesheet" href="theme.css?v=9">
 </head>
 <body>
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
@@ -41,6 +41,7 @@
   <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
   <script>
     document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
+    window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
 </body>

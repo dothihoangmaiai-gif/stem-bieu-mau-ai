@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU THEO DÕI RÁC NHỰA CỦA LỚP – phiên bản 3</title>
-  <link rel="stylesheet" href="theme.css?v=8">
-  <link rel="stylesheet" href="theme-nhom3.css?v=8">
+  <link rel="stylesheet" href="theme.css?v=9">
+  <link rel="stylesheet" href="theme-nhom3.css?v=9">
 </head>
 <body class="nhom3">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
@@ -16,17 +16,18 @@
        mọi công thức đã được chuyên gia liên môn của nhóm kiểm chứng bằng tính tay (xem báo cáo, mục Kiểm chứng).
        Khi thử nghiệm, dữ liệu và kết quả tính được gửi bằng GET tới ketqua.html. -->
   <h2>PHIẾU THEO DÕI RÁC NHỰA CỦA LỚP</h2>
-  <p class="mau">Phiên bản 3 – có tính toán tự động. Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
-  <div class="lm"><b>Kiến thức liên môn sử dụng</b>
-    <ul>
-      <li><b>S – Khoa học:</b> Hóa học 12 – Polymer – Đồ nhựa dùng một lần làm từ PE, PP, PS, PET; mạch polymer bền, rất khó phân hủy trong tự nhiên; kí hiệu nhựa 1 – 7 in dưới đáy sản phẩm</li>
-      <li><b>S – Khoa học:</b> Địa lí 10 – Môi trường và phát triển bền vững – Tác động của rác thải nhựa; giảm thiểu – tái sử dụng – tái chế</li>
-      <li><b>T – Công nghệ:</b> Tin học 12 – Bài 12. Tạo biểu mẫu – number (số lượng, khối lượng), select, date, fieldset; phần tính toán do trợ lí AI hỗ trợ viết</li>
-      <li><b>E – Kĩ thuật:</b> Quy trình thiết kế kĩ thuật; đánh giá sai số – So sánh khối lượng biểu mẫu ước tính với khối lượng cân trực tiếp túi rác nhựa của lớp</li>
-      <li><b>M – Toán học:</b> Toán 10 – Số trung bình của mẫu số liệu; tỉ lệ phần trăm – m(TB) = tổng khối lượng / số mẫu; sai số % = |ước tính − đo thật| / đo thật × 100%</li>
-    </ul>
-  </div>
-  <p class="canh"><b>An toàn:</b> Đeo găng tay khi đếm rác; chỉ cân đồ nhựa đã rửa sạch; rửa tay sau khi làm.</p>
+  <section class="cau-hoi-stem">
+    <span class="nhan-chq">❓ Câu hỏi STEM</span>
+    <p class="chq">Làm thế nào để lớp ghi số đồ nhựa mỗi ngày và biết ngay khối lượng nhựa thải ra trong tuần, trong năm học, loại nhựa gì?</p>
+    <div class="stem4">
+      <div class="o-stem o-s"><b>S</b><small>Hóa 12 · Địa 10</small><p>Kí hiệu nhựa 1 – 7 là polymer gì? Loại nào dễ tái chế?</p></div>
+      <div class="o-stem o-t"><b>T</b><small>Tin học 12</small><p>Biểu mẫu cần những ô nào để lớp ghi số đồ nhựa mỗi ngày?</p></div>
+      <div class="o-stem o-e"><b>E</b><small>Kĩ thuật</small><p>Ước tính lệch bao nhiêu so với cân thật? Cải tiến thế nào?</p></div>
+      <div class="o-stem o-m"><b>M</b><small>Toán 10</small><p>Từ khối lượng trung bình một món, ước tính nhựa cả năm học ra sao?</p></div>
+    </div>
+  </section>
+  <p class="canh">⚠ <b>An toàn:</b> Đeo găng tay khi đếm rác, chỉ cân đồ nhựa đã rửa sạch, rửa tay sau khi làm.</p>
+  <p class="mau">Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
   <form action="ketqua.html" method="get">
     <fieldset>
       <legend>Thông tin chung</legend>
@@ -65,8 +66,8 @@
       <h3>KẾT QUẢ TÍNH</h3>
       <div id="kq"></div>
       <div class="bieu-do" id="bd"></div>
-      <p><b>Cách tính (thay số):</b></p>
-      <div class="ct" id="ct"></div>
+      <details class="cach-tinh"><summary>Xem cách tính (thay số)</summary>
+      <div class="ct" id="ct"></div></details>
     </div>
     <input type="hidden" id="kq_ngay" name="kq_khoi_luong_ngay_g">
     <input type="hidden" id="kq_tuan" name="kq_khoi_luong_tuan_kg">
@@ -117,7 +118,9 @@
   <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
   <script>
     document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
+    window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
+  <script src="luu-tru.js?v=9"></script>
 </body>
 </html>

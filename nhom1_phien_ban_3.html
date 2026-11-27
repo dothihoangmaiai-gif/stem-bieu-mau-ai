@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG HỌC – phiên bản 3</title>
-  <link rel="stylesheet" href="theme.css?v=8">
-  <link rel="stylesheet" href="theme-nhom1.css?v=8">
+  <link rel="stylesheet" href="theme.css?v=9">
+  <link rel="stylesheet" href="theme-nhom1.css?v=9">
 </head>
 <body class="nhom1">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
@@ -16,17 +16,18 @@
        mọi công thức đã được chuyên gia liên môn của nhóm kiểm chứng bằng tính tay (xem báo cáo, mục Kiểm chứng).
        Khi thử nghiệm, dữ liệu và kết quả tính được gửi bằng GET tới ketqua.html. -->
   <h2>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG HỌC</h2>
-  <p class="mau">Phiên bản 3 – có tính toán tự động. Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
-  <div class="lm"><b>Kiến thức liên môn sử dụng</b>
-    <ul>
-      <li><b>S – Khoa học:</b> Vật lí 11 – Năng lượng điện. Công suất điện – P = U·I ⇒ I = P/U; A = P·t; các thiết bị trong phòng mắc song song nên công suất cộng lại</li>
-      <li><b>S – Khoa học:</b> Công nghệ – An toàn điện; thông số kĩ thuật ghi trên thiết bị – Đọc công suất định mức (W), hiệu điện thế (V), dòng định mức của cầu dao (A); vai trò của cầu dao; nguyên nhân quá tải, chập cháy</li>
-      <li><b>T – Công nghệ:</b> Tin học 12 – Bài 12. Tạo biểu mẫu – input number, checkbox, date, select, fieldset; phần tính toán do trợ lí AI hỗ trợ viết</li>
-      <li><b>E – Kĩ thuật:</b> Quy trình thiết kế kĩ thuật; kiểm thử theo ngưỡng – Ngưỡng cảnh báo: ≤ 80% định mức – an toàn; 80% – 100% – cần chú ý; > 100% – quá tải (ngưỡng 80% do nhóm chọn để có khoảng dự phòng)</li>
-      <li><b>M – Toán học:</b> Toán – tỉ lệ phần trăm, đổi đơn vị, làm tròn – Tỉ lệ tải = I/I(định mức) × 100%; 1 kWh = 1000 Wh; tiền = A × đơn giá</li>
-    </ul>
-  </div>
-  <p class="canh"><b>An toàn:</b> Chỉ đọc nhãn; không mở tủ điện, cầu dao, ổ cắm; không chạm vào thiết bị đang có điện; thiết bị cần xem nhãn phải tắt điện trước và có giáo viên.</p>
+  <section class="cau-hoi-stem">
+    <span class="nhan-chq">❓ Câu hỏi STEM</span>
+    <p class="chq">Làm thế nào để học sinh nhập thông số ghi trên thiết bị và biết ngay điện của phòng học có an toàn không, điện năng lãng phí là bao nhiêu?</p>
+    <div class="stem4">
+      <div class="o-stem o-s"><b>S</b><small>Vật lí 11</small><p>Vì sao công suất các thiết bị mắc song song được cộng lại? I = P/U cho biết điều gì?</p></div>
+      <div class="o-stem o-t"><b>T</b><small>Tin học 12</small><p>Dùng loại ô nhập nào cho số lượng, công suất, ngày kiểm tra?</p></div>
+      <div class="o-stem o-e"><b>E</b><small>Kĩ thuật</small><p>Vì sao đặt ngưỡng cảnh báo 80% định mức? Kiểm thử ngưỡng này thế nào?</p></div>
+      <div class="o-stem o-m"><b>M</b><small>Toán</small><p>Tính tỉ lệ tải (%) và điện năng lãng phí (kWh) bằng công thức nào?</p></div>
+    </div>
+  </section>
+  <p class="canh">⚠ <b>An toàn:</b> Chỉ đọc nhãn thiết bị; không mở tủ điện, ổ cắm; luôn có giáo viên đi cùng.</p>
+  <p class="mau">Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
   <form action="ketqua.html" method="get">
     <fieldset>
       <legend>Thông tin chung</legend>
@@ -61,8 +62,8 @@
       <h3>KẾT QUẢ TÍNH</h3>
       <div id="kq"></div>
       <div class="bieu-do" id="bd"></div>
-      <p><b>Cách tính (thay số):</b></p>
-      <div class="ct" id="ct"></div>
+      <details class="cach-tinh"><summary>Xem cách tính (thay số)</summary>
+      <div class="ct" id="ct"></div></details>
     </div>
     <input type="hidden" id="kq_p" name="kq_tong_cong_suat_W">
     <input type="hidden" id="kq_i" name="kq_cuong_do_A">
@@ -124,7 +125,9 @@
   <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
   <script>
     document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
+    window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
+  <script src="luu-tru.js?v=9"></script>
 </body>
 </html>
