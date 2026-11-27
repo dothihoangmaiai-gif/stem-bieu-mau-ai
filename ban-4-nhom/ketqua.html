@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Kiểm tra dữ liệu biểu mẫu</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; }
+    table { border-collapse: collapse; min-width: 420px; }
+    th, td { border: 1px solid #999; padding: 6px 10px; text-align: left; }
+    th { background: #dce6f2; }
+    .trong { color: #c00; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="theme.css?v=14">
+</head>
+<body>
+  <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
+  <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
+  <!-- TRANG DO GIÁO VIÊN CUNG CẤP – học sinh KHÔNG cần viết.
+       Trang đọc dữ liệu biểu mẫu gửi tới (method="get") và hiển thị thành bảng
+       để nhóm kiểm tra: trường nào có dữ liệu, trường nào trống, giá trị gửi đi là gì. -->
+  <h2>DỮ LIỆU MÁY CHỦ NHẬN ĐƯỢC</h2>
+  <p>Địa chỉ (URL) vừa gửi: <code id="url"></code></p>
+  <table id="bang"><tr><th>STT</th><th>Tên trường (name)</th><th>Giá trị (value)</th></tr></table>
+  <p id="tong"></p>
+  <p><a href="javascript:history.back()">← Quay lại biểu mẫu</a></p>
+  <script>
+    document.getElementById("url").textContent = location.href;
+    var ds = new URLSearchParams(location.search), bang = document.getElementById("bang"), i = 0, trong = 0;
+    ds.forEach(function (gt, ten) {
+      i++;
+      var tr = bang.insertRow(), v = gt === "" ? "(để trống)" : gt;
+      tr.insertCell().textContent = i;
+      tr.insertCell().textContent = ten;
+      var td = tr.insertCell(); td.textContent = v;
+      if (gt === "") { td.className = "trong"; trong++; }
+    });
+    document.getElementById("tong").textContent = i === 0
+      ? "Chưa nhận được dữ liệu nào. Hãy điền biểu mẫu và bấm nút gửi."
+      : "Tổng cộng " + i + " giá trị, trong đó " + trong + " trường để trống.";
+  </script>
+  <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
+  <script>
+    document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
+    window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
+    if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
+  </script>
+</body>
+</html>

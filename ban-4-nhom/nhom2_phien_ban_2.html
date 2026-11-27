@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PHIẾU TÍNH DINH DƯỠNG BỮA ĂN</title>
+  <link rel="stylesheet" href="theme.css?v=14">
+  <link rel="stylesheet" href="theme-nhom2.css?v=14">
+</head>
+<body class="nhom2">
+  <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
+  <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
+  <!-- Nhóm 2: BỮA ĂN CÂN BẰNG – TÍNH NĂNG LƯỢNG VÀ TỈ LỆ CHẤT DINH DƯỠNG BỮA ĂN Ở CĂN TIN -->
+  <!-- Phiên bản 2 – đã cải tiến sau thử nghiệm -->
+  <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
+       Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
+  <h2>PHIẾU TÍNH DINH DƯỠNG BỮA ĂN</h2>
+  <form action="ketqua.html" method="get">
+    <fieldset>
+      <legend>Thông tin chung</legend>
+    <p>Khối:<br>
+      <input type="radio" id="khoi1" name="khoi" value="10">
+      <label for="khoi1">10</label><br>
+      <input type="radio" id="khoi2" name="khoi" value="11">
+      <label for="khoi2">11</label><br>
+      <input type="radio" id="khoi3" name="khoi" value="12">
+      <label for="khoi3">12</label><br>
+    </p>
+    <p>Bữa ăn:<br>
+      <input type="radio" id="bua1" name="bua" value="Sáng">
+      <label for="bua1">Sáng</label><br>
+      <input type="radio" id="bua2" name="bua" value="Trưa">
+      <label for="bua2">Trưa</label><br>
+    </p>
+    </fieldset>
+    <fieldset>
+      <legend>Món đã ăn</legend>
+    <p>Món:<br>
+      <input type="checkbox" id="mon1" name="mon" value="Cơm phần">
+      <label for="mon1">Cơm phần</label><br>
+      <input type="checkbox" id="mon2" name="mon" value="Bánh mì thịt">
+      <label for="mon2">Bánh mì thịt</label><br>
+      <input type="checkbox" id="mon3" name="mon" value="Mì gói">
+      <label for="mon3">Mì gói</label><br>
+      <input type="checkbox" id="mon4" name="mon" value="Xôi">
+      <label for="mon4">Xôi</label><br>
+      <input type="checkbox" id="mon5" name="mon" value="Sữa hộp">
+      <label for="mon5">Sữa hộp</label><br>
+      <input type="checkbox" id="mon6" name="mon" value="Bánh ngọt">
+      <label for="mon6">Bánh ngọt</label><br>
+      <input type="checkbox" id="mon7" name="mon" value="Trái cây">
+      <label for="mon7">Trái cây</label><br>
+      <input type="checkbox" id="mon8" name="mon" value="Nước ngọt">
+      <label for="mon8">Nước ngọt</label><br>
+    </p>
+    </fieldset>
+    <fieldset>
+      <legend>Thành phần dinh dưỡng của cả bữa (đọc trên nhãn, tra bảng)</legend>
+    <p><label for="dam">Chất đạm – protein (g):</label>
+      <input type="number" id="dam" name="dam" min="0" max="500" step="0.1"></p>
+    <p><label for="beo">Chất béo – lipid (g):</label>
+      <input type="number" id="beo" name="beo" min="0" max="500" step="0.1"></p>
+    <p><label for="carb">Carbohydrate (g):</label>
+      <input type="number" id="carb" name="carb" min="0" max="1000" step="0.1"></p>
+    <p><label for="ghichu">Nguồn số liệu (nhãn sản phẩm, bảng thành phần thực phẩm…):</label><br>
+      <textarea id="ghichu" name="ghichu" rows="4" cols="40"></textarea></p>
+    </fieldset>
+    <p><input type="submit" value="Gửi phiếu">
+    <input type="reset" value="Nhập lại"></p>
+  </form>
+  <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
+  <script>
+    document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
+    window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
+    if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
+  </script>
+  <script src="luu-tru.js?v=14"></script>
+  <script src="goi-y-ai.js?v=14"></script>
+</body>
+</html>

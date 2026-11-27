@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thiết kế biểu mẫu số với trợ lí AI – giải quyết vấn đề học đường</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap&subset=vietnamese">
+  <style>
+    html { background-color: #1d120a;
+      background-image:
+        radial-gradient(ellipse at center, rgba(0,0,0,0) 35%, rgba(0,0,0,.6) 100%),
+        repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 172px, #2a180c 172px 176px, #5b3820 176px 190px, #2a180c 190px 196px),
+        repeating-linear-gradient(90deg, #9b2c22 0 22px, #1f2a22 22px 25px, #1d5c45 25px 44px, #d4a12a 44px 54px, #1f2a22 54px 56px, #24518a 56px 80px, #6b3b1f 80px 90px, #c2410c 90px 112px, #1f2a22 112px 114px, #0f6b6b 114px 132px, #7c2d6b 132px 146px, #b8862b 146px 158px, #1f2a22 158px 161px, #2f3e86 161px 184px, #8f4a20 184px 198px);
+      background-attachment: fixed; min-height: 100%; }
+    body { font-family: "Be Vietnam Pro", Arial, sans-serif; margin: 0; color: #2c1d12; }
+    header { max-width: 1150px; margin: 34px auto 0; padding: 30px 24px 26px; text-align: center; color: #fff8ec;
+      background: linear-gradient(135deg, rgba(60,30,12,.92), rgba(120,52,20,.88)); border-radius: 14px 14px 0 0;
+      border: 1px solid rgba(255,220,160,.35); box-shadow: 0 18px 50px rgba(0,0,0,.55); }
+    header .nho { letter-spacing: 4px; font-size: 12px; font-weight: 600; color: #f6c36b; }
+    header h1 { font-family: "Playfair Display", Georgia, serif; margin: 10px 0 8px; font-size: 38px; letter-spacing: .5px;
+      background: linear-gradient(90deg, #ffe2a8, #ffffff, #ffd27a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    header p { margin: 4px 0; opacity: .92; }
+    .dai { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .dai span { padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; background: rgba(255,255,255,.12); border: 1px solid rgba(255,220,160,.4); }
+    main { max-width: 1150px; margin: 0 auto 30px; padding: 26px 24px 30px; background: #fffaf1; border-radius: 0 0 14px 14px; box-shadow: 0 18px 50px rgba(0,0,0,.55); }
+    h2 { font-family: "Playfair Display", Georgia, serif; color: #7a2e12; margin: 6px 0 12px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 480px), 1fr)); gap: 20px; }
+    .card { --c: #b45309; --c2: #f59e0b; background: #fff; border-radius: 12px; padding: 18px 20px; border: 1px solid #ecd9bd;
+      border-top: 6px solid var(--c); box-shadow: 0 4px 14px rgba(80,40,10,.12); transition: transform .15s, box-shadow .15s; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(80,40,10,.2); }
+    .n2 { --c: #15803d; --c2: #f97316; } .n3 { --c: #0f766e; --c2: #0ea5e9; } .n4 { --c: #4338ca; --c2: #a855f7; }
+    .dau { display: flex; gap: 12px; align-items: center; }
+    .icon { font-size: 28px; width: 52px; height: 52px; display: grid; place-items: center; border-radius: 12px; background: linear-gradient(135deg, var(--c2), var(--c)); }
+    .so { color: var(--c); font-weight: 700; font-size: 12.5px; letter-spacing: 2px; text-transform: uppercase; }
+    .card h3 { font-family: "Playfair Display", Georgia, serif; margin: 2px 0 0; font-size: 24px; color: #2c1d12; }
+    .mo { margin: 8px 0; color: #6b5440; font-size: 14px; font-style: italic; }
+    .card p, .card li { font-size: 14.5px; line-height: 1.5; }
+    .lm { background: #fff7e6; border-left: 4px solid var(--c2); margin: 10px 0; padding: 8px 8px 8px 28px; border-radius: 0 6px 6px 0; }
+    .btn { display: inline-block; margin: 4px 6px 0 0; padding: 9px 14px; border-radius: 7px; background: linear-gradient(180deg, var(--c2), var(--c));
+      color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
+    .btn.phu { background: #fff; color: var(--c); border: 1px solid var(--c); box-shadow: none; }
+    .btn:hover { filter: brightness(1.08); }
+    .chan { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed #e6d2b5; flex-wrap: wrap; }
+    .qr { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #6b5440; }
+    .qr img { width: 88px; height: 88px; border: 4px solid #fff; outline: 1px solid #ecd9bd; border-radius: 6px; }
+    .in { display: flex; flex-direction: column; align-items: flex-end; }
+    .in-btn { font-size: 13px; padding: 7px 12px; }
+    .hop { background: #fff; border: 1px solid #ecd9bd; border-left: 6px solid #b45309; padding: 14px 20px; margin: 22px 0; border-radius: 8px; }
+    .hop li { margin: 5px 0; }
+    .bang-in { border-collapse: collapse; width: 100%; background: #fff; }
+    .bang-in td, .bang-in th { border: 1px solid #ecd9bd; padding: 8px 12px; text-align: left; }
+    .bang-in th { background: #f6e8d2; }
+    .bang-in a { color: #7a2e12; font-weight: 600; text-decoration: none; }
+    footer { text-align: center; font-size: 13px; color: #f1dcc0; padding: 4px 20px 30px; text-shadow: 0 1px 2px #000; }
+    .qrsite { text-align: center; color: #6b5440; font-size: 13px; } .qrsite img { width: 120px; }
+    .bancu { position: fixed; right: 12px; bottom: 12px; background: #fff; border: 1px solid #c9d3e3; border-radius: 16px; padding: 5px 11px; font-size: 12px; color: #1f3a68; text-decoration: none; box-shadow: 0 1px 3px rgba(0,0,0,.15); opacity: .85; }
+    .bancu:hover { opacity: 1; }
+    @media (max-width: 640px) { header, main { margin-left: 0; margin-right: 0; border-radius: 0; } header h1 { font-size: 28px; } .in { align-items: flex-start; } }
+    @media print { html { background: #fff; } header, main { box-shadow: none; } .bancu, .btn { display: none; } }
+  </style>
+</head>
+<body>
+  <div style="background:#7a2e12;color:#fff;text-align:center;padding:8px;font-size:14px">Bản lưu trữ 4 đề tài (để tham khảo) – <a style="color:#ffd27a" href="../index.html">xem bản chính 2 chủ đề</a></div>
+  <header>
+    <div class="nho">CHỦ ĐỀ STEM • ĐO THẬT – TÍNH ĐÚNG – CẢI TIẾN</div>
+    <h1>THIẾT KẾ BIỂU MẪU SỐ VỚI TRỢ LÍ AI</h1>
+    <p>Chủ đề STEM – giải quyết vấn đề học đường bằng đo đạc và tính toán liên môn</p>
+    <p>Tin học 12 – Bài 12. Tạo biểu mẫu - Trường THPT Hàn Thuyên</p>
+    <div class="dai"><span>⚡ Vật lí 11</span><span>🧪 Hóa học 12</span><span>🧬 Sinh học</span><span>📐 Toán 10 – 11</span><span>💻 Tin học 12</span></div>
+  </header>
+  <main>
+    <div class="hop">
+      <h2>Mỗi sản phẩm STEM đi qua 4 bước</h2>
+      <ol>
+        <li><b>Đo thật (E, S):</b> đọc nhãn công suất, nhãn dinh dưỡng, cân đồ nhựa, ghi nhật kí giấc ngủ.</li>
+        <li><b>Tính bằng công thức của môn khác (S, M):</b> Vật lí 11, Hóa học 12, Sinh học, Toán 10 – 11.</li>
+        <li><b>Đưa công thức vào biểu mẫu (T):</b> HTML Bài 12 do nhóm viết; phần tính toán viết cùng trợ lí AI.</li>
+        <li><b>Kiểm chứng và cải tiến (E):</b> so sánh với tính tay, với số đo thật; phiên bản 1 → 2 → 3.</li>
+      </ol>
+    </div>
+    <div class="grid">
+    <article class="card n1">
+      <div class="dau"><span class="icon">⚡</span><div><div class="so">Nhóm 1</div><h3>Ổ điện an toàn</h3></div></div>
+      <p class="mo">Kiểm tra tải điện và điện năng lãng phí trong phòng học</p>
+      <p><b>Câu hỏi STEM:</b> Làm thế nào để học sinh nhập thông số ghi trên thiết bị và biết ngay điện của phòng học có an toàn không, điện năng lãng phí là bao nhiêu?</p>
+      <ul class="lm"><li><b>S:</b> Vật lí 11 – Năng lượng điện. Công suất điện</li><li><b>S:</b> Công nghệ – An toàn điện; thông số kĩ thuật ghi trên thiết bị</li><li><b>E:</b> Quy trình thiết kế kĩ thuật; kiểm thử theo ngưỡng</li><li><b>M:</b> Toán – tỉ lệ phần trăm, đổi đơn vị, làm tròn</li></ul>
+      <p class="do"><b>Đo thật:</b> Công suất từng thiết bị (W); Dòng điện định mức của cầu dao (CB) phòng học (A), hiệu điện thế (V); Số thiết bị bật cùng lúc.</p>
+      <div class="nut">
+        <a class="btn" href="nhom1_phien_ban_3.html">Phiên bản 3 – tính toán liên môn</a>
+        <a class="btn phu" href="nhom1_phien_ban_2.html">Phiên bản 2</a>
+        <a class="btn phu" href="nhom1_phien_ban_1.html">Phiên bản 1 (có lỗi)</a>
+      </div>
+      <div class="chan">
+        <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAADR0lEQVR4Xu1bi2rDMAyMR///lz3uIScsKasWBwaWCmuaGi+9quc7yWl9S8RXYuxWoy+iEDzHk5i8tq3pP3Yc9a31hqOOY7/Xx4gnr2SNuV9CWsgS2AbMu84K/H3EGpg8+SmBN7BmThNwQN22DqSR5X5PmD95JUvO3YNFGpDuW+8641gSk1/i75i0BpQbEn0DzsScGV54v48c3uSTyOBObMkrTG4exmKKyM1doy8CS6MhBbjXD4/oheBd9fjaszsynZCTRKRXDiMK77t4k6gFtQ6INpbJPenj/crvq8jlIFWfSHt3Pm3rVt7hdPwyN3eNfvNrgCSBNhk5Dt0NRa5V01lf6+WE/P4Sg8hSQnLrgOZeOONroCxspU/u8wn04LDyQpkvaS+HInRFpRhiynpJfLlcsmzi2omfaDFLD76P9CpFYyP3bkmI5IZKMdagGKGfnjsRy8xN+6464EDcwtt+kx6/6lUz1ktrbXFG1Kec29YrznW8WiYHE5HDRBKQ0A5clemkE1ug4u+J/E357cq3Ww1eISEBSe5B7Lnvskafw7wN4R3dBr3gCbkeQY6nQvAcOUyiWRn4RnFK3R08XF7hF5Obu0ZfBJT3oHAvmqZrrqL6a0ovBCfkt1NczQb+tbUcCtFes/L7KvI56EoJk1tFK5j8aF+aylkLz8/9eawxt+uwWhGjJhu9efsgLZpI+zUwefJTyrIPwx5Fk+g77PzNUU9eyUJzH3oNYXWkTmT1Xcaq+skc/o4tVGrIu3Ppjs8oZWnxXCgHP44cJuHjB4GEj2fXQQIxbH3xyRR9ot6kujpoN9jjAGytoN5rVf2dCXi7XxwbMyX+wtzL/uz7Z5O/ndwvbY3R3q+pTcgUgIdSSnh5F1IK7/t8oi5O+PXgFYnEvS+vXbPF3/fxdn2QjtL0cbD07thrU3j5nQl4H+5v2Evg3ABhUY6zqrAUn8zBWwXX475j1wuje6ntEKW/Z+G9b8l0QVYNB/D6oaRS9ZMZeP9UYYc7eLwbPLYol5+fjbfsTohulU7E3/Q8xd+T+HvcwyCIRdXRaIv7A3liDU/y5KeM/YPeWB93XXb15mNfsjXKo1fy5Kf8P3Mf9PcH8X+uu67kHIXJOb4B9A3o9Jc0IAkAAAAASUVORK5CYII=" alt="Mã QR nhóm 1"><span>Quét để mở<br>phiên bản 3</span></div>
+        <div class="in">
+          <a class="btn in-btn" href="nhom1_phien_ban_3.html?print=1" target="_blank">🖨 In phiếu có kết quả</a>
+          <a class="btn in-btn phu" href="nhom1_phien_ban_2.html?print=1" target="_blank">🖨 In phiếu trắng</a>
+        </div>
+      </div>
+    </article>
+    <article class="card n2">
+      <div class="dau"><span class="icon">🥗</span><div><div class="so">Nhóm 2</div><h3>Bữa ăn cân bằng</h3></div></div>
+      <p class="mo">Tính năng lượng và tỉ lệ chất dinh dưỡng bữa ăn ở căn tin</p>
+      <p><b>Câu hỏi STEM:</b> Làm thế nào để học sinh chọn món đã ăn và biết ngay năng lượng, tỉ lệ các nhóm chất của bữa ăn?</p>
+      <ul class="lm"><li><b>S:</b> Hóa học 12 – Carbohydrate; Hợp chất chứa nitrogen (protein); Ester – lipid (chất béo)</li><li><b>S:</b> Sinh học 11 – Dinh dưỡng ở người, khẩu phần ăn hợp lí</li><li><b>E:</b> Quy trình thiết kế kĩ thuật; kiểm thử</li><li><b>M:</b> Toán – tỉ lệ phần trăm, tỉ lệ thức</li></ul>
+      <p class="do"><b>Đo thật:</b> Thành phần dinh dưỡng của món đóng gói; Khối lượng 1 phần cơm, xôi, bánh mì ở căn tin (g); Món học sinh thường chọn.</p>
+      <div class="nut">
+        <a class="btn" href="nhom2_phien_ban_3.html">Phiên bản 3 – tính toán liên môn</a>
+        <a class="btn phu" href="nhom2_phien_ban_2.html">Phiên bản 2</a>
+        <a class="btn phu" href="nhom2_phien_ban_1.html">Phiên bản 1 (có lỗi)</a>
+      </div>
+      <div class="chan">
+        <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAADKklEQVR4Xu1b224qMRDbIP7/l1ON7UnSLpyjaMITHloENNq2jnE8F1q/NuKxsfby6hdhBO/xSUye19X4G0H01vO74QX8rI8Vn/xLvuPaz4E04E60O/FvPTYg98IKUVeIq3cgG/eBMtANtPGUL4wV/Ts4+Mn/Mvg9o0NQQPMgN4Amwxmf/Eu+79qttXbFl/gdD3Ez3v+IPZ6A38ngDmxbvwLqIHc8nIep+X1Gv6Xa1PCXt9T1vb306ns8J7uT6YB8GsG2rDCC99jDZHEhq1EZVmXalt7tT47pCbCeMi57mKiPp3t76dWv3w0wfRQQcbzTpOjUHBbcCJb15KF0hk6kXT1cN6jODYCSB/wBvvEu4w0aq0bCVAdMhxUMT5gZPXbCeJfxVhIfh2Hm9FLyFPRFxa3fZbylJyEYszYVj1g/gbgose/WkyN4I33HnUqvkhjkmiwSxvEZyNtxHPDfKgcS77yxWpgiQ9WxntT5nZBCOhYPzueZAjmffx9773nYEPmRiLQlql2F0NAQgv571/bqe6i6DRsIZJH6qIPGcjixR4PNCFb1mw1LOXBwnVl98Dy4rT6m2g7Gu4o3nDdPybTiWUfRkTnabD4vD5yXQ08k2KL40G+1jfGC9bvuTx6oSo0eDySckxHo8HTi364oYRnvOt7qD6s8qAwnsp8U9RxIwZZYv4/o95x+mA48Ow2p39B3413FOxBMjue1kHHCmzDVV+Jp/31AT0K/swILvz2UJSerUMrSUIT5XeW36t/IcSjb8t604sormWT6vKyfl6qfzPIUi1aLK1dYv9/E3nt+UJryoVrJTOmHlNh/H8Eb81XqNTCrX0spM9XkduztpVffg/NsmBTMpIe9B85s6jBVucoIHjkvFTlStaT0k/rM6M3Yqj9ZPt9AD8IhTc6fpJxnkmm8y3jrvJwufJ33FuNVA7d+H/CDOi9/jx3nEMocv1cvwnpS1ZO/CGoAnCMQ7NDnYIrznQP8XvEGwPIpLJrIjscwG143v6v8Xj7fwB6PTsrRaONAm2TeeJ/AWx/QUWNBGqIuhOB2//Jt7HFw/fTZ/2Pv2l5dfTcYwSqCP8ac7OR6DBqTAAAAAElFTkSuQmCC" alt="Mã QR nhóm 2"><span>Quét để mở<br>phiên bản 3</span></div>
+        <div class="in">
+          <a class="btn in-btn" href="nhom2_phien_ban_3.html?print=1" target="_blank">🖨 In phiếu có kết quả</a>
+          <a class="btn in-btn phu" href="nhom2_phien_ban_2.html?print=1" target="_blank">🖨 In phiếu trắng</a>
+        </div>
+      </div>
+    </article>
+    <article class="card n3">
+      <div class="dau"><span class="icon">♻️</span><div><div class="so">Nhóm 3</div><h3>Rác nhựa lớp em</h3></div></div>
+      <p class="mo">Đo khối lượng và phân loại đồ nhựa dùng một lần</p>
+      <p><b>Câu hỏi STEM:</b> Làm thế nào để lớp ghi số đồ nhựa mỗi ngày và biết ngay khối lượng nhựa thải ra trong tuần, trong năm học, loại nhựa gì?</p>
+      <ul class="lm"><li><b>S:</b> Hóa học 12 – Polymer</li><li><b>S:</b> Địa lí 10 – Môi trường và phát triển bền vững</li><li><b>E:</b> Quy trình thiết kế kĩ thuật; đánh giá sai số</li><li><b>M:</b> Toán 10 – Số trung bình của mẫu số liệu; tỉ lệ phần trăm</li></ul>
+      <p class="do"><b>Đo thật:</b> Khối lượng trung bình 1 đồ nhựa mỗi loại (g); Số đồ nhựa mỗi loại thải ra mỗi ngày; Kí hiệu nhựa.</p>
+      <div class="nut">
+        <a class="btn" href="nhom3_phien_ban_3.html">Phiên bản 3 – tính toán liên môn</a>
+        <a class="btn phu" href="nhom3_phien_ban_2.html">Phiên bản 2</a>
+        <a class="btn phu" href="nhom3_phien_ban_1.html">Phiên bản 1 (có lỗi)</a>
+      </div>
+      <div class="chan">
+        <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAADSklEQVR4Xu1bAU7EMAxb0f3/y0Wxnbaw3R1RV4RoggS3WxU2N3OdpCv1CNhHYOyRoy8sETzbSkwex1H4Hy3Qi0d7qYVf4EwbsfJK9vD9ENJCnTiXWh1/zgB+lWSIeYYwvA3JiuCuLaCrIW3o6xwx3yMGf+8uBWs5jmJI16NWm4Rmv3cl7+w/XAkwNqyNTepRdSz2NvsPd/neVt4l+MQjmHRivFIQ3KSYYcTKK9nDtwWy6xMD9/pHI+oemKy8y0ePbo9jQN6FoDg9+eSJxWYHRE2o+QFo2zIp/O1I5zO+5/Ug0IQK6UIE4ntEvR3G5jJHnw35jlEGCQSSG+umiRR8jzOajETwbDFMlMF79g5JYibUO+hIPGO+c/R1fANLA5joIp6RXjZFiOwz8/m7+BsMzsWSzNE+81TqwRcWfopZNinUIYQbeQ4WUVYNfRLCvgO2jW+k71gemViKtJlrAm5L7IH8NpgELIaJmKSzCWUKBSJFomLdjmK+c/TZWHVld6FXB0nlqshmv+GlxaMKbAF9QiJvNRUjF5C7Nx3ivn9ue/ju+luaUFmOeIVZDyBP/X2HHuQ6iTgmrt48E8+oj6nW5h4xuPIusV663BZt9FoV9Xjq7/v0t/MJ80mytSjbOYULZ/Yvb+ETf3aEu6f1aGAy32ExCwvq0idt5VP8d3y36jaZo1GKCoLqGOvr1N8XFptLpuwkcRZOvnUanL8xKuY7R1/XB4dcRzIQklxlwwpxznhPBM8WxoQrpZdfvfEgRlcpS4tn2HfA9vDd2jjo5LDdwD+aA2X2zPX3wGTxXXKTCTW44awcB90HlGO11yr7DZcWm50W0hSEY7g7mQ/7Z2O+c/QTtreQZiSz8aBoZ0EWxcLsFz+1WFRxPxuA9tIJsDfCVrMBbQfWUWK+c/TZ2g57gspyYG/Oty8pXxLBWT04vN/Athn5Q5+0MUWiJeN7Pr8c3m9ou37UQ+uE4kol4/uO+G6NNO38dkqxVZLLqO/BSryn8f7KyMwmoRH95RKm8toakfw9y98jgsgpfR8h96G4ULGcJ/n7Jv5u7zAQ4iHzwVFP8TO+p+Pb1kslkGosUBmyN6+iir/Uk3hP4z3o7x9Y8ved/P3eEu9ZvD8B8GXZGjtpntkAAAAASUVORK5CYII=" alt="Mã QR nhóm 3"><span>Quét để mở<br>phiên bản 3</span></div>
+        <div class="in">
+          <a class="btn in-btn" href="nhom3_phien_ban_3.html?print=1" target="_blank">🖨 In phiếu có kết quả</a>
+          <a class="btn in-btn phu" href="nhom3_phien_ban_2.html?print=1" target="_blank">🖨 In phiếu trắng</a>
+        </div>
+      </div>
+    </article>
+    <article class="card n4">
+      <div class="dau"><span class="icon">🌙</span><div><div class="so">Nhóm 4</div><h3>Màn hình và giấc ngủ</h3></div></div>
+      <p class="mo">Thống kê thời gian sử dụng thiết bị số và thời gian ngủ của học sinh</p>
+      <p><b>Câu hỏi STEM:</b> Làm thế nào để thu thập ẩn danh số liệu đo thật về thời gian màn hình, giấc ngủ và tính ngay các số đặc trưng của lớp?</p>
+      <ul class="lm"><li><b>S:</b> Sinh học – Hệ thần kinh, nhịp sinh học; Giáo dục thể chất – sức khỏe</li><li><b>E:</b> Quy trình thiết kế kĩ thuật; thực nghiệm có đối chứng</li><li><b>M:</b> Toán 11 – Các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm</li></ul>
+      <p class="do"><b>Đo thật:</b> Thời gian màn hình mỗi ngày (giờ); Giờ đi ngủ, giờ thức dậy; Thói quen trước khi ngủ.</p>
+      <div class="nut">
+        <a class="btn" href="nhom4_phien_ban_3.html">Phiên bản 3 – tính toán liên môn</a>
+        <a class="btn phu" href="nhom4_phien_ban_2.html">Phiên bản 2</a>
+        <a class="btn phu" href="nhom4_phien_ban_1.html">Phiên bản 1 (có lỗi)</a>
+      </div>
+      <div class="chan">
+        <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAADPklEQVR4Xu1b7W7jMAxLir7/K3vgh5xgTYt5dn+F2uGuSQ1vx3AUJat72wbiMbB2y+qLCIKv8U1Mntu26zuC6HvDJf5q/Efvtb7imz/JPfZ+GulCthHy1gp/XOo1VtwDk2/+L4E3kCTKRWWQG0iD5X5PmH/zJ7np3hAP/AHSbWutidyKm2LyMf6Pyb4TZRG9bY1XvBO838cY3tSTYnAjtrugBrHxsifT8PsyxvAGkcufANzrL69oY3tn9Ws8D3YX0wn5YQSdKqPfb2KMVRRqQa0XRBtp0vjjyu+H31cxjrddyElZfqHeL8f2zurXACZt21HnQDjMcfhuOHJlTbM++XIBvx+EWwU8a3nWlix/jDMeA21h6ss1eLuwlOlmqVNuUI9CpGdhH4W4VoiBkGozQypVAlxTvN6KH/wQwxxkYUMpwa7qohT0fBqQGD2E4b0H4jZ7F8KyIYd4S9Ap7Uif0ZMV+m2vrSR5Ki5lu487ev82HByIMUwK0uoEHiZckFvJXfGM7Z3V19mVauGyncc6Al0WkOJeMhMEZ/0J/HdrDQWPzxbU/3b3u1sVWcPgPYu3js/I47Lb3FKnO6w6+43gfRVjHCS7y26fS3e6FfL7JOlje2f1a4jfko9Sa0u2znV8bC+aB8FZPXnUPISbrqrfISh1fKn+CRNq8J7G2zpd3SmhX2fzemX+g+rh9yy/q97pal2HmcedkvXUOwvyJRjrvkk/h2cCpTfxSEpPm+H3LL+h37Il7FGp8OnjP0qdlUuj30v02xmxZNveW+fEsixy6OkPLsDb/ZOjPWXt6A3xCpb50ZNZPaE/kVrTBWqEEAawD8We5meD9yzeRJDHxWxQ0WdX16R3rvrQRPCexZtQ1oGZ2+DdI/YTCIp35k8W6LdkhEEb0lXFFTxP7JVCU+8swPv0+QYNaTI8f1JyXkVm9GRaT5wve1O27LgZ30t6PYno96x+nz7f4GagmoU03tYXd8ejJwv05DdjOUnFOrOmwWtEGVk1/J7l9xlBTVeJ53KFtuM4yeT94D2L9+nzDRrq0aSmm7C8Kn8Sfi/QE+DtAtJ1ZTlDT9y7Esr84LsY+50/+e8/xNjeWT2rPkFwFsEfv1H12NfbPkcAAAAASUVORK5CYII=" alt="Mã QR nhóm 4"><span>Quét để mở<br>phiên bản 3</span></div>
+        <div class="in">
+          <a class="btn in-btn" href="nhom4_phien_ban_3.html?print=1" target="_blank">🖨 In phiếu có kết quả</a>
+          <a class="btn in-btn phu" href="nhom4_phien_ban_2.html?print=1" target="_blank">🖨 In phiếu trắng</a>
+        </div>
+      </div>
+    </article>
+    </div>
+    <div class="hop">
+      <h2>🖨 In phiếu</h2>
+      <p>Phiếu trắng dùng để học sinh điền tay khi đo đạc; phiếu có kết quả in kèm số liệu, kết quả tính và dòng ký xác nhận. Trên mỗi biểu mẫu cũng có nút <b>In phiếu</b> ở góc trên.</p>
+      <table class="bang-in"><tr><th>Nhóm</th><th>Phiếu trắng (phiên bản 2)</th><th>Phiếu có kết quả (phiên bản 3)</th></tr><tr><td>Nhóm 1 – Ổ điện an toàn</td><td><a href="nhom1_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom1_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr><tr><td>Nhóm 2 – Bữa ăn cân bằng</td><td><a href="nhom2_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom2_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr><tr><td>Nhóm 3 – Rác nhựa lớp em</td><td><a href="nhom3_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom3_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr><tr><td>Nhóm 4 – Màn hình và giấc ngủ</td><td><a href="nhom4_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom4_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr></table>
+    </div>
+    <div class="hop">
+      <h2>Trợ lí AI được dùng thế nào?</h2>
+      <p><b>Khi thiết kế:</b> nhóm hỏi AI biểu mẫu cần những trường nào, so sánh với bản thiết kế của nhóm, loại trường hỏi thừa thông tin cá nhân.</p>
+      <p><b>Khi thử nghiệm:</b> nhóm tự kiểm thử trước, nhờ AI rà lỗi mã phiên bản 1, rồi kiểm chứng lại từng lỗi AI nêu.</p>
+      <p><b>Khi tính toán:</b> nhóm đưa công thức (đã đối chiếu SGK) cho AI viết đoạn JavaScript; chuyên gia liên môn tính tay để kiểm tra kết quả trước khi dùng.</p>
+      <p><b>Lưu ý:</b> biểu mẫu dùng để học tập; dữ liệu chỉ hiển thị trên trang kiểm tra, không được lưu lại. Không nhập thông tin cá nhân thật.</p>
+    </div>
+    <div class="qrsite"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUgAAAFIAQAAAAAab1qeAAACeklEQVR4Xu1by24jMQwbBfn/X/ZCJKU46GF5D9l24swYAcrqQUluncfEy9z3ZKeF8Ong/TzFfeepU6eeU22yuDT2afh08AaT5K3pPNVLvjbDn6fh0wFYqmorBJO9aBJFJ+7jafi0cFsduVxOm8YrW8U+HdwsgbzTL1XVr03uInw66Pg5VkinR8iEacLb92n4tHDGpWmQf7+U/U/4dPD+ipEdOxk/N3ZuBA2fDgqyU/qTeR0USjBJf/ad8GnhIAHxQt/X216fvodF/N2D6iCZZWejEfZXaYT7sU8H8ne4+NScUknNaK9VfoZPC/Jn+LRSOT1+tBJX8XcP9HdlInZDpnYfAxW1sU8H0POgtPtKk+zp6myM4Jr4aeI1UrPNko0POvtGTmb56CUPY5+yTjRAp2qviaiw3fi7A7g1I+Qt7aHnleC1I3w6QD8ZNjnfiqUInGrWg+vw6QDx8xw4OuUmFCeGHhBO+xM+HZAlZvFJ5eorFzojbJAkH5n4xE45+nY9kYQmiKYfYmL0pYDcszlqG07Rny7a308Lo88kc5qgcPvp30V/engNZ8rv7NtpijS5KPHTI3MyERXTGKSqeNaanMEnfroYwjjfmHpTd3cel/jpQucZpkEHT8fAWJET69TvLp0MlhMwNfBoqOu5aT/9Tw+dj+YUA1tNrIpoqW2ZUyj5f6Nf3nnN32GpSyXW1zQ+83cL1/k6yvgp3Cex82b0pwv59zUw3hMjV9GUebGJr1hHfVSlBPWpmtpAfzkq+r/7zo9UXGpwjKmcGsk6GOZ/5s/v3Jkxz9XqPO3Ie4nTn2fJw9f5us/Bm8zfb/i2tP938F/4n5mdDsKSg38+iXMFRt4VoAAAAABJRU5ErkJggg==" alt="Mã QR trang lớp"><br>Mã QR trang lớp</div>
+  </main>
+  <a class="bancu" href="../index.html" title="Về bản chính (2 chủ đề)">← Bản chính (2 chủ đề)</a>
+  <footer>Sản phẩm học tập STEM – Giáo viên hướng dẫn: Đỗ Thị Hoàng Mai, Tổ Tin học, Trường THPT Hàn Thuyên, năm học 2026 – 2027</footer>
+</body>
+</html>

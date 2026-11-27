@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PHIẾU THEO DÕI RÁC NHỰA CỦA LỚP</title>
+  <link rel="stylesheet" href="theme.css?v=14">
+  <link rel="stylesheet" href="theme-nhom3.css?v=14">
+</head>
+<body class="nhom3">
+  <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
+  <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
+  <!-- Nhóm 3: RÁC NHỰA LỚP EM – ĐO KHỐI LƯỢNG VÀ PHÂN LOẠI ĐỒ NHỰA DÙNG MỘT LẦN -->
+  <!-- Phiên bản 1 – bản chế tạo đầu tiên, CÓ LỖI để nhóm phát hiện khi thử nghiệm -->
+  <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
+       Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
+  <h2>PHIẾU THEO DÕI RÁC NHỰA CỦA LỚP</h2>
+  <form action="ketqua.html" method="get">
+    <p><label for="lop">Lớp:</label>
+      <input type="text" id="lop" name="lop"></p>
+    <p>Đồ nhựa trong thùng rác:<br>
+      <input type="checkbox" id="donhua1" name="donhua">
+      <label for="donhua1">Chai nhựa</label><br>
+      <input type="checkbox" id="donhua2" name="donhua">
+      <label for="donhua2">Ly nhựa</label><br>
+      <input type="checkbox" id="donhua3" name="donhua">
+      <label for="donhua3">Ống hút</label><br>
+    </p>
+    <p><label for="soluong">Số lượng:</label>
+      <input type="text" id="soluong" name="soluong"></p>
+    <p><input type="submit" value="Gửi"></p>
+  </form>
+  <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
+  <script>
+    document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
+    window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
+    if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
+  </script>
+  <script src="luu-tru.js?v=14"></script>
+  <script src="goi-y-ai.js?v=14"></script>
+</body>
+</html>
