@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU TÍNH DINH DƯỠNG BỮA ĂN – phiên bản 3</title>
   <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="theme-nhom2.css">
 </head>
 <body class="nhom2">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
@@ -64,6 +65,7 @@
     <div class="kq">
       <h3>KẾT QUẢ TÍNH CHO CẢ BỮA</h3>
       <div id="kq"></div>
+      <div class="bieu-do" id="bd"></div>
       <p><b>Cách tính (thay số):</b></p>
       <div class="ct" id="ct"></div>
     </div>
@@ -109,6 +111,9 @@
         "E = 4·m(đạm) + 4·m(carb) + 9·m(béo) = 4×" + f(D, 1) + " + 4×" + f(C, 1) + " + 9×" + f(B, 1) + " = " + f(E, 1) + " kcal\n" +
         "% béo = 9×" + f(B, 1) + " / " + f(E, 1) + " × 100% ≈ " + f(pb, 1) + "%;  % đạm = 4×" + f(D, 1) + " / " + f(E, 1) + " × 100% ≈ " + f(pd, 1) +
         "%;  % carb ≈ " + f(pc, 1) + "%");
+      var g1 = pd, g2 = pd + pb;
+      hien("bd", '<div class="pie" style="background:conic-gradient(#ef4444 0 ' + g1 + '%, #f59e0b ' + g1 + '% ' + g2 + '%, #22c55e ' + g2 + '% 100%)"></div>' +
+        '<div class="chu-giai"><b>Tỉ lệ năng lượng</b><br><span class="o-mau" style="background:#ef4444"></span>Đạm ' + f(pd, 1) + '%<br><span class="o-mau" style="background:#f59e0b"></span>Béo ' + f(pb, 1) + '%<br><span class="o-mau" style="background:#22c55e"></span>Carbohydrate ' + f(pc, 1) + '%</div>');
       dat("kq_e", E.toFixed(1)); dat("kq_pd", pd.toFixed(1)); dat("kq_pb", pb.toFixed(1)); dat("kq_pc", pc.toFixed(1));
     }
     document.querySelector("form").addEventListener("input", tinh);

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU THEO DÕI RÁC NHỰA CỦA LỚP – phiên bản 3</title>
   <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="theme-nhom3.css">
 </head>
 <body class="nhom3">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
@@ -63,6 +64,7 @@
     <div class="kq">
       <h3>KẾT QUẢ TÍNH</h3>
       <div id="kq"></div>
+      <div class="bieu-do" id="bd"></div>
       <p><b>Cách tính (thay số):</b></p>
       <div class="ct" id="ct"></div>
     </div>
@@ -99,6 +101,12 @@
         "m(tuần) = " + f(M, 1) + " × 5 / 1000 = " + f(tuan, 3) + " kg;  m(năm học) = " + f(tuan, 3) + " × " + f(so("sotuan"), 0) + " ≈ " + f(nam, 1) + " kg" +
         (ss !== null ? "\nSai số = |" + f(M, 1) + " − " + f(that, 0) + "| / " + f(that, 0) + " × 100% ≈ " + f(ss, 1) + "%" : "") +
         (giam !== null ? "\n% giảm = (" + f(tr) + " − " + f(sa) + ") / " + f(tr) + " × 100% ≈ " + f(giam, 1) + "%" : ""));
+      var MAU = { chai: "#0ea5e9", ly: "#22c55e", onghut: "#f59e0b", tui: "#a855f7", hop: "#ef4444" }, MA = { chai: "1", ly: "5", onghut: "5", tui: "2/4", hop: "6" };
+      var thanh = "", chip = "";
+      LOAI.forEach(function (k) { var m = so("n_" + k) * so("m_" + k); if (M > 0 && m > 0) thanh += '<span title="' + TEN[k] + '" style="width:' + (m / M * 100) + '%;background:' + MAU[k] + '"></span>';
+        chip += '<span class="chip"><b class="ma">' + MA[k] + '</b>' + TEN[k] + ': ' + f(m, 0) + ' g</span>'; });
+      hien("bd", '<div style="width:100%"><b>Cơ cấu khối lượng nhựa trong ngày</b><div class="thanh-ngang">' + thanh + '</div><div>' + chip + '</div>' +
+        (giam !== null ? '<b>Mức giảm sau phong trào: ' + f(Math.max(giam, 0), 1) + '%</b><div class="tien-do"><span style="width:' + Math.min(Math.max(giam, 0), 100) + '%"></span></div>' : '') + '</div>');
       dat("kq_ngay", M.toFixed(1)); dat("kq_tuan", tuan.toFixed(3)); dat("kq_nam", nam.toFixed(1));
       dat("kq_saiso", ss === null ? "" : ss.toFixed(1)); dat("kq_giam", giam === null ? "" : giam.toFixed(1));
     }

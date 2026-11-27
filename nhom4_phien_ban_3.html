@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU THEO DÕI MÀN HÌNH VÀ GIẤC NGỦ – phiên bản 3</title>
   <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="theme-nhom4.css">
 </head>
 <body class="nhom4">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
@@ -55,6 +56,7 @@
     <div class="kq">
       <h3>KẾT QUẢ CỦA EM</h3>
       <div id="kq"></div>
+      <div class="bieu-do" id="bd"></div>
       <div class="ct" id="ct"></div>
       <p class="mau">Đây là số liệu thống kê, không phải chẩn đoán sức khỏe. Nếu em thường xuyên mệt mỏi, hãy trao đổi với GVCN, phụ huynh hoặc nhân viên y tế trường.</p>
     </div>
@@ -97,12 +99,12 @@
 
     function phut(s) { if (!s) return null; var a = s.split(":"); return +a[0] * 60 + +a[1]; }
     function tinhCaNhan() {
-      var tong = 0, dem = 0, ds = [];
+      var tong = 0, dem = 0, ds = [], gio = [];
       for (var i = 0; i < 7; i++) {
         var a = phut(document.getElementById("ng" + i).value), b = phut(document.getElementById("th" + i).value);
         if (a === null || b === null) { hien("gn" + i, ""); continue; }
         var h = (b - a) / 60; if (h < 0) h += 24;
-        hien("gn" + i, f(h)); tong += h; dem++; ds.push(f(h));
+        hien("gn" + i, f(h)); tong += h; dem++; ds.push(f(h)); gio.push(h);
       }
       if (!dem) { hien("kq", "Hãy nhập giờ đi ngủ và giờ thức dậy."); hien("ct", ""); return; }
       var tb = tong / dem;
@@ -113,6 +115,10 @@
       if (so("manhinh") > 4) goi.push("Dùng tính năng giới hạn thời gian ứng dụng.");
       hien("kq", "Giờ ngủ trung bình " + dem + " đêm: <b>" + f(tb) + " giờ</b> → " + mh + (goi.length ? "<br>Gợi ý: " + goi.join(" ") : ""));
       hien("ct", "Số giờ ngủ = giờ thức − giờ ngủ (âm thì cộng 24)\nTrung bình = (" + ds.join(" + ") + ") / " + dem + " ≈ " + f(tb) + " giờ");
+      var cot = "";
+      gio.forEach(function (h, i) { var mau = h >= 8 ? "#4ade80" : (h >= 7 ? "#facc15" : "#f87171");
+        cot += '<div class="cot" style="height:' + (Math.min(h, 10) / 10 * 100) + '%;background:' + mau + '"><i>' + f(h, 1) + '</i><em>Đêm ' + (i + 1) + '</em></div>'; });
+      hien("bd", '<div class="cot-ngu">' + cot + '<div class="vach" style="bottom:' + (8 / 10 * 100) + '%"><b>8 giờ</b></div></div>');
       dat("kq_tb", tb.toFixed(2));
     }
     function ghepNhom(id_, B) {

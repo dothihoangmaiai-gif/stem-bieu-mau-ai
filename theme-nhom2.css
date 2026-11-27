@@ -1,0 +1,19 @@
+/* Nhóm 2 – Bữa ăn cân bằng: kiểu thực đơn căn tin, khăn caro, bảng phấn */
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap&subset=vietnamese");
+html {
+  background-color: #fff;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(200,30,30,.45) 0 22px, transparent 22px 44px),
+    repeating-linear-gradient(90deg, rgba(200,30,30,.45) 0 22px, transparent 22px 44px);
+  background-attachment: fixed;
+}
+body { --nhan: #15803d; --nhan-2: #f97316; --vien: #d9b07a; background: #fbf3e2; outline: 2px dashed #c79a5b; box-shadow: 0 0 0 10px #e9d3ad, 0 18px 50px rgba(0,0,0,.35); }
+h2 { font-family: "Patrick Hand", "Be Vietnam Pro", cursive; font-weight: 400; font-size: 38px; color: #fff; background: #2f3d33; border: 10px solid #8b5a2b; border-radius: 6px; padding: 14px 10px 12px; box-shadow: inset 0 0 30px rgba(0,0,0,.45); }
+h2::before { color: #c9e7d2; font-family: "Be Vietnam Pro", sans-serif; }
+h3, legend { font-family: "Patrick Hand", "Be Vietnam Pro", cursive; font-weight: 400; font-size: 21px; }
+legend { color: #15803d; border-left-color: #f97316; }
+fieldset { background: #fffdf7; border-style: dashed; }
+th { background: #fde7c8; } th, td { border-color: #e7cfa6; }
+.kq { border-color: #15803d; background: #fffdf7; }
+input[type=submit], button { background: linear-gradient(180deg, #fb923c, #ea580c); border-color: #c2410c; }
+input[type=reset] { color: #c2410c; border-color: #c2410c; }

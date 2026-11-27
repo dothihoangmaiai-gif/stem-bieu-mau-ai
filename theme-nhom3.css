@@ -1,0 +1,23 @@
+/* Nhóm 3 – Rác nhựa lớp em: kiểu môi trường xanh, nhãn tái chế */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap&subset=vietnamese");
+html {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,.18) 0 90px, transparent 92px),
+    radial-gradient(circle at 88% 70%, rgba(255,255,255,.12) 0 140px, transparent 142px),
+    radial-gradient(circle at 70% 8%, rgba(253,224,71,.25) 0 60px, transparent 62px),
+    linear-gradient(160deg, #065f46 0%, #16a34a 45%, #0ea5e9 100%) fixed;
+}
+body { --nhan: #0f766e; --nhan-2: #14b8a6; --vien: #99f6e4; background: #ffffff; border-radius: 26px; outline: 2px solid #ccfbf1; }
+h2, h3, legend { font-family: "Nunito", "Be Vietnam Pro", sans-serif; font-weight: 900; }
+h2 { color: #0f766e; border-bottom: 3px dotted #5eead4; }
+h2::after { content: " ♻"; color: #16a34a; }
+h2::before { color: #0e7490; }
+fieldset { background: #f0fdf9; border: 2px solid #99f6e4; border-radius: 18px; }
+legend { background: #0f766e; color: #fff; border: 0; border-radius: 999px; padding: 6px 18px; }
+legend::before { content: "♻ "; }
+th { background: #ccfbf1; color: #134e4a; } th, td { border-color: #a7f3d0; }
+.lm { background: #ecfeff; border-left-color: #0ea5e9; }
+.kq { background: linear-gradient(180deg, #ecfdf5, #fff); border-color: #16a34a; border-radius: 18px; }
+input[type=submit], input[type=button], button { border-radius: 999px; background: linear-gradient(90deg, #16a34a, #0ea5e9); border-color: #0f766e; }
+input[type=reset] { border-radius: 999px; }
+input[type=text], input[type=number], input[type=date], select, textarea { border-radius: 10px; border-color: #5eead4; }

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG HỌC – phiên bản 3</title>
   <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="theme-nhom1.css">
 </head>
 <body class="nhom1">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
@@ -59,6 +60,7 @@
     <div class="kq">
       <h3>KẾT QUẢ TÍNH</h3>
       <div id="kq"></div>
+      <div class="bieu-do" id="bd"></div>
       <p><b>Cách tính (thay số):</b></p>
       <div class="ct" id="ct"></div>
     </div>
@@ -76,6 +78,16 @@
     function hien(id, html) { document.getElementById(id).innerHTML = html; }
 
     var TB = ["tivi","loa","maylanh","quattran","den"];
+    // Đồng hồ đo tải: thang 0 – 120% định mức
+    function dongHo(tl) {
+      var cx = 110, cy = 110, r = 90;
+      function diem(p, rr) { var t = Math.PI * (1 - p / 120); return (cx + rr * Math.cos(t)).toFixed(1) + "," + (cy - rr * Math.sin(t)).toFixed(1); }
+      function cung(p1, p2, mau) { return '<path d="M' + diem(p1, r) + ' A' + r + ' ' + r + ' 0 0 1 ' + diem(p2, r) + '" stroke="' + mau + '" stroke-width="18" fill="none"/>'; }
+      var k = diem(Math.min(Math.max(tl, 0), 120), 76).split(",");
+      return '<svg viewBox="0 0 220 135" width="250" role="img" aria-label="Đồng hồ tải">' + cung(0, 80, "#22c55e") + cung(80, 100, "#facc15") + cung(100, 120, "#ef4444") +
+        '<line x1="110" y1="110" x2="' + k[0] + '" y2="' + k[1] + '" stroke="#f59e0b" stroke-width="5" stroke-linecap="round"/><circle cx="110" cy="110" r="8" fill="#f59e0b"/>' +
+        '<text x="110" y="132" text-anchor="middle" font-size="15" font-weight="700" fill="#f59e0b">' + f(tl, 1) + '% định mức</text></svg>';
+    }
     function tinh() {
       var P = 0, dong = [];
       TB.forEach(function (k) {
@@ -101,6 +113,7 @@
         "   (≤ 80%: an toàn; 80% – 100%: cần chú ý; > 100%: quá tải)\n" +
         "A = P(quên) × t × số ngày / 1000 = " + f(so("pquen")) + " × " + f(so("gioquen")) + " × " + f(so("songay")) + " / 1000 = " + f(A) + " kWh" +
         (gia > 0 ? "\nTiền điện = " + f(A) + " × " + f(gia, 0) + " ≈ " + f(A * gia, 0) + " đồng" : ""));
+      hien("bd", dongHo(tl) + '<div class="chu-giai"><span class="o-mau" style="background:#22c55e"></span>0 – 80%: an toàn<br><span class="o-mau" style="background:#facc15"></span>80 – 100%: cần chú ý<br><span class="o-mau" style="background:#ef4444"></span>trên 100%: quá tải</div>');
       dat("kq_p", P); dat("kq_i", I.toFixed(2)); dat("kq_tl", tl.toFixed(1));
       dat("kq_mh", tl <= 80 ? "An toàn" : (tl <= 100 ? "Cần chú ý" : "Quá tải")); dat("kq_a", A.toFixed(2));
     }

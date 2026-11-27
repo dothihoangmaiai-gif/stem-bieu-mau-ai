@@ -1,0 +1,32 @@
+/* Nhóm 4 – Màn hình và giấc ngủ: kiểu bầu trời đêm, khung kính mờ */
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&display=swap&subset=vietnamese");
+html {
+  background-color: #0b1026;
+  background-image:
+    radial-gradient(circle at 86% 10%, #fff7cf 0 38px, rgba(255,247,207,.28) 40px, transparent 110px),
+    radial-gradient(1.6px 1.6px at 20px 30px, #fff, transparent), radial-gradient(1.2px 1.2px at 140px 80px, #fff, transparent),
+    radial-gradient(1.8px 1.8px at 90px 150px, #fff, transparent), radial-gradient(1.1px 1.1px at 180px 190px, #dbeafe, transparent),
+    radial-gradient(1.4px 1.4px at 60px 210px, #fff, transparent),
+    linear-gradient(180deg, #0b1026 0%, #1e1b4b 55%, #3b2a6b 100%);
+  background-size: auto, 220px 230px, 220px 230px, 220px 230px, 220px 230px, 220px 230px, auto;
+  background-attachment: fixed;
+}
+body { --nhan: #a78bfa; --nhan-2: #c4b5fd; --vien: rgba(255,255,255,.25); color: #eef0ff; background: rgba(255,255,255,.08); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.22); outline: none; border-radius: 20px; }
+h2, h3, legend { font-family: "Comfortaa", "Be Vietnam Pro", sans-serif; }
+h2 { background: linear-gradient(90deg, #c4b5fd, #fde68a); -webkit-background-clip: text; background-clip: text; color: transparent; border-bottom-color: rgba(255,255,255,.2); }
+h2::before { color: #a5b4fc; -webkit-text-fill-color: #a5b4fc; }
+h3 { color: #fde68a; }
+label { color: #dbe1ff; }
+fieldset { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.22); border-radius: 16px; }
+legend { background: rgba(167,139,250,.25); color: #fff; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; }
+th { background: rgba(167,139,250,.30); color: #fff; } td { background: rgba(255,255,255,.04); color: #eef0ff; } th, td { border-color: rgba(255,255,255,.18); }
+.lm { background: rgba(255,255,255,.07); border-left-color: #fde68a; color: #eef0ff; }
+.kq { background: rgba(15,23,42,.45); border-color: #a78bfa; }
+.ct { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.2); color: #eef0ff; }
+.mau { color: #c7cdf5; } .canh { color: #fca5a5; }
+.tot { color: #86efac; } .chu { color: #fde68a; } .xau { color: #fca5a5; }
+a { color: #fde68a; }
+input[type=submit], button { background: linear-gradient(180deg, #a78bfa, #6d28d9); border-color: #7c3aed; }
+input[type=reset] { background: transparent; color: #c4b5fd; border-color: #c4b5fd; }
+@media print { body { backdrop-filter: none; } body, td, th, label, legend, h3, .lm, .ct, .mau, .kq { color: #000 !important; background: #fff !important; } h2 { color: #4338ca !important; -webkit-text-fill-color: #4338ca; } fieldset { background: #fff !important; } }
+table { background: transparent; }

@@ -10,10 +10,6 @@
   --vien: #d8bb92;
   --chu: #2c1d12;
 }
-body.nhom1 { --nhan: #b45309; --nhan-2: #f59e0b; }   /* điện – hổ phách */
-body.nhom2 { --nhan: #15803d; --nhan-2: #f97316; }   /* dinh dưỡng – lá, cam */
-body.nhom3 { --nhan: #0f766e; --nhan-2: #0ea5e9; }   /* môi trường – xanh ngọc */
-body.nhom4 { --nhan: #4338ca; --nhan-2: #a855f7; }   /* giấc ngủ – chàm, tím */
 
 /* Nền "kệ sách": các gáy sách nhiều màu và các tấm kệ gỗ */
 html {
@@ -155,3 +151,21 @@ a { color: var(--nhan); }
 }
 .ky { display: none; justify-content: space-around; margin-top: 28px; text-align: center; font-size: 12pt; }
 .ky div { width: 40%; }
+
+/* Biểu đồ trong khung kết quả (phiên bản 3) */
+.bieu-do { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin: 10px 0 4px; }
+.bieu-do .chu-giai { font-size: 14px; line-height: 1.8; }
+.bieu-do .o-mau { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: middle; }
+.pie { width: 150px; height: 150px; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+.thanh-ngang { display: flex; width: 100%; height: 26px; border-radius: 13px; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(0,0,0,.1); }
+.thanh-ngang span { display: block; height: 100%; }
+.tien-do { width: 100%; height: 18px; border-radius: 9px; background: rgba(0,0,0,.08); overflow: hidden; }
+.tien-do span { display: block; height: 100%; border-radius: 9px; background: linear-gradient(90deg, #22c55e, #16a34a); }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; margin: 3px; border-radius: 999px; font-size: 13px; background: #ecfdf5; border: 1px solid #a7f3d0; }
+.chip b.ma { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #0f766e; color: #fff; font-size: 12px; }
+.cot-ngu { display: flex; align-items: flex-end; gap: 10px; height: 170px; margin: 26px 0 30px; position: relative; padding: 0 6px; border-bottom: 2px solid rgba(255,255,255,.4); width: 100%; max-width: 520px; }
+.cot-ngu .cot { flex: 1; border-radius: 8px 8px 0 0; position: relative; min-height: 4px; }
+.cot-ngu .cot i { position: absolute; top: -20px; left: 0; right: 0; text-align: center; font-style: normal; font-size: 12px; }
+.cot-ngu .cot em { position: absolute; bottom: -20px; left: 0; right: 0; text-align: center; font-style: normal; font-size: 12px; }
+.cot-ngu .vach { position: absolute; left: 0; right: 0; border-top: 2px dashed #facc15; }
+.cot-ngu .vach b { position: absolute; right: 0; top: -18px; font-size: 12px; color: #facc15; }
