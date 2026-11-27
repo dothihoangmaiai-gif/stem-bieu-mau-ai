@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG MÁY</title>
+  <link rel="stylesheet" href="theme.css?v=15">
+  <link rel="stylesheet" href="theme-nhom2.css?v=15">
+</head>
+<body class="nhom2">
+  <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
+  <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
+  <!-- Nhóm 2: Ổ ĐIỆN AN TOÀN – KIỂM TRA TẢI ĐIỆN VÀ ĐIỆN NĂNG LÃNG PHÍ TRONG PHÒNG THỰC HÀNH TIN HỌC -->
+  <!-- Phiên bản 2 – đã cải tiến sau thử nghiệm -->
+  <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
+       Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
+  <h2>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG MÁY</h2>
+  <form action="ketqua.html" method="get">
+    <fieldset>
+      <legend>Thông tin chung</legend>
+    <p><label for="phong">Phòng máy:</label>
+      <input type="text" id="phong" name="phong"></p>
+    <p><label for="lop">Lớp:</label>
+      <select id="lop" name="lop">
+        <option value="12A1">12A1</option>
+        <option value="12A3">12A3</option>
+        <option value="12A8">12A8</option>
+        <option value="11A7">11A7</option>
+        <option value="11A12">11A12</option>
+        <option value="10A1">10A1</option>
+      </select></p>
+    <p><label for="ngay">Ngày kiểm tra:</label>
+      <input type="date" id="ngay" name="ngay"></p>
+    </fieldset>
+    <fieldset>
+      <legend>Nguồn điện phòng máy</legend>
+    <p><label for="dongdm">Dòng điện định mức của cầu dao (CB) phòng học (A):</label>
+      <input type="number" id="dongdm" name="dongdm" min="1" max="63" step="1"></p>
+    <p><label for="dienap">Hiệu điện thế (V):</label>
+      <input type="number" id="dienap" name="dienap" min="100" max="250" step="1"></p>
+    </fieldset>
+    <fieldset>
+      <legend>Thiết bị điện trong phòng máy</legend>
+    <p>Thiết bị:<br>
+      <input type="checkbox" id="thietbi1" name="thietbi" value="Máy tính để bàn">
+      <label for="thietbi1">Máy tính để bàn</label><br>
+      <input type="checkbox" id="thietbi2" name="thietbi" value="Máy chiếu">
+      <label for="thietbi2">Máy chiếu</label><br>
+      <input type="checkbox" id="thietbi3" name="thietbi" value="Máy lạnh">
+      <label for="thietbi3">Máy lạnh</label><br>
+      <input type="checkbox" id="thietbi4" name="thietbi" value="Đèn tuýp">
+      <label for="thietbi4">Đèn tuýp</label><br>
+      <input type="checkbox" id="thietbi5" name="thietbi" value="Thiết bị mạng">
+      <label for="thietbi5">Thiết bị mạng</label><br>
+    </p>
+    <p><label for="congsuat">Tổng công suất ghi trên nhãn các thiết bị (W):</label>
+      <input type="number" id="congsuat" name="congsuat" min="0" max="10000" step="1"></p>
+    </fieldset>
+    <fieldset>
+      <legend>Thiết bị bị quên tắt</legend>
+    <p><label for="pquen">Tổng công suất thiết bị quên tắt (W):</label>
+      <input type="number" id="pquen" name="pquen" min="0" max="10000" step="1"></p>
+    <p><label for="gioquen">Số giờ quên tắt mỗi ngày:</label>
+      <input type="number" id="gioquen" name="gioquen" min="0" max="24" step="0.5"></p>
+    <p><label for="ghichu">Ghi chú (vị trí ổ cắm, dây điện có hở không…):</label><br>
+      <textarea id="ghichu" name="ghichu" rows="4" cols="40"></textarea></p>
+    </fieldset>
+    <p><input type="submit" value="Gửi phiếu">
+    <input type="reset" value="Nhập lại"></p>
+  </form>
+  <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
+  <script>
+    document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
+    window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
+    if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
+  </script>
+  <script src="luu-tru.js?v=15"></script>
+  <script src="goi-y-ai.js?v=15"></script>
+</body>
+</html>

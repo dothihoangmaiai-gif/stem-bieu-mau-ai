@@ -1,0 +1,34 @@
+/* Nhóm 3 – Màn hình và giấc ngủ (khối 12): phong cách "Thư viện học liệu" – xanh rêu đậm */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap&subset=vietnamese");
+html { background: #f3f6f4; background-attachment: fixed; }
+body {
+  --nhan: #0f5a4c; --nhan-2: #16846f; --vien: #d6e4df; --chu: #1d302b; --giay: #fff;
+  --font-tieu-de: "Playfair Display", Georgia, serif;
+  --thuong-hieu: "🌙 Nhóm 3 · Giấc ngủ – Khối 12";
+  --nav-bg: #fff; --nav-chu: #0f4c43; --nav-gach: #0f5a4c; --nav-nut: #0f5a4c; --nav-nut-chu: #fff;
+  --hero-bg: linear-gradient(177deg, transparent 0 83%, #fff 83%),
+             radial-gradient(circle at 88% 40%, rgba(255,255,255,.10) 0 90px, transparent 91px),
+             radial-gradient(circle at 78% 85%, rgba(232,197,106,.18) 0 60px, transparent 61px),
+             linear-gradient(120deg, #0d4d42, #13705e);
+  --hero-chu: #fff; --hero-phu: #bfe3d8; --hero-gach: #e8c56a;
+  background: #fff; color: #1d302b; outline: none;
+  box-shadow: 0 2px 4px rgba(15,90,76,.06), 0 18px 44px rgba(15,90,76,.14);
+}
+body.nhom3 .thanh-cong-cu { border-bottom: 1px solid #e3ece8; }
+body.nhom3 h2 { font-size: 36px; }
+label { color: #24403a; }
+fieldset { background: #fff; border: 1px solid #d6e4df; border-radius: 14px; }
+legend { color: #1d302b; border: none; border-radius: 10px; padding: 7px 16px; font-weight: 700; background: #d9f0e8; }
+fieldset:nth-of-type(4n+2) legend { background: #dbe7fb; }
+fieldset:nth-of-type(4n+3) legend { background: #fbeccd; }
+fieldset:nth-of-type(4n+4) legend { background: #f9dede; }
+input[type=text], input[type=number], input[type=date], input[type=time], select, textarea { border: 1px solid #cddcd6; border-radius: 10px; }
+input:focus, select:focus, textarea:focus { border-color: #16846f; box-shadow: 0 0 0 3px rgba(22,132,111,.2); }
+th { background: #e9f4f0; color: #0f4c43; } th, td { border-color: #d6e4df; }
+.lm { background: #f4faf8; border-left: 4px solid #16846f; border-radius: 10px; }
+.kq { background: #fbfdfc; border: 1px solid #9fcfc1; border-radius: 14px; }
+.kq h3 { color: #0f5a4c; }
+.ct { background: #f6faf8; border-color: #d6e4df; }
+input[type=submit], input[type=button] { background: #0f5a4c; border-color: #0f5a4c; border-radius: 999px; }
+input[type=reset] { color: #0f5a4c; border-color: #0f5a4c; border-radius: 999px; }
+.mau { color: #61736d; }

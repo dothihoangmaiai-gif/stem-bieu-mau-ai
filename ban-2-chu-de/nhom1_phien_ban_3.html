@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG HỌC – phiên bản 3</title>
+  <link rel="stylesheet" href="theme.css?v=15">
+  <link rel="stylesheet" href="theme-nhom1.css?v=15">
+</head>
+<body class="nhom1">
+  <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
+  <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
+  <!-- Nhóm 1: Ổ ĐIỆN AN TOÀN – KIỂM TRA TẢI ĐIỆN VÀ ĐIỆN NĂNG LÃNG PHÍ TRONG PHÒNG HỌC THƯỜNG -->
+  <!-- Phiên bản 3 – thêm phần TÍNH TOÁN LIÊN MÔN.
+       Phần HTML (biểu mẫu) do nhóm viết theo Bài 12. Phần <script> do nhóm viết cùng trợ lí AI;
+       mọi công thức đã được chuyên gia liên môn của nhóm kiểm chứng bằng tính tay (xem báo cáo, mục Kiểm chứng).
+       Khi thử nghiệm, dữ liệu và kết quả tính được gửi bằng GET tới ketqua.html. -->
+  <h2>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG HỌC</h2>
+  <section class="cau-hoi-stem">
+    <span class="nhan-chq">❓ Câu hỏi STEM</span>
+    <p class="chq">Làm thế nào để học sinh nhập thông số ghi trên thiết bị và biết ngay điện của phòng học có an toàn không, điện năng lãng phí là bao nhiêu?</p>
+    <div class="stem4">
+      <div class="o-stem o-s"><b>S</b><small>Vật lí 11</small><p>Vì sao công suất các thiết bị mắc song song được cộng lại? I = P/U cho biết điều gì?</p></div>
+      <div class="o-stem o-t"><b>T</b><small>Tin học 12</small><p>Dùng loại ô nhập nào cho số lượng, công suất, ngày kiểm tra?</p></div>
+      <div class="o-stem o-e"><b>E</b><small>Kĩ thuật</small><p>Vì sao đặt ngưỡng cảnh báo 80% định mức? Kiểm thử ngưỡng này thế nào?</p></div>
+      <div class="o-stem o-m"><b>M</b><small>Toán</small><p>Tính tỉ lệ tải (%) và điện năng lãng phí (kWh) bằng công thức nào?</p></div>
+    </div>
+  </section>
+  <p class="canh">⚠ <b>An toàn:</b> Chỉ đọc nhãn thiết bị; không mở tủ điện, ổ cắm; luôn có giáo viên đi cùng.</p>
+  <p class="doi-chung">🔁 <b>Phòng học thường (B201)</b> · So sánh với Nhóm 2 (phòng thực hành Tin học): phòng nào có tỉ lệ tải cao hơn, thiết bị nào chiếm nhiều công suất nhất, vì sao.</p>
+  <p class="mau">Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
+  <form action="ketqua.html" method="get">
+   <div class="hai-cot">
+    <div class="cot-trai">
+    <fieldset>
+      <legend>Thông tin chung</legend>
+      <p><label for="phong">Phòng học:</label> <input type="text" id="phong" name="phong" value="B201">
+         <label for="lop">Lớp:</label> <select id="lop" name="lop"><option>12A1</option><option>12A3</option><option selected>12A8</option><option>11A7</option><option>11A12</option><option>10A1</option></select>
+         <label for="ngay">Ngày kiểm tra:</label> <input type="date" id="ngay" name="ngay"></p>
+    </fieldset>
+    <fieldset>
+      <legend>Nguồn điện của phòng học (đọc số in trên cầu dao hoặc ổ cắm)</legend>
+      <p><label for="dongdm">Dòng điện định mức của cầu dao (CB) phòng học (A):</label> <input type="number" id="dongdm" name="dongdm" min="1" max="63" step="1" value="20">
+         <label for="dienap">Hiệu điện thế U (V):</label> <input type="number" id="dienap" name="dienap" min="100" max="250" step="1" value="220"></p>
+    </fieldset>
+    <fieldset>
+      <legend>Thiết bị điện trong phòng học (đọc công suất trên nhãn)</legend>
+      <table>
+        <tr><th>Thiết bị</th><th>Số lượng</th><th>Công suất 1 chiếc (W)</th><th>Tổng công suất (W)</th><th>Hay quên tắt?</th></tr>
+        <tr><td>Tivi</td><td><input type="number" id="sl_tivi" name="sl_tivi" min="0" step="1" value="1"></td><td><input type="number" id="p_tivi" name="p_tivi" min="0" step="1" value="150"></td><td id="t_tivi"></td><td class="giua"><input type="checkbox" id="q_tivi" name="quen_tivi" value="có" checked aria-label="Tivi bị quên tắt"></td></tr>
+        <tr><td>Loa</td><td><input type="number" id="sl_loa" name="sl_loa" min="0" step="1" value="1"></td><td><input type="number" id="p_loa" name="p_loa" min="0" step="1" value="100"></td><td id="t_loa"></td><td class="giua"><input type="checkbox" id="q_loa" name="quen_loa" value="có" checked aria-label="Loa bị quên tắt"></td></tr>
+        <tr><td>Máy lạnh</td><td><input type="number" id="sl_maylanh" name="sl_maylanh" min="0" step="1" value="2"></td><td><input type="number" id="p_maylanh" name="p_maylanh" min="0" step="1" value="800"></td><td id="t_maylanh"></td><td class="giua"><input type="checkbox" id="q_maylanh" name="quen_maylanh" value="có" checked aria-label="Máy lạnh bị quên tắt"></td></tr>
+        <tr><td>Quạt trần</td><td><input type="number" id="sl_quattran" name="sl_quattran" min="0" step="1" value="4"></td><td><input type="number" id="p_quattran" name="p_quattran" min="0" step="1" value="75"></td><td id="t_quattran"></td><td class="giua"><input type="checkbox" id="q_quattran" name="quen_quattran" value="có" checked aria-label="Quạt trần bị quên tắt"></td></tr>
+        <tr><td>Đèn tuýp 1,2 m</td><td><input type="number" id="sl_den" name="sl_den" min="0" step="1" value="6"></td><td><input type="number" id="p_den" name="p_den" min="0" step="1" value="36"></td><td id="t_den"></td><td class="giua"><input type="checkbox" id="q_den" name="quen_den" value="có" checked aria-label="Đèn tuýp 1,2 m bị quên tắt"></td></tr>
+      </table>
+    </fieldset>
+    <fieldset>
+      <legend>Thiết bị bị quên tắt</legend>
+      <p class="mau">Đánh dấu ở cột <b>Hay quên tắt?</b> trong bảng trên; công suất được cộng tự động từ các thiết bị đã đánh dấu.</p>
+      <p><label for="pquen">Tổng công suất thiết bị quên tắt (W):</label> <input type="number" id="pquen" name="pquen" readonly>
+         <label for="gioquen">Số giờ quên tắt mỗi ngày:</label> <input type="number" id="gioquen" name="gioquen" min="0" max="24" step="0.5" value="2"></p>
+      <p><label for="songay">Số ngày học mỗi tháng:</label> <input type="number" id="songay" name="songay" min="0" max="31" step="1" value="22">
+         <label for="dongia">Đơn giá điện (đồng/kWh):</label> <input type="number" id="dongia" name="dongia" min="0" step="1" value="2030"></p>
+      <p class="goi-y">💡 Gợi ý: trường học dùng giá điện <b>cơ sở giáo dục, cấp hạ áp: 2.030 đồng/kWh</b> (chưa gồm thuế GTGT), áp dụng từ 01/11/2026 theo Quyết định 2892/QĐ-BCT.
+         Tham khảo: <a href="https://www.sggp.org.vn/chi-tiet-gia-ban-le-dien-ap-dung-tu-ngay-1-11-2026-post880092.html" target="_blank" rel="noopener">Biểu giá bán lẻ điện từ 1/11/2026 (Báo SGGP)</a> ·
+         <a href="https://pbgdpl.cantho.gov.vn/quy-dinh-ve-gia-ban-dien" target="_blank" rel="noopener">Bảng giá chi tiết (Cổng PBGDPL Cần Thơ)</a>. Nhóm kiểm tra lại trên hóa đơn tiền điện của trường.</p>
+    </fieldset>
+    </div>
+    <aside class="cot-phai">
+    <div class="kq">
+      <h3>KẾT QUẢ TÍNH</h3>
+      <div id="kq"></div>
+      <div class="bieu-do" id="bd"></div>
+      <details class="cach-tinh"><summary>Xem cách tính (thay số)</summary>
+      <div class="ct" id="ct"></div></details>
+    </div>
+    </aside>
+   </div>
+    <div class="tom-tat" id="tt" aria-live="polite"></div>
+    <input type="hidden" id="kq_p" name="kq_tong_cong_suat_W">
+    <input type="hidden" id="kq_i" name="kq_cuong_do_A">
+    <input type="hidden" id="kq_tl" name="kq_ti_le_tai_phan_tram">
+    <input type="hidden" id="kq_mh" name="kq_canh_bao">
+    <input type="hidden" id="kq_a" name="kq_dien_nang_kWh_thang">
+    <p><input type="submit" value="Gửi phiếu"> <input type="reset" value="Nhập lại"></p>
+  </form>
+  <script>
+    function so(id) { var x = parseFloat(document.getElementById(id).value); return isNaN(x) ? 0 : x; }
+    function f(x, n) { return Number(x).toLocaleString("vi-VN", { maximumFractionDigits: n === undefined ? 2 : n }); }
+    function dat(id, v) { document.getElementById(id).value = v; }
+    function hien(id, html) { document.getElementById(id).innerHTML = html; }
+
+    var TB = ["tivi","loa","maylanh","quattran","den"];
+    // Đồng hồ đo tải: thang 0 – 120% định mức
+    function dongHo(tl) {
+      var cx = 110, cy = 110, r = 90;
+      function diem(p, rr) { var t = Math.PI * (1 - p / 120); return (cx + rr * Math.cos(t)).toFixed(1) + "," + (cy - rr * Math.sin(t)).toFixed(1); }
+      function cung(p1, p2, mau) { return '<path d="M' + diem(p1, r) + ' A' + r + ' ' + r + ' 0 0 1 ' + diem(p2, r) + '" stroke="' + mau + '" stroke-width="18" fill="none"/>'; }
+      var k = diem(Math.min(Math.max(tl, 0), 120), 76).split(",");
+      return '<svg viewBox="0 0 220 135" width="250" role="img" aria-label="Đồng hồ tải">' + cung(0, 80, "#22c55e") + cung(80, 100, "#facc15") + cung(100, 120, "#ef4444") +
+        '<line x1="110" y1="110" x2="' + k[0] + '" y2="' + k[1] + '" stroke="#f59e0b" stroke-width="5" stroke-linecap="round"/><circle cx="110" cy="110" r="8" fill="#f59e0b"/>' +
+        '<text x="110" y="132" text-anchor="middle" font-size="15" font-weight="700" fill="#f59e0b">' + f(tl, 1) + '% định mức</text></svg>';
+    }
+    function tinh() {
+      var P = 0, dong = [], Pq = 0, dongq = [];
+      TB.forEach(function (k) {
+        var n = so("sl_" + k), p = so("p_" + k);
+        hien("t_" + k, f(n * p));
+        P += n * p;
+        if (n > 0) dong.push(n + "×" + p);
+        if (document.getElementById("q_" + k).checked && n > 0) { Pq += n * p; dongq.push(f(n * p)); }
+      });
+      dat("pquen", Pq);
+      var U = so("dienap"), Idm = so("dongdm");
+      var am = TB.some(function (k) { return so("sl_" + k) < 0 || so("p_" + k) < 0; });
+      if (am || U <= 0 || Idm <= 0) { hien("kq", '<span class="xau">Số liệu chưa hợp lệ: U, I định mức phải lớn hơn 0; số lượng, công suất không âm.</span>'); hien("ct", ""); return; }
+      var I = P / U, tl = I / Idm * 100;
+      var muc = tl <= 80 ? '<span class="tot">AN TOÀN</span>' : (tl <= 100 ? '<span class="chu">CẦN CHÚ Ý – gần định mức, không bật thêm thiết bị</span>'
+                : '<span class="xau">QUÁ TẢI – tắt bớt thiết bị, báo giáo viên</span>');
+      var A = so("pquen") * so("gioquen") * so("songay") / 1000, gia = so("dongia");
+      hien("kq", "Tổng công suất: <b>" + f(P) + " W</b><br>Cường độ dòng điện của phòng học: <b>" + f(I) + " A</b> / định mức " + f(Idm) + " A" +
+        "<br>Tỉ lệ tải: <b>" + f(tl, 1) + "%</b> → " + muc +
+        "<br>Điện năng lãng phí do quên tắt: <b>" + f(A) + " kWh/tháng</b>" +
+        (gia > 0 ? " ≈ <b>" + f(A * gia, 0) + " đồng/tháng</b>" : " (nhập đơn giá để tính tiền)"));
+      hien("ct", "P = " + (dong.join(" + ") || "0") + " = " + f(P) + " W\n" +
+        "I = P / U = " + f(P) + " / " + f(U) + " ≈ " + f(I) + " A\n" +
+        "Tỉ lệ tải = I / I(định mức) × 100% = " + f(I) + " / " + f(Idm) + " × 100% ≈ " + f(tl, 1) + "%\n" +
+        "   (≤ 80%: an toàn; 80% – 100%: cần chú ý; > 100%: quá tải)\n" +
+        "P(quên) = " + (dongq.join(" + ") || "0") + " = " + f(Pq) + " W\n" +
+        "A = P(quên) × t × số ngày / 1000 = " + f(so("pquen")) + " × " + f(so("gioquen")) + " × " + f(so("songay")) + " / 1000 = " + f(A) + " kWh" +
+        (gia > 0 ? "\nTiền điện = " + f(A) + " × " + f(gia, 0) + " ≈ " + f(A * gia, 0) + " đồng" : ""));
+      var mauTl = tl <= 80 ? "#16a34a" : (tl <= 100 ? "#ca8a04" : "#dc2626");
+      hien("tt", '<b>⚡ Kết quả tức thời</b><span>P = <b>' + f(P) + ' W</b></span><span>I = <b>' + f(I) + ' A</b></span>' +
+        '<span>Tải: <b style="color:' + mauTl + '">' + f(tl, 1) + '% · ' + (tl <= 80 ? "An toàn" : (tl <= 100 ? "Cần chú ý" : "Quá tải")) + '</b></span>' +
+        '<span class="thanh-tai"><i style="width:' + Math.min(tl / 1.2, 100).toFixed(1) + '%;background:' + mauTl + '"></i></span>' +
+        '<span>Lãng phí: <b>' + f(A) + ' kWh/tháng</b>' + (gia > 0 ? ' ≈ <b>' + f(A * gia, 0) + ' đ</b>' : '') + '</span>');
+      hien("bd", dongHo(tl) + '<div class="chu-giai"><span class="o-mau" style="background:#22c55e"></span>0 – 80%: an toàn<br><span class="o-mau" style="background:#facc15"></span>80 – 100%: cần chú ý<br><span class="o-mau" style="background:#ef4444"></span>trên 100%: quá tải</div>');
+      dat("kq_p", P); dat("kq_i", I.toFixed(2)); dat("kq_tl", tl.toFixed(1));
+      dat("kq_mh", tl <= 80 ? "An toàn" : (tl <= 100 ? "Cần chú ý" : "Quá tải")); dat("kq_a", A.toFixed(2));
+    }
+    function homNay() { var d = new Date(), z = function (x) { return (x < 10 ? "0" : "") + x; }; return d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate()); }
+    if (!document.getElementById("ngay").value) dat("ngay", homNay());
+    function nhay() { var k = document.querySelector(".kq"); k.classList.remove("vua-doi"); void k.offsetWidth; k.classList.add("vua-doi"); }
+    document.querySelector("form").addEventListener("input", function () { tinh(); nhay(); });
+    document.querySelector("form").addEventListener("change", function () { tinh(); nhay(); });
+    document.querySelector("form").addEventListener("reset", function () { setTimeout(function () { dat("ngay", homNay()); tinh(); }, 0); });
+    tinh();
+  </script>
+  <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
+  <script>
+    document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
+    window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
+    if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
+  </script>
+  <script src="luu-tru.js?v=15"></script>
+  <script src="goi-y-ai.js?v=15"></script>
+</body>
+</html>

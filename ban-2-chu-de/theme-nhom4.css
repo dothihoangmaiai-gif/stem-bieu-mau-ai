@@ -1,0 +1,36 @@
+/* Nhóm 4 – Màn hình và giấc ngủ: phong cách "Sự kiện" – tím đậm & cam */
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap&subset=vietnamese");
+html { background: #f5f1fb; background-image: linear-gradient(135deg, rgba(76,42,133,.05) 25%, transparent 25% 50%, rgba(76,42,133,.05) 50% 75%, transparent 75%); background-size: 36px 36px; background-attachment: fixed; }
+body {
+  --nhan: #4c2a85; --nhan-2: #f26b2b; --vien: #e3d9f2; --chu: #231a36; --giay: #fff;
+  --font-tieu-de: "Baloo 2", "Be Vietnam Pro", sans-serif;
+  --thuong-hieu: "😴 Nhóm 4 · Giấc ngủ – Khối 10";
+  --nav-bg: #3d2470; --nav-chu: #fff; --nav-gach: #f26b2b; --nav-nut: #f26b2b; --nav-nut-chu: #fff;
+  --hero-bg: linear-gradient(176deg, transparent 0 82%, #f26b2b 82% 85%, #fff 85%),
+             linear-gradient(112deg, #f26b2b 0 58%, transparent 58%),
+             linear-gradient(112deg, #ff8a4c, #4c2a85 60%, #3d2470);
+  --hero-chu: #fff; --hero-phu: #ffe3d3; --hero-gach: #fff;
+  background: #fff; color: #231a36; outline: none; backdrop-filter: none;
+  box-shadow: 0 2px 4px rgba(76,42,133,.08), 0 18px 44px rgba(76,42,133,.18);
+}
+body.nhom4 h2 { font-weight: 800; font-size: 38px; text-transform: uppercase; letter-spacing: .5px; text-shadow: 0 3px 0 rgba(61,36,112,.35); padding-right: 30%; }
+body.nhom4 h2::before { text-transform: none; text-shadow: none; }
+label { color: #34284d; }
+fieldset { background: #fff; border: 1px solid #e3d9f2; border-radius: 14px; }
+legend { background: #4c2a85; color: #fff; border: none; border-radius: 999px; padding: 6px 18px; font-weight: 700; font-size: 17px; }
+input[type=text], input[type=number], input[type=date], input[type=time], select, textarea { border: 1px solid #d8cdea; border-radius: 10px; color: #231a36; background: #fff; }
+input:focus, select:focus, textarea:focus { border-color: #f26b2b; box-shadow: 0 0 0 3px rgba(242,107,43,.2); }
+table { background: #fff; }
+th { background: #f1eafb; color: #3d2470; } th, td { border-color: #e3d9f2; color: #231a36; }
+.lm { background: #faf7fe; border-left: 4px solid #f26b2b; border-radius: 10px; color: #231a36; }
+.kq { background: #fffaf6; border: 1px solid #f6b48f; border-radius: 14px; color: #231a36; }
+.kq h3 { color: #4c2a85; }
+.ct { background: #faf7fe; border-color: #e3d9f2; color: #231a36; }
+.cot-ngu { border-bottom-color: #cbbde3; }
+.cot-ngu .vach { border-top-color: #f26b2b; } .cot-ngu .vach b { color: #f26b2b; }
+.cot-ngu .cot i, .cot-ngu .cot em { color: #34284d; }
+input[type=submit], input[type=button] { background: #f26b2b; border-color: #e0561a; border-radius: 999px; }
+input[type=reset] { color: #4c2a85; border-color: #4c2a85; border-radius: 999px; background: #fff; }
+.mau { color: #6f6684; }
+a { color: #4c2a85; }
+@media (max-width: 640px) { body.nhom4 h2 { padding-right: 16px; font-size: 27px; } }

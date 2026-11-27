@@ -1,0 +1,30 @@
+/* Nhóm 2 – Ổ điện an toàn (phòng máy): phong cách "Hồ sơ giáo viên" – xanh lá xô thơm */
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap&subset=vietnamese");
+html { background: linear-gradient(180deg, #eef3e8, #f8f6ef 420px); background-attachment: fixed; }
+body {
+  --nhan: #3f6b4a; --nhan-2: #7fa36b; --vien: #dbe5d3; --chu: #2b3a2f; --giay: #fff;
+  --font-tieu-de: "Lora", Georgia, serif;
+  --thuong-hieu: "🖥️ Nhóm 2 · Ổ điện – Phòng máy";
+  --nav-bg: #f6f8f2; --nav-chu: #2f4a36; --nav-gach: #3f6b4a; --nav-nut: #3f6b4a; --nav-nut-chu: #fff;
+  --hero-bg: linear-gradient(177deg, transparent 0 83%, #c7d9bb 83% 85%, #fff 85%),
+             url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='200' viewBox='0 0 260 200'%3E%3Cg fill='none' stroke='%237fa36b' stroke-width='2' opacity='.55'%3E%3Cpath d='M40 190 C110 140 170 90 250 20'/%3E%3C/g%3E%3Cg fill='%2397b884' opacity='.45'%3E%3Cpath d='M90 150c-30-10-40-35-35-55 25 5 40 25 35 55z'/%3E%3Cpath d='M125 122c5-30 28-42 50-40-3 24-24 40-50 40z'/%3E%3Cpath d='M150 98c-25-15-28-42-18-60 22 10 30 35 18 60z'/%3E%3Cpath d='M190 66c8-26 32-34 52-30-6 22-28 34-52 30z'/%3E%3Cpath d='M205 52c-18-18-15-42-2-56 17 14 17 38 2 56z'/%3E%3C/g%3E%3C/svg%3E") no-repeat right 20px top 18px,
+             linear-gradient(110deg, #f4f7ef 0%, #e3ecd9 100%);
+  --hero-chu: #2f4a36; --hero-phu: #6b8a5c; --hero-gach: #7fa36b;
+  background: #fff; color: #2b3a2f; outline: none;
+  box-shadow: 0 2px 4px rgba(63,107,74,.06), 0 18px 44px rgba(63,107,74,.14);
+}
+body.nhom2 h2 { font-weight: 600; padding-right: 280px; }
+label { color: #34483a; }
+fieldset { background: #fff; border: 1px solid #dbe5d3; border-radius: 12px; }
+legend { background: #f1f6ec; color: #2f4a36; border: 1px solid #cfdec4; border-left: 4px solid #3f6b4a; border-radius: 6px; font-weight: 600; }
+input[type=text], input[type=number], input[type=date], input[type=time], select, textarea { border: 1px solid #cfd9c6; border-radius: 8px; }
+input:focus, select:focus, textarea:focus { border-color: #7fa36b; box-shadow: 0 0 0 3px rgba(127,163,107,.22); }
+th { background: #eef4e8; color: #2f4a36; } th, td { border-color: #dbe5d3; }
+.lm { background: #f7faf3; border-left: 4px solid #7fa36b; border-radius: 8px; }
+.kq { background: #fafcf7; border: 1px solid #a9c497; border-radius: 12px; }
+.kq h3 { color: #3f6b4a; }
+.ct { background: #f7f9f3; border-color: #dbe5d3; }
+input[type=submit], input[type=button] { background: #3f6b4a; border-color: #3f6b4a; border-radius: 8px; }
+input[type=reset] { color: #3f6b4a; border-color: #3f6b4a; border-radius: 8px; }
+.mau { color: #6b7a6e; }
+@media (max-width: 640px) { body.nhom2 h2 { padding-right: 16px; } }

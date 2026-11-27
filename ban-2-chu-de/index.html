@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thiết kế biểu mẫu số với trợ lí AI – giải quyết vấn đề học đường</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap&subset=vietnamese">
+  <style>
+    html { background-color: #1d120a;
+      background-image:
+        radial-gradient(ellipse at center, rgba(0,0,0,0) 35%, rgba(0,0,0,.6) 100%),
+        repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 172px, #2a180c 172px 176px, #5b3820 176px 190px, #2a180c 190px 196px),
+        repeating-linear-gradient(90deg, #9b2c22 0 22px, #1f2a22 22px 25px, #1d5c45 25px 44px, #d4a12a 44px 54px, #1f2a22 54px 56px, #24518a 56px 80px, #6b3b1f 80px 90px, #c2410c 90px 112px, #1f2a22 112px 114px, #0f6b6b 114px 132px, #7c2d6b 132px 146px, #b8862b 146px 158px, #1f2a22 158px 161px, #2f3e86 161px 184px, #8f4a20 184px 198px);
+      background-attachment: fixed; min-height: 100%; }
+    body { font-family: "Be Vietnam Pro", Arial, sans-serif; margin: 0; color: #2c1d12; }
+    header { max-width: 1150px; margin: 34px auto 0; padding: 30px 24px 26px; text-align: center; color: #fff8ec;
+      background: linear-gradient(135deg, rgba(60,30,12,.92), rgba(120,52,20,.88)); border-radius: 14px 14px 0 0;
+      border: 1px solid rgba(255,220,160,.35); box-shadow: 0 18px 50px rgba(0,0,0,.55); }
+    header .nho { letter-spacing: 4px; font-size: 12px; font-weight: 600; color: #f6c36b; }
+    header h1 { font-family: "Playfair Display", Georgia, serif; margin: 10px 0 8px; font-size: 38px; letter-spacing: .5px;
+      background: linear-gradient(90deg, #ffe2a8, #ffffff, #ffd27a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    header p { margin: 4px 0; opacity: .92; }
+    .dai { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .dai span { padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; background: rgba(255,255,255,.12); border: 1px solid rgba(255,220,160,.4); }
+    main { max-width: 1150px; margin: 0 auto 30px; padding: 26px 24px 30px; background: #fffaf1; border-radius: 0 0 14px 14px; box-shadow: 0 18px 50px rgba(0,0,0,.55); }
+    h2 { font-family: "Playfair Display", Georgia, serif; color: #7a2e12; margin: 6px 0 12px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 480px), 1fr)); gap: 20px; }
+    .card { --c: #b45309; --c2: #f59e0b; background: #fff; border-radius: 12px; padding: 18px 20px; border: 1px solid #ecd9bd;
+      border-top: 6px solid var(--c); box-shadow: 0 4px 14px rgba(80,40,10,.12); transition: transform .15s, box-shadow .15s; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(80,40,10,.2); }
+    .n2 { --c: #15803d; --c2: #f97316; } .n3 { --c: #0f766e; --c2: #0ea5e9; } .n4 { --c: #4338ca; --c2: #a855f7; }
+    .dau { display: flex; gap: 12px; align-items: center; }
+    .icon { font-size: 28px; width: 52px; height: 52px; display: grid; place-items: center; border-radius: 12px; background: linear-gradient(135deg, var(--c2), var(--c)); }
+    .so { color: var(--c); font-weight: 700; font-size: 12.5px; letter-spacing: 2px; text-transform: uppercase; }
+    .card h3 { font-family: "Playfair Display", Georgia, serif; margin: 2px 0 0; font-size: 24px; color: #2c1d12; }
+    .mo { margin: 8px 0; color: #6b5440; font-size: 14px; font-style: italic; }
+    .card p, .card li { font-size: 14.5px; line-height: 1.5; }
+    .lm { background: #fff7e6; border-left: 4px solid var(--c2); margin: 10px 0; padding: 8px 8px 8px 28px; border-radius: 0 6px 6px 0; }
+    .btn { display: inline-block; margin: 4px 6px 0 0; padding: 9px 14px; border-radius: 7px; background: linear-gradient(180deg, var(--c2), var(--c));
+      color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
+    .btn.phu { background: #fff; color: var(--c); border: 1px solid var(--c); box-shadow: none; }
+    .btn:hover { filter: brightness(1.08); }
+    .chan { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed #e6d2b5; flex-wrap: wrap; }
+    .qr { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #6b5440; }
+    .qr img { width: 88px; height: 88px; border: 4px solid #fff; outline: 1px solid #ecd9bd; border-radius: 6px; }
+    .in { display: flex; flex-direction: column; align-items: flex-end; }
+    .in-btn { font-size: 13px; padding: 7px 12px; }
+    .hop { background: #fff; border: 1px solid #ecd9bd; border-left: 6px solid #b45309; padding: 14px 20px; margin: 22px 0; border-radius: 8px; }
+    .hop li { margin: 5px 0; }
+    .bang-in { border-collapse: collapse; width: 100%; background: #fff; }
+    .bang-in td, .bang-in th { border: 1px solid #ecd9bd; padding: 8px 12px; text-align: left; }
+    .bang-in th { background: #f6e8d2; }
+    .bang-in a { color: #7a2e12; font-weight: 600; text-decoration: none; }
+    footer { text-align: center; font-size: 13px; color: #f1dcc0; padding: 4px 20px 30px; text-shadow: 0 1px 2px #000; }
+    .qrsite { text-align: center; color: #6b5440; font-size: 13px; } .qrsite img { width: 120px; }
+    .bancu-hop { position: fixed; right: 12px; bottom: 12px; display: flex; gap: 6px; }
+    .chu-de { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 26px 0 6px; padding-bottom: 6px; border-bottom: 2px solid #ecd9bd; }
+    .chu-de small { font-family: "Be Vietnam Pro", Arial, sans-serif; font-size: 14px; color: #6b5440; font-weight: 500; }
+    .dc { background: #f5f0ff; border-radius: 6px; padding: 6px 10px; font-size: 13.5px !important; }
+    .bancu { background: #fff; border: 1px solid #c9d3e3; border-radius: 16px; padding: 5px 11px; font-size: 12px; color: #1f3a68; text-decoration: none; box-shadow: 0 1px 3px rgba(0,0,0,.15); opacity: .85; }
+    .bancu:hover { opacity: 1; }
+    @media (max-width: 640px) { header, main { margin-left: 0; margin-right: 0; border-radius: 0; } header h1 { font-size: 28px; } .in { align-items: flex-start; } }
+    @media print { html { background: #fff; } header, main { box-shadow: none; } .bancu, .btn { display: none; } }
+  </style>
+</head>
+<body>
+  <div style="background:#7a2e12;color:#fff;text-align:center;padding:8px;font-size:14px">Bản lưu trữ 2 chủ đề (để tham khảo) – <a style="color:#ffd27a" href="../index.html">xem bản chính: web app Apps Script</a></div>
+  <header>
+    <div class="nho">CHỦ ĐỀ STEM • ĐO THẬT – TÍNH ĐÚNG – CẢI TIẾN</div>
+    <h1>THIẾT KẾ BIỂU MẪU SỐ VỚI TRỢ LÍ AI</h1>
+    <p>Chủ đề STEM – giải quyết vấn đề học đường bằng đo đạc và tính toán liên môn</p>
+    <p>Tin học 12 – Bài 12. Tạo biểu mẫu - Trường THPT Hàn Thuyên</p>
+    <div class="dai"><span>⚡ Chủ đề 1: Ổ điện an toàn</span><span>🌙 Chủ đề 2: Màn hình và giấc ngủ</span><span>4 nhóm · đo ở 2 nơi để so sánh</span></div>
+  </header>
+  <main>
+    <div class="hop">
+      <h2>Mỗi sản phẩm STEM đi qua 4 bước</h2>
+      <ol>
+        <li><b>Đo thật (E, S):</b> đọc nhãn công suất thiết bị và cầu dao; đọc thời gian màn hình, ghi nhật kí giấc ngủ.</li>
+        <li><b>Tính bằng công thức của môn khác (S, M):</b> Vật lí 11, Công nghệ, Sinh học, Toán 11.</li>
+        <li><b>Đưa công thức vào biểu mẫu (T):</b> HTML Bài 12 do nhóm viết; phần tính toán viết cùng trợ lí AI.</li>
+        <li><b>Kiểm chứng và cải tiến (E):</b> so sánh với tính tay và với nhóm cùng chủ đề; phiên bản 1 → 2 → 3.</li>
+      </ol>
+    </div>
+    <h2 class="chu-de">Chủ đề 1: Ổ điện an toàn <small>Hai nhóm đo ở hai phòng có tải khác nhau rồi so sánh tỉ lệ tải và điện năng lãng phí.</small></h2>
+    <div class="grid">
+    <article class="card n1">
+      <div class="dau"><span class="icon">⚡</span><div><div class="so">Nhóm 1</div><h3>Phòng học thường (B201)</h3></div></div>
+      <p class="mo">Kiểm tra tải điện và điện năng lãng phí trong phòng học thường</p>
+      <p class="dc">🔁 So sánh với Nhóm 2 (phòng thực hành Tin học): phòng nào có tỉ lệ tải cao hơn, thiết bị nào chiếm nhiều công suất nhất, vì sao.</p>
+      <p><b>Câu hỏi STEM:</b> Làm thế nào để học sinh nhập thông số ghi trên thiết bị và biết ngay điện của phòng học có an toàn không, điện năng lãng phí là bao nhiêu?</p>
+      <ul class="lm"><li><b>S:</b> Vật lí 11 – Năng lượng điện. Công suất điện</li><li><b>S:</b> Công nghệ – An toàn điện; thông số kĩ thuật ghi trên thiết bị</li><li><b>E:</b> Quy trình thiết kế kĩ thuật; kiểm thử theo ngưỡng</li><li><b>M:</b> Toán – tỉ lệ phần trăm, đổi đơn vị, làm tròn</li></ul>
+      <p class="do"><b>Đo thật:</b> Công suất từng thiết bị (W); Dòng điện định mức của cầu dao (CB) phòng học (A), hiệu điện thế (V); Số thiết bị bật cùng lúc.</p>
+      <div class="nut">
+        <a class="btn" href="nhom1_phien_ban_3.html">Phiên bản 3 – tính toán liên môn</a>
+        <a class="btn phu" href="nhom1_phien_ban_2.html">Phiên bản 2</a>
+        <a class="btn phu" href="nhom1_phien_ban_1.html">Phiên bản 1 (có lỗi)</a>
+      </div>
+      <div class="chan">
+        <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAADRElEQVR4Xu1bAY7CMAxrT/z/yz0ltrMihqB0Q0NN0MHYervOyzlOmtVWBuxvYGzJ0TuWCD7amZjcSqn4i+botdXS7K34j+2xIzHizJmsce4bkTZgayvVQe7Qbn7Ed9ZkiHmGMLyJaIVnO7z2oudXbtnHGj545lU63mGgkmAYuwGtD6hnzmTBczcAbh7dWmnVPb6Svc0WxOSljWHi/k0Xrs3DZXWonVJsM4Jp4n0Af5sjS5+AtvdeHNHG7mWOfjSPhjBQt3zddKHJFamT5JMnNuZVBir0NfS3QxzaxMU442fqkyP5xOKjhUmDlZ+t3XGNUc/YvczRu3xCF4f63rybmY6nnPq9RPDRPsHEnRtuDfUHsLnD1Eotpgs/Ofe7tsa5pU9clSCX9zfSC8WKH2nJJ3s25ieBN6EVeXPjzhLvebxNi6BwQn0Se4xR/GAQfPLJPN5/AphcYjm8a/EK4FGktS+pBw/Sg2IS93AXgVKFoPGg9uSTef8Gf0t5S5vwE4o85GDiPY83s0fkkMg1Pb8kmaj2jaODsXgsci8z2ry4ss4NGeiszUo4kcYdWQaTARvDhL6sWpVWLaFYsI4ZIiXxnucTZjZKMPG952/ucSrP+smODfu3e3FXCAR3aFUNDI6a4eC5x2ayxugbZaDio9dfzXAXUKOlJG+LYHLmnZfm60Qh9TYTINffKqCcOZM1zq2qN/jZeVwrllERVxkr+fsQ/gY9g1AktMnpWFTb1tTW8MGvXCV7q8K7uZJpuxk8U38f4N/bQpoq39SGKKYgsddaRPL3cXpQldetX9DrtOq1QuLzlf+0t+xXZ4LydvRkgsJjzX7rkcXWr17ldebd9WuiHRnRkyFS3SjqS7nOvH91JvJvCRPFSfKIWr9ZR/nVq7zOvPv+KnbaM4HfarHk9uTvA/RJ93xDwxIawiSyeT7ooIL4hfzkOh47NpPu+YaucNIFSi4lZ73qmY3jHVVvrGCyjZDrPd0zPKkH5/V3/3xDLJ5REgaPRL/E2L3M0Y92jwmb2fTgFFShp/TINBPBVwi+MkeQ5VaiCtDReeKdKHYYgjHxnsXb+IQP6GytVq7K0a+pwmHml8fEy05/v2Hp37P+nQh+F8F/OGXj+mXPjiYAAAAASUVORK5CYII=" alt="Mã QR nhóm 1"><span>Quét để mở<br>phiên bản 3</span></div>
+        <div class="in">
+          <a class="btn in-btn" href="nhom1_phien_ban_3.html?print=1" target="_blank">🖨 In phiếu có kết quả</a>
+          <a class="btn in-btn phu" href="nhom1_phien_ban_2.html?print=1" target="_blank">🖨 In phiếu trắng</a>
+        </div>
+      </div>
+    </article>
+    <article class="card n2">
+      <div class="dau"><span class="icon">🖥️</span><div><div class="so">Nhóm 2</div><h3>Phòng thực hành Tin học</h3></div></div>
+      <p class="mo">Kiểm tra tải điện và điện năng lãng phí trong phòng thực hành Tin học</p>
+      <p class="dc">🔁 So sánh với Nhóm 1 (phòng học thường): vì sao phòng máy dễ gần định mức hơn; nên bật máy lần lượt hay cùng lúc.</p>
+      <p><b>Câu hỏi STEM:</b> Làm thế nào để học sinh nhập thông số ghi trên thiết bị của phòng máy và biết ngay điện có an toàn không khi cả lớp bật máy cùng lúc, điện năng lãng phí là bao nhiêu?</p>
+      <ul class="lm"><li><b>S:</b> Vật lí 11 – Năng lượng điện. Công suất điện</li><li><b>S:</b> Công nghệ – An toàn điện; thông số kĩ thuật ghi trên thiết bị</li><li><b>E:</b> Quy trình thiết kế kĩ thuật; kiểm thử theo ngưỡng</li><li><b>M:</b> Toán – tỉ lệ phần trăm, đổi đơn vị, làm tròn</li></ul>
+      <p class="do"><b>Đo thật:</b> Công suất từng thiết bị (W); Dòng điện định mức của cầu dao (CB) phòng máy (A), hiệu điện thế (V); Số máy bật cùng lúc.</p>
+      <div class="nut">
+        <a class="btn" href="nhom2_phien_ban_3.html">Phiên bản 3 – tính toán liên môn</a>
+        <a class="btn phu" href="nhom2_phien_ban_2.html">Phiên bản 2</a>
+        <a class="btn phu" href="nhom2_phien_ban_1.html">Phiên bản 1 (có lỗi)</a>
+      </div>
+      <div class="chan">
+        <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAADO0lEQVR4Xu1bAY7CMAxbT/z/yz3FdrIiho7SgXSag3TbWLUbXnASJ7S+TdjPxNrNqw/MCD7aJzG5bVvjf+yx11vsxB/s8GTsc8Un7+Qa174RaQDbAuneWh/QxlOoFdfA5JOfMvAWoq03kXnHS56PN4X5J+/kGtcG3mWt+AT80eMRjAH1Gph87VN2Ah4e3YNUAu7WxN5hX7uTP+2/3gn8Wy7cei/+bqCUoPIMpsb72OaefDhyZh+k7aOXVvS5a3v1o2WIzJiYx+HoTFfK/c0nhzbnVQEq82ukIYS4cpPYx3s6P3dtrz6wCIyBLzfga217v+OaoB4j+GhvYBLBkV6OcjISQRCLoiYpPcB/49ov24WunT4esDL7Y1mpN3prWwvwr4TJyzbnJ2IRsDfpg39EL0pWyDjmkyN7A2+CKdoQiYvIRzPe63iDpiMLkSwILldWmLvKYczfJ+AdemwBTJ/GsSKoHkc+gbnvjlcf5oNiElH3mBWSxpmdOB98YnNelcm3FNihvq+MPOUV8/cJfKLqkTVklvAimL3FgyzR/H0C3j/06Cadu/EoKh911oQ0n8jcd8erH02+THDZuYSOgoyFfUx6O0QVI7haz+/6iaTu3CZ/cwXDqPWTZbyZWysJ31v1SsdTNpRmaP9exjv6O1Rh2RSupjEPeFZSluch1vGOeAkvRpsStB3aFDgEKhW2qWOZv8/gb1F0EnV2LEsRTxnL/L3u3zeOT5WAkrMoe4pCVmE0tX+v+jcQzCYl5yAUJdnJJKsgkjr/PsG/S+ku5Zs8IsGE4KvLZj5Z5xPVOFn2DLNrrHoyRWThYz5Z5RNVjqwrcwKievaqNpNijPcy3sO85g43Bq32vkOK4sZ7He/0b82gpDqVU+E5+i0dxXxyAp+ksa+j3jx1qqoyVYIa71W8h983AOIoNJVxZygdOm7G+wS889cL1XpQhS8dvBRZ8/cJ/H0XLytJqZHBGiVkALV/n+HfaTmmqeJenfooOuXkxnsZ73uPVaadAi2dGiU9K03796p/Uz/RhCxRJejoYSJjaXGaCaPxXsUb/QZeZB+1QujkvKaaP57/fmpzPjj8vuEFm7u2V69+G4zgKoK/VZTaE4HqtoUAAAAASUVORK5CYII=" alt="Mã QR nhóm 2"><span>Quét để mở<br>phiên bản 3</span></div>
+        <div class="in">
+          <a class="btn in-btn" href="nhom2_phien_ban_3.html?print=1" target="_blank">🖨 In phiếu có kết quả</a>
+          <a class="btn in-btn phu" href="nhom2_phien_ban_2.html?print=1" target="_blank">🖨 In phiếu trắng</a>
+        </div>
+      </div>
+    </article>
+    </div>
+    <h2 class="chu-de">Chủ đề 2: Màn hình và giấc ngủ <small>Hai nhóm khảo sát ẩn danh hai khối lớp rồi so sánh số trung bình, trung vị, mốt.</small></h2>
+    <div class="grid">
+    <article class="card n3">
+      <div class="dau"><span class="icon">🌙</span><div><div class="so">Nhóm 3</div><h3>Khảo sát khối 12 (lớp 12A8)</h3></div></div>
+      <p class="mo">Thống kê thời gian sử dụng thiết bị số và thời gian ngủ của học sinh khối 12</p>
+      <p class="dc">🔁 So sánh với Nhóm 4 (khối 10): khối nào ngủ ít hơn, dùng màn hình nhiều hơn; số trung bình, trung vị, mốt khác nhau thế nào.</p>
+      <p><b>Câu hỏi STEM:</b> Làm thế nào để thu thập ẩn danh số liệu đo thật về thời gian màn hình, giấc ngủ và tính ngay các số đặc trưng của lớp?</p>
+      <ul class="lm"><li><b>S:</b> Sinh học – Hệ thần kinh, nhịp sinh học; Giáo dục thể chất – sức khỏe</li><li><b>E:</b> Quy trình thiết kế kĩ thuật; thực nghiệm có đối chứng</li><li><b>M:</b> Toán 11 – Các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm</li></ul>
+      <p class="do"><b>Đo thật:</b> Thời gian màn hình mỗi ngày (giờ); Giờ đi ngủ, giờ thức dậy; Thói quen trước khi ngủ.</p>
+      <div class="nut">
+        <a class="btn" href="nhom3_phien_ban_3.html">Phiên bản 3 – tính toán liên môn</a>
+        <a class="btn phu" href="nhom3_phien_ban_2.html">Phiên bản 2</a>
+        <a class="btn phu" href="nhom3_phien_ban_1.html">Phiên bản 1 (có lỗi)</a>
+      </div>
+      <div class="chan">
+        <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAADQElEQVR4Xu1bi47iMAxsEP//y155ZuwUAVqiBNSqNrd3tBdBmHjH4wfNtgG7DazdavULKwSf7ZuY3Let8R3h6G2zZn7H/Ac3+JwrvrmTa7z2vSO9teSWjrYBcp3FRTD55sk73kK0uWsDW8NDno+bwvybO7nGawPvtEbqCP4wP4J9QL0GJj/7lOaAN3i02WbN4W5N6Lv9bCf/2ll3Av+WCzczj5cNUINS/GkPpoX3vMJzRw71Qdp+9dAKO6tXHWffXZMwJsZ1CMNQKrTj7PusO3G1zSAJGeLamzKFrI2Iyed+86yf8jj7Bp+kDKQODEVoD1zjS4+z77PuBP7NxDKSya63kWd6DI04cdZPebB9uxpxSeLuLR4RoeAGNKIvOtq+P7bj4B18AlUCP+ZfvPJ/8B9gnOKTdXrQIQ3MKbrF6zsrvOfxdrZGGkn+xlVUruJSGsaKT+bxvgXA4hJnaw+fSuvxnDl+6cHXNhYbnEiiHCiW7qqQNJ7UXnwy798CWRgzx+kJfojxyuff25h/K3tkDpkNHZFM3gHHFH8v8O8bPbypzs3chgyOckqeA05k7Cxr9bN5PRY+jmJsb/Ww+u3rpVeQdhaCzzaGiTIbpDeZ6QSPS7SkLq/6yTTerJZIhPdWvfNKZvZZMxw8y7GTv8xqYgsS36X1vDAOR4BXir/XxEtY8zYaq4EkcwXLOAxy+WV8cMDGMFG9Cq4soo6OpUpWvYxV/L2GvzVDxd4OhXZWvqP/w0MYO8ta/UbNqPSKkmD249nJpAQHixd/L/Dv0IGqwGq2SiQS4KvLVnwyzyf+Ow9x4kqEuNKhmXYCcbR3wDTFELP5jvqXIfogVThnFUlPtuoL7wX+vZvXzNkIHxrkAcQ0SsyllH+v8u+YQYkyYc6f6A3YACq8Z/H2+iCjpP/Z55JQ5OzZsw5e+mQNn/TpY6bzHJDdf9EhW5rl37P+vft+Q4TObM9H97IzeeG9Au9QJ33UJ0cGc5SQzFJ4L8E7YqL6DZyO6O7eh9oK71m8HxHMoVilPAyXKBjijQrvJXhrXk2oEnROnqg4GwlQ4T2LN/qXfJE+agUu4dA3v7QWqrzwnsV79/2GD6zwnsW7EPwtgn9FBtYPXEpn5AAAAABJRU5ErkJggg==" alt="Mã QR nhóm 3"><span>Quét để mở<br>phiên bản 3</span></div>
+        <div class="in">
+          <a class="btn in-btn" href="nhom3_phien_ban_3.html?print=1" target="_blank">🖨 In phiếu có kết quả</a>
+          <a class="btn in-btn phu" href="nhom3_phien_ban_2.html?print=1" target="_blank">🖨 In phiếu trắng</a>
+        </div>
+      </div>
+    </article>
+    <article class="card n4">
+      <div class="dau"><span class="icon">😴</span><div><div class="so">Nhóm 4</div><h3>Khảo sát khối 10 (lớp 10A1)</h3></div></div>
+      <p class="mo">Thống kê thời gian sử dụng thiết bị số và thời gian ngủ của học sinh khối 10</p>
+      <p class="dc">🔁 So sánh với Nhóm 3 (khối 12): áp lực học tập ở lớp cuối cấp có làm giấc ngủ ngắn hơn không; thói quen dùng điện thoại trước khi ngủ khác nhau ra sao.</p>
+      <p><b>Câu hỏi STEM:</b> Làm thế nào để thu thập ẩn danh số liệu đo thật về thời gian màn hình, giấc ngủ và tính ngay các số đặc trưng của lớp?</p>
+      <ul class="lm"><li><b>S:</b> Sinh học – Hệ thần kinh, nhịp sinh học; Giáo dục thể chất – sức khỏe</li><li><b>E:</b> Quy trình thiết kế kĩ thuật; thực nghiệm có đối chứng</li><li><b>M:</b> Toán 11 – Các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm</li></ul>
+      <p class="do"><b>Đo thật:</b> Thời gian màn hình mỗi ngày (giờ); Giờ đi ngủ, giờ thức dậy; Thói quen trước khi ngủ.</p>
+      <div class="nut">
+        <a class="btn" href="nhom4_phien_ban_3.html">Phiên bản 3 – tính toán liên môn</a>
+        <a class="btn phu" href="nhom4_phien_ban_2.html">Phiên bản 2</a>
+        <a class="btn phu" href="nhom4_phien_ban_1.html">Phiên bản 1 (có lỗi)</a>
+      </div>
+      <div class="chan">
+        <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAADMElEQVR4Xu1bAU4DMQxrp/3/y0WxndyhDcEp3SQ0Zwx2t+oYrnHdJDfXuBC3C2OHRz8JI/gYr8TkPsbkb1xjzIWDNfUcfDOOOeKVn+Qzrn0n0gB2xgscAHGcjFk4RnwGJq/8KwNvITrXDJznWGvEQ8zHLAjzV36Sz7g28K4A4BSVYHlMwDovqJ+Bydv+ykXAg9HB8QnGT6Ef8bZP8mv8108CfovCc60JlOMbJCVe5mJqvJ/HtZkPIqf7oGw/e6S+XLu2Rz8GVkMGpTu5PhbcYToVhhF8jGuYBKj017AhhLi8SbyWKcf7167t0U9CerJgAukD9XPFuUNrQnqM4BZ+n31gsVs7nWB/aY7x7uJNBFeQGfqtvTvB1olwK3OELzTeXbyhJyUgqeOw33LhnAzIifVkD94Ek2tmirhen8N49/EOL8LECf0JEyU8ZrYKHlEDrCddPYl8LFGVltCCA+41czpygPHu4k3Xl9t26Uq6Qso4Fdx+8Ie4xkEhKeedJC/T8k3Grd9b9BslnCzkYDspgamiA13ish/s430jwyfz3NxkAvuw2zELQpozcu1/x6MfQ1xWrirBlWNhHbNMivHu8xvr5YnaSXFtOmnNtWBav/t4MxeYacEqxNN+yyJWztAK0faDNxXhoRos6jAryIMF2POE8d6BN1dIlCmzQh+rJxfL3Gcyj+UVcMN+R+lBEDtzU/TjzGWR78heGe8u3ndaENZ49MR+viwKE+I0isa7i3chmOnBSqQwpUJVgYrbf2/wJ+n/KociHUmPWIYQwmJ+d/nNajA041QpJsmPWjFbCt2v2fcnmS6hchyp76MnNhtord879AQKEV6bqUA0nPArS/aHoni97PNb/WzISwXk2ZMctQZMBZVFeRTr9wb9zsjWn6K5eq4qpWX93sLvo/s4a2skeS6lp4qb+d3l9+n+hqOVUF6c+5/KyFq/9/C77l5QIxUL8lgm6+YG9W2a3zv4nXEINsvzVVirfgnj3cX7O4JKeTMfnqTGlp47IOO9Be9sriKqaQG1TkZyNpuWjXcX71gvZVCOVitoCRUce/oqGhvvLt6n+xv+EMa7i7cRfC+CX8982g0JZMaoAAAAAElFTkSuQmCC" alt="Mã QR nhóm 4"><span>Quét để mở<br>phiên bản 3</span></div>
+        <div class="in">
+          <a class="btn in-btn" href="nhom4_phien_ban_3.html?print=1" target="_blank">🖨 In phiếu có kết quả</a>
+          <a class="btn in-btn phu" href="nhom4_phien_ban_2.html?print=1" target="_blank">🖨 In phiếu trắng</a>
+        </div>
+      </div>
+    </article>
+    </div>
+    <div class="hop">
+      <h2>🖨 In phiếu</h2>
+      <p>Phiếu trắng dùng để học sinh điền tay khi đo đạc; phiếu có kết quả in kèm số liệu, kết quả tính và dòng ký xác nhận. Trên mỗi biểu mẫu cũng có nút <b>In phiếu</b> ở góc trên.</p>
+      <table class="bang-in"><tr><th>Nhóm</th><th>Phiếu trắng (phiên bản 2)</th><th>Phiếu có kết quả (phiên bản 3)</th></tr><tr><td>Nhóm 1 – Ổ điện an toàn – Phòng học</td><td><a href="nhom1_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom1_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr><tr><td>Nhóm 2 – Ổ điện an toàn – Phòng máy</td><td><a href="nhom2_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom2_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr><tr><td>Nhóm 3 – Màn hình và giấc ngủ – Khối 12</td><td><a href="nhom3_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom3_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr><tr><td>Nhóm 4 – Màn hình và giấc ngủ – Khối 10</td><td><a href="nhom4_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom4_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr></table>
+    </div>
+    <div class="hop">
+      <h2>Trợ lí AI được dùng thế nào?</h2>
+      <p><b>Khi thiết kế:</b> nhóm hỏi AI biểu mẫu cần những trường nào, so sánh với bản thiết kế của nhóm, loại trường hỏi thừa thông tin cá nhân.</p>
+      <p><b>Khi thử nghiệm:</b> nhóm tự kiểm thử trước, nhờ AI rà lỗi mã phiên bản 1, rồi kiểm chứng lại từng lỗi AI nêu.</p>
+      <p><b>Khi tính toán:</b> nhóm đưa công thức (đã đối chiếu SGK) cho AI viết đoạn JavaScript; chuyên gia liên môn tính tay để kiểm tra kết quả trước khi dùng.</p>
+      <p><b>Lưu ý:</b> phiếu gửi đi được lưu vào Google Trang tính của nhóm (chỉ xem qua liên kết); gợi ý AI chỉ nhận số liệu, không nhận họ tên. Không nhập thông tin cá nhân thật.</p>
+    </div>
+    <div class="qrsite"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUgAAAFIAQAAAAAab1qeAAACh0lEQVR4Xu1a0W4bMQyzg/7/L3sQSek8YBiY1x7ZINfYRooStETJ3meZ+JjrVlZaCJ8WTgu0nmfV5xrS8DN7wqeDH7K41l5nn3qrFx419MxGnxaKz1UEFnMkUDSS2Gc2+nRwsUT2aq/rscF0I3w6uFkq/orAeqtn7fjwWfC1hP1+eabDCHqWXs+s/51vXnnn9/PPHyL53cN+tNmbWzmJMs1+/26/fxgqdwVN+U5ETzJZw1vh9M272P/fS4KySbBHCJ149Aw96Tcx2f/rv3JlMbgXCHzsp5J9W6evctyvZMkEVXgXSTT2XSFJsNGnCaQckdrZRzudU7Kh59Wq83ccU3hHTJVI8J5TLik5+d/58pV7Q5DjjvALaIZAu+p8OUsmPmCN8RKWSZu8VNmcIl+FTwtQXSV2BEr26BRHN6zSPmo7RZ8WoEJscNIIU8+2Mj9yLvWmh1JdNz/AG0lVkkL8PIys0aeD9p8dNmmP2KlDkTQFVPh0QH1WnNReZ27qo47KUjJM4dPBZeW7Mmqj1CJVYA2fDqTPbi9tpSNU9BNIYe3DpwP26w5cEbI6DVPbJmQi5qjw6YB+nnpkI5THcDz3YCSlVMOnA0VJ9pPUj2e1pDbTNJfDp4PuL3UfaQzT9JF5MBd9euimXB8O32fEV58p/U8XXU/OemQgFZkc5Ej2u4P7fLPP4KTLjqgaD58OfuZOjcLk3GaYYzo18MOng/t+nW7Z1Nmcinj2mlghhU8H1/26qdnvmw26Ypd8ZOJSHXNQ+Xr1Q6YrAjsafTq4WWphtq9XDaorjOHTAc872EauIyPVRjzdnPu0qTddTL2pCwy6bTO+M+fvBX9v/nWF7r/wvzMrHYQlB38AgFtDRZ1s/90AAAAASUVORK5CYII=" alt="Mã QR trang lớp"><br>Mã QR trang lớp</div>
+  </main>
+  <div class="bancu-hop"><a class="bancu" href="../index.html" title="Về bản chính">← Bản chính (web app)</a><a class="bancu" href="../ban-4-nhom/index.html" title="Phiên bản 4 đề tài, lưu để tham khảo">↺ Bản 4 đề tài</a><a class="bancu" href="../ban-cu/index.html" title="Phiên bản cũ của chủ đề (6 nhóm), lưu để tham khảo">↺ Bản 6 nhóm</a></div>
+  <footer>Sản phẩm học tập STEM – Giáo viên hướng dẫn: Đỗ Thị Hoàng Mai, Tổ Tin học, Trường THPT Hàn Thuyên, năm học 2026 – 2027</footer>
+</body>
+</html>
