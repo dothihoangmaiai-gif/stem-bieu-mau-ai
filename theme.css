@@ -232,3 +232,23 @@ td.giua { text-align: center; }
 .bao-luu a.nut-xem { display: inline-block; margin: 6px 8px 0 0; padding: 7px 14px; border-radius: 999px; background: var(--nhan); color: #fff; text-decoration: none; font-weight: 600; }
 .bao-luu a.nut-phu { background: #fff; color: var(--nhan); border: 1px solid var(--nhan); }
 @media print { .tom-tat, .goi-y, .bao-luu { display: none !important; } }
+
+/* ===== Bố cục 2 cột: nhập liệu bên trái – kết quả bên phải (luôn nhìn thấy) ===== */
+body:has(.hai-cot) { max-width: 1240px; }
+.hai-cot { display: grid; grid-template-columns: minmax(0, 1fr) 370px; gap: 24px; align-items: start; }
+.cot-phai { position: sticky; top: 14px; }
+.cot-phai .kq { margin-top: 22px; max-height: calc(100vh - 40px); overflow-y: auto; }
+.cot-phai .kq h3 { margin-top: 0; }
+.cot-phai .bieu-do { flex-direction: column; align-items: flex-start; gap: 6px; }
+.cot-phai .bieu-do svg { width: 100%; max-width: 300px; height: auto; }
+.hai-cot + .tom-tat { display: none; }
+.hai-cot fieldset table input[type=number] { width: 80px; }
+.kq.vua-doi { animation: nhay .6s ease; }
+@keyframes nhay { 0% { box-shadow: 0 0 0 0 rgba(214,165,66,.6); } 100% { box-shadow: 0 0 0 12px rgba(214,165,66,0); } }
+@media (max-width: 980px) {
+  .hai-cot { grid-template-columns: 1fr; }
+  .cot-phai { position: static; }
+  .cot-phai .kq { max-height: none; }
+  .hai-cot + .tom-tat:not(:empty) { display: flex; }
+}
+@media print { .hai-cot { display: block; } .cot-phai { position: static; } .cot-phai .kq { max-height: none; overflow: visible; } }

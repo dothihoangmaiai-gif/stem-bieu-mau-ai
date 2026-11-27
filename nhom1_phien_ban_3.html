@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG HỌC – phiên bản 3</title>
-  <link rel="stylesheet" href="theme.css?v=10">
-  <link rel="stylesheet" href="theme-nhom1.css?v=10">
+  <link rel="stylesheet" href="theme.css?v=11">
+  <link rel="stylesheet" href="theme-nhom1.css?v=11">
 </head>
 <body class="nhom1">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
@@ -29,6 +29,8 @@
   <p class="canh">⚠ <b>An toàn:</b> Chỉ đọc nhãn thiết bị; không mở tủ điện, ổ cắm; luôn có giáo viên đi cùng.</p>
   <p class="mau">Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
   <form action="ketqua.html" method="get">
+   <div class="hai-cot">
+    <div class="cot-trai">
     <fieldset>
       <legend>Thông tin chung</legend>
       <p><label for="phong">Phòng học:</label> <input type="text" id="phong" name="phong" value="B201">
@@ -62,7 +64,8 @@
          Tham khảo: <a href="https://www.sggp.org.vn/chi-tiet-gia-ban-le-dien-ap-dung-tu-ngay-1-11-2026-post880092.html" target="_blank" rel="noopener">Biểu giá bán lẻ điện từ 1/11/2026 (Báo SGGP)</a> ·
          <a href="https://pbgdpl.cantho.gov.vn/quy-dinh-ve-gia-ban-dien" target="_blank" rel="noopener">Bảng giá chi tiết (Cổng PBGDPL Cần Thơ)</a>. Nhóm kiểm tra lại trên hóa đơn tiền điện của trường.</p>
     </fieldset>
-    <div class="tom-tat" id="tt" aria-live="polite"></div>
+    </div>
+    <aside class="cot-phai">
     <div class="kq">
       <h3>KẾT QUẢ TÍNH</h3>
       <div id="kq"></div>
@@ -70,6 +73,9 @@
       <details class="cach-tinh"><summary>Xem cách tính (thay số)</summary>
       <div class="ct" id="ct"></div></details>
     </div>
+    </aside>
+   </div>
+    <div class="tom-tat" id="tt" aria-live="polite"></div>
     <input type="hidden" id="kq_p" name="kq_tong_cong_suat_W">
     <input type="hidden" id="kq_i" name="kq_cuong_do_A">
     <input type="hidden" id="kq_tl" name="kq_ti_le_tai_phan_tram">
@@ -133,8 +139,9 @@
     }
     function homNay() { var d = new Date(), z = function (x) { return (x < 10 ? "0" : "") + x; }; return d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate()); }
     if (!document.getElementById("ngay").value) dat("ngay", homNay());
-    document.querySelector("form").addEventListener("input", tinh);
-    document.querySelector("form").addEventListener("change", tinh);
+    function nhay() { var k = document.querySelector(".kq"); k.classList.remove("vua-doi"); void k.offsetWidth; k.classList.add("vua-doi"); }
+    document.querySelector("form").addEventListener("input", function () { tinh(); nhay(); });
+    document.querySelector("form").addEventListener("change", function () { tinh(); nhay(); });
     document.querySelector("form").addEventListener("reset", function () { setTimeout(function () { dat("ngay", homNay()); tinh(); }, 0); });
     tinh();
   </script>
@@ -144,6 +151,6 @@
     window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
-  <script src="luu-tru.js?v=10"></script>
+  <script src="luu-tru.js?v=11"></script>
 </body>
 </html>
