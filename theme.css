@@ -169,3 +169,31 @@ a { color: var(--nhan); }
 .cot-ngu .cot em { position: absolute; bottom: -20px; left: 0; right: 0; text-align: center; font-style: normal; font-size: 12px; }
 .cot-ngu .vach { position: absolute; left: 0; right: 0; border-top: 2px dashed #facc15; }
 .cot-ngu .vach b { position: absolute; right: 0; top: -18px; font-size: 12px; color: #facc15; }
+
+/* ===== Bố cục kiểu website (thanh menu + băng tiêu đề) cho 4 trang nhóm ===== */
+body[class^="nhom"] { --px: 40px; padding-top: 0; overflow: visible; border-radius: 14px; }
+body[class^="nhom"] .thanh-cong-cu {
+  margin: 0 calc(-1 * var(--px)); padding: 14px var(--px);
+  background: var(--nav-bg); color: var(--nav-chu); border-radius: 14px 14px 0 0;
+  gap: 22px; font-size: 14.5px;
+}
+body[class^="nhom"] .thanh-cong-cu::before { content: var(--thuong-hieu); font-weight: 700; font-size: 16px; letter-spacing: .3px; font-family: var(--font-tieu-de); }
+body[class^="nhom"] .thanh-cong-cu a { color: var(--nav-chu); margin-left: auto; opacity: .92; padding-bottom: 3px; border-bottom: 2px solid var(--nav-gach); }
+body[class^="nhom"] .thanh-cong-cu button { background: var(--nav-nut); border: none; color: var(--nav-nut-chu); border-radius: 999px; box-shadow: none; }
+body[class^="nhom"] h2 {
+  margin: 0 calc(-1 * var(--px)) 22px; padding: 46px var(--px) 54px;
+  background: var(--hero-bg); color: var(--hero-chu); text-align: left;
+  font-family: var(--font-tieu-de); font-size: 34px; line-height: 1.2; border: none;
+  position: relative; clip-path: var(--hero-cat, none);
+}
+body[class^="nhom"] h2::before { color: var(--hero-phu); letter-spacing: 3px; font-size: 11.5px; margin-bottom: 14px; }
+body[class^="nhom"] h2::after { content: ""; display: block; width: 150px; height: 4px; margin-top: 16px; border-radius: 4px; background: var(--hero-gach); }
+body[class^="nhom"] h3, body[class^="nhom"] legend { font-family: var(--font-tieu-de); }
+body[class^="nhom"] .mau { text-align: left; }
+body[class^="nhom"] fieldset table { width: 100%; }
+@media (max-width: 640px) { body[class^="nhom"] { --px: 16px; padding-top: 0; } body[class^="nhom"] h2 { font-size: 25px; padding: 30px 16px 38px; } .thanh-cong-cu::before { display: none; } }
+@media print {
+  body[class^="nhom"] h2 { margin: 0 0 8px; padding: 0 0 8px; background: none !important; color: #111 !important; clip-path: none; border-bottom: 2px solid #333; font-size: 20pt; }
+  body[class^="nhom"] h2::before { color: #555 !important; margin-bottom: 4px; }
+  body[class^="nhom"] h2::after { display: none; }
+}
