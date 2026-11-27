@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Bản cũ] Thiết kế biểu mẫu số với trợ lí AI – giải quyết vấn đề học đường</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6fa; color: #1f2a3a; }
+    header { background: #1f3a68; color: #fff; padding: 28px 20px; text-align: center; }
+    header h1 { margin: 0 0 8px; font-size: 26px; }
+    header p { margin: 4px 0; opacity: .9; }
+    main { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+    .card { background: #fff; border-radius: 10px; padding: 18px; box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+    .so { color: #c0392b; font-weight: bold; font-size: 13px; text-transform: uppercase; }
+    .card h3 { margin: 6px 0 2px; }
+    .mo { margin: 0 0 8px; color: #555; font-size: 14px; }
+    .card p { font-size: 14px; line-height: 1.45; }
+    .btn { display: inline-block; margin: 4px 6px 0 0; padding: 8px 12px; border-radius: 6px; background: #1f3a68; color: #fff; text-decoration: none; font-size: 14px; }
+    .btn.phu { background: #e8edf5; color: #1f3a68; }
+    .ai { background: #fff; border-left: 5px solid #1f3a68; padding: 14px 18px; margin: 24px 0; border-radius: 6px; }
+    .qr { margin-top: 12px; display: flex; align-items: center; gap: 10px; font-size: 12px; color: #555; }
+    .qr img { width: 92px; height: 92px; image-rendering: pixelated; border: 1px solid #ddd; border-radius: 4px; }
+    .qr-lop { margin-top: 12px; }
+    .qr-lop img { width: 110px; height: 110px; image-rendering: pixelated; background: #fff; padding: 4px; border-radius: 6px; }
+    footer { text-align: center; font-size: 13px; color: #666; padding: 20px; }
+  </style>
+</head>
+<body>
+  <div style="background:#fff3cd;color:#5a4500;padding:10px 16px;text-align:center;font-family:Arial,sans-serif;font-size:14px;border-bottom:1px solid #e6d28a">Đây là <b>phiên bản cũ</b> của chủ đề (6 nhóm, lưu để tham khảo). <a href="../index.html" style="color:#1f3a68;font-weight:bold">→ Xem phiên bản mới (4 nhóm STEM, tính toán liên môn)</a></div>
+  <header>
+    <h1>THIẾT KẾ BIỂU MẪU SỐ VỚI TRỢ LÍ AI</h1>
+    <p>Chủ đề STEM – giải quyết vấn đề học đường</p>
+    <p>Tin học 12 – Bài 12. Tạo biểu mẫu · KHỐI 12 · Trường THPT Hàn Thuyên</p>
+    <div class="qr-lop"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUAQAAAABdRz15AAABOklEQVR42s2WMW4EMQwDR4frqR/s/5+1P6BewBQ+IEBSaoHEle1iIIs0oQo/17z4vf7urqqaabp6zmHHU8LAoBFKdvW9ocR1u/E0lNY8gM7NaLTu34enQiOrH+CFngA9asJOj0qBvr0Hunf6JjEDeO5z2PCIQDGyo7Pf8pLIAhwsLXkOyCZCitjWZ2LjKBZiyXsDDWmmPbjMVg/FSDbBClrW5yoZuNSCtpb5V7IFbQ/AtX1vLFmyFbCy9YvsJJaP/9jyDsV2ENbaL2lC5sKQGW37ZyMZgoJ5oH9xggELP6EHRkqII+/69wKwhBu3mO51/kWJ5QTY1keSRJ/UUrTOP04+m4C09d+ZDwrhAjx6Yj5AbkJPcT8xI6l6XH07Yq+vhHKUxlr7LyZTDpNJs/2/gGRhB5yl/+qfz7tf+h37F6p7XoMAAAAASUVORK5CYII=" alt="Mã QR trang web của lớp"><p>Quét mã để mở trang lớp trên điện thoại</p></div>
+  </header>
+  <main>
+    <div class="grid">
+    <div class="card">
+      <div class="so">Nhóm 1</div>
+      <h3>Thư viện số</h3>
+      <p class="mo">Phiếu mượn sách trực tuyến</p>
+      <p>Học sinh mượn sách phải xếp hàng chờ thủ thư ghi vào sổ giấy vào giờ ra chơi. Sổ ghi tay dễ sai tên sách, khó tra cứu ai đang mượn sách nào và ai đã quá hạn trả.</p>
+      <a class="btn" href="nhom1_phien_ban_2.html">Mở biểu mẫu</a>
+      <a class="btn phu" href="nhom1_phien_ban_1.html">Phiên bản 1 (có lỗi)</a>
+      <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkAQAAAAAxzrjsAAABcElEQVR42tWXMa5dIQwFh6/0xzu4+1/W3cFhBZPiJVKkpIuLhA6KEZjBNkd+H/eLP41/Y/WcM9wzc86FOefMCjcK9N7k4X6mK6c4wyGGe3ngzF508px7rxy6FN9vHwHg6ZyS2ePK0IATTpCNezseyK/uQt6/56IqGoMmqt3gBtJEI1XIDldr2kJsYtnh0iTGWqHYrHBbapsErOgG9wtgzgNvw3luztnwF0krCdCYrvmQBC1W27IUX6yNJU0oWdnvFx3OvEPe5xJghiV/K1KoSe2SvzEtJKa0a/6qoWg1uOMvaoOlVdJkKz8UqeYjsnWLK7UYU8Kav7QJjRhKlrgxicE0n7ex9I7bNoWGZjE/aLRWI6zl3zQFTTHZu7dArIH8qMxb9U1BIbWRlfh++odeBocyAO9WPzkPdl4Get+dOhSShKYWYMffH6s3884d25DZ6+JLx2R42nep/7W8zx3vhYHJUp2H8FM1GsiKZ//XP+s7w9RUxX5QVBcAAAAASUVORK5CYII=" alt="Mã QR biểu mẫu Nhóm 1"><span>Quét mã để mở biểu mẫu<br>của Nhóm 1 trên điện thoại</span></div>
+    </div>
+    <div class="card">
+      <div class="so">Nhóm 2</div>
+      <h3>Căn tin xanh</h3>
+      <p class="mo">Khảo sát ý kiến học sinh</p>
+      <p>Căn tin muốn cải thiện thực đơn nhưng chỉ nhận góp ý miệng, không biết món nào được nhiều học sinh chọn và mức độ hài lòng chung ra sao.</p>
+      <a class="btn" href="nhom2_phien_ban_2.html">Mở biểu mẫu</a>
+      <a class="btn phu" href="nhom2_phien_ban_1.html">Phiên bản 1 (có lỗi)</a>
+      <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkAQAAAAAxzrjsAAABc0lEQVR42tWXsbHdMBAD9zw/Bzt4/ZelDpYVwIF+4Bk78wU2pUQKMJw9CISm/L7uD/60/o23M3M4c5m5cGbmrOimhYfPTT7c9/Hvdb9gwjTPhwsfmOzRyVzuLYNLfL9eA8DHM5Kzp1tObqEnTCgbc5sO5FfvQp6/16Vtm7YNbdK2bugG0vfCFrKj22orkJpUdnQhxNZakJoVXUMrSaCWdklXAsYGYmBrvyoJYBq3/GAMFWpV2eL7IoWYKOmWH0qUGBJJtvi2JQg2sS7t18ZK0oiu+Zc2QOubEUv+bQRFW2KylA+Rog3RUlf88APoGK7xw2TO3ch1KppgSoNk7bvoG2cxxIQtvmoRg9nLh1jyziv9DoyduR3vCZ87noRZOedphLaBfJ/MW+dbCxZiTVnh+/YHp/f0IAfg2eqTkxvPwwHvs8SXvLcVYMe/331SfM491ZCz1+KvnCaHjz5L/bfynHt6Lxw42eH7Ii20wFZ/mP/sP+sny6NU0zRhxK4AAAAASUVORK5CYII=" alt="Mã QR biểu mẫu Nhóm 2"><span>Quét mã để mở biểu mẫu<br>của Nhóm 2 trên điện thoại</span></div>
+    </div>
+    <div class="card">
+      <div class="so">Nhóm 3</div>
+      <h3>Phòng học an toàn</h3>
+      <p class="mo">Biểu mẫu báo hỏng cơ sở vật chất</p>
+      <p>Khi quạt, đèn, ổ điện hay máy chiếu trong lớp bị hỏng, lớp trưởng phải xuống văn phòng báo miệng. Thông tin thường thiếu vị trí cụ thể, không có hình ảnh, việc sửa chữa bị chậm và có thể gây mất an toàn điện.</p>
+      <a class="btn" href="nhom3_phien_ban_2.html">Mở biểu mẫu</a>
+      <a class="btn phu" href="nhom3_phien_ban_1.html">Phiên bản 1 (có lỗi)</a>
+      <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkAQAAAAAxzrjsAAABc0lEQVR42tWXsW3AQAwDT0Z6agPvP5Y3oCZgineAAEmpIvlSBd84UeK7ws8zF7+dv1Gtqu7qmZ6epqp6QZcokQ0EKVIir+gigTGOE6EN3VM1pE1Ry9TT6EbSom7MXZRpN028oVsp0Hfvgp6NviWJA4kilCQrfeumKFIFFkPv+BdiB2ECUtjxmTL3XUZQMrTY+V4RG1669hLfPGmUMA50wwbfDwp87NaPZ28uHBrGYZom9A7fWImkY2CbrX1mlGAnIVK8tc/yFLmZHhUz7HAQyIqNHCvSDgfyZd+cO1b8SyzJis9ciHhHV3FkLGPMUr5dTKmnw7QIZpb8K8XIkd5kXuIQCZ/IsCKy1bckwm8WCS/NG0IikmU72vJvUCJZKEHWEl+IhBMlytlEK3s9GHrqqTmp0WvvyYkJ4WmaYe89mZeElR2+F1RztmPTTKHFd19LjAc5O3N8qjfPiPYUs9O3wzdCIXpzbsm/CHyywltzXP/sP+sT1eY31B1d40EAAAAASUVORK5CYII=" alt="Mã QR biểu mẫu Nhóm 3"><span>Quét mã để mở biểu mẫu<br>của Nhóm 3 trên điện thoại</span></div>
+    </div>
+    <div class="card">
+      <div class="so">Nhóm 4</div>
+      <h3>Sổ liên lạc số</h3>
+      <p class="mo">Đơn xin nghỉ học trực tuyến</p>
+      <p>Khi học sinh ốm, phụ huynh phải viết đơn giấy nhờ bạn mang đến lớp hoặc nhắn tin riêng cho giáo viên chủ nhiệm. Đơn dễ thất lạc, thiếu thông tin ngày nghỉ, buổi nghỉ.</p>
+      <a class="btn" href="nhom4_phien_ban_2.html">Mở biểu mẫu</a>
+      <a class="btn phu" href="nhom4_phien_ban_1.html">Phiên bản 1 (có lỗi)</a>
+      <a class="btn phu" href="nhom4_phien_ban_3.html">Phiên bản 3 (POST)</a>
+      <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkAQAAAAAxzrjsAAABcElEQVR42tWXsbEdMQwDV56fgx1c/2W9DqAK1sH9wDN2ZgY2QwUYHLnCUUd+r/uDP9W/cXrOmXPnzHDvmXPOrOhGaeq99yFEN/x+wQkMxePQOdnrzvP5XK98mNWu33m4Dzd3a25fIENz/NxcB9mY2/FAfmUX8vl7XVRNESFRtRu6MWAqIAWzoluUKqk2DRt+f0DuyQyBcwe6wi+ChqZiSl3yq+c0+XB7oMMKZ5hiSImFiEv9fZgLyJ3AYXb6W7FNtX152OHMJjSJhTbNGr/F2tg2Upd036oWgtnRRUwLKYnZ4RdLo9pv/W75DbUlaYVmKc9aKBRfINjyS/p+P0iaJV1TmihJWro0t9BafTHeygc0JGBig93iVyrGvuG2N7cQ2pKS98Z1Y38QONMBypOOe/tkfJCHpwx3J3+jKSS2Grf6GxKMkcb3Cm7p1n7He9nK9ZCY1Fjb7PD77pP3w8CFKXO39pLviCzE4sp/8/xn76yf04pYxd7vRFYAAAAASUVORK5CYII=" alt="Mã QR biểu mẫu Nhóm 4"><span>Quét mã để mở biểu mẫu<br>của Nhóm 4 trên điện thoại</span></div>
+    </div>
+    <div class="card">
+      <div class="so">Nhóm 5</div>
+      <h3>Sống xanh</h3>
+      <p class="mo">Khảo sát thói quen sử dụng đồ nhựa dùng một lần</p>
+      <p>Thùng rác của trường mỗi ngày đầy chai nhựa, ly nhựa, ống hút. Đoàn trường muốn phát động phong trào giảm rác nhựa nhưng chưa có số liệu về thói quen của học sinh.</p>
+      <a class="btn" href="nhom5_phien_ban_2.html">Mở biểu mẫu</a>
+      <a class="btn phu" href="nhom5_phien_ban_1.html">Phiên bản 1 (có lỗi)</a>
+      <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkAQAAAAAxzrjsAAABeElEQVR42tWXsREcMQwDV57PwQ6u/7K+A6iCdXDjyM7MwFamCzAQCGB4R34/9wd/Ov/G13POzDnDORfmnDMruFFuW+zMEF16xRkc7tyn95YzG7gfACbTOx6yq/oXscidJVyMRiAQYjT9e9zj4dfrX+9Cvht8VSGtNo1qN/Sdc48yz70Ac++s6Nu0tkBsYtng+4Ee8PUw5c5SLp7TMsAXhklnx2evBE0NpIF0JxcW+D63eufSpVwAeecVQrIyN9RqWtKEEnf8cDqQBy70phyXdIiUvIqYrswNwbQlMaW1S7ht39ylr8Qu8SVJQhqhuMPXVqohrVh3+DYhxfqq4hIuiWgkaZClXLTGiGnebCzljTaQ0FBgyWdNaCxU0qVex7zlYIpJlvh+6DA4Fzpfhjw7PalK6euzmOz0+jlnGBkSYbb2qCgwI1wOpd3qyXcdSd+qXJobwHPnywW+PDys8aVJ8l5Y2qPeBbWAXrws7Q9AqKDA1v5w/rP/rJ8iwDOIZGiDoAAAAABJRU5ErkJggg==" alt="Mã QR biểu mẫu Nhóm 5"><span>Quét mã để mở biểu mẫu<br>của Nhóm 5 trên điện thoại</span></div>
+    </div>
+    <div class="card">
+      <div class="so">Nhóm 6</div>
+      <h3>Sức khỏe số</h3>
+      <p class="mo">Khảo sát thời gian sử dụng thiết bị số và giấc ngủ</p>
+      <p>Nhiều học sinh buồn ngủ trong tiết đầu. Giáo viên chủ nhiệm nghi do dùng điện thoại khuya nhưng chưa có số liệu để tư vấn cho học sinh và phụ huynh.</p>
+      <a class="btn" href="nhom6_phien_ban_2.html">Mở biểu mẫu</a>
+      <a class="btn phu" href="nhom6_phien_ban_1.html">Phiên bản 1 (có lỗi)</a>
+      <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkAQAAAAAxzrjsAAABdUlEQVR42tWXsZUdMQwDh36Xjzr4/Ze1HUAVwMGeIzszA1vhBngQCELYKb+f+4M/nX/j68ycw9wzc+HMzFnBteVeoDnnYLvB9wtGepD7yaFnXMIFzuXe08Fd1R9LQ7lnCfcLyuEZvIg5ZWNu0+HX7V/vgs/f49K2FUkbY9tmQ98zd54mn3vfEd4NHWhMbQI22rDB9ws43uv0cAn3rOwFtSmWxlAbN/jSBCGmghFcwSWNJqYtQHZwQ1EMVVF2dHilLRhNsDt+eHDkdi7kGqbs6EtIpAI1W3NrTUFrSLo0N0z4NoVR0iWfga8jLITu8DUpScWkNF3i+5rX9HtLlnIy0GtxNAdnlnIniqZGzNq+lcSkEslmPrx8IcUs5Tq1Jra/gmeLb6vEmJiAuvQOhQEeh1NzlnrJ2x+eQyVwdvoOtVWklWJd2jffJPMd3JbPvvtkzr0XePjwWdIBJa/F+gqSrT5ZDlAuHU523iGQFFpgqz/Mf/af9RNOxjR0MrsdngAAAABJRU5ErkJggg==" alt="Mã QR biểu mẫu Nhóm 6"><span>Quét mã để mở biểu mẫu<br>của Nhóm 6 trên điện thoại</span></div>
+    </div>
+    </div>
+    <div class="ai">
+      <h3>Trợ lí AI được dùng thế nào?</h3>
+      <p><b>Khi thiết kế:</b> nhóm hỏi AI biểu mẫu cần những trường nào, rồi so sánh với bản thiết kế của nhóm – bổ sung trường còn thiếu, loại trường hỏi thừa (ví dụ: thông tin cá nhân không cần thiết).</p>
+      <p><b>Khi thử nghiệm:</b> nhóm tự kiểm thử trước, sau đó nhờ AI rà lỗi mã phiên bản 1, lập bảng “lỗi nhóm tự tìm – lỗi AI tìm” và kiểm chứng lại từng lỗi AI nêu.</p>
+      <p><b>Lưu ý:</b> biểu mẫu trên trang này dùng để minh họa và thử nghiệm; dữ liệu chỉ hiển thị trên trang kiểm tra, không được lưu lại. Không nhập thông tin cá nhân thật.</p>
+    </div>
+  </main>
+  <footer>Sản phẩm học tập STEM – Giáo viên hướng dẫn: Đỗ Thị Hoàng Mai, Tổ Tin học, Trường THPT Hàn Thuyên, năm học 2026 – 2027</footer>
+</body>
+</html>

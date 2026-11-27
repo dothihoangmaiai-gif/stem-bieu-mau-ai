@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>BÁO HỎNG CƠ SỞ VẬT CHẤT</title>
+</head>
+<body>
+  <!-- Nhóm 3: PHÒNG HỌC AN TOÀN – BIỂU MẪU BÁO HỎNG CƠ SỞ VẬT CHẤT -->
+  <!-- Phiên bản 1 – bản chế tạo đầu tiên, CÓ LỖI để nhóm phát hiện khi thử nghiệm -->
+  <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
+       Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
+  <h2>BÁO HỎNG CƠ SỞ VẬT CHẤT</h2>
+  <form action="ketqua.html" method="get">
+    <p><label for="nguoibao">Người báo:</label>
+      <input type="text" id="nguoibao" name="nguoibao"></p>
+    <p><label for="phong">Phòng học:</label>
+      <input type="text" id="phong" name="phong"></p>
+    <p><label for="mota">Mô tả hư hỏng:</label><br>
+      <textarea id="mota" name="mota" rows="4" cols="40"></textarea></p>
+    <p><input type="submit" value="Gửi báo hỏng"></p>
+  </form>
+  <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>
+</body>
+</html>

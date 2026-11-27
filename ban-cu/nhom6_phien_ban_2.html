@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>KHẢO SÁT THỜI GIAN MÀN HÌNH VÀ GIẤC NGỦ</title>
+</head>
+<body>
+  <!-- Nhóm 6: SỨC KHỎE SỐ – KHẢO SÁT THỜI GIAN SỬ DỤNG THIẾT BỊ SỐ VÀ GIẤC NGỦ -->
+  <!-- Phiên bản 2 – đã cải tiến sau thử nghiệm -->
+  <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
+       Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
+  <h2>KHẢO SÁT THỜI GIAN MÀN HÌNH VÀ GIẤC NGỦ</h2>
+  <form action="ketqua.html" method="get">
+    <fieldset>
+      <legend>Thông tin chung (ẩn danh)</legend>
+    <p>Khối:<br>
+      <input type="radio" id="khoi1" name="khoi" value="10">
+      <label for="khoi1">10</label><br>
+      <input type="radio" id="khoi2" name="khoi" value="11">
+      <label for="khoi2">11</label><br>
+      <input type="radio" id="khoi3" name="khoi" value="12">
+      <label for="khoi3">12</label><br>
+    </p>
+    </fieldset>
+    <fieldset>
+      <legend>Thiết bị số</legend>
+    <p><label for="gio">Số giờ dùng thiết bị số mỗi ngày (ngoài giờ học):</label>
+      <select id="gio" name="gio">
+        <option value="Dưới 2 giờ">Dưới 2 giờ</option>
+        <option value="2–4 giờ">2–4 giờ</option>
+        <option value="4–6 giờ">4–6 giờ</option>
+        <option value="Trên 6 giờ">Trên 6 giờ</option>
+      </select></p>
+    <p>Mục đích sử dụng:<br>
+      <input type="checkbox" id="mucdich1" name="mucdich" value="Học tập">
+      <label for="mucdich1">Học tập</label><br>
+      <input type="checkbox" id="mucdich2" name="mucdich" value="Mạng xã hội">
+      <label for="mucdich2">Mạng xã hội</label><br>
+      <input type="checkbox" id="mucdich3" name="mucdich" value="Chơi game">
+      <label for="mucdich3">Chơi game</label><br>
+      <input type="checkbox" id="mucdich4" name="mucdich" value="Xem phim, video">
+      <label for="mucdich4">Xem phim, video</label><br>
+      <input type="checkbox" id="mucdich5" name="mucdich" value="Nhắn tin">
+      <label for="mucdich5">Nhắn tin</label><br>
+    </p>
+    </fieldset>
+    <fieldset>
+      <legend>Giấc ngủ</legend>
+    <p><label for="ngu">Số giờ ngủ mỗi đêm:</label>
+      <select id="ngu" name="ngu">
+        <option value="Dưới 6 giờ">Dưới 6 giờ</option>
+        <option value="6–7 giờ">6–7 giờ</option>
+        <option value="7–8 giờ">7–8 giờ</option>
+        <option value="Trên 8 giờ">Trên 8 giờ</option>
+      </select></p>
+    <p>Dùng điện thoại trong 30 phút trước khi ngủ?:<br>
+      <input type="radio" id="truocngu1" name="truocngu" value="Có">
+      <label for="truocngu1">Có</label><br>
+      <input type="radio" id="truocngu2" name="truocngu" value="Không">
+      <label for="truocngu2">Không</label><br>
+    </p>
+    <p><label for="mongmuon">Em muốn được hỗ trợ gì?:</label><br>
+      <textarea id="mongmuon" name="mongmuon" rows="4" cols="40"></textarea></p>
+    </fieldset>
+    <p><input type="submit" value="Gửi khảo sát"></p>
+  </form>
+  <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>
+</body>
+</html>

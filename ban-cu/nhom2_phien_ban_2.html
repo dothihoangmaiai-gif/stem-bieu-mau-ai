@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>KHẢO SÁT Ý KIẾN VỀ CĂN TIN</title>
+</head>
+<body>
+  <!-- Nhóm 2: CĂN TIN XANH – KHẢO SÁT Ý KIẾN HỌC SINH -->
+  <!-- Phiên bản 2 – đã cải tiến sau thử nghiệm -->
+  <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
+       Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
+  <h2>KHẢO SÁT Ý KIẾN VỀ CĂN TIN</h2>
+  <form action="ketqua.html" method="get">
+    <fieldset>
+      <legend>Thông tin chung</legend>
+    <p>Khối:<br>
+      <input type="radio" id="khoi1" name="khoi" value="10">
+      <label for="khoi1">10</label><br>
+      <input type="radio" id="khoi2" name="khoi" value="11">
+      <label for="khoi2">11</label><br>
+      <input type="radio" id="khoi3" name="khoi" value="12">
+      <label for="khoi3">12</label><br>
+    </p>
+    <p>Mức độ hài lòng:<br>
+      <input type="radio" id="hailong1" name="hailong" value="Rất hài lòng">
+      <label for="hailong1">Rất hài lòng</label><br>
+      <input type="radio" id="hailong2" name="hailong" value="Hài lòng">
+      <label for="hailong2">Hài lòng</label><br>
+      <input type="radio" id="hailong3" name="hailong" value="Bình thường">
+      <label for="hailong3">Bình thường</label><br>
+      <input type="radio" id="hailong4" name="hailong" value="Chưa hài lòng">
+      <label for="hailong4">Chưa hài lòng</label><br>
+    </p>
+    </fieldset>
+    <fieldset>
+      <legend>Ý kiến của em</legend>
+    <p>Món em thường mua:<br>
+      <input type="checkbox" id="mon1" name="mon" value="Cơm phần">
+      <label for="mon1">Cơm phần</label><br>
+      <input type="checkbox" id="mon2" name="mon" value="Bánh mì">
+      <label for="mon2">Bánh mì</label><br>
+      <input type="checkbox" id="mon3" name="mon" value="Mì/phở">
+      <label for="mon3">Mì/phở</label><br>
+      <input type="checkbox" id="mon4" name="mon" value="Trái cây">
+      <label for="mon4">Trái cây</label><br>
+      <input type="checkbox" id="mon5" name="mon" value="Sữa">
+      <label for="mon5">Sữa</label><br>
+      <input type="checkbox" id="mon6" name="mon" value="Nước ngọt">
+      <label for="mon6">Nước ngọt</label><br>
+    </p>
+    <p><label for="solan">Số lần mua mỗi tuần:</label>
+      <select id="solan" name="solan">
+        <option value="0">0</option>
+        <option value="1–2">1–2</option>
+        <option value="3–4">3–4</option>
+        <option value="5 trở lên">5 trở lên</option>
+      </select></p>
+    <p><label for="gopy">Góp ý thêm:</label><br>
+      <textarea id="gopy" name="gopy" rows="4" cols="40"></textarea></p>
+    </fieldset>
+    <p><input type="submit" value="Gửi ý kiến"></p>
+  </form>
+  <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>
+</body>
+</html>
