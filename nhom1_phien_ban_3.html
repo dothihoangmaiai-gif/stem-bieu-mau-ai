@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PHIẾU KIỂM TRA AN TOÀN Ổ CẮM – phiên bản 3</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 860px; margin: 16px auto; padding: 0 12px; color: #1f2a3a; line-height: 1.45; }
+    h2 { color: #1f3a68; margin-bottom: 4px; }
+    fieldset { margin: 12px 0; border: 1px solid #9fb3cf; border-radius: 6px; }
+    legend { font-weight: bold; color: #1f3a68; }
+    table { border-collapse: collapse; margin: 6px 0; }
+    th, td { border: 1px solid #b8c4d6; padding: 4px 7px; text-align: left; font-size: 14px; }
+    th { background: #e8edf5; }
+    input[type=number] { width: 88px; }
+    .lm { background: #fff8e1; border-left: 5px solid #f0a500; padding: 8px 14px; margin: 10px 0; font-size: 14px; }
+    .kq { background: #eef7ee; border: 2px solid #2e7d32; border-radius: 8px; padding: 10px 16px; margin: 12px 0; }
+    .kq h3 { margin: 4px 0 8px; color: #2e7d32; }
+    .ct { background: #f5f5f5; border-radius: 4px; padding: 8px 10px; white-space: pre-wrap; font-size: 13.5px; }
+    .tot { color: #2e7d32; font-weight: bold; } .chu { color: #d17a00; font-weight: bold; } .xau { color: #c62828; font-weight: bold; }
+    .mau { color: #777; font-size: 13px; }
+    .canh { color: #c62828; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <!-- Nhóm 1: Ổ ĐIỆN AN TOÀN – KIỂM TRA QUÁ TẢI Ổ CẮM VÀ ĐIỆN NĂNG LÃNG PHÍ TRONG LỚP HỌC -->
+  <!-- Phiên bản 3 – thêm phần TÍNH TOÁN LIÊN MÔN.
+       Phần HTML (biểu mẫu) do nhóm viết theo Bài 12. Phần <script> do nhóm viết cùng trợ lí AI;
+       mọi công thức đã được chuyên gia liên môn của nhóm kiểm chứng bằng tính tay (xem báo cáo, mục Kiểm chứng).
+       Khi thử nghiệm, dữ liệu và kết quả tính được gửi bằng GET tới ketqua.html. -->
+  <h2>PHIẾU KIỂM TRA AN TOÀN Ổ CẮM</h2>
+  <p class="mau">Phiên bản 3 – có tính toán tự động. Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
+  <div class="lm"><b>Kiến thức liên môn sử dụng</b>
+    <ul>
+      <li><b>S – Khoa học:</b> Vật lí 11 – Năng lượng điện. Công suất điện – P = U·I ⇒ I = P/U; A = P·t; nhiều thiết bị mắc song song vào ổ cắm thì công suất cộng lại</li>
+      <li><b>S – Khoa học:</b> Công nghệ – An toàn điện; thông số kĩ thuật ghi trên thiết bị – Đọc công suất định mức (W), hiệu điện thế (V), dòng định mức của ổ cắm (A); nguyên nhân quá tải, chập cháy</li>
+      <li><b>T – Công nghệ:</b> Tin học 12 – Bài 12. Tạo biểu mẫu – input number, checkbox, date, select, fieldset; phần tính toán do trợ lí AI hỗ trợ viết</li>
+      <li><b>E – Kĩ thuật:</b> Quy trình thiết kế kĩ thuật; kiểm thử theo ngưỡng – Ngưỡng cảnh báo: ≤ 80% định mức – an toàn; 80% – 100% – cần chú ý; > 100% – quá tải (ngưỡng 80% do nhóm chọn để có khoảng dự phòng)</li>
+      <li><b>M – Toán học:</b> Toán – tỉ lệ phần trăm, đổi đơn vị, làm tròn – Tỉ lệ tải = I/I(định mức) × 100%; 1 kWh = 1000 Wh; tiền = A × đơn giá</li>
+    </ul>
+  </div>
+  <p class="canh"><b>An toàn:</b> Chỉ đọc nhãn, không mở, không tháo, không chạm vào ổ điện đang có điện; thiết bị cần lật xem nhãn phải rút điện trước và có giáo viên.</p>
+  <form action="ketqua.html" method="get">
+    <fieldset>
+      <legend>Thông tin chung</legend>
+      <p><label for="phong">Phòng học:</label> <input type="text" id="phong" name="phong" value="B201">
+         <label for="lop">Lớp:</label> <select id="lop" name="lop"><option>12A1</option><option>12A3</option><option selected>12A8</option><option>11A7</option><option>11A12</option><option>10A1</option></select>
+         <label for="ngay">Ngày kiểm tra:</label> <input type="date" id="ngay" name="ngay"></p>
+    </fieldset>
+    <fieldset>
+      <legend>Ổ cắm (đọc số in trên ổ)</legend>
+      <p><label for="dongdm">Dòng điện định mức (A):</label> <input type="number" id="dongdm" name="dongdm" min="1" max="32" step="1" value="10">
+         <label for="dienap">Hiệu điện thế U (V):</label> <input type="number" id="dienap" name="dienap" min="100" max="250" step="1" value="220"></p>
+    </fieldset>
+    <fieldset>
+      <legend>Thiết bị đang cắm vào ổ (đọc công suất trên nhãn)</legend>
+      <table>
+        <tr><th>Thiết bị</th><th>Số lượng</th><th>Công suất 1 chiếc (W)</th><th>Thành tiền công suất (W)</th></tr>
+        <tr><td>Quạt đứng</td><td><input type="number" id="sl_quat" name="sl_quat" min="0" step="1" value="2"></td><td><input type="number" id="p_quat" name="p_quat" min="0" step="1" value="55"></td><td id="t_quat"></td></tr>
+        <tr><td>Máy chiếu</td><td><input type="number" id="sl_chieu" name="sl_chieu" min="0" step="1" value="1"></td><td><input type="number" id="p_chieu" name="p_chieu" min="0" step="1" value="250"></td><td id="t_chieu"></td></tr>
+        <tr><td>Loa</td><td><input type="number" id="sl_loa" name="sl_loa" min="0" step="1" value="1"></td><td><input type="number" id="p_loa" name="p_loa" min="0" step="1" value="100"></td><td id="t_loa"></td></tr>
+        <tr><td>Laptop</td><td><input type="number" id="sl_laptop" name="sl_laptop" min="0" step="1" value="2"></td><td><input type="number" id="p_laptop" name="p_laptop" min="0" step="1" value="65"></td><td id="t_laptop"></td></tr>
+        <tr><td>Sạc điện thoại</td><td><input type="number" id="sl_sac" name="sl_sac" min="0" step="1" value="10"></td><td><input type="number" id="p_sac" name="p_sac" min="0" step="1" value="20"></td><td id="t_sac"></td></tr>
+        <tr><td>Khác</td><td><input type="number" id="sl_khac" name="sl_khac" min="0" step="1" value="0"></td><td><input type="number" id="p_khac" name="p_khac" min="0" step="1" value="0"></td><td id="t_khac"></td></tr>
+      </table>
+    </fieldset>
+    <fieldset>
+      <legend>Thiết bị bị quên tắt</legend>
+      <p><label for="pquen">Tổng công suất thiết bị quên tắt (W):</label> <input type="number" id="pquen" name="pquen" min="0" step="1" value="300">
+         <label for="gioquen">Số giờ quên tắt mỗi ngày:</label> <input type="number" id="gioquen" name="gioquen" min="0" max="24" step="0.5" value="2"></p>
+      <p><label for="songay">Số ngày học mỗi tháng:</label> <input type="number" id="songay" name="songay" min="0" max="31" step="1" value="22">
+         <label for="dongia">Đơn giá điện (đồng/kWh, tra biểu giá EVN):</label> <input type="number" id="dongia" name="dongia" min="0" step="1" placeholder="nhóm tra cứu"></p>
+    </fieldset>
+    <div class="kq">
+      <h3>KẾT QUẢ TÍNH</h3>
+      <div id="kq"></div>
+      <p><b>Cách tính (thay số):</b></p>
+      <div class="ct" id="ct"></div>
+    </div>
+    <input type="hidden" id="kq_p" name="kq_tong_cong_suat_W">
+    <input type="hidden" id="kq_i" name="kq_cuong_do_A">
+    <input type="hidden" id="kq_tl" name="kq_ti_le_tai_phan_tram">
+    <input type="hidden" id="kq_mh" name="kq_canh_bao">
+    <input type="hidden" id="kq_a" name="kq_dien_nang_kWh_thang">
+    <p><input type="submit" value="Gửi phiếu"> <input type="reset" value="Nhập lại"></p>
+  </form>
+  <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>
+  <script>
+    function so(id) { var x = parseFloat(document.getElementById(id).value); return isNaN(x) ? 0 : x; }
+    function f(x, n) { return Number(x).toLocaleString("vi-VN", { maximumFractionDigits: n === undefined ? 2 : n }); }
+    function dat(id, v) { document.getElementById(id).value = v; }
+    function hien(id, html) { document.getElementById(id).innerHTML = html; }
+
+    var TB = ["quat","chieu","loa","laptop","sac","khac"];
+    function tinh() {
+      var P = 0, dong = [];
+      TB.forEach(function (k) {
+        var n = so("sl_" + k), p = so("p_" + k);
+        hien("t_" + k, f(n * p));
+        P += n * p;
+        if (n > 0) dong.push(n + "×" + p);
+      });
+      var U = so("dienap"), Idm = so("dongdm");
+      var am = TB.some(function (k) { return so("sl_" + k) < 0 || so("p_" + k) < 0; });
+      if (am || U <= 0 || Idm <= 0) { hien("kq", '<span class="xau">Số liệu chưa hợp lệ: U, I định mức phải lớn hơn 0; số lượng, công suất không âm.</span>'); hien("ct", ""); return; }
+      var I = P / U, tl = I / Idm * 100;
+      var muc = tl <= 80 ? '<span class="tot">AN TOÀN</span>' : (tl <= 100 ? '<span class="chu">CẦN CHÚ Ý – gần định mức, không cắm thêm</span>'
+                : '<span class="xau">QUÁ TẢI – rút bớt thiết bị, báo giáo viên</span>');
+      var A = so("pquen") * so("gioquen") * so("songay") / 1000, gia = so("dongia");
+      hien("kq", "Tổng công suất: <b>" + f(P) + " W</b><br>Cường độ dòng điện qua ổ: <b>" + f(I) + " A</b> / định mức " + f(Idm) + " A" +
+        "<br>Tỉ lệ tải: <b>" + f(tl, 1) + "%</b> → " + muc +
+        "<br>Điện năng lãng phí do quên tắt: <b>" + f(A) + " kWh/tháng</b>" +
+        (gia > 0 ? " ≈ <b>" + f(A * gia, 0) + " đồng/tháng</b>" : " (nhập đơn giá để tính tiền)"));
+      hien("ct", "P = " + (dong.join(" + ") || "0") + " = " + f(P) + " W\n" +
+        "I = P / U = " + f(P) + " / " + f(U) + " ≈ " + f(I) + " A\n" +
+        "Tỉ lệ tải = I / I(định mức) × 100% = " + f(I) + " / " + f(Idm) + " × 100% ≈ " + f(tl, 1) + "%\n" +
+        "   (≤ 80%: an toàn; 80% – 100%: cần chú ý; > 100%: quá tải)\n" +
+        "A = P(quên) × t × số ngày / 1000 = " + f(so("pquen")) + " × " + f(so("gioquen")) + " × " + f(so("songay")) + " / 1000 = " + f(A) + " kWh" +
+        (gia > 0 ? "\nTiền điện = " + f(A) + " × " + f(gia, 0) + " ≈ " + f(A * gia, 0) + " đồng" : ""));
+      dat("kq_p", P); dat("kq_i", I.toFixed(2)); dat("kq_tl", tl.toFixed(1));
+      dat("kq_mh", tl <= 80 ? "An toàn" : (tl <= 100 ? "Cần chú ý" : "Quá tải")); dat("kq_a", A.toFixed(2));
+    }
+    document.querySelector("form").addEventListener("input", tinh);
+    document.querySelector("form").addEventListener("reset", function () { setTimeout(tinh, 0); });
+    tinh();
+  </script>
+</body>
+</html>

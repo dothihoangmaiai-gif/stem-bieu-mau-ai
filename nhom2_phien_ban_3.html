@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PHIẾU TÍNH DINH DƯỠNG BỮA ĂN – phiên bản 3</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 860px; margin: 16px auto; padding: 0 12px; color: #1f2a3a; line-height: 1.45; }
+    h2 { color: #1f3a68; margin-bottom: 4px; }
+    fieldset { margin: 12px 0; border: 1px solid #9fb3cf; border-radius: 6px; }
+    legend { font-weight: bold; color: #1f3a68; }
+    table { border-collapse: collapse; margin: 6px 0; }
+    th, td { border: 1px solid #b8c4d6; padding: 4px 7px; text-align: left; font-size: 14px; }
+    th { background: #e8edf5; }
+    input[type=number] { width: 88px; }
+    .lm { background: #fff8e1; border-left: 5px solid #f0a500; padding: 8px 14px; margin: 10px 0; font-size: 14px; }
+    .kq { background: #eef7ee; border: 2px solid #2e7d32; border-radius: 8px; padding: 10px 16px; margin: 12px 0; }
+    .kq h3 { margin: 4px 0 8px; color: #2e7d32; }
+    .ct { background: #f5f5f5; border-radius: 4px; padding: 8px 10px; white-space: pre-wrap; font-size: 13.5px; }
+    .tot { color: #2e7d32; font-weight: bold; } .chu { color: #d17a00; font-weight: bold; } .xau { color: #c62828; font-weight: bold; }
+    .mau { color: #777; font-size: 13px; }
+    .canh { color: #c62828; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <!-- Nhóm 2: BỮA ĂN CÂN BẰNG – TÍNH NĂNG LƯỢNG VÀ TỈ LỆ CHẤT DINH DƯỠNG BỮA ĂN Ở CĂN TIN -->
+  <!-- Phiên bản 3 – thêm phần TÍNH TOÁN LIÊN MÔN.
+       Phần HTML (biểu mẫu) do nhóm viết theo Bài 12. Phần <script> do nhóm viết cùng trợ lí AI;
+       mọi công thức đã được chuyên gia liên môn của nhóm kiểm chứng bằng tính tay (xem báo cáo, mục Kiểm chứng).
+       Khi thử nghiệm, dữ liệu và kết quả tính được gửi bằng GET tới ketqua.html. -->
+  <h2>PHIẾU TÍNH DINH DƯỠNG BỮA ĂN</h2>
+  <p class="mau">Phiên bản 3 – có tính toán tự động. Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
+  <div class="lm"><b>Kiến thức liên môn sử dụng</b>
+    <ul>
+      <li><b>S – Khoa học:</b> Hóa học 12 – Carbohydrate; Hợp chất chứa nitrogen (protein); Ester – lipid (chất béo) – Nhận biết 3 nhóm chất cung cấp năng lượng; vai trò của từng nhóm</li>
+      <li><b>S – Khoa học:</b> Sinh học 11 – Dinh dưỡng ở người, khẩu phần ăn hợp lí – Bữa ăn cân đối các nhóm chất; hạn chế đường, đồ uống có đường</li>
+      <li><b>T – Công nghệ:</b> Tin học 12 – Bài 12. Tạo biểu mẫu – checkbox (nhiều món), number (số phần, số gam), radio, fieldset; phần tính toán do trợ lí AI hỗ trợ viết</li>
+      <li><b>E – Kĩ thuật:</b> Quy trình thiết kế kĩ thuật; kiểm thử – Bảng dữ liệu món ăn lấy từ nhãn thật; kiểm tra đúng đơn vị “trên 100 g” hay “trên khẩu phần”</li>
+      <li><b>M – Toán học:</b> Toán – tỉ lệ phần trăm, tỉ lệ thức – E = 4·m(đạm) + 4·m(carbohydrate) + 9·m(béo); % = phần năng lượng / tổng × 100%; quy đổi theo khối lượng khẩu phần</li>
+    </ul>
+  </div>
+  <p class="canh"><b>An toàn:</b> Mục đích là ăn cân đối các nhóm chất, không dùng biểu mẫu để ăn kiêng hay so sánh cơ thể bạn bè; khảo sát không hỏi cân nặng, chiều cao.</p>
+  <form action="ketqua.html" method="get">
+    <fieldset>
+      <legend>Thông tin chung</legend>
+      <p>Khối:
+        <input type="radio" id="k10" name="khoi" value="10"><label for="k10">10</label>
+        <input type="radio" id="k11" name="khoi" value="11"><label for="k11">11</label>
+        <input type="radio" id="k12" name="khoi" value="12" checked><label for="k12">12</label>
+        &nbsp; Bữa ăn:
+        <input type="radio" id="bsang" name="bua" value="Sáng" checked><label for="bsang">Sáng</label>
+        <input type="radio" id="btrua" name="bua" value="Trưa"><label for="btrua">Trưa</label></p>
+    </fieldset>
+    <fieldset>
+      <legend>Món đã ăn – nhập số phần (số gam mỗi chất trong 1 phần lấy từ nhãn, bảng thành phần thực phẩm)</legend>
+      <table>
+        <tr><th>Món</th><th>Số phần</th><th>Đạm (g/phần)</th><th>Béo (g/phần)</th><th>Carbohydrate (g/phần)</th><th>kcal/phần</th></tr>
+        <tr><td>Cơm phần (sườn)</td><td><input type="number" id="n_com" name="n_com" min="0" step="1" value="0"></td><td><input type="number" id="d_com" min="0" step="0.1" value="25"></td><td><input type="number" id="b_com" min="0" step="0.1" value="18"></td><td><input type="number" id="c_com" min="0" step="0.1" value="80"></td><td id="e_com"></td></tr>
+        <tr><td>Bánh mì thịt</td><td><input type="number" id="n_banhmi" name="n_banhmi" min="0" step="1" value="1"></td><td><input type="number" id="d_banhmi" min="0" step="0.1" value="15"></td><td><input type="number" id="b_banhmi" min="0" step="0.1" value="12"></td><td><input type="number" id="c_banhmi" min="0" step="0.1" value="45"></td><td id="e_banhmi"></td></tr>
+        <tr><td>Mì gói (1 gói)</td><td><input type="number" id="n_mi" name="n_mi" min="0" step="1" value="0"></td><td><input type="number" id="d_mi" min="0" step="0.1" value="7"></td><td><input type="number" id="b_mi" min="0" step="0.1" value="13"></td><td><input type="number" id="c_mi" min="0" step="0.1" value="50"></td><td id="e_mi"></td></tr>
+        <tr><td>Xôi (1 gói)</td><td><input type="number" id="n_xoi" name="n_xoi" min="0" step="1" value="0"></td><td><input type="number" id="d_xoi" min="0" step="0.1" value="8"></td><td><input type="number" id="b_xoi" min="0" step="0.1" value="6"></td><td><input type="number" id="c_xoi" min="0" step="0.1" value="70"></td><td id="e_xoi"></td></tr>
+        <tr><td>Sữa hộp 180 ml</td><td><input type="number" id="n_sua" name="n_sua" min="0" step="1" value="1"></td><td><input type="number" id="d_sua" min="0" step="0.1" value="5.4"></td><td><input type="number" id="b_sua" min="0" step="0.1" value="5.6"></td><td><input type="number" id="c_sua" min="0" step="0.1" value="13.9"></td><td id="e_sua"></td></tr>
+        <tr><td>Bánh ngọt</td><td><input type="number" id="n_banhngot" name="n_banhngot" min="0" step="1" value="0"></td><td><input type="number" id="d_banhngot" min="0" step="0.1" value="4"></td><td><input type="number" id="b_banhngot" min="0" step="0.1" value="10"></td><td><input type="number" id="c_banhngot" min="0" step="0.1" value="35"></td><td id="e_banhngot"></td></tr>
+        <tr><td>Trái cây (1 quả chuối)</td><td><input type="number" id="n_traicay" name="n_traicay" min="0" step="1" value="0"></td><td><input type="number" id="d_traicay" min="0" step="0.1" value="1.3"></td><td><input type="number" id="b_traicay" min="0" step="0.1" value="0.4"></td><td><input type="number" id="c_traicay" min="0" step="0.1" value="27"></td><td id="e_traicay"></td></tr>
+        <tr><td>Nước ngọt (1 lon 330 ml)</td><td><input type="number" id="n_nuocngot" name="n_nuocngot" min="0" step="1" value="0"></td><td><input type="number" id="d_nuocngot" min="0" step="0.1" value="0"></td><td><input type="number" id="b_nuocngot" min="0" step="0.1" value="0"></td><td><input type="number" id="c_nuocngot" min="0" step="0.1" value="35"></td><td id="e_nuocngot"></td></tr>
+      </table>
+      <p class="mau">Số gam trong bảng là số liệu mẫu; nhóm thay bằng số đọc trên nhãn hoặc số cân, tra thực tế ở căn tin trường.</p>
+    </fieldset>
+    <fieldset>
+      <legend>Khoảng khuyến nghị tỉ lệ năng lượng (nhóm tra cứu, ghi nguồn)</legend>
+      <table>
+        <tr><th></th><th>Đạm</th><th>Béo</th><th>Carbohydrate</th></tr>
+        <tr><td>Từ (%)</td><td><input type="number" id="kd1" min="0" max="100"></td><td><input type="number" id="kb1" min="0" max="100"></td><td><input type="number" id="kc1" min="0" max="100"></td></tr>
+        <tr><td>Đến (%)</td><td><input type="number" id="kd2" min="0" max="100"></td><td><input type="number" id="kb2" min="0" max="100"></td><td><input type="number" id="kc2" min="0" max="100"></td></tr>
+      </table>
+      <p><label for="nguon">Nguồn tra cứu:</label> <input type="text" id="nguon" name="nguon" size="50" placeholder="ví dụ: tài liệu của Viện Dinh dưỡng Quốc gia"></p>
+    </fieldset>
+    <div class="kq">
+      <h3>KẾT QUẢ TÍNH CHO CẢ BỮA</h3>
+      <div id="kq"></div>
+      <p><b>Cách tính (thay số):</b></p>
+      <div class="ct" id="ct"></div>
+    </div>
+    <input type="hidden" id="kq_e" name="kq_nang_luong_kcal">
+    <input type="hidden" id="kq_pd" name="kq_phan_tram_dam">
+    <input type="hidden" id="kq_pb" name="kq_phan_tram_beo">
+    <input type="hidden" id="kq_pc" name="kq_phan_tram_carbohydrate">
+    <p><input type="submit" value="Gửi phiếu"> <input type="reset" value="Nhập lại"></p>
+  </form>
+  <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>
+  <script>
+    function so(id) { var x = parseFloat(document.getElementById(id).value); return isNaN(x) ? 0 : x; }
+    function f(x, n) { return Number(x).toLocaleString("vi-VN", { maximumFractionDigits: n === undefined ? 2 : n }); }
+    function dat(id, v) { document.getElementById(id).value = v; }
+    function hien(id, html) { document.getElementById(id).innerHTML = html; }
+
+    var MON = ["com","banhmi","mi","xoi","sua","banhngot","traicay","nuocngot"];
+    function sosanh(pt, a, b) {
+      var x = document.getElementById(a).value, y = document.getElementById(b).value;
+      if (x === "" || y === "") return "";
+      x = parseFloat(x); y = parseFloat(y);
+      return pt < x ? ' <span class="chu">(thấp hơn khuyến nghị)</span>' : (pt > y ? ' <span class="chu">(cao hơn khuyến nghị)</span>' : ' <span class="tot">(trong khoảng khuyến nghị)</span>');
+    }
+    function tinh() {
+      var D = 0, B = 0, C = 0, td = [], tb = [], tc = [];
+      MON.forEach(function (k) {
+        var n = so("n_" + k), d = so("d_" + k), b = so("b_" + k), c = so("c_" + k);
+        hien("e_" + k, f(4 * d + 4 * c + 9 * b, 1));
+        if (n > 0) { D += n * d; B += n * b; C += n * c; td.push(n + "×" + f(d)); tb.push(n + "×" + f(b)); tc.push(n + "×" + f(c)); }
+      });
+      var E = 4 * D + 4 * C + 9 * B;
+      if (E <= 0) { hien("kq", "Hãy nhập số phần của ít nhất một món."); hien("ct", ""); return; }
+      var pd = 4 * D / E * 100, pb = 9 * B / E * 100, pc = 4 * C / E * 100;
+      var nx = [];
+      if (so("n_traicay") === 0) nx.push("Bữa chưa có trái cây – có thể bổ sung.");
+      if (so("n_nuocngot") > 0) nx.push("Bữa có đồ uống có đường – nên thay bằng nước lọc hoặc sữa.");
+      hien("kq", "Đạm: <b>" + f(D, 1) + " g</b> – Béo: <b>" + f(B, 1) + " g</b> – Carbohydrate: <b>" + f(C, 1) + " g</b>" +
+        "<br>Năng lượng của bữa: <b>" + f(E, 1) + " kcal</b>" +
+        "<br>Tỉ lệ năng lượng: đạm <b>" + f(pd, 1) + "%</b>" + sosanh(pd, "kd1", "kd2") +
+        "; béo <b>" + f(pb, 1) + "%</b>" + sosanh(pb, "kb1", "kb2") +
+        "; carbohydrate <b>" + f(pc, 1) + "%</b>" + sosanh(pc, "kc1", "kc2") +
+        (nx.length ? "<br>Nhận xét: " + nx.join(" ") : ""));
+      hien("ct", "m(đạm) = " + td.join(" + ") + " = " + f(D, 1) + " g;  m(béo) = " + tb.join(" + ") + " = " + f(B, 1) + " g;  m(carb) = " + tc.join(" + ") + " = " + f(C, 1) + " g\n" +
+        "E = 4·m(đạm) + 4·m(carb) + 9·m(béo) = 4×" + f(D, 1) + " + 4×" + f(C, 1) + " + 9×" + f(B, 1) + " = " + f(E, 1) + " kcal\n" +
+        "% béo = 9×" + f(B, 1) + " / " + f(E, 1) + " × 100% ≈ " + f(pb, 1) + "%;  % đạm = 4×" + f(D, 1) + " / " + f(E, 1) + " × 100% ≈ " + f(pd, 1) +
+        "%;  % carb ≈ " + f(pc, 1) + "%");
+      dat("kq_e", E.toFixed(1)); dat("kq_pd", pd.toFixed(1)); dat("kq_pb", pb.toFixed(1)); dat("kq_pc", pc.toFixed(1));
+    }
+    document.querySelector("form").addEventListener("input", tinh);
+    document.querySelector("form").addEventListener("reset", function () { setTimeout(tinh, 0); });
+    tinh();
+  </script>
+</body>
+</html>

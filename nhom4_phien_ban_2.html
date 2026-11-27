@@ -2,53 +2,59 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>ĐƠN XIN NGHỈ HỌC</title>
+  <title>PHIẾU THEO DÕI MÀN HÌNH VÀ GIẤC NGỦ</title>
 </head>
 <body>
-  <!-- Nhóm 4: SỔ LIÊN LẠC SỐ – ĐƠN XIN NGHỈ HỌC TRỰC TUYẾN -->
+  <!-- Nhóm 4: MÀN HÌNH VÀ GIẤC NGỦ – THỐNG KÊ THỜI GIAN SỬ DỤNG THIẾT BỊ SỐ VÀ THỜI GIAN NGỦ CỦA HỌC SINH -->
   <!-- Phiên bản 2 – đã cải tiến sau thử nghiệm -->
   <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
        Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
-  <h2>ĐƠN XIN NGHỈ HỌC</h2>
-  <form action="ketqua.html" method="get" enctype="multipart/form-data">
+  <h2>PHIẾU THEO DÕI MÀN HÌNH VÀ GIẤC NGỦ</h2>
+  <form action="ketqua.html" method="get">
     <fieldset>
-      <legend>Thông tin học sinh</legend>
-    <p><label for="tenhs">Họ tên học sinh:</label>
-      <input type="text" id="tenhs" name="tenhs"></p>
-    <p><label for="lop">Lớp:</label>
-      <select id="lop" name="lop">
-        <option value="12A1">12A1</option>
-        <option value="12A3">12A3</option>
-        <option value="12A8">12A8</option>
-        <option value="11A7">11A7</option>
-        <option value="11A12">11A12</option>
-        <option value="10A1">10A1</option>
-      </select></p>
-    <p><label for="phuhuynh">Họ tên phụ huynh:</label>
-      <input type="text" id="phuhuynh" name="phuhuynh"></p>
-    <p><label for="sdt">Số điện thoại phụ huynh:</label>
-      <input type="text" id="sdt" name="sdt"></p>
-    </fieldset>
-    <fieldset>
-      <legend>Thông tin nghỉ học</legend>
-    <p><label for="tungay">Nghỉ từ ngày:</label>
-      <input type="date" id="tungay" name="tungay"></p>
-    <p><label for="denngay">Đến ngày:</label>
-      <input type="date" id="denngay" name="denngay"></p>
-    <p>Buổi nghỉ:<br>
-      <input type="radio" id="buoi1" name="buoi" value="Sáng">
-      <label for="buoi1">Sáng</label><br>
-      <input type="radio" id="buoi2" name="buoi" value="Chiều">
-      <label for="buoi2">Chiều</label><br>
-      <input type="radio" id="buoi3" name="buoi" value="Cả ngày">
-      <label for="buoi3">Cả ngày</label><br>
+      <legend>Thông tin chung (ẩn danh)</legend>
+    <p>Khối:<br>
+      <input type="radio" id="khoi1" name="khoi" value="10">
+      <label for="khoi1">10</label><br>
+      <input type="radio" id="khoi2" name="khoi" value="11">
+      <label for="khoi2">11</label><br>
+      <input type="radio" id="khoi3" name="khoi" value="12">
+      <label for="khoi3">12</label><br>
     </p>
-    <p><label for="lydo">Lí do:</label><br>
-      <textarea id="lydo" name="lydo" rows="4" cols="40"></textarea></p>
-    <p><label for="minhchung">Minh chứng (nếu có):</label>
-      <input type="file" id="minhchung" name="minhchung"></p>
     </fieldset>
-    <p><input type="submit" value="Gửi đơn">
+    <fieldset>
+      <legend>Thiết bị số</legend>
+    <p><label for="manhinh">Thời gian màn hình trung bình 7 ngày (giờ/ngày, đọc trong điện thoại):</label>
+      <input type="number" id="manhinh" name="manhinh" min="0" max="24" step="0.1"></p>
+    <p>Mục đích sử dụng:<br>
+      <input type="checkbox" id="mucdich1" name="mucdich" value="Học tập">
+      <label for="mucdich1">Học tập</label><br>
+      <input type="checkbox" id="mucdich2" name="mucdich" value="Mạng xã hội">
+      <label for="mucdich2">Mạng xã hội</label><br>
+      <input type="checkbox" id="mucdich3" name="mucdich" value="Chơi game">
+      <label for="mucdich3">Chơi game</label><br>
+      <input type="checkbox" id="mucdich4" name="mucdich" value="Xem video">
+      <label for="mucdich4">Xem video</label><br>
+      <input type="checkbox" id="mucdich5" name="mucdich" value="Nhắn tin">
+      <label for="mucdich5">Nhắn tin</label><br>
+    </p>
+    </fieldset>
+    <fieldset>
+      <legend>Giấc ngủ</legend>
+    <p><label for="giongu">Giờ đi ngủ thường ngày:</label>
+      <input type="time" id="giongu" name="giongu"></p>
+    <p><label for="giothuc">Giờ thức dậy thường ngày:</label>
+      <input type="time" id="giothuc" name="giothuc"></p>
+    <p>Dùng điện thoại trong 30 phút trước khi ngủ?:<br>
+      <input type="radio" id="truocngu1" name="truocngu" value="Có">
+      <label for="truocngu1">Có</label><br>
+      <input type="radio" id="truocngu2" name="truocngu" value="Không">
+      <label for="truocngu2">Không</label><br>
+    </p>
+    <p><label for="mongmuon">Em muốn được hỗ trợ gì?:</label><br>
+      <textarea id="mongmuon" name="mongmuon" rows="4" cols="40"></textarea></p>
+    </fieldset>
+    <p><input type="submit" value="Gửi phiếu">
     <input type="reset" value="Nhập lại"></p>
   </form>
   <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>

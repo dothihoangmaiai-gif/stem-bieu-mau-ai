@@ -2,22 +2,28 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>BÁO HỎNG CƠ SỞ VẬT CHẤT</title>
+  <title>PHIẾU THEO DÕI RÁC NHỰA CỦA LỚP</title>
 </head>
 <body>
-  <!-- Nhóm 3: PHÒNG HỌC AN TOÀN – BIỂU MẪU BÁO HỎNG CƠ SỞ VẬT CHẤT -->
+  <!-- Nhóm 3: RÁC NHỰA LỚP EM – ĐO KHỐI LƯỢNG VÀ PHÂN LOẠI ĐỒ NHỰA DÙNG MỘT LẦN -->
   <!-- Phiên bản 1 – bản chế tạo đầu tiên, CÓ LỖI để nhóm phát hiện khi thử nghiệm -->
   <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
        Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
-  <h2>BÁO HỎNG CƠ SỞ VẬT CHẤT</h2>
+  <h2>PHIẾU THEO DÕI RÁC NHỰA CỦA LỚP</h2>
   <form action="ketqua.html" method="get">
-    <p><label for="nguoibao">Người báo:</label>
-      <input type="text" id="nguoibao" name="nguoibao"></p>
-    <p><label for="phong">Phòng học:</label>
-      <input type="text" id="phong" name="phong"></p>
-    <p><label for="mota">Mô tả hư hỏng:</label><br>
-      <textarea id="mota" name="mota" rows="4" cols="40"></textarea></p>
-    <p><input type="submit" value="Gửi báo hỏng"></p>
+    <p><label for="lop">Lớp:</label>
+      <input type="text" id="lop" name="lop"></p>
+    <p>Đồ nhựa trong thùng rác:<br>
+      <input type="checkbox" id="donhua1" name="donhua">
+      <label for="donhua1">Chai nhựa</label><br>
+      <input type="checkbox" id="donhua2" name="donhua">
+      <label for="donhua2">Ly nhựa</label><br>
+      <input type="checkbox" id="donhua3" name="donhua">
+      <label for="donhua3">Ống hút</label><br>
+    </p>
+    <p><label for="soluong">Số lượng:</label>
+      <input type="text" id="soluong" name="soluong"></p>
+    <p><input type="submit" value="Gửi"></p>
   </form>
   <p style="margin-top:24px"><a href="index.html">← Về trang lớp</a></p>
 </body>
