@@ -252,3 +252,15 @@ body:has(.hai-cot) { max-width: 1240px; }
   .hai-cot + .tom-tat:not(:empty) { display: flex; }
 }
 @media print { .hai-cot { display: block; } .cot-phai { position: static; } .cot-phai .kq { max-height: none; overflow: visible; } }
+
+/* ===== Gợi ý AI ===== */
+.goi-y-ai { margin: 12px 0 6px; padding: 10px 14px 12px; border-radius: 10px; background: #f5f3ff; border: 1px solid #ddd6fe; }
+.goi-y-ai h4 { margin: 0 0 4px; color: #5b21b6; font-size: 15px; }
+.goi-y-ai ul { margin: 4px 0 8px; padding-left: 18px; font-size: 14px; line-height: 1.55; }
+.goi-y-ai .nut-ai { background: linear-gradient(90deg, #7c3aed, #2563eb) !important; border: none !important; color: #fff !important; border-radius: 999px !important; padding: 8px 16px; font-size: 14px; }
+.goi-y-ai .nut-ai:disabled { opacity: .7; cursor: wait; }
+.ai-tra-loi:not(:empty) { margin-top: 10px; padding: 10px 12px; background: #fff; border-radius: 8px; border-left: 4px solid #7c3aed; font-size: 14px; line-height: 1.6; }
+.ai-tra-loi.loi { border-left-color: #f59e0b; color: #92400e; }
+.ai-nhan { font-weight: 700; color: #5b21b6; margin-bottom: 4px; }
+.ai-chu-y { margin-top: 6px; font-size: 12px; color: #6b7280; font-style: italic; }
+@media print { .goi-y-ai .nut-ai { display: none !important; } }
