@@ -1,54 +1,52 @@
-/* Nhóm 1 – Ổ điện an toàn: kiểu "bánh bèo" pastel hồng – tím với bong bóng */
-@import url("https://fonts.googleapis.com/css2?family=Mali:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap&subset=vietnamese");
+/* Nhóm 1 – Ổ điện an toàn: phong cách chuyên nghiệp, tông xanh nhạt */
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap&subset=vietnamese");
 html {
-  background-color: #fde7f3;
+  background-color: #eef4fa;
   background-image:
-    radial-gradient(circle at 30% 30%, rgba(255,255,255,.95) 0 6px, rgba(255,255,255,0) 7px),
-    radial-gradient(circle at 50% 50%, rgba(244,114,182,.28) 0 38px, rgba(244,114,182,.10) 39px 42px, transparent 43px),
-    radial-gradient(circle at 30% 30%, rgba(255,255,255,.95) 0 4px, rgba(255,255,255,0) 5px),
-    radial-gradient(circle at 50% 50%, rgba(192,132,252,.25) 0 24px, rgba(192,132,252,.10) 25px 27px, transparent 28px),
-    radial-gradient(circle at 50% 50%, rgba(125,211,252,.30) 0 14px, transparent 15px),
-    radial-gradient(circle at 50% 50%, rgba(251,207,232,.9) 0 56px, transparent 57px),
-    linear-gradient(160deg, #fff1f8 0%, #fbe4ff 50%, #e0f2fe 100%);
-  background-size: 260px 260px, 260px 260px, 180px 180px, 180px 180px, 120px 120px, 420px 420px, auto;
-  background-position: 20px 40px, 0 20px, 110px 90px, 90px 70px, 40px 10px, 200px 300px, 0 0;
+    linear-gradient(rgba(37,99,235,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,.045) 1px, transparent 1px),
+    linear-gradient(180deg, #e3eefa 0, #eef4fa 320px);
+  background-size: 28px 28px, 28px 28px, auto;
   background-attachment: fixed;
-  animation: bong-bong 40s linear infinite;
-}
-@keyframes bong-bong {
-  from { background-position: 20px 40px, 0 20px, 110px 90px, 90px 70px, 40px 10px, 200px 300px, 0 0; }
-  to   { background-position: 20px -220px, 0 -240px, 110px -90px, 90px -110px, 40px -110px, 200px -120px, 0 0; }
 }
 body {
-  --nhan: #db2777; --nhan-2: #f472b6; --vien: #f9a8d4;
-  font-family: "Quicksand", "Be Vietnam Pro", sans-serif;
-  color: #4a2340;
-  background: rgba(255,255,255,.92);
-  border-radius: 28px;
-  outline: 2px dashed #f9a8d4; outline-offset: -12px;
-  box-shadow: 0 0 0 8px rgba(255,255,255,.55), 0 18px 50px rgba(219,39,119,.25);
+  --nhan: #1d4ed8; --nhan-2: #3b82f6; --vien: #d5e2f0; --chu: #1e293b; --giay: #ffffff;
+  font-family: "Be Vietnam Pro", Arial, sans-serif;
+  color: #1e293b;
+  background: #ffffff;
+  border-radius: 12px;
+  outline: none;
+  border-top: 6px solid #1d4ed8;
+  box-shadow: 0 1px 2px rgba(15,23,42,.06), 0 12px 32px rgba(30,64,175,.10);
 }
-h2, h3, legend { font-family: "Mali", "Quicksand", sans-serif; }
+h2, h3, legend { font-family: "Be Vietnam Pro", Arial, sans-serif; }
 h2 {
-  background: linear-gradient(90deg, #db2777, #a855f7);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  border-bottom: 3px dotted #f9a8d4;
+  color: #0f2a5c; font-weight: 700; font-size: 28px; letter-spacing: 0;
+  text-align: left; border-bottom: 1px solid #d5e2f0; padding-bottom: 14px;
 }
-h2::before { color: #c084fc; -webkit-text-fill-color: #c084fc; }
-h2::after { content: " ⚡"; -webkit-text-fill-color: #f59e0b; }
-label { color: #831843; }
-fieldset { background: #fff7fb; border: 2px solid #fbcfe8; border-radius: 22px; }
-legend { background: linear-gradient(90deg, #fce7f3, #f3e8ff); color: #9d174d; border: 2px solid #f9a8d4; border-radius: 999px; padding: 6px 18px; }
-legend::before { content: "🫧 "; }
-input[type=text], input[type=number], input[type=date], select, textarea { border: 2px solid #fbcfe8; border-radius: 14px; }
-input:focus, select:focus, textarea:focus { border-color: #f472b6; box-shadow: 0 0 0 4px rgba(244,114,182,.2); }
-th { background: #fce7f3; color: #9d174d; } th, td { border-color: #fbcfe8; }
-table { border-radius: 14px; overflow: hidden; }
-.lm { background: #faf5ff; border-left: 6px solid #c084fc; border-radius: 16px; }
-.kq { background: linear-gradient(180deg, #fff1f8, #ffffff); border: 2px solid #f472b6; border-radius: 22px; }
-.ct { background: #fdf4ff; border-color: #f0abfc; border-radius: 14px; }
-input[type=submit], input[type=button], button { border-radius: 999px; background: linear-gradient(90deg, #f472b6, #c084fc); border-color: #ec4899; }
-input[type=reset] { border-radius: 999px; background: #fff; color: #db2777; border-color: #f472b6; }
-a { color: #db2777; }
-@media print { html { animation: none; } h2 { color: #db2777 !important; -webkit-text-fill-color: #db2777; } }
-@media (prefers-reduced-motion: reduce) { html { animation: none; } }
+h2::before { color: #3b6db3; letter-spacing: 2px; font-size: 11px; }
+h3 { color: #1d4ed8; }
+label { color: #334155; font-weight: 600; }
+fieldset { background: #ffffff; border: 1px solid #d5e2f0; border-radius: 10px; }
+legend {
+  background: #eff6ff; color: #1e3a8a; font-weight: 700; font-size: 15.5px;
+  border: 1px solid #c7d8ee; border-left: 4px solid #1d4ed8; border-radius: 6px; padding: 5px 14px;
+}
+input[type=text], input[type=number], input[type=date], input[type=time], select, textarea {
+  border: 1px solid #cbd5e1; border-radius: 8px; background: #fbfdff;
+}
+input:focus, select:focus, textarea:focus { border-color: #3b82f6; outline: none; box-shadow: 0 0 0 3px rgba(59,130,246,.18); }
+th { background: #f1f5fb; color: #1e3a8a; font-weight: 600; } th, td { border-color: #d5e2f0; }
+table { border-radius: 8px; overflow: hidden; }
+.lm { background: #f8fbff; border-left: 4px solid #3b82f6; border-radius: 8px; }
+.kq { background: #f8fbff; border: 1px solid #93c5fd; border-radius: 10px; }
+.ct { background: #f8fafc; border-color: #d5e2f0; border-radius: 8px; }
+input[type=submit], input[type=button], button {
+  border-radius: 8px; background: #1d4ed8; border: 1px solid #1d4ed8; color: #fff; font-weight: 600;
+}
+input[type=submit]:hover, input[type=button]:hover, button:hover { background: #1e40af; }
+input[type=reset] { border-radius: 8px; background: #fff; color: #1d4ed8; border: 1px solid #93c5fd; }
+a { color: #1d4ed8; }
+@media print { html { background: #fff; } body { border-top: none; box-shadow: none; } h2 { color: #0f2a5c !important; } }
+.mau { color: #64748b; text-align: left; }
+fieldset table { width: 100%; }
