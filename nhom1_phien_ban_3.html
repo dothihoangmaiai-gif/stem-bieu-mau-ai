@@ -53,15 +53,13 @@
          <label for="dienap">Hiệu điện thế U (V):</label> <input type="number" id="dienap" name="dienap" min="100" max="250" step="1" value="220"></p>
     </fieldset>
     <fieldset>
-      <legend>Thiết bị đang cắm vào ổ (đọc công suất trên nhãn)</legend>
+      <legend>Thiết bị điện trong phòng học (đọc công suất trên nhãn)</legend>
       <table>
         <tr><th>Thiết bị</th><th>Số lượng</th><th>Công suất 1 chiếc (W)</th><th>Thành tiền công suất (W)</th></tr>
-        <tr><td>Quạt đứng</td><td><input type="number" id="sl_quat" name="sl_quat" min="0" step="1" value="2"></td><td><input type="number" id="p_quat" name="p_quat" min="0" step="1" value="55"></td><td id="t_quat"></td></tr>
-        <tr><td>Máy chiếu</td><td><input type="number" id="sl_chieu" name="sl_chieu" min="0" step="1" value="1"></td><td><input type="number" id="p_chieu" name="p_chieu" min="0" step="1" value="250"></td><td id="t_chieu"></td></tr>
+        <tr><td>Tivi</td><td><input type="number" id="sl_tivi" name="sl_tivi" min="0" step="1" value="1"></td><td><input type="number" id="p_tivi" name="p_tivi" min="0" step="1" value="150"></td><td id="t_tivi"></td></tr>
         <tr><td>Loa</td><td><input type="number" id="sl_loa" name="sl_loa" min="0" step="1" value="1"></td><td><input type="number" id="p_loa" name="p_loa" min="0" step="1" value="100"></td><td id="t_loa"></td></tr>
-        <tr><td>Laptop</td><td><input type="number" id="sl_laptop" name="sl_laptop" min="0" step="1" value="2"></td><td><input type="number" id="p_laptop" name="p_laptop" min="0" step="1" value="65"></td><td id="t_laptop"></td></tr>
-        <tr><td>Sạc điện thoại</td><td><input type="number" id="sl_sac" name="sl_sac" min="0" step="1" value="10"></td><td><input type="number" id="p_sac" name="p_sac" min="0" step="1" value="20"></td><td id="t_sac"></td></tr>
-        <tr><td>Khác</td><td><input type="number" id="sl_khac" name="sl_khac" min="0" step="1" value="0"></td><td><input type="number" id="p_khac" name="p_khac" min="0" step="1" value="0"></td><td id="t_khac"></td></tr>
+        <tr><td>Máy lạnh</td><td><input type="number" id="sl_maylanh" name="sl_maylanh" min="0" step="1" value="2"></td><td><input type="number" id="p_maylanh" name="p_maylanh" min="0" step="1" value="800"></td><td id="t_maylanh"></td></tr>
+        <tr><td>Quạt trần</td><td><input type="number" id="sl_quattran" name="sl_quattran" min="0" step="1" value="4"></td><td><input type="number" id="p_quattran" name="p_quattran" min="0" step="1" value="75"></td><td id="t_quattran"></td></tr>
       </table>
     </fieldset>
     <fieldset>
@@ -91,7 +89,7 @@
     function dat(id, v) { document.getElementById(id).value = v; }
     function hien(id, html) { document.getElementById(id).innerHTML = html; }
 
-    var TB = ["quat","chieu","loa","laptop","sac","khac"];
+    var TB = ["tivi","loa","maylanh","quattran"];
     function tinh() {
       var P = 0, dong = [];
       TB.forEach(function (k) {
