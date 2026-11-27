@@ -116,14 +116,15 @@
   // ---------- Gọi AI qua Apps Script ----------
   function anToan(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
   function dinhDang(s) {
+    s = s.replace(/\$+/g, "").replace(/\\text\{([^}]*)\}/g, "$1").replace(/\\approx/g, "≈").replace(/\\cdot/g, "·").replace(/\\times/g, "×").replace(/\\le(q)?/g, "≤").replace(/\\ge(q)?/g, "≥").replace(/\\,/g, " ");
     return anToan(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/^\s*[-*•]\s+/gm, "• ").replace(/\n/g, "<br>");
   }
   nut.addEventListener("click", function () {
-    nut.disabled = true; var cu = nut.textContent; nut.textContent = "⏳ AI đang suy nghĩ…";
+    nut.disabled = true; var cu = nut.textContent; nut.textContent = "⏳ AI đang suy nghĩ (có thể mất tới 1 phút)…";
     tl.className = "ai-tra-loi"; tl.innerHTML = "";
     var dl = new URLSearchParams({ hanh_dong: "goi_y_ai", nhom: NHOM, ngu_canh: nguCanh() });
     var xong = false;
-    var hen = setTimeout(function () { if (xong) return; xong = true; loi(); }, 30000);
+    var hen = setTimeout(function () { if (xong) return; xong = true; loi(); }, 90000);
     function loi(tb) {
       tl.className = "ai-tra-loi loi";
       tl.textContent = tb || "AI đang bận hoặc mạng chậm, em thử lại sau ít phút. Trong lúc chờ, hãy dùng các gợi ý tại chỗ ở trên.";
@@ -133,7 +134,7 @@
       .then(function (r) { return r.json(); })
       .then(function (j) {
         if (xong) return; xong = true; clearTimeout(hen);
-        if (!j || !j.ok) { loi(j && j.loi === "chua_co_khoa" ? "Giáo viên chưa bật AI (chưa cài khóa Gemini trong Apps Script)." : (j && j.loi === "qua_tai" ? "Cả lớp đang hỏi AI cùng lúc, em đợi 1 phút rồi thử lại nhé." : undefined)); return; }
+        if (!j || !j.ok) { loi(j && j.loi === "chua_co_khoa" ? "Giáo viên chưa bật AI (chưa cài khóa Gemini trong Apps Script)." : (j && j.loi === "qua_tai" ? "AI đang quá tải (nhiều người cùng hỏi), em đợi 1 phút rồi thử lại nhé." : undefined)); return; }
         tl.innerHTML = '<div class="ai-nhan">Gemini gợi ý:</div>' + dinhDang(j.goi_y) +
           '<div class="ai-chu-y">Gợi ý do AI tạo ra – nhóm cần kiểm chứng lại bằng kiến thức đã học.</div>';
         nut.disabled = false; nut.textContent = "🔄 Hỏi lại AI";
