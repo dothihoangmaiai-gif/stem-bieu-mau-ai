@@ -8,8 +8,7 @@ html {
   background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
   background-attachment: fixed;
 }
-body { --nhan: #ffcc00; --nhan-2: #ffdf5a; --vien: #3f6ea5; color: #e8f0ff; background: #0f2c52; outline: 1px dashed #5d8fd0; outline-offset: -12px; padding-top: 44px; position: relative; overflow: hidden; }
-body::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 18px; background: repeating-linear-gradient(45deg, #ffcc00 0 16px, #151515 16px 32px); }
+body { --nhan: #ffcc00; --nhan-2: #ffdf5a; --vien: #3f6ea5; color: #e8f0ff; background: repeating-linear-gradient(45deg, #ffcc00 0 16px, #151515 16px 32px) top / 100% 18px no-repeat, #0f2c52; outline: 1px dashed #5d8fd0; outline-offset: -12px; padding-top: 44px; }
 h2, h3, legend { font-family: "Chakra Petch", "Be Vietnam Pro", sans-serif; }
 h2 { color: #ffcc00; text-transform: uppercase; border-bottom-color: #3f6ea5; }
 h2::before { color: #8fb7ea; }
@@ -25,5 +24,5 @@ th { background: #183f70; color: #ffcc00; } td { background: #0f2c52; color: #e8
 a { color: #ffcc00; }
 input[type=submit], button { color: #111; background: linear-gradient(180deg, #ffe066, #ffcc00); border-color: #e0b000; }
 input[type=reset] { background: transparent; color: #ffcc00; border-color: #ffcc00; }
-@media print { body::before { display: none; } body, td, th, label, legend, h2, .lm, .ct, .mau { color: #000 !important; background: #fff !important; } fieldset, .kq { background: #fff !important; } }
+@media print { body, td, th, label, legend, h2, .lm, .ct, .mau { color: #000 !important; background: #fff !important; } fieldset, .kq { background: #fff !important; } }
 table { background: transparent; }
