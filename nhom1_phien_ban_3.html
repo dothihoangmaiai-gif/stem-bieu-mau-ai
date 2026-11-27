@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG HỌC – phiên bản 3</title>
-  <link rel="stylesheet" href="theme.css?v=15">
-  <link rel="stylesheet" href="theme-nhom1.css?v=15">
+  <link rel="stylesheet" href="theme.css?v=16">
+  <link rel="stylesheet" href="theme-nhom1.css?v=16">
 </head>
 <body class="nhom1">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
   <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
-  <!-- Nhóm 1: Ổ ĐIỆN AN TOÀN – KIỂM TRA TẢI ĐIỆN VÀ ĐIỆN NĂNG LÃNG PHÍ TRONG PHÒNG HỌC THƯỜNG -->
+  <!-- Nhóm 1: Ổ ĐIỆN AN TOÀN – KIỂM TRA TẢI ĐIỆN VÀ ĐIỆN NĂNG LÃNG PHÍ TRONG PHÒNG HỌC -->
   <!-- Phiên bản 3 – thêm phần TÍNH TOÁN LIÊN MÔN.
        Phần HTML (biểu mẫu) do nhóm viết theo Bài 12. Phần <script> do nhóm viết cùng trợ lí AI;
        mọi công thức đã được chuyên gia liên môn của nhóm kiểm chứng bằng tính tay (xem báo cáo, mục Kiểm chứng).
@@ -18,16 +18,21 @@
   <h2>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG HỌC</h2>
   <section class="cau-hoi-stem">
     <span class="nhan-chq">❓ Câu hỏi STEM</span>
-    <p class="chq">Làm thế nào để học sinh nhập thông số ghi trên thiết bị và biết ngay điện của phòng học có an toàn không, điện năng lãng phí là bao nhiêu?</p>
+    <p class="chq">Làm thế nào để xây dựng một web app giúp học sinh nhập thông số thiết bị của phòng học, biết ngay điện có an toàn không, điện năng lãng phí bao nhiêu và lưu lại để so sánh giữa các phòng?</p>
     <div class="stem4">
       <div class="o-stem o-s"><b>S</b><small>Vật lí 11</small><p>Vì sao công suất các thiết bị mắc song song được cộng lại? I = P/U cho biết điều gì?</p></div>
-      <div class="o-stem o-t"><b>T</b><small>Tin học 12</small><p>Dùng loại ô nhập nào cho số lượng, công suất, ngày kiểm tra?</p></div>
+      <div class="o-stem o-t"><b>T</b><small>Tin học 12 · Apps Script</small><p>Code.gs ghi mỗi phiếu kiểm tra thành 1 dòng Sheet thế nào? Đọc lại để xếp các phòng theo tỉ lệ tải ra sao?</p></div>
       <div class="o-stem o-e"><b>E</b><small>Kĩ thuật</small><p>Vì sao đặt ngưỡng cảnh báo 80% định mức? Kiểm thử ngưỡng này thế nào?</p></div>
       <div class="o-stem o-m"><b>M</b><small>Toán</small><p>Tính tỉ lệ tải (%) và điện năng lãng phí (kWh) bằng công thức nào?</p></div>
     </div>
   </section>
   <p class="canh">⚠ <b>An toàn:</b> Chỉ đọc nhãn thiết bị; không mở tủ điện, ổ cắm; luôn có giáo viên đi cùng.</p>
-  <p class="doi-chung">🔁 <b>Phòng học thường (B201)</b> · So sánh với Nhóm 2 (phòng thực hành Tin học): phòng nào có tỉ lệ tải cao hơn, thiết bị nào chiếm nhiều công suất nhất, vì sao.</p>
+  <details class="webapp-box" open><summary>🛠 Sản phẩm của nhóm: web app Google Apps Script tự viết</summary>
+    <ol><li>Biểu mẫu: phòng, ngày kiểm tra, cầu dao (A), hiệu điện thế (V), số lượng và công suất từng loại thiết bị, giờ quên tắt</li><li>Tính toán (JavaScript): P = Σ n·P₁; I = P/U; tỉ lệ tải = I/I(đm) × 100%; cảnh báo 3 mức; A lãng phí (kWh/tháng), tiền điện</li><li>Code.gs: hàm luuPhieu(dl) ghi 1 dòng vào Sheet “KiemTraDien”</li><li>Code.gs: hàm layThongKe() đọc Sheet, trả về các phòng đã kiểm tra; trang hiện bảng xếp theo tỉ lệ tải</li><li>Mở rộng: tô màu dòng quá tải; nút gợi ý AI (Gemini) nhận xét kết quả</li></ol>
+    <p class="cot-sheet"><b>Cột của Google Sheet:</b> Thời gian | Phòng | U (V) | I đm (A) | P (W) | I (A) | Tỉ lệ tải (%) | Mức | A lãng phí (kWh/tháng) | Tiền (đồng)</p>
+    <p>Trang này là <b>bản mẫu giao diện</b> để thử công thức với số liệu đo thật. Nhóm tự viết web app theo <a href="huong-dan-apps-script.html">hướng dẫn Apps Script từng bước</a>.</p>
+  </details>
+
   <p class="mau">Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
   <form action="ketqua.html" method="get">
    <div class="hai-cot">
@@ -152,7 +157,7 @@
     window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
-  <script src="luu-tru.js?v=15"></script>
-  <script src="goi-y-ai.js?v=15"></script>
+  <script src="luu-tru.js?v=16"></script>
+  <script src="goi-y-ai.js?v=16"></script>
 </body>
 </html>

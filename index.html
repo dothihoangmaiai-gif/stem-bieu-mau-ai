@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Thiết kế biểu mẫu số với trợ lí AI – giải quyết vấn đề học đường</title>
+  <title>Xây dựng web app bằng Google Apps Script – giải quyết vấn đề học đường bằng kiến thức liên môn</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap&subset=vietnamese">
   <style>
     html { background-color: #1d120a;
@@ -65,29 +65,30 @@
 </head>
 <body>
   <header>
-    <div class="nho">CHỦ ĐỀ STEM • ĐO THẬT – TÍNH ĐÚNG – CẢI TIẾN</div>
-    <h1>THIẾT KẾ BIỂU MẪU SỐ VỚI TRỢ LÍ AI</h1>
-    <p>Chủ đề STEM – giải quyết vấn đề học đường bằng đo đạc và tính toán liên môn</p>
+    <div class="nho">CHỦ ĐỀ STEM • THIẾT KẾ – LẬP TRÌNH – KIỂM THỬ</div>
+    <h1>XÂY DỰNG WEB APP BẰNG GOOGLE APPS SCRIPT</h1>
+    <p>Chủ đề STEM – giải quyết vấn đề học đường bằng kiến thức liên môn</p>
     <p>Tin học 12 – Bài 12. Tạo biểu mẫu - Trường THPT Hàn Thuyên</p>
-    <div class="dai"><span>⚡ Chủ đề 1: Ổ điện an toàn</span><span>🌙 Chủ đề 2: Màn hình và giấc ngủ</span><span>4 nhóm · đo ở 2 nơi để so sánh</span></div>
+    <div class="dai"><span>🛠 Sản phẩm: web app Google Apps Script do học sinh tự viết</span><span>⚡ Vật lí 11</span><span>🧪 Hóa 12 · Sinh học</span><span>📖 Ngữ văn</span><span>📐 Toán 10 – 11</span></div>
   </header>
   <main>
     <div class="hop">
-      <h2>Mỗi sản phẩm STEM đi qua 4 bước</h2>
+      <h2>Mỗi nhóm xây dựng một web app qua 5 bước</h2>
       <ol>
-        <li><b>Đo thật (E, S):</b> đọc nhãn công suất thiết bị và cầu dao; đọc thời gian màn hình, ghi nhật kí giấc ngủ.</li>
-        <li><b>Tính bằng công thức của môn khác (S, M):</b> Vật lí 11, Công nghệ, Sinh học, Toán 11.</li>
-        <li><b>Đưa công thức vào biểu mẫu (T):</b> HTML Bài 12 do nhóm viết; phần tính toán viết cùng trợ lí AI.</li>
-        <li><b>Kiểm chứng và cải tiến (E):</b> so sánh với tính tay và với nhóm cùng chủ đề; phiên bản 1 → 2 → 3.</li>
+        <li><b>Xác định vấn đề và yêu cầu (E):</b> web app giải quyết việc gì ở trường, cần những chức năng, dữ liệu nào.</li>
+        <li><b>Chọn kiến thức liên môn (S, M):</b> công thức Vật lí 11, Hóa 12, Sinh học, Toán 10 – 11; thống kê từ dữ liệu.</li>
+        <li><b>Thiết kế:</b> phác thảo giao diện, thiết kế các cột của Google Sheet.</li>
+        <li><b>Lập trình (T):</b> Index.html (biểu mẫu Bài 12 + JavaScript tính toán) và Code.gs (ghi/đọc Sheet), triển khai thành web app – <a href="huong-dan-apps-script.html">hướng dẫn từng bước</a>.</li>
+        <li><b>Kiểm thử và cải tiến (E):</b> nhập số liệu đo thật, so với tính tay; phiên bản 1 → 2 → 3.</li>
       </ol>
     </div>
-    <h2 class="chu-de">Chủ đề 1: Ổ điện an toàn <small>Hai nhóm đo ở hai phòng có tải khác nhau rồi so sánh tỉ lệ tải và điện năng lãng phí.</small></h2>
+    <h2>4 nhóm – 4 web app</h2>
     <div class="grid">
     <article class="card n1">
-      <div class="dau"><span class="icon">⚡</span><div><div class="so">Nhóm 1</div><h3>Phòng học thường (B201)</h3></div></div>
-      <p class="mo">Kiểm tra tải điện và điện năng lãng phí trong phòng học thường</p>
-      <p class="dc">🔁 So sánh với Nhóm 2 (phòng thực hành Tin học): phòng nào có tỉ lệ tải cao hơn, thiết bị nào chiếm nhiều công suất nhất, vì sao.</p>
-      <p><b>Câu hỏi STEM:</b> Làm thế nào để học sinh nhập thông số ghi trên thiết bị và biết ngay điện của phòng học có an toàn không, điện năng lãng phí là bao nhiêu?</p>
+      <div class="dau"><span class="icon">⚡</span><div><div class="so">Nhóm 1</div><h3>Ổ điện an toàn</h3></div></div>
+      <p class="mo">Kiểm tra tải điện và điện năng lãng phí trong phòng học</p>
+      <p class="dc">🛠 Web app: phòng, ngày kiểm tra, cầu dao (A), hiệu điện thế (V), số lượng và công suất từng loại thiết bị, giờ quên tắt…</p>
+      <p><b>Câu hỏi STEM:</b> Làm thế nào để xây dựng một web app giúp học sinh nhập thông số thiết bị của phòng học, biết ngay điện có an toàn không, điện năng lãng phí bao nhiêu và lưu lại để so sánh giữa các phòng?</p>
       <ul class="lm"><li><b>S:</b> Vật lí 11 – Năng lượng điện. Công suất điện</li><li><b>S:</b> Công nghệ – An toàn điện; thông số kĩ thuật ghi trên thiết bị</li><li><b>E:</b> Quy trình thiết kế kĩ thuật; kiểm thử theo ngưỡng</li><li><b>M:</b> Toán – tỉ lệ phần trăm, đổi đơn vị, làm tròn</li></ul>
       <p class="do"><b>Đo thật:</b> Công suất từng thiết bị (W); Dòng điện định mức của cầu dao (CB) phòng học (A), hiệu điện thế (V); Số thiết bị bật cùng lúc.</p>
       <div class="nut">
@@ -104,12 +105,12 @@
       </div>
     </article>
     <article class="card n2">
-      <div class="dau"><span class="icon">🖥️</span><div><div class="so">Nhóm 2</div><h3>Phòng thực hành Tin học</h3></div></div>
-      <p class="mo">Kiểm tra tải điện và điện năng lãng phí trong phòng thực hành Tin học</p>
-      <p class="dc">🔁 So sánh với Nhóm 1 (phòng học thường): vì sao phòng máy dễ gần định mức hơn; nên bật máy lần lượt hay cùng lúc.</p>
-      <p><b>Câu hỏi STEM:</b> Làm thế nào để học sinh nhập thông số ghi trên thiết bị của phòng máy và biết ngay điện có an toàn không khi cả lớp bật máy cùng lúc, điện năng lãng phí là bao nhiêu?</p>
-      <ul class="lm"><li><b>S:</b> Vật lí 11 – Năng lượng điện. Công suất điện</li><li><b>S:</b> Công nghệ – An toàn điện; thông số kĩ thuật ghi trên thiết bị</li><li><b>E:</b> Quy trình thiết kế kĩ thuật; kiểm thử theo ngưỡng</li><li><b>M:</b> Toán – tỉ lệ phần trăm, đổi đơn vị, làm tròn</li></ul>
-      <p class="do"><b>Đo thật:</b> Công suất từng thiết bị (W); Dòng điện định mức của cầu dao (CB) phòng máy (A), hiệu điện thế (V); Số máy bật cùng lúc.</p>
+      <div class="dau"><span class="icon">🥗</span><div><div class="so">Nhóm 2</div><h3>Bữa ăn cân bằng – Căn tin xanh</h3></div></div>
+      <p class="mo">Căn tin xanh: web app tính năng lượng và tỉ lệ chất dinh dưỡng bữa ăn</p>
+      <p class="dc">🛠 Web app: khối, bữa ăn, chọn món (checkbox) và số phần; bảng món lấy từ Sheet “ThucDon” (đạm, béo, carbohydrate trên 1 p…</p>
+      <p><b>Câu hỏi STEM:</b> Làm thế nào để xây dựng một web app giúp học sinh chọn món đã ăn ở căn tin, biết ngay năng lượng và tỉ lệ các nhóm chất, đồng thời căn tin có số liệu về món học sinh hay chọn?</p>
+      <ul class="lm"><li><b>S:</b> Hóa học 12 – Carbohydrate; Hợp chất chứa nitrogen (protein); Ester – lipid (chất béo)</li><li><b>S:</b> Sinh học 11 – Dinh dưỡng ở người, khẩu phần ăn hợp lí</li><li><b>E:</b> Quy trình thiết kế kĩ thuật; kiểm thử</li><li><b>M:</b> Toán – tỉ lệ phần trăm, tỉ lệ thức</li></ul>
+      <p class="do"><b>Đo thật:</b> Thành phần dinh dưỡng của món đóng gói; Khối lượng 1 phần cơm, xôi, bánh mì ở căn tin (g); Món học sinh thường chọn.</p>
       <div class="nut">
         <a class="btn" href="nhom2_phien_ban_3.html">Phiên bản 3 – tính toán liên môn</a>
         <a class="btn phu" href="nhom2_phien_ban_2.html">Phiên bản 2</a>
@@ -123,16 +124,13 @@
         </div>
       </div>
     </article>
-    </div>
-    <h2 class="chu-de">Chủ đề 2: Màn hình và giấc ngủ <small>Hai nhóm khảo sát ẩn danh hai khối lớp rồi so sánh số trung bình, trung vị, mốt.</small></h2>
-    <div class="grid">
     <article class="card n3">
-      <div class="dau"><span class="icon">🌙</span><div><div class="so">Nhóm 3</div><h3>Khảo sát khối 12 (lớp 12A8)</h3></div></div>
-      <p class="mo">Thống kê thời gian sử dụng thiết bị số và thời gian ngủ của học sinh khối 12</p>
-      <p class="dc">🔁 So sánh với Nhóm 4 (khối 10): khối nào ngủ ít hơn, dùng màn hình nhiều hơn; số trung bình, trung vị, mốt khác nhau thế nào.</p>
-      <p><b>Câu hỏi STEM:</b> Làm thế nào để thu thập ẩn danh số liệu đo thật về thời gian màn hình, giấc ngủ và tính ngay các số đặc trưng của lớp?</p>
-      <ul class="lm"><li><b>S:</b> Sinh học – Hệ thần kinh, nhịp sinh học; Giáo dục thể chất – sức khỏe</li><li><b>E:</b> Quy trình thiết kế kĩ thuật; thực nghiệm có đối chứng</li><li><b>M:</b> Toán 11 – Các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm</li></ul>
-      <p class="do"><b>Đo thật:</b> Thời gian màn hình mỗi ngày (giờ); Giờ đi ngủ, giờ thức dậy; Thói quen trước khi ngủ.</p>
+      <div class="dau"><span class="icon">📚</span><div><div class="so">Nhóm 3</div><h3>Thư viện số – phiếu mượn sách</h3></div></div>
+      <p class="mo">Web app mượn sách, lập kế hoạch đọc và thống kê lượt mượn</p>
+      <p class="dc">🛠 Web app: mã/tên viết tắt, lớp, tên sách, tác giả, thể loại (select), số trang, ngày mượn…</p>
+      <p><b>Câu hỏi STEM:</b> Làm thế nào để xây dựng một web app giúp học sinh đăng kí mượn sách, tự tính hạn trả và số trang cần đọc mỗi ngày, còn thư viện xem được thống kê lượt mượn theo thể loại?</p>
+      <ul class="lm"><li><b>S:</b> Ngữ văn – thể loại văn học; Lịch sử, Sinh học, Vật lí – sách tham khảo theo môn</li><li><b>E:</b> Quy trình thiết kế kĩ thuật; kiểm thử với sổ mượn thật</li><li><b>M:</b> Toán 10 – Thống kê và xác suất: bảng tần số, tần số tương đối, biểu đồ cột/quạt</li></ul>
+      <p class="do"><b>Đo thật:</b> Số lượt mượn theo thể loại trong 1 tuần; Số trang của sách thường được mượn; Tốc độ đọc của học sinh (trang/ngày).</p>
       <div class="nut">
         <a class="btn" href="nhom3_phien_ban_3.html">Phiên bản 3 – tính toán liên môn</a>
         <a class="btn phu" href="nhom3_phien_ban_2.html">Phiên bản 2</a>
@@ -147,10 +145,10 @@
       </div>
     </article>
     <article class="card n4">
-      <div class="dau"><span class="icon">😴</span><div><div class="so">Nhóm 4</div><h3>Khảo sát khối 10 (lớp 10A1)</h3></div></div>
-      <p class="mo">Thống kê thời gian sử dụng thiết bị số và thời gian ngủ của học sinh khối 10</p>
-      <p class="dc">🔁 So sánh với Nhóm 3 (khối 12): áp lực học tập ở lớp cuối cấp có làm giấc ngủ ngắn hơn không; thói quen dùng điện thoại trước khi ngủ khác nhau ra sao.</p>
-      <p><b>Câu hỏi STEM:</b> Làm thế nào để thu thập ẩn danh số liệu đo thật về thời gian màn hình, giấc ngủ và tính ngay các số đặc trưng của lớp?</p>
+      <div class="dau"><span class="icon">🌙</span><div><div class="so">Nhóm 4</div><h3>Màn hình và giấc ngủ</h3></div></div>
+      <p class="mo">Thống kê thời gian sử dụng thiết bị số và thời gian ngủ của học sinh</p>
+      <p class="dc">🛠 Web app: khối, giờ đi ngủ và giờ thức dậy (input time) của 7 đêm, thời gian màn hình trung bình (giờ/ngày), mục đích dù…</p>
+      <p><b>Câu hỏi STEM:</b> Làm thế nào để xây dựng một web app giúp học sinh ghi ẩn danh thời gian dùng màn hình và giờ ngủ, tự tính số giờ ngủ, còn lớp xem được số trung bình, trung vị, mốt từ dữ liệu đã lưu?</p>
       <ul class="lm"><li><b>S:</b> Sinh học – Hệ thần kinh, nhịp sinh học; Giáo dục thể chất – sức khỏe</li><li><b>E:</b> Quy trình thiết kế kĩ thuật; thực nghiệm có đối chứng</li><li><b>M:</b> Toán 11 – Các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm</li></ul>
       <p class="do"><b>Đo thật:</b> Thời gian màn hình mỗi ngày (giờ); Giờ đi ngủ, giờ thức dậy; Thói quen trước khi ngủ.</p>
       <div class="nut">
@@ -170,18 +168,18 @@
     <div class="hop">
       <h2>🖨 In phiếu</h2>
       <p>Phiếu trắng dùng để học sinh điền tay khi đo đạc; phiếu có kết quả in kèm số liệu, kết quả tính và dòng ký xác nhận. Trên mỗi biểu mẫu cũng có nút <b>In phiếu</b> ở góc trên.</p>
-      <table class="bang-in"><tr><th>Nhóm</th><th>Phiếu trắng (phiên bản 2)</th><th>Phiếu có kết quả (phiên bản 3)</th></tr><tr><td>Nhóm 1 – Ổ điện an toàn – Phòng học</td><td><a href="nhom1_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom1_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr><tr><td>Nhóm 2 – Ổ điện an toàn – Phòng máy</td><td><a href="nhom2_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom2_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr><tr><td>Nhóm 3 – Màn hình và giấc ngủ – Khối 12</td><td><a href="nhom3_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom3_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr><tr><td>Nhóm 4 – Màn hình và giấc ngủ – Khối 10</td><td><a href="nhom4_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom4_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr></table>
+      <table class="bang-in"><tr><th>Nhóm</th><th>Phiếu trắng (phiên bản 2)</th><th>Phiếu có kết quả (phiên bản 3)</th></tr><tr><td>Nhóm 1 – Ổ điện an toàn</td><td><a href="nhom1_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom1_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr><tr><td>Nhóm 2 – Bữa ăn cân bằng – Căn tin xanh</td><td><a href="nhom2_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom2_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr><tr><td>Nhóm 3 – Thư viện số – phiếu mượn sách</td><td><a href="nhom3_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom3_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr><tr><td>Nhóm 4 – Màn hình và giấc ngủ</td><td><a href="nhom4_phien_ban_2.html?print=1" target="_blank">🖨 Phiếu trắng</a></td><td><a href="nhom4_phien_ban_3.html?print=1" target="_blank">🖨 Phiếu có kết quả</a></td></tr></table>
     </div>
     <div class="hop">
       <h2>Trợ lí AI được dùng thế nào?</h2>
       <p><b>Khi thiết kế:</b> nhóm hỏi AI biểu mẫu cần những trường nào, so sánh với bản thiết kế của nhóm, loại trường hỏi thừa thông tin cá nhân.</p>
       <p><b>Khi thử nghiệm:</b> nhóm tự kiểm thử trước, nhờ AI rà lỗi mã phiên bản 1, rồi kiểm chứng lại từng lỗi AI nêu.</p>
-      <p><b>Khi tính toán:</b> nhóm đưa công thức (đã đối chiếu SGK) cho AI viết đoạn JavaScript; chuyên gia liên môn tính tay để kiểm tra kết quả trước khi dùng.</p>
+      <p><b>Khi lập trình:</b> nhóm tự viết Code.gs và Index.html theo hướng dẫn; có thể hỏi AI giải thích lỗi trong Nhật ký thực thi, nhưng phải hiểu và tự sửa từng dòng; chuyên gia liên môn tính tay để kiểm tra kết quả.</p>
       <p><b>Lưu ý:</b> phiếu gửi đi được lưu vào Google Trang tính của nhóm (chỉ xem qua liên kết); gợi ý AI chỉ nhận số liệu, không nhận họ tên. Không nhập thông tin cá nhân thật.</p>
     </div>
     <div class="qrsite"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASgAAAEoAQAAAADDfFG0AAACDElEQVR4Xu1aSW7DQAwbFfn/l6fgIlvjpGgeQBaI1xNBUZTc2usL/HzxzspbF8JX47VW6RxCK/zWLlzVvp+Er8EXmQI31SdrV21c9I3w1SATVdAY6KKs1saR6tKT8PXZmcDNRjmiLl2mRPR16OvChp6asNE5w9f0r2amUIfyfviXKjP6OkFfV398//OTHX0NfY26u6OFQ4URvhpIWchbnb/UInX3vh++Dv9qn1JERXss9EkaGXNG+Lpb4t7tYTgDRz4sPsJ1/OvU1z0GqRw3dTVSWPT1cHKmro0MgQLU/KgqZTcIX4MvxC4qirMPfcsNoNZm2A9fky/wUxywLS+Vo2dtWlj0Nfpjb28Ohq7pkW0yfI38JWdnlnDwouSUJrgPC1+HvpAZPCyKIUrOBPLN6GvkL46Onq09Qrox6mby1wDtiQOQ4GBvv2dRRl8TDvEtMuV7isr5C+JLPZ75C/S0gymGaYTM/uuJ11WH3RL7G4e+EGmhH3095iEZu35kWu1gyfcHvP+SjHrGdqSgmUVfT74abpVjeFTnTF4dGN+3Heo1HjGnNoPxrwvwezs8uyGzfg+PZDD566EvjT92qyu7lmljzkh/fOuP+uqodT2O4En76Oy/Tv+6Df/e6DBFIK+mHk8wr3YxchHtwKpFjp0s9dgAXyYF/wLgD2jNlFkLX2fo+hfR1ye//xvhq/EL/IkMK7whPz8AAAAASUVORK5CYII=" alt="Mã QR trang lớp"><br>Mã QR trang lớp</div>
   </main>
-  <div class="bancu-hop"><a class="bancu" href="ban-4-nhom/index.html" title="Phiên bản 4 đề tài, lưu để tham khảo">↺ Bản 4 đề tài</a><a class="bancu" href="ban-cu/index.html" title="Phiên bản cũ của chủ đề (6 nhóm), lưu để tham khảo">↺ Bản 6 nhóm</a></div>
+  <div class="bancu-hop"><a class="bancu" href="ban-2-chu-de/index.html" title="Phiên bản 2 chủ đề, lưu để tham khảo">↺ Bản 2 chủ đề</a><a class="bancu" href="ban-4-nhom/index.html" title="Phiên bản 4 đề tài, lưu để tham khảo">↺ Bản 4 đề tài</a><a class="bancu" href="ban-cu/index.html" title="Phiên bản cũ của chủ đề (6 nhóm), lưu để tham khảo">↺ Bản 6 nhóm</a></div>
   <footer>Sản phẩm học tập STEM – Giáo viên hướng dẫn: Đỗ Thị Hoàng Mai, Tổ Tin học, Trường THPT Hàn Thuyên, năm học 2026 – 2027</footer>
 </body>
 </html>

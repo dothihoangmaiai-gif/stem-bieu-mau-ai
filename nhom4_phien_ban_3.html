@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU THEO DÕI MÀN HÌNH VÀ GIẤC NGỦ – phiên bản 3</title>
-  <link rel="stylesheet" href="theme.css?v=15">
-  <link rel="stylesheet" href="theme-nhom4.css?v=15">
+  <link rel="stylesheet" href="theme.css?v=16">
+  <link rel="stylesheet" href="theme-nhom4.css?v=16">
 </head>
 <body class="nhom4">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
   <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
-  <!-- Nhóm 4: MÀN HÌNH VÀ GIẤC NGỦ – THỐNG KÊ THỜI GIAN SỬ DỤNG THIẾT BỊ SỐ VÀ THỜI GIAN NGỦ CỦA HỌC SINH KHỐI 10 -->
+  <!-- Nhóm 4: MÀN HÌNH VÀ GIẤC NGỦ – THỐNG KÊ THỜI GIAN SỬ DỤNG THIẾT BỊ SỐ VÀ THỜI GIAN NGỦ CỦA HỌC SINH -->
   <!-- Phiên bản 3 – thêm phần TÍNH TOÁN LIÊN MÔN.
        Phần HTML (biểu mẫu) do nhóm viết theo Bài 12. Phần <script> do nhóm viết cùng trợ lí AI;
        mọi công thức đã được chuyên gia liên môn của nhóm kiểm chứng bằng tính tay (xem báo cáo, mục Kiểm chứng).
@@ -18,27 +18,32 @@
   <h2>PHIẾU THEO DÕI MÀN HÌNH VÀ GIẤC NGỦ</h2>
   <section class="cau-hoi-stem">
     <span class="nhan-chq">❓ Câu hỏi STEM</span>
-    <p class="chq">Làm thế nào để thu thập ẩn danh số liệu đo thật về thời gian màn hình, giấc ngủ và tính ngay các số đặc trưng của lớp?</p>
+    <p class="chq">Làm thế nào để xây dựng một web app giúp học sinh ghi ẩn danh thời gian dùng màn hình và giờ ngủ, tự tính số giờ ngủ, còn lớp xem được số trung bình, trung vị, mốt từ dữ liệu đã lưu?</p>
     <div class="stem4">
-      <div class="o-stem o-s"><b>S</b><small>Sinh học</small><p>Học sinh tuổi 15 – 16 cần ngủ bao nhiêu giờ? Ánh sáng màn hình ảnh hưởng thế nào đến nhịp sinh học?</p></div>
-      <div class="o-stem o-t"><b>T</b><small>Tin học 12</small><p>Dùng ô time thế nào để tính đúng số giờ ngủ qua nửa đêm?</p></div>
-      <div class="o-stem o-e"><b>E</b><small>Kĩ thuật</small><p>Thiết kế phiếu để so sánh được khối 10 với khối 12 (Nhóm 3) ra sao?</p></div>
+      <div class="o-stem o-s"><b>S</b><small>Sinh học</small><p>Ánh sáng màn hình ảnh hưởng thế nào đến nhịp sinh học và giấc ngủ?</p></div>
+      <div class="o-stem o-t"><b>T</b><small>Tin học 12 · Apps Script</small><p>Dùng ô time thế nào để tính đúng giờ ngủ qua nửa đêm? Code.gs tính x̄, Me, Mo từ Sheet ra sao?</p></div>
+      <div class="o-stem o-e"><b>E</b><small>Kĩ thuật</small><p>Làm thực nghiệm đối chứng “tắt màn hình 30 phút trước khi ngủ” ra sao?</p></div>
       <div class="o-stem o-m"><b>M</b><small>Toán 11</small><p>Tính số trung bình, trung vị, mốt của mẫu số liệu ghép nhóm thế nào?</p></div>
     </div>
   </section>
   <p class="canh">⚠ <b>An toàn:</b> Phiếu ẩn danh; kết quả chỉ là số liệu thống kê, không phải chẩn đoán sức khỏe.</p>
-  <p class="doi-chung">🔁 <b>Khảo sát khối 10 (lớp 10A1)</b> · So sánh với Nhóm 3 (khối 12): áp lực học tập ở lớp cuối cấp có làm giấc ngủ ngắn hơn không; thói quen dùng điện thoại trước khi ngủ khác nhau ra sao.</p>
+  <details class="webapp-box" open><summary>🛠 Sản phẩm của nhóm: web app Google Apps Script tự viết</summary>
+    <ol><li>Biểu mẫu (ẩn danh): khối, giờ đi ngủ và giờ thức dậy (input time) của 7 đêm, thời gian màn hình trung bình (giờ/ngày), mục đích dùng</li><li>Tính toán (JavaScript): số giờ ngủ mỗi đêm (cộng 24 giờ khi qua nửa đêm), giờ ngủ trung bình 7 đêm</li><li>Code.gs: hàm luuKhaoSat(dl) ghi vào Sheet “GiacNgu”</li><li>Code.gs: hàm layThongKe() ghép nhóm giờ ngủ [4;5), [5;6)…; tính x̄, Me, Mo của mẫu số liệu ghép nhóm; trang hiện bảng tần số</li><li>Mở rộng: so sánh nhóm dùng màn hình nhiều/ít; biểu đồ cột</li></ol>
+    <p class="cot-sheet"><b>Cột của Google Sheet:</b> Thời gian | Khối | Giờ ngủ TB (giờ) | Màn hình (giờ/ngày) | Mục đích | 7 đêm (giờ)</p>
+    <p>Trang này là <b>bản mẫu giao diện</b> để thử công thức với số liệu đo thật. Nhóm tự viết web app theo <a href="huong-dan-apps-script.html">hướng dẫn Apps Script từng bước</a>.</p>
+  </details>
+
   <p class="mau">Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
   <h3>A. PHIẾU CÁ NHÂN (ẩn danh – không ghi họ tên)</h3>
   <form action="ketqua.html" method="get">
     <fieldset>
       <legend>Thông tin chung</legend>
       <p>Khối:
-        <input type="radio" id="k10" name="khoi" value="10" checked><label for="k10">10</label>
+        <input type="radio" id="k10" name="khoi" value="10"><label for="k10">10</label>
         <input type="radio" id="k11" name="khoi" value="11"><label for="k11">11</label>
-        <input type="radio" id="k12" name="khoi" value="12"><label for="k12">12</label></p>
+        <input type="radio" id="k12" name="khoi" value="12" checked><label for="k12">12</label></p>
       <p><label for="manhinh">Thời gian màn hình trung bình 7 ngày (giờ/ngày, đọc trong Cài đặt của điện thoại):</label>
-        <input type="number" id="manhinh" name="manhinh" min="0" max="24" step="0.1" value="4.6"></p>
+        <input type="number" id="manhinh" name="manhinh" min="0" max="24" step="0.1" value="5.2"></p>
       <p>Dùng điện thoại trong 30 phút trước khi ngủ?
         <input type="radio" id="t1" name="truocngu" value="Có" checked><label for="t1">Có</label>
         <input type="radio" id="t2" name="truocngu" value="Không"><label for="t2">Không</label></p>
@@ -47,13 +52,13 @@
       <legend>Nhật kí giấc ngủ 7 đêm</legend>
       <table>
         <tr><th>Đêm</th><th>Giờ đi ngủ</th><th>Giờ thức dậy</th><th>Số giờ ngủ</th></tr>
-        <tr><td>Đêm 1</td><td><input type="time" id="ng0" name="ngu_dem1" value="22:45"></td><td><input type="time" id="th0" name="thuc_dem1" value="06:00"></td><td id="gn0"></td></tr>
+        <tr><td>Đêm 1</td><td><input type="time" id="ng0" name="ngu_dem1" value="23:30"></td><td><input type="time" id="th0" name="thuc_dem1" value="05:45"></td><td id="gn0"></td></tr>
         <tr><td>Đêm 2</td><td><input type="time" id="ng1" name="ngu_dem2" value="23:00"></td><td><input type="time" id="th1" name="thuc_dem2" value="06:00"></td><td id="gn1"></td></tr>
-        <tr><td>Đêm 3</td><td><input type="time" id="ng2" name="ngu_dem3" value="22:30"></td><td><input type="time" id="th2" name="thuc_dem3" value="06:00"></td><td id="gn2"></td></tr>
-        <tr><td>Đêm 4</td><td><input type="time" id="ng3" name="ngu_dem4" value="23:15"></td><td><input type="time" id="th3" name="thuc_dem4" value="06:15"></td><td id="gn3"></td></tr>
-        <tr><td>Đêm 5</td><td><input type="time" id="ng4" name="ngu_dem5" value="22:30"></td><td><input type="time" id="th4" name="thuc_dem5" value="06:00"></td><td id="gn4"></td></tr>
-        <tr><td>Đêm 6</td><td><input type="time" id="ng5" name="ngu_dem6" value="00:00"></td><td><input type="time" id="th5" name="thuc_dem6" value="08:00"></td><td id="gn5"></td></tr>
-        <tr><td>Đêm 7</td><td><input type="time" id="ng6" name="ngu_dem7" value="23:30"></td><td><input type="time" id="th6" name="thuc_dem7" value="08:30"></td><td id="gn6"></td></tr>
+        <tr><td>Đêm 3</td><td><input type="time" id="ng2" name="ngu_dem3" value="00:15"></td><td><input type="time" id="th2" name="thuc_dem3" value="06:00"></td><td id="gn2"></td></tr>
+        <tr><td>Đêm 4</td><td><input type="time" id="ng3" name="ngu_dem4" value="23:45"></td><td><input type="time" id="th3" name="thuc_dem4" value="05:45"></td><td id="gn3"></td></tr>
+        <tr><td>Đêm 5</td><td><input type="time" id="ng4" name="ngu_dem5" value="22:45"></td><td><input type="time" id="th4" name="thuc_dem5" value="05:45"></td><td id="gn4"></td></tr>
+        <tr><td>Đêm 6</td><td><input type="time" id="ng5" name="ngu_dem6" value="01:00"></td><td><input type="time" id="th5" name="thuc_dem6" value="08:30"></td><td id="gn5"></td></tr>
+        <tr><td>Đêm 7</td><td><input type="time" id="ng6" name="ngu_dem7" value="00:30"></td><td><input type="time" id="th6" name="thuc_dem7" value="08:00"></td><td id="gn6"></td></tr>
       </table>
     </fieldset>
     <div class="kq">
@@ -75,11 +80,11 @@
       <table>
         <tr><th>Nhóm (giờ ngủ)</th><th>Tần số nᵢ</th><th>Giá trị đại diện cᵢ</th><th>Tần số tích lũy</th></tr>
         <tr><td>[4; 5)</td><td><input type="number" id="a0" min="0" step="1" value="0"></td><td id="ac0"></td><td id="ak0"></td></tr>
-        <tr><td>[5; 6)</td><td><input type="number" id="a1" min="0" step="1" value="2"></td><td id="ac1"></td><td id="ak1"></td></tr>
-        <tr><td>[6; 7)</td><td><input type="number" id="a2" min="0" step="1" value="10"></td><td id="ac2"></td><td id="ak2"></td></tr>
-        <tr><td>[7; 8)</td><td><input type="number" id="a3" min="0" step="1" value="17"></td><td id="ac3"></td><td id="ak3"></td></tr>
-        <tr><td>[8; 9)</td><td><input type="number" id="a4" min="0" step="1" value="8"></td><td id="ac4"></td><td id="ak4"></td></tr>
-        <tr><td>[9; 10)</td><td><input type="number" id="a5" min="0" step="1" value="3"></td><td id="ac5"></td><td id="ak5"></td></tr>
+        <tr><td>[5; 6)</td><td><input type="number" id="a1" min="0" step="1" value="4"></td><td id="ac1"></td><td id="ak1"></td></tr>
+        <tr><td>[6; 7)</td><td><input type="number" id="a2" min="0" step="1" value="14"></td><td id="ac2"></td><td id="ak2"></td></tr>
+        <tr><td>[7; 8)</td><td><input type="number" id="a3" min="0" step="1" value="15"></td><td id="ac3"></td><td id="ak3"></td></tr>
+        <tr><td>[8; 9)</td><td><input type="number" id="a4" min="0" step="1" value="6"></td><td id="ac4"></td><td id="ak4"></td></tr>
+        <tr><td>[9; 10)</td><td><input type="number" id="a5" min="0" step="1" value="1"></td><td id="ac5"></td><td id="ak5"></td></tr>
       </table>
       <details class="cach-tinh" open><summary>Kết quả và cách tính</summary>
       <div class="ct" id="akq"></div></details>
@@ -88,10 +93,10 @@
     <legend>Thời gian màn hình mỗi ngày (giờ)</legend>
       <table>
         <tr><th>Nhóm (giờ màn hình)</th><th>Tần số nᵢ</th><th>Giá trị đại diện cᵢ</th><th>Tần số tích lũy</th></tr>
-        <tr><td>[0; 2)</td><td><input type="number" id="b0" min="0" step="1" value="5"></td><td id="bc0"></td><td id="bk0"></td></tr>
-        <tr><td>[2; 4)</td><td><input type="number" id="b1" min="0" step="1" value="12"></td><td id="bc1"></td><td id="bk1"></td></tr>
-        <tr><td>[4; 6)</td><td><input type="number" id="b2" min="0" step="1" value="13"></td><td id="bc2"></td><td id="bk2"></td></tr>
-        <tr><td>[6; 8)</td><td><input type="number" id="b3" min="0" step="1" value="7"></td><td id="bc3"></td><td id="bk3"></td></tr>
+        <tr><td>[0; 2)</td><td><input type="number" id="b0" min="0" step="1" value="3"></td><td id="bc0"></td><td id="bk0"></td></tr>
+        <tr><td>[2; 4)</td><td><input type="number" id="b1" min="0" step="1" value="10"></td><td id="bc1"></td><td id="bk1"></td></tr>
+        <tr><td>[4; 6)</td><td><input type="number" id="b2" min="0" step="1" value="15"></td><td id="bc2"></td><td id="bk2"></td></tr>
+        <tr><td>[6; 8)</td><td><input type="number" id="b3" min="0" step="1" value="9"></td><td id="bc3"></td><td id="bk3"></td></tr>
         <tr><td>[8; 10)</td><td><input type="number" id="b4" min="0" step="1" value="3"></td><td id="bc4"></td><td id="bk4"></td></tr>
       </table>
       <details class="cach-tinh" open><summary>Kết quả và cách tính</summary>
@@ -155,7 +160,7 @@
     window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
-  <script src="luu-tru.js?v=15"></script>
-  <script src="goi-y-ai.js?v=15"></script>
+  <script src="luu-tru.js?v=16"></script>
+  <script src="goi-y-ai.js?v=16"></script>
 </body>
 </html>

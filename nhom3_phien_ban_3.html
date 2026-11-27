@@ -3,159 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PHIẾU THEO DÕI MÀN HÌNH VÀ GIẤC NGỦ – phiên bản 3</title>
-  <link rel="stylesheet" href="theme.css?v=15">
-  <link rel="stylesheet" href="theme-nhom3.css?v=15">
+  <title>PHIẾU MƯỢN SÁCH VÀ KẾ HOẠCH ĐỌC – phiên bản 3</title>
+  <link rel="stylesheet" href="theme.css?v=16">
+  <link rel="stylesheet" href="theme-nhom3.css?v=16">
 </head>
 <body class="nhom3">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
   <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
-  <!-- Nhóm 3: MÀN HÌNH VÀ GIẤC NGỦ – THỐNG KÊ THỜI GIAN SỬ DỤNG THIẾT BỊ SỐ VÀ THỜI GIAN NGỦ CỦA HỌC SINH KHỐI 12 -->
+  <!-- Nhóm 3: THƯ VIỆN SỐ – WEB APP MƯỢN SÁCH, LẬP KẾ HOẠCH ĐỌC VÀ THỐNG KÊ LƯỢT MƯỢN -->
   <!-- Phiên bản 3 – thêm phần TÍNH TOÁN LIÊN MÔN.
        Phần HTML (biểu mẫu) do nhóm viết theo Bài 12. Phần <script> do nhóm viết cùng trợ lí AI;
        mọi công thức đã được chuyên gia liên môn của nhóm kiểm chứng bằng tính tay (xem báo cáo, mục Kiểm chứng).
        Khi thử nghiệm, dữ liệu và kết quả tính được gửi bằng GET tới ketqua.html. -->
-  <h2>PHIẾU THEO DÕI MÀN HÌNH VÀ GIẤC NGỦ</h2>
+  <h2>PHIẾU MƯỢN SÁCH VÀ KẾ HOẠCH ĐỌC</h2>
   <section class="cau-hoi-stem">
     <span class="nhan-chq">❓ Câu hỏi STEM</span>
-    <p class="chq">Làm thế nào để thu thập ẩn danh số liệu đo thật về thời gian màn hình, giấc ngủ và tính ngay các số đặc trưng của lớp?</p>
+    <p class="chq">Làm thế nào để xây dựng một web app giúp học sinh đăng kí mượn sách, tự tính hạn trả và số trang cần đọc mỗi ngày, còn thư viện xem được thống kê lượt mượn theo thể loại?</p>
     <div class="stem4">
-      <div class="o-stem o-s"><b>S</b><small>Sinh học</small><p>Ánh sáng màn hình ảnh hưởng thế nào đến nhịp sinh học và giấc ngủ của học sinh lớp cuối cấp?</p></div>
-      <div class="o-stem o-t"><b>T</b><small>Tin học 12</small><p>Dùng ô time thế nào để tính đúng số giờ ngủ qua nửa đêm?</p></div>
-      <div class="o-stem o-e"><b>E</b><small>Kĩ thuật</small><p>Làm thực nghiệm đối chứng “tắt màn hình 30 phút trước khi ngủ” ra sao? So với khối 10 (Nhóm 4) thế nào?</p></div>
-      <div class="o-stem o-m"><b>M</b><small>Toán 11</small><p>Tính số trung bình, trung vị, mốt của mẫu số liệu ghép nhóm thế nào?</p></div>
+      <div class="o-stem o-s"><b>S</b><small>Ngữ văn · các môn</small><p>Sách thuộc thể loại nào, gắn với môn học nào? Phân loại thế nào cho thống nhất?</p></div>
+      <div class="o-stem o-t"><b>T</b><small>Tin học 12 · Apps Script</small><p>Web app tự tính hạn trả, ghi phiếu vào Sheet và đếm lượt mượn theo thể loại thế nào?</p></div>
+      <div class="o-stem o-e"><b>E</b><small>Kĩ thuật</small><p>Thống kê của web app có trùng với đếm tay 20 lượt từ sổ giấy không? Cải tiến gì?</p></div>
+      <div class="o-stem o-m"><b>M</b><small>Toán 10</small><p>Lập bảng tần số, tần số tương đối; tính số trang cần đọc mỗi ngày ra sao?</p></div>
     </div>
   </section>
-  <p class="canh">⚠ <b>An toàn:</b> Phiếu ẩn danh; kết quả chỉ là số liệu thống kê, không phải chẩn đoán sức khỏe.</p>
-  <p class="doi-chung">🔁 <b>Khảo sát khối 12 (lớp 12A8)</b> · So sánh với Nhóm 4 (khối 10): khối nào ngủ ít hơn, dùng màn hình nhiều hơn; số trung bình, trung vị, mốt khác nhau thế nào.</p>
+  <p class="canh">⚠ <b>An toàn:</b> Không lưu họ tên đầy đủ trên bản thử nghiệm: dùng mã học sinh hoặc tên viết tắt; chỉ thủ thư xem toàn bộ Sheet.</p>
+  <details class="webapp-box" open><summary>🛠 Sản phẩm của nhóm: web app Google Apps Script tự viết</summary>
+    <ol><li>Biểu mẫu: mã/tên viết tắt, lớp, tên sách, tác giả, thể loại (select), số trang, ngày mượn</li><li>Tính toán (JavaScript): hạn trả = ngày mượn + 14 ngày; số trang cần đọc/ngày; số ngày còn lại</li><li>Code.gs: hàm luuPhieuMuon(dl) ghi vào Sheet “MuonSach”</li><li>Code.gs: hàm layThongKe() trả về bảng tần số, tần số tương đối theo thể loại và các phiếu còn ≤ 3 ngày đến hạn</li><li>Mở rộng: biểu đồ cột tần số; nút “Đã trả sách” cập nhật cột Trạng thái</li></ol>
+    <p class="cot-sheet"><b>Cột của Google Sheet:</b> Thời gian | Mã HS | Lớp | Tên sách | Tác giả | Thể loại | Số trang | Ngày mượn | Hạn trả | Trang/ngày | Trạng thái</p>
+    <p>Trang này là <b>bản mẫu giao diện</b> để thử công thức với số liệu đo thật. Nhóm tự viết web app theo <a href="huong-dan-apps-script.html">hướng dẫn Apps Script từng bước</a>.</p>
+  </details>
+
   <p class="mau">Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
-  <h3>A. PHIẾU CÁ NHÂN (ẩn danh – không ghi họ tên)</h3>
   <form action="ketqua.html" method="get">
+   <div class="hai-cot">
+    <div class="cot-trai">
     <fieldset>
-      <legend>Thông tin chung</legend>
-      <p>Khối:
-        <input type="radio" id="k10" name="khoi" value="10"><label for="k10">10</label>
-        <input type="radio" id="k11" name="khoi" value="11"><label for="k11">11</label>
-        <input type="radio" id="k12" name="khoi" value="12" checked><label for="k12">12</label></p>
-      <p><label for="manhinh">Thời gian màn hình trung bình 7 ngày (giờ/ngày, đọc trong Cài đặt của điện thoại):</label>
-        <input type="number" id="manhinh" name="manhinh" min="0" max="24" step="0.1" value="5.2"></p>
-      <p>Dùng điện thoại trong 30 phút trước khi ngủ?
-        <input type="radio" id="t1" name="truocngu" value="Có" checked><label for="t1">Có</label>
-        <input type="radio" id="t2" name="truocngu" value="Không"><label for="t2">Không</label></p>
+      <legend>Thông tin người mượn</legend>
+      <p><label for="mahs">Mã học sinh / tên viết tắt:</label> <input type="text" id="mahs" name="mahs" value="HS12A8-05" required>
+         <label for="lop">Lớp:</label> <select id="lop" name="lop"><option>12A1</option><option>12A3</option><option selected>12A8</option><option>11A7</option><option>11A12</option><option>10A1</option></select></p>
     </fieldset>
     <fieldset>
-      <legend>Nhật kí giấc ngủ 7 đêm</legend>
+      <legend>Thông tin sách và kế hoạch đọc</legend>
+      <p><label for="tensach">Tên sách:</label> <input type="text" id="tensach" name="tensach" value="Dế Mèn phiêu lưu kí" required>
+         <label for="tacgia">Tác giả:</label> <input type="text" id="tacgia" name="tacgia" value="Tô Hoài"></p>
+      <p><label for="theloai">Thể loại:</label> <select id="theloai" name="theloai"><option>Văn học</option><option>Khoa học tự nhiên</option><option>Lịch sử – Địa lí</option><option>Kĩ năng sống</option><option>Sách giáo khoa</option></select>
+         <label for="sotrang">Số trang:</label> <input type="number" id="sotrang" name="sotrang" min="1" max="2000" step="1" value="280"></p>
+      <p><label for="ngaymuon">Ngày mượn:</label> <input type="date" id="ngaymuon" name="ngaymuon" value="2026-12-02">
+         <label for="songay">Số ngày định đọc (≤ 14):</label> <input type="number" id="songay" name="songay" min="1" max="14" step="1" value="14"></p>
+    </fieldset>
+    <fieldset>
+      <legend>Dữ liệu kiểm thử – lượt mượn 1 tuần đếm từ sổ giấy của thư viện</legend>
       <table>
-        <tr><th>Đêm</th><th>Giờ đi ngủ</th><th>Giờ thức dậy</th><th>Số giờ ngủ</th></tr>
-        <tr><td>Đêm 1</td><td><input type="time" id="ng0" name="ngu_dem1" value="23:30"></td><td><input type="time" id="th0" name="thuc_dem1" value="05:45"></td><td id="gn0"></td></tr>
-        <tr><td>Đêm 2</td><td><input type="time" id="ng1" name="ngu_dem2" value="23:00"></td><td><input type="time" id="th1" name="thuc_dem2" value="06:00"></td><td id="gn1"></td></tr>
-        <tr><td>Đêm 3</td><td><input type="time" id="ng2" name="ngu_dem3" value="00:15"></td><td><input type="time" id="th2" name="thuc_dem3" value="06:00"></td><td id="gn2"></td></tr>
-        <tr><td>Đêm 4</td><td><input type="time" id="ng3" name="ngu_dem4" value="23:45"></td><td><input type="time" id="th3" name="thuc_dem4" value="05:45"></td><td id="gn3"></td></tr>
-        <tr><td>Đêm 5</td><td><input type="time" id="ng4" name="ngu_dem5" value="22:45"></td><td><input type="time" id="th4" name="thuc_dem5" value="05:45"></td><td id="gn4"></td></tr>
-        <tr><td>Đêm 6</td><td><input type="time" id="ng5" name="ngu_dem6" value="01:00"></td><td><input type="time" id="th5" name="thuc_dem6" value="08:30"></td><td id="gn5"></td></tr>
-        <tr><td>Đêm 7</td><td><input type="time" id="ng6" name="ngu_dem7" value="00:30"></td><td><input type="time" id="th6" name="thuc_dem7" value="08:00"></td><td id="gn6"></td></tr>
+        <tr><th>Thể loại</th><th>Số lượt (n)</th><th>Tần số tương đối (f)</th></tr>
+        <tr><td>Văn học</td><td><input type="number" id="n_0" min="0" step="1" value="18"></td><td id="f_0"></td></tr>
+        <tr><td>Khoa học tự nhiên</td><td><input type="number" id="n_1" min="0" step="1" value="9"></td><td id="f_1"></td></tr>
+        <tr><td>Lịch sử – Địa lí</td><td><input type="number" id="n_2" min="0" step="1" value="7"></td><td id="f_2"></td></tr>
+        <tr><td>Kĩ năng sống</td><td><input type="number" id="n_3" min="0" step="1" value="6"></td><td id="f_3"></td></tr>
+        <tr><td>Sách giáo khoa</td><td><input type="number" id="n_4" min="0" step="1" value="0"></td><td id="f_4"></td></tr>
       </table>
     </fieldset>
+    </div>
+    <aside class="cot-phai">
     <div class="kq">
-      <h3>KẾT QUẢ CỦA EM</h3>
+      <h3>KẾT QUẢ TÍNH</h3>
       <div id="kq"></div>
       <div class="bieu-do" id="bd"></div>
       <details class="cach-tinh"><summary>Xem cách tính (thay số)</summary>
       <div class="ct" id="ct"></div></details>
-      <p class="mau">Nếu thường xuyên mệt mỏi, em hãy trao đổi với GVCN hoặc nhân viên y tế trường.</p>
     </div>
-    <input type="hidden" id="kq_tb" name="kq_gio_ngu_trung_binh">
-    <p><input type="submit" value="Gửi phiếu (ẩn danh)"> <input type="reset" value="Nhập lại"></p>
+    </aside>
+   </div>
+    <input type="hidden" id="kq_hantra" name="kq_han_tra">
+    <input type="hidden" id="kq_trang" name="kq_trang_moi_ngay">
+    <input type="hidden" id="kq_conlai" name="kq_so_ngay_con_lai">
+    <p><input type="submit" value="Gửi phiếu"> <input type="reset" value="Nhập lại"></p>
   </form>
-
-  <h3>B. THỐNG KÊ CỦA LỚP – MẪU SỐ LIỆU GHÉP NHÓM (Toán 11)</h3>
-  <p class="mau">Nhập số bạn thuộc từng khoảng (tần số).</p>
-  <fieldset>
-    <legend>Giờ ngủ trung bình mỗi đêm (giờ)</legend>
-      <table>
-        <tr><th>Nhóm (giờ ngủ)</th><th>Tần số nᵢ</th><th>Giá trị đại diện cᵢ</th><th>Tần số tích lũy</th></tr>
-        <tr><td>[4; 5)</td><td><input type="number" id="a0" min="0" step="1" value="0"></td><td id="ac0"></td><td id="ak0"></td></tr>
-        <tr><td>[5; 6)</td><td><input type="number" id="a1" min="0" step="1" value="4"></td><td id="ac1"></td><td id="ak1"></td></tr>
-        <tr><td>[6; 7)</td><td><input type="number" id="a2" min="0" step="1" value="14"></td><td id="ac2"></td><td id="ak2"></td></tr>
-        <tr><td>[7; 8)</td><td><input type="number" id="a3" min="0" step="1" value="15"></td><td id="ac3"></td><td id="ak3"></td></tr>
-        <tr><td>[8; 9)</td><td><input type="number" id="a4" min="0" step="1" value="6"></td><td id="ac4"></td><td id="ak4"></td></tr>
-        <tr><td>[9; 10)</td><td><input type="number" id="a5" min="0" step="1" value="1"></td><td id="ac5"></td><td id="ak5"></td></tr>
-      </table>
-      <details class="cach-tinh" open><summary>Kết quả và cách tính</summary>
-      <div class="ct" id="akq"></div></details>
-  </fieldset>
-  <fieldset>
-    <legend>Thời gian màn hình mỗi ngày (giờ)</legend>
-      <table>
-        <tr><th>Nhóm (giờ màn hình)</th><th>Tần số nᵢ</th><th>Giá trị đại diện cᵢ</th><th>Tần số tích lũy</th></tr>
-        <tr><td>[0; 2)</td><td><input type="number" id="b0" min="0" step="1" value="3"></td><td id="bc0"></td><td id="bk0"></td></tr>
-        <tr><td>[2; 4)</td><td><input type="number" id="b1" min="0" step="1" value="10"></td><td id="bc1"></td><td id="bk1"></td></tr>
-        <tr><td>[4; 6)</td><td><input type="number" id="b2" min="0" step="1" value="15"></td><td id="bc2"></td><td id="bk2"></td></tr>
-        <tr><td>[6; 8)</td><td><input type="number" id="b3" min="0" step="1" value="9"></td><td id="bc3"></td><td id="bk3"></td></tr>
-        <tr><td>[8; 10)</td><td><input type="number" id="b4" min="0" step="1" value="3"></td><td id="bc4"></td><td id="bk4"></td></tr>
-      </table>
-      <details class="cach-tinh" open><summary>Kết quả và cách tính</summary>
-      <div class="ct" id="bkq"></div></details>
-  </fieldset>
   <script>
     function so(id) { var x = parseFloat(document.getElementById(id).value); return isNaN(x) ? 0 : x; }
     function f(x, n) { return Number(x).toLocaleString("vi-VN", { maximumFractionDigits: n === undefined ? 2 : n }); }
     function dat(id, v) { document.getElementById(id).value = v; }
     function hien(id, html) { document.getElementById(id).innerHTML = html; }
 
-    function phut(s) { if (!s) return null; var a = s.split(":"); return +a[0] * 60 + +a[1]; }
-    function tinhCaNhan() {
-      var tong = 0, dem = 0, ds = [], gio = [];
-      for (var i = 0; i < 7; i++) {
-        var a = phut(document.getElementById("ng" + i).value), b = phut(document.getElementById("th" + i).value);
-        if (a === null || b === null) { hien("gn" + i, ""); continue; }
-        var h = (b - a) / 60; if (h < 0) h += 24;
-        hien("gn" + i, f(h)); tong += h; dem++; ds.push(f(h)); gio.push(h);
+    var TL = ['Văn học', 'Khoa học tự nhiên', 'Lịch sử – Địa lí', 'Kĩ năng sống', 'Sách giáo khoa'];
+    function ngayVN(d) { return ("0" + d.getDate()).slice(-2) + "/" + ("0" + (d.getMonth() + 1)).slice(-2) + "/" + d.getFullYear(); }
+    function tinh() {
+      var v = document.getElementById("ngaymuon").value, st = so("sotrang"), nd = Math.min(Math.max(so("songay"), 1), 14);
+      var kq = "", ct = "";
+      if (v) {
+        var m = new Date(v + "T00:00:00"), h = new Date(m); h.setDate(h.getDate() + 14);
+        var hom = new Date(); hom.setHours(0, 0, 0, 0);
+        var con = Math.round((h - hom) / 86400000), tr = Math.ceil(st / nd);
+        kq = "Hạn trả: <b>" + ngayVN(h) + "</b> (" + (con >= 0 ? "còn " + con + " ngày" : '<span class="xau">quá hạn ' + (-con) + " ngày</span>") + ")" +
+             "<br>Cần đọc <b>" + tr + " trang/ngày</b> để đọc hết " + f(st, 0) + " trang trong " + nd + " ngày" +
+             (con >= 0 && con <= 3 ? '<br><span class="xau">⚠ Sắp đến hạn trả</span>' : "");
+        ct = "Hạn trả = " + ngayVN(m) + " + 14 ngày = " + ngayVN(h) + "\nSố trang/ngày = ⌈" + f(st, 0) + " / " + nd + "⌉ = " + tr;
+        dat("kq_hantra", h.toISOString().slice(0, 10)); dat("kq_trang", tr); dat("kq_conlai", con);
       }
-      if (!dem) { hien("kq", "Hãy nhập giờ đi ngủ và giờ thức dậy."); hien("ct", ""); return; }
-      var tb = tong / dem;
-      var mh = tb >= 8 ? '<span class="tot">đạt khuyến nghị 8 – 10 giờ</span>' : (tb >= 7 ? '<span class="chu">hơi thiếu so với khuyến nghị 8 – 10 giờ</span>' : '<span class="xau">thiếu ngủ so với khuyến nghị 8 – 10 giờ</span>');
-      var goi = [];
-      if (tb < 8) goi.push("Thử đi ngủ sớm hơn 15 – 30 phút.");
-      if (document.getElementById("t1").checked) goi.push("Tắt màn hình hoặc để điện thoại xa giường 30 phút trước khi ngủ.");
-      if (so("manhinh") > 4) goi.push("Dùng tính năng giới hạn thời gian ứng dụng.");
-      hien("kq", "Giờ ngủ trung bình " + dem + " đêm: <b>" + f(tb) + " giờ</b> → " + mh + (goi.length ? "<br>Gợi ý: " + goi.join(" ") : ""));
-      hien("ct", "Số giờ ngủ = giờ thức − giờ ngủ (âm thì cộng 24)\nTrung bình = (" + ds.join(" + ") + ") / " + dem + " ≈ " + f(tb) + " giờ");
-      var cot = "";
-      gio.forEach(function (h, i) { var mau = h >= 8 ? "#4ade80" : (h >= 7 ? "#facc15" : "#f87171");
-        cot += '<div class="cot" style="height:' + (Math.min(h, 10) / 10 * 100) + '%;background:' + mau + '"><i>' + f(h, 1) + '</i><em>Đêm ' + (i + 1) + '</em></div>'; });
-      hien("bd", '<div class="cot-ngu">' + cot + '<div class="vach" style="bottom:' + (8 / 10 * 100) + '%"><b>8 giờ</b></div></div>');
-      dat("kq_tb", tb.toFixed(2));
+      var N = 0, ns = TL.map(function (_, k) { var n = so("n_" + k); N += n; return n; });
+      var bd = "", lon = 0;
+      ns.forEach(function (n, k) { var fr = N > 0 ? n / N * 100 : 0; hien("f_" + k, N > 0 ? f(fr, 1) + "%" : ""); if (n > ns[lon]) lon = k;
+        bd += '<div class="cot-tk"><span style="height:' + (N > 0 ? fr * 1.6 : 0) + 'px"></span><small>' + TL[k] + '<br>' + f(fr, 0) + '%</small></div>'; });
+      if (N > 0) { kq += "<br>Tổng lượt mượn tuần: <b>" + N + "</b>; nhiều nhất: <b>" + TL[lon] + "</b> (" + f(ns[lon] / N * 100, 1) + "%)";
+        ct += "\nf(" + TL[lon] + ") = " + ns[lon] + " / " + N + " × 100% = " + f(ns[lon] / N * 100, 1) + "%"; }
+      hien("kq", kq); hien("ct", ct);
+      hien("bd", '<div style="width:100%"><b>Tần số tương đối lượt mượn theo thể loại</b><div class="bd-cot">' + bd + '</div></div>');
     }
-    function ghepNhom(id_, B) {
-      var n = B.map(function (_, i) { return Math.max(0, so(id_ + i)); }), N = 0, S = 0, tl = [], ds = [];
-      B.forEach(function (b, i) { var c = (b[0] + b[1]) / 2; N += n[i]; S += n[i] * c; tl.push(N); hien(id_ + "c" + i, f(c)); hien(id_ + "k" + i, f(N, 0)); if (n[i] > 0) ds.push(n[i] + "×" + f(c)); });
-      if (!N) { hien(id_ + "kq", "Nhập tần số."); return; }
-      var tb = S / N, p = 0; while (tl[p] < N / 2) p++;
-      var C = p > 0 ? tl[p - 1] : 0, h = B[p][1] - B[p][0], Me = B[p][0] + (N / 2 - C) / n[p] * h;
-      var j = 0; n.forEach(function (x, i) { if (x > n[j]) j = i; });
-      var tr = j > 0 ? n[j - 1] : 0, sa = j < n.length - 1 ? n[j + 1] : 0, mau = (n[j] - tr) + (n[j] - sa);
-      var Mo = mau > 0 ? B[j][0] + (n[j] - tr) / mau * (B[j][1] - B[j][0]) : null;
-      hien(id_ + "kq", "n = " + N + "\n" +
-        "x̄ = (" + ds.join(" + ") + ") / " + N + " = " + f(S) + " / " + N + " ≈ " + f(tb) + " giờ\n" +
-        "Trung vị: n/2 = " + f(N / 2) + " thuộc nhóm [" + B[p][0] + "; " + B[p][1] + ")\n" +
-        "   Me = " + B[p][0] + " + (" + f(N / 2) + " − " + C + ") / " + n[p] + " × " + h + " ≈ " + f(Me) + " giờ\n" +
-        "Mốt: nhóm có tần số lớn nhất [" + B[j][0] + "; " + B[j][1] + ")\n" +
-        (Mo !== null ? "   Mo = " + B[j][0] + " + (" + n[j] + " − " + tr + ") / ((" + n[j] + " − " + tr + ") + (" + n[j] + " − " + sa + ")) × " + (B[j][1] - B[j][0]) + " ≈ " + f(Mo) + " giờ" : "   Không tính được Mo theo công thức (mẫu số bằng 0)"));
-    }
-    var NGU = [[4,5],[5,6],[6,7],[7,8],[8,9],[9,10]], MH = [[0,2],[2,4],[4,6],[6,8],[8,10]];
-    function tatCa() { tinhCaNhan(); ghepNhom("a", NGU); ghepNhom("b", MH); }
-    document.addEventListener("input", tatCa);
-    document.querySelector("form").addEventListener("reset", function () { setTimeout(tatCa, 0); });
-    tatCa();
+    function nhay() { var k = document.querySelector(".kq"); k.classList.remove("vua-doi"); void k.offsetWidth; k.classList.add("vua-doi"); }
+    document.querySelector("form").addEventListener("input", function () { tinh(); nhay(); });
+    document.querySelector("form").addEventListener("reset", function () { setTimeout(tinh, 0); });
+    tinh();
   </script>
-  <div class="ky"><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
+  <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
   <script>
     document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
     window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
-  <script src="luu-tru.js?v=15"></script>
-  <script src="goi-y-ai.js?v=15"></script>
+  <script src="luu-tru.js?v=16"></script>
+  <script src="goi-y-ai.js?v=16"></script>
 </body>
 </html>

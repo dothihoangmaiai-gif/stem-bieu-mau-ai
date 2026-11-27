@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hướng dẫn xây dựng web app Google Apps Script</title>
+  <link rel="stylesheet" href="theme.css?v=16">
+  <link rel="stylesheet" href="theme-nhom1.css?v=16">
+  <style>
+    body.nhom1 { --thuong-hieu: "🛠 Hướng dẫn Apps Script"; }
+    .buoc { background: #fff; border: 1px solid #dde3ee; border-radius: 12px; padding: 14px 18px; margin: 14px 0; }
+    .buoc h3 { margin-top: 0; } .so-buoc { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #1e3a5f; color: #fff; font-size: 15px; margin-right: 6px; }
+    pre.code { background: #0f172a; color: #e2e8f0; padding: 12px 14px; border-radius: 8px; overflow-x: auto; font-size: 13.5px; line-height: 1.45; }
+    code { font-family: Consolas, "Courier New", monospace; } p code, li code, td code { background: #eef2f7; padding: 1px 4px; border-radius: 4px; }
+    .muc-luc a { display: inline-block; margin: 0 4px 6px 0; padding: 4px 11px; border-radius: 14px; background: #eef2f7; text-decoration: none; color: #1e3a5f; font-weight: 600; }
+    .bang-loi td, .bang-loi th { text-align: left; vertical-align: top; }
+  </style>
+</head>
+<body class="nhom1">
+  <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In hướng dẫn</button></div>
+  <h2>XÂY DỰNG WEB APP BẰNG GOOGLE APPS SCRIPT – TỪNG BƯỚC</h2>
+  <p>Sản phẩm của mỗi nhóm: một web app gồm <b>biểu mẫu</b> (Index.html) → <b>tính toán liên môn</b> (JavaScript) → <b>lưu Google Sheet</b> (Code.gs) → <b>thống kê</b> từ dữ liệu đã lưu. Mã minh họa dưới đây là ví dụ chung; nhóm tự viết mã cho đề tài của mình.</p>
+  <p class="muc-luc">Bước: <a href="#b0">0</a><a href="#b1">1</a><a href="#b2">2</a><a href="#b3">3</a><a href="#b4">4</a><a href="#b5">5</a><a href="#b6">6</a><a href="#b7">7</a><a href="#b8">8</a></p>
+  <section class="buoc" id="b0"><h3><span class="so-buoc">0</span> Chuẩn bị</h3><ul>
+<li>Trưởng nhóm tạo <b>một Google Sheet</b> đặt tên <i>STEM – Nhóm … – tên web app</i>, chia sẻ quyền <b>Người chỉnh sửa</b> cho các bạn trong nhóm và giáo viên.</li>
+<li>Trong Sheet: <b>Tiện ích mở rộng → Apps Script</b>. Đổi tên dự án (góc trên bên trái) trùng tên Sheet. Dự án gắn với Sheet nên <code>SpreadsheetApp.getActiveSpreadsheet()</code> chính là Sheet của nhóm.</li>
+<li>Phân công: <b>Lập trình máy chủ</b> viết Code.gs, <b>Lập trình giao diện</b> viết Index.html, <b>Thiết kế</b> ghi tên các cột của Sheet, <b>Chuyên gia liên môn</b> chuẩn bị công thức và bộ số liệu tính tay để kiểm thử.</li></ul></section><section class="buoc" id="b1"><h3><span class="so-buoc">1</span> Web app đầu tiên: “Xin chào”</h3><p>Trong <b>Code.gs</b>, xóa hàm mẫu, viết hàm <code>doGet</code> – hàm chạy khi có người mở đường liên kết của web app:</p><pre class="code"><code>function doGet() {
+  return HtmlService.createHtmlOutputFromFile(&quot;Index&quot;)   // tên tệp HTML, không có đuôi .html
+    .setTitle(&quot;Tên web app của nhóm&quot;)
+    .addMetaTag(&quot;viewport&quot;, &quot;width=device-width, initial-scale=1&quot;);  // hiển thị đẹp trên điện thoại
+}</code></pre><p>Bấm <b>+ → HTML</b>, đặt tên tệp <b>Index</b>, gõ thử:</p><pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;vi&quot;&gt;
+&lt;head&gt;&lt;base target=&quot;_top&quot;&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Xin chào, đây là web app của Nhóm …&lt;/h2&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p><b>Triển khai → Tùy chọn triển khai mới → biểu tượng ⚙ → Ứng dụng web</b>.
+Thực thi với tư cách: <b>Tôi</b>; Người có quyền truy cập: <b>Bất kì ai</b> (hoặc chỉ người trong trường). Bấm Triển khai,
+tự cấp quyền bằng tài khoản của mình, rồi mở <b>URL ứng dụng web</b> (kết thúc bằng <code>/exec</code>) trên điện thoại.</p></section><section class="buoc" id="b2"><h3><span class="so-buoc">2</span> Biểu mẫu nhập liệu (Bài 12) trong Index.html</h3><p>Thay nội dung <code>&lt;body&gt;</code> bằng biểu mẫu của nhóm, dùng đúng kiểu ô nhập đã học: <code>text</code>, <code>number</code> (có <code>min</code>, <code>max</code>, <code>step</code>),
+<code>date</code>, <code>time</code>, <code>radio</code>/<code>checkbox</code> cùng <code>name</code>, <code>select</code>, <code>fieldset</code> + <code>legend</code>. Mỗi ô cần <code>id</code> để JavaScript đọc được.</p><pre class="code"><code>&lt;form id=&quot;f&quot;&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Thông tin chung&lt;/legend&gt;
+    &lt;label&gt;Lớp: &lt;select id=&quot;lop&quot;&gt;&lt;option&gt;12A8&lt;/option&gt;&lt;option&gt;12A1&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;
+    &lt;label&gt;Số lượng: &lt;input type=&quot;number&quot; id=&quot;soLuong&quot; min=&quot;0&quot; step=&quot;1&quot; value=&quot;1&quot;&gt;&lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;div id=&quot;kq&quot;&gt;&lt;/div&gt;
+  &lt;button type=&quot;submit&quot;&gt;Lưu&lt;/button&gt; &lt;span id=&quot;tb&quot;&gt;&lt;/span&gt;
+&lt;/form&gt;</code></pre><p><b>Phiên bản 1</b> của nhóm là biểu mẫu đầu tiên này; cả lớp cùng tìm lỗi (sai kiểu ô, thiếu ô, radio khác <code>name</code>…) để sửa thành <b>phiên bản 2</b>.</p></section><section class="buoc" id="b3"><h3><span class="so-buoc">3</span> Tính toán theo công thức liên môn bằng JavaScript</h3><p>Đặt <code>&lt;script&gt;</code> ở cuối <code>&lt;body&gt;</code>. Đọc giá trị, áp dụng công thức nhóm đã kiểm chứng bằng tính tay, hiện kết quả và cách thay số:</p><pre class="code"><code>&lt;script&gt;
+  const $ = id =&gt; document.getElementById(id);
+  const so = id =&gt; Number($(id).value) || 0;        // ô trống → 0
+
+  function tinh() {
+    const a = so(&quot;soLuong&quot;), b = 150;                 // ví dụ: công suất 150 W mỗi thiết bị
+    const P = a * b;                                  // công thức liên môn của nhóm
+    $(&quot;kq&quot;).innerHTML = &quot;P = &quot; + a + &quot; × &quot; + b + &quot; = &lt;b&gt;&quot; + P + &quot; W&lt;/b&gt;&quot;;
+  }
+  $(&quot;f&quot;).addEventListener(&quot;input&quot;, tinh);            // tính lại mỗi khi nhập
+  tinh();
+&lt;/script&gt;</code></pre><p>Chuyên gia liên môn so kết quả trên màn hình với tính tay ở ít nhất 3 bộ số liệu. Chỗ nào lệch: kiểm tra đơn vị (W/kW, g/100 g, giờ/phút) và thứ tự phép tính.</p></section><section class="buoc" id="b4"><h3><span class="so-buoc">4</span> Lưu dữ liệu vào Google Sheet</h3><p>Trong <b>Code.gs</b>, viết hàm nhận dữ liệu từ trang web và ghi thành <b>một dòng</b>. Tên cột theo bản thiết kế của nhóm.</p><pre class="code"><code>const TEN_SHEET = &quot;DuLieu&quot;;
+const COT = [&quot;Thời gian&quot;, &quot;Lớp&quot;, &quot;Số lượng&quot;, &quot;Kết quả&quot;];
+
+function laySheet_() {                               // dấu _ ở cuối: hàm nội bộ, trang web không gọi được
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sh = ss.getSheetByName(TEN_SHEET);
+  if (!sh) { sh = ss.insertSheet(TEN_SHEET); sh.appendRow(COT); sh.setFrozenRows(1); }
+  return sh;
+}
+
+function luuPhieu(dl) {                               // dl là đối tượng do trang web gửi lên
+  if (!dl.lop) throw new Error(&quot;Thiếu lớp&quot;);          // kiểm tra dữ liệu ở máy chủ
+  const kq = dl.soLuong * 150;                        // tính lại ở máy chủ để Sheet luôn đúng
+  laySheet_().appendRow([new Date(), dl.lop, dl.soLuong, kq]);
+  return &quot;Đã lưu&quot;;
+}</code></pre><p>Trong <b>Index.html</b>, khi bấm nút: chặn trang tải lại, gom dữ liệu thành đối tượng, gọi hàm máy chủ bằng <code>google.script.run</code>:</p><pre class="code"><code>$(&quot;f&quot;).addEventListener(&quot;submit&quot;, e =&gt; {
+  e.preventDefault();                                 // không có dòng này trang sẽ trắng
+  const dl = { lop: $(&quot;lop&quot;).value, soLuong: so(&quot;soLuong&quot;) };
+  $(&quot;tb&quot;).textContent = &quot;Đang lưu…&quot;;
+  google.script.run
+    .withSuccessHandler(tl =&gt; $(&quot;tb&quot;).textContent = &quot;✔ &quot; + tl)
+    .withFailureHandler(err =&gt; $(&quot;tb&quot;).textContent = &quot;Lỗi: &quot; + err.message)
+    .luuPhieu(dl);
+});</code></pre><p><b>Phiên bản 2</b> hoàn chỉnh khi mỗi lần gửi tạo đúng một dòng, đủ cột trong Sheet.</p></section><section class="buoc" id="b5"><h3><span class="so-buoc">5</span> Đọc lại dữ liệu và thống kê</h3><p>Viết hàm đọc toàn bộ Sheet, tính số liệu thống kê (số trung bình, tần số, tần số tương đối, xếp hạng…) và trả về cho trang web:</p><pre class="code"><code>function layThongKe() {
+  const v = laySheet_().getDataRange().getValues().slice(1);    // bỏ dòng tiêu đề
+  const N = v.length;
+  const tb = N ? v.reduce((t, r) =&gt; t + Number(r[3]), 0) / N : 0;
+  return { N: N, trungBinh: Math.round(tb * 100) / 100 };         // KHÔNG trả về kiểu Date
+}</code></pre><pre class="code"><code>function hienThongKe(t) {
+  $(&quot;tk&quot;).innerHTML = &quot;Đã có &quot; + t.N + &quot; phiếu, trung bình &quot; + t.trungBinh;
+}
+google.script.run.withSuccessHandler(hienThongKe).layThongKe();  // chạy khi mở trang</code></pre><p>Thêm <code>&lt;div id="tk"&gt;&lt;/div&gt;</code> vào trang. Sau khi lưu, cho <code>luuPhieu</code> trả về <code>layThongKe()</code> để bảng cập nhật ngay. Thời gian lấy từ Sheet phải đổi sang chữ: <code>Utilities.formatDate(d, "Asia/Ho_Chi_Minh", "dd/MM/yyyy")</code>.</p></section><section class="buoc" id="b6"><h3><span class="so-buoc">6</span> Cập nhật web app sau mỗi lần sửa</h3><p>Đường liên kết <code>/exec</code> chỉ chạy phiên bản đã triển khai. Khi sửa mã: <b>Triển khai → Quản lý tùy chọn triển khai → ✏ Chỉnh sửa → Phiên bản: Phiên bản mới → Triển khai</b>.
+Đường liên kết giữ nguyên. Trong lúc thử có thể dùng <b>Triển khai → Kiểm thử các bản triển khai</b> (đường liên kết <code>/dev</code>, luôn chạy mã mới nhất, chỉ người chỉnh sửa mở được).</p></section><section class="buoc" id="b7"><h3><span class="so-buoc">7</span> Gỡ lỗi thường gặp</h3><table class="bang-loi"><tr><th>Hiện tượng</th><th>Nguyên nhân – cách sửa</th></tr><tr><td>Bấm nút xong trang trắng</td><td>Thiếu <code>e.preventDefault()</code> trong sự kiện submit</td></tr><tr><td>Lỗi “Script function not found: doGet”</td><td>Chưa có hàm <code>doGet</code> hoặc gõ sai tên (phân biệt hoa thường)</td></tr><tr><td>Lỗi “No HTML file named Index”</td><td>Tên tệp HTML khác với tên trong <code>createHtmlOutputFromFile</code></td></tr><tr><td>Hàm thống kê trả về <code>null</code></td><td>Đối tượng trả về có giá trị kiểu Date – đổi sang chữ bằng <code>Utilities.formatDate</code></td></tr><tr><td>Sửa mã nhưng web app vẫn như cũ</td><td>Chưa triển khai <b>phiên bản mới</b> (bước 6)</td></tr><tr><td>Kết quả lệch tính tay</td><td>Ô trống bị đọc là chuỗi rỗng; sai đơn vị; quên cộng 24 giờ khi qua nửa đêm…</td></tr><tr><td>Không biết lỗi ở đâu</td><td>Mở <b>Nhật ký thực thi</b> (biểu tượng ☰ bên trái) hoặc thêm <code>console.log(dl)</code> rồi xem lại</td></tr></table></section><section class="buoc" id="b8"><h3><span class="so-buoc">8</span> Kiểm thử bằng số liệu đo thật và cải tiến (phiên bản 3)</h3><ol>
+<li>Nhập lần lượt các bộ số liệu nhóm đã đo (nhãn thiết bị, nhãn dinh dưỡng, sổ mượn, nhật kí giấc ngủ).</li>
+<li>Ghi vào bảng kiểm thử: <i>dữ liệu nhập – kết quả web app – kết quả tính tay – đạt/chưa đạt</i>.</li>
+<li>Thử cả dữ liệu “khó”: ô trống, số âm, ngày cuối tháng, qua nửa đêm, chọn nhiều mục.</li>
+<li>Mở Sheet kiểm tra mỗi lần gửi đúng 1 dòng, đủ cột; bảng thống kê trên trang trùng với đếm tay.</li>
+<li>Sửa lỗi, thêm chức năng mở rộng → <b>phiên bản 3</b>; ghi lại mỗi thay đổi vào nhật kí nhóm.</li></ol>
+<p><b>Lưu ý an toàn dữ liệu:</b> không thu thập họ tên đầy đủ, số điện thoại, địa chỉ; khảo sát sức khỏe phải ẩn danh. Không dán khóa API hay mật khẩu vào mã nguồn.</p></section>
+</body>
+</html>

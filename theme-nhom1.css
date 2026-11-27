@@ -4,7 +4,7 @@ html { background: #f6f2e9; background-image: radial-gradient(rgba(20,37,79,.06)
 body {
   --nhan: #14254f; --nhan-2: #c9962f; --vien: #e4dccb; --chu: #1f2a3d; --giay: #fff;
   --font-tieu-de: "Playfair Display", Georgia, serif;
-  --thuong-hieu: "⚡ Nhóm 1 · Ổ điện – Phòng học";
+  --thuong-hieu: "⚡ Nhóm 1 · Ổ điện an toàn";
   --nav-bg: #14254f; --nav-chu: #fff; --nav-gach: #d6a542; --nav-nut: #d6a542; --nav-nut-chu: #14254f;
   --hero-bg: linear-gradient(176deg, transparent 0 82%, #d6a542 82% 84.5%, #fff 84.5%),
              radial-gradient(circle at 85% 30%, rgba(214,165,66,.22) 0 120px, transparent 121px),

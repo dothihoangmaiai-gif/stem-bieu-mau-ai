@@ -4,7 +4,7 @@ html { background: #f5f1fb; background-image: linear-gradient(135deg, rgba(76,42
 body {
   --nhan: #4c2a85; --nhan-2: #f26b2b; --vien: #e3d9f2; --chu: #231a36; --giay: #fff;
   --font-tieu-de: "Baloo 2", "Be Vietnam Pro", sans-serif;
-  --thuong-hieu: "😴 Nhóm 4 · Giấc ngủ – Khối 10";
+  --thuong-hieu: "🌙 Nhóm 4 · Màn hình và giấc ngủ";
   --nav-bg: #3d2470; --nav-chu: #fff; --nav-gach: #f26b2b; --nav-nut: #f26b2b; --nav-nut-chu: #fff;
   --hero-bg: linear-gradient(176deg, transparent 0 82%, #f26b2b 82% 85%, #fff 85%),
              linear-gradient(112deg, #f26b2b 0 58%, transparent 58%),
