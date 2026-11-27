@@ -39,8 +39,9 @@
         else if (v > r[1]) g.push(ten + " " + f(v) + "% <b>cao hơn</b> khoảng " + r[0] + "–" + r[1] + "%.");
       }
       xet("Đạm", d, kh.d); xet("Béo", b, kh.b); xet("Carbohydrate", c, kh.c);
-      if (!g.length && d !== null) g.push("Tỉ lệ ba nhóm chất đang nằm trong khoảng tham khảo – bữa ăn khá cân đối.");
-      g.push("Khoảng tham khảo mặc định: đạm 13–20%, béo 20–30%, carbohydrate 50–65%; nhóm nên đối chiếu với tài liệu của Viện Dinh dưỡng.");
+      if (!g.length && d !== null) g.push("Cả ba nhóm chất đều nằm trong dải xanh – bữa ăn khá cân đối.");
+      var kc = document.getElementById("dakc");
+      if (kc && !kc.checked) g.push("Nhóm nhớ đối chiếu dải xanh với tài liệu, ghi nguồn rồi đánh dấu “Nhóm đã kiểm chứng”.");
       return g;
     },
     "3": function () {

@@ -264,3 +264,21 @@ body:has(.hai-cot) { max-width: 1240px; }
 .ai-nhan { font-weight: 700; color: #5b21b6; margin-bottom: 4px; }
 .ai-chu-y { margin-top: 6px; font-size: 12px; color: #6b7280; font-style: italic; }
 @media print { .goi-y-ai .nut-ai { display: none !important; } }
+
+/* ===== Thanh cân bằng (Nhóm 2) ===== */
+.can-bang { margin: 12px 0 8px; }
+.cb-tieu-de { font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 6px; }
+.cb-dong { display: grid; grid-template-columns: 96px 1fr 88px; align-items: center; gap: 8px; margin: 8px 0; font-size: 14px; }
+.cb-ten { font-weight: 600; }
+.cb-ray { position: relative; height: 14px; border-radius: 7px; background: #e5e7eb; }
+.cb-dai { position: absolute; top: 0; bottom: 0; background: #86efac; border-radius: 7px; }
+.cb-cham { position: absolute; top: 50%; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.35); transition: left .35s; }
+.cb-so { font-weight: 700; font-size: 13.5px; text-align: right; }
+.thu-thach { margin: 10px 0; padding: 10px 12px; border-radius: 10px; background: #fff7ed; border: 1px solid #fed7aa; font-size: 14px; line-height: 1.6; }
+.thu-thach .nut-thu { margin-left: 4px; padding: 4px 12px !important; font-size: 13px !important; border-radius: 999px !important; }
+.nguon-chuan { font-size: 13px; color: #475569; line-height: 1.7; margin: 8px 0; }
+.nguon-chuan input[type=text] { min-width: 0; width: 100%; box-sizing: border-box; font-size: 13px; padding: 5px 8px; }
+.nguon-chuan .kiem-chung { display: block; font-weight: 600; }
+.nguon-chuan details summary { cursor: pointer; color: var(--nhan); }
+.bang-chuan input[type=number] { width: 60px; }
+@media print { .thu-thach .nut-thu, .nguon-chuan details summary { display: none; } }

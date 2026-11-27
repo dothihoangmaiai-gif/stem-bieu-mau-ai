@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU TÍNH DINH DƯỠNG BỮA ĂN – phiên bản 3</title>
-  <link rel="stylesheet" href="theme.css?v=13">
-  <link rel="stylesheet" href="theme-nhom2.css?v=13">
+  <link rel="stylesheet" href="theme.css?v=14">
+  <link rel="stylesheet" href="theme-nhom2.css?v=14">
 </head>
 <body class="nhom2">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
@@ -55,21 +55,25 @@
         <tr><td>Nước ngọt (1 lon 330 ml)</td><td><input type="number" id="n_nuocngot" name="n_nuocngot" min="0" step="1" value="0"></td><td><input type="number" id="d_nuocngot" min="0" step="0.1" value="0"></td><td><input type="number" id="b_nuocngot" min="0" step="0.1" value="0"></td><td><input type="number" id="c_nuocngot" min="0" step="0.1" value="35"></td><td id="e_nuocngot"></td></tr>
       </table>
     </fieldset>
-    <fieldset>
-      <legend>Khoảng khuyến nghị tỉ lệ năng lượng (nhóm tra cứu, ghi nguồn)</legend>
-      <table>
-        <tr><th></th><th>Đạm</th><th>Béo</th><th>Carbohydrate</th></tr>
-        <tr><td>Từ (%)</td><td><input type="number" id="kd1" min="0" max="100"></td><td><input type="number" id="kb1" min="0" max="100"></td><td><input type="number" id="kc1" min="0" max="100"></td></tr>
-        <tr><td>Đến (%)</td><td><input type="number" id="kd2" min="0" max="100"></td><td><input type="number" id="kb2" min="0" max="100"></td><td><input type="number" id="kc2" min="0" max="100"></td></tr>
-      </table>
-      <p><label for="nguon">Nguồn tra cứu:</label> <input type="text" id="nguon" name="nguon" size="50" placeholder="ví dụ: tài liệu của Viện Dinh dưỡng Quốc gia"></p>
-    </fieldset>
     </div>
     <aside class="cot-phai">
     <div class="kq">
       <h3>KẾT QUẢ TÍNH CHO CẢ BỮA</h3>
       <div id="kq"></div>
-      <div class="bieu-do" id="bd"></div>
+      <div class="can-bang" id="cb"></div>
+      <div class="thu-thach" id="tt2"></div>
+      <div class="nguon-chuan">
+        <span>Dải xanh = khoảng tham khảo: đạm <b id="lbd">13–20%</b>, béo <b id="lbb">20–30%</b>, carbohydrate <b id="lbc">50–65%</b>.</span>
+        <label for="nguon">Nguồn nhóm đối chiếu:</label> <input type="text" id="nguon" name="nguon" placeholder="vd: SGK Sinh học 11, tài liệu Viện Dinh dưỡng">
+        <label class="kiem-chung"><input type="checkbox" id="dakc" name="da_kiem_chung" value="có"> Nhóm đã kiểm chứng khoảng này</label>
+        <details><summary>✎ Sửa khoảng theo tài liệu nhóm tìm được</summary>
+          <table class="bang-chuan">
+            <tr><th></th><th>Đạm</th><th>Béo</th><th>Carbohydrate</th></tr>
+            <tr><td>Từ (%)</td><td><input type="number" id="kd1" name="chuan_dam_tu" min="0" max="100" value="13"></td><td><input type="number" id="kb1" name="chuan_beo_tu" min="0" max="100" value="20"></td><td><input type="number" id="kc1" name="chuan_carb_tu" min="0" max="100" value="50"></td></tr>
+            <tr><td>Đến (%)</td><td><input type="number" id="kd2" name="chuan_dam_den" min="0" max="100" value="20"></td><td><input type="number" id="kb2" name="chuan_beo_den" min="0" max="100" value="30"></td><td><input type="number" id="kc2" name="chuan_carb_den" min="0" max="100" value="65"></td></tr>
+          </table>
+        </details>
+      </div>
       <details class="cach-tinh"><summary>Xem cách tính (thay số)</summary>
       <div class="ct" id="ct"></div></details>
     </div>
@@ -88,12 +92,31 @@
     function hien(id, html) { document.getElementById(id).innerHTML = html; }
 
     var MON = ["com","banhmi","mi","xoi","sua","banhngot","traicay","nuocngot"];
-    function sosanh(pt, a, b) {
-      var x = document.getElementById(a).value, y = document.getElementById(b).value;
-      if (x === "" || y === "") return "";
-      x = parseFloat(x); y = parseFloat(y);
-      return pt < x ? ' <span class="chu">(thấp hơn khuyến nghị)</span>' : (pt > y ? ' <span class="chu">(cao hơn khuyến nghị)</span>' : ' <span class="tot">(trong khoảng khuyến nghị)</span>');
+    var TEN = {com:"Cơm phần", banhmi:"Bánh mì thịt", mi:"Mì gói", xoi:"Xôi", sua:"Sữa hộp", banhngot:"Bánh ngọt", traicay:"Trái cây", nuocngot:"Nước ngọt"};
+    function khoang() {
+      function v(id, mac) { var x = parseFloat(document.getElementById(id).value); return isNaN(x) ? mac : x; }
+      return { d: [v("kd1", 13), v("kd2", 20)], b: [v("kb1", 20), v("kb2", 30)], c: [v("kc1", 50), v("kc2", 65)] };
     }
+    function tiLe(nn) {
+      var D = 0, B = 0, C = 0;
+      MON.forEach(function (k) { var n = nn[k]; D += n * so("d_" + k); B += n * so("b_" + k); C += n * so("c_" + k); });
+      var E = 4 * D + 4 * C + 9 * B;
+      return E > 0 ? { d: 4 * D / E * 100, b: 9 * B / E * 100, c: 4 * C / E * 100, E: E } : null;
+    }
+    function lech(t, K) {
+      var s = 0; ["d", "b", "c"].forEach(function (x) { var v = t[x], r = K[x]; s += v < r[0] ? r[0] - v : (v > r[1] ? v - r[1] : 0); });
+      return s;
+    }
+    function soDat(t, K) { return ["d", "b", "c"].filter(function (x) { return t[x] >= K[x][0] && t[x] <= K[x][1]; }).length; }
+    function thanh(ten, mau, v, r) {
+      var MAX = 80, dat = v >= r[0] && v <= r[1];
+      return '<div class="cb-dong"><span class="cb-ten">' + ten + '</span><div class="cb-ray">' +
+        '<i class="cb-dai" style="left:' + (r[0] / MAX * 100) + '%;width:' + ((r[1] - r[0]) / MAX * 100) + '%"></i>' +
+        '<b class="cb-cham" style="left:' + Math.min(v / MAX * 100, 100) + '%;background:' + (dat ? "#16a34a" : "#ea580c") + '"></b></div>' +
+        '<span class="cb-so" style="color:' + (dat ? "#15803d" : "#c2410c") + '">' + f(v, 1) + '% ' + (dat ? "✓" : (v < r[0] ? "↑ thấp" : "↓ cao")) + '</span></div>';
+    }
+    var goiYDoi = null;
+    function apDung() { if (!goiYDoi) return; var e = document.getElementById("n_" + goiYDoi.k); e.value = Math.max(0, so("n_" + goiYDoi.k) + goiYDoi.d); e.dispatchEvent(new Event("input", { bubbles: true })); }
     function tinh() {
       var D = 0, B = 0, C = 0, td = [], tb = [], tc = [];
       MON.forEach(function (k) {
@@ -107,19 +130,32 @@
       var nx = [];
       if (so("n_traicay") === 0) nx.push("Bữa chưa có trái cây – có thể bổ sung.");
       if (so("n_nuocngot") > 0) nx.push("Bữa có đồ uống có đường – nên thay bằng nước lọc hoặc sữa.");
-      hien("kq", "Đạm: <b>" + f(D, 1) + " g</b> – Béo: <b>" + f(B, 1) + " g</b> – Carbohydrate: <b>" + f(C, 1) + " g</b>" +
-        "<br>Năng lượng của bữa: <b>" + f(E, 1) + " kcal</b>" +
-        "<br>Tỉ lệ năng lượng: đạm <b>" + f(pd, 1) + "%</b>" + sosanh(pd, "kd1", "kd2") +
-        "; béo <b>" + f(pb, 1) + "%</b>" + sosanh(pb, "kb1", "kb2") +
-        "; carbohydrate <b>" + f(pc, 1) + "%</b>" + sosanh(pc, "kc1", "kc2") +
+      var K = khoang();
+      ["d", "b", "c"].forEach(function (x) { document.getElementById("lb" + x).textContent = K[x][0] + "–" + K[x][1] + "%"; });
+      hien("kq", "Năng lượng của bữa: <b>" + f(E, 1) + " kcal</b> (đạm " + f(D, 1) + " g · béo " + f(B, 1) + " g · carbohydrate " + f(C, 1) + " g)" +
         (nx.length ? "<br>Nhận xét: " + nx.join(" ") : ""));
+      var T = { d: pd, b: pb, c: pc };
+      hien("cb", '<div class="cb-tieu-de">Thanh cân bằng – chấm nằm trong dải xanh là đạt</div>' +
+        thanh("Đạm", "#ef4444", pd, K.d) + thanh("Béo", "#f59e0b", pb, K.b) + thanh("Carbohydrate", "#22c55e", pc, K.c));
+      // Thử thách: tìm 1 thay đổi (thêm/bớt 1 phần) giúp bữa ăn cân bằng hơn
+      var nn = {}; MON.forEach(function (k) { nn[k] = so("n_" + k); });
+      var dat = soDat(T, K), tot = null, lHien = lech(T, K);
+      if (dat < 3) MON.forEach(function (k) {
+        [1, -1].forEach(function (dd) {
+          if (nn[k] + dd < 0 || (dd > 0 && k === "nuocngot")) return;
+          var m2 = Object.assign({}, nn); m2[k] += dd; var t2 = tiLe(m2); if (!t2) return;
+          var l2 = lech(t2, K); if (l2 < lHien - 0.5 && (!tot || l2 < tot.l)) tot = { k: k, d: dd, l: l2, t: t2 };
+        });
+      });
+      goiYDoi = tot;
+      hien("tt2", '<b>🎯 Thử thách:</b> đưa cả 3 chấm vào dải xanh – hiện đạt <b>' + dat + '/3</b>.' +
+        (dat === 3 ? ' <span class="tot">Bữa ăn đã cân bằng! 🎉</span>' :
+          (tot ? '<br>Gợi ý: <b>' + (tot.d > 0 ? "thêm" : "bớt") + ' 1 phần ' + TEN[tot.k] + '</b> → đạm ' + f(tot.t.d, 1) + '%, béo ' + f(tot.t.b, 1) + '%, carb ' + f(tot.t.c, 1) + '% (đạt ' + soDat(tot.t, K) + '/3). ' +
+            '<button type="button" class="nut-thu" onclick="apDung()">Thử ngay</button>' : '<br>Thử thay món khác trong bảng để tiến gần dải xanh hơn.')));
       hien("ct", "m(đạm) = " + td.join(" + ") + " = " + f(D, 1) + " g;  m(béo) = " + tb.join(" + ") + " = " + f(B, 1) + " g;  m(carb) = " + tc.join(" + ") + " = " + f(C, 1) + " g\n" +
         "E = 4·m(đạm) + 4·m(carb) + 9·m(béo) = 4×" + f(D, 1) + " + 4×" + f(C, 1) + " + 9×" + f(B, 1) + " = " + f(E, 1) + " kcal\n" +
         "% béo = 9×" + f(B, 1) + " / " + f(E, 1) + " × 100% ≈ " + f(pb, 1) + "%;  % đạm = 4×" + f(D, 1) + " / " + f(E, 1) + " × 100% ≈ " + f(pd, 1) +
         "%;  % carb ≈ " + f(pc, 1) + "%");
-      var g1 = pd, g2 = pd + pb;
-      hien("bd", '<div class="pie" style="background:conic-gradient(#ef4444 0 ' + g1 + '%, #f59e0b ' + g1 + '% ' + g2 + '%, #22c55e ' + g2 + '% 100%)"></div>' +
-        '<div class="chu-giai"><b>Tỉ lệ năng lượng</b><br><span class="o-mau" style="background:#ef4444"></span>Đạm ' + f(pd, 1) + '%<br><span class="o-mau" style="background:#f59e0b"></span>Béo ' + f(pb, 1) + '%<br><span class="o-mau" style="background:#22c55e"></span>Carbohydrate ' + f(pc, 1) + '%</div>');
       dat("kq_e", E.toFixed(1)); dat("kq_pd", pd.toFixed(1)); dat("kq_pb", pb.toFixed(1)); dat("kq_pc", pc.toFixed(1));
     }
     function nhay() { var k = document.querySelector(".kq"); k.classList.remove("vua-doi"); void k.offsetWidth; k.classList.add("vua-doi"); }
@@ -133,7 +169,7 @@
     window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
-  <script src="luu-tru.js?v=13"></script>
-  <script src="goi-y-ai.js?v=13"></script>
+  <script src="luu-tru.js?v=14"></script>
+  <script src="goi-y-ai.js?v=14"></script>
 </body>
 </html>
