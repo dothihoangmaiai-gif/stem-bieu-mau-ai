@@ -3,132 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PHIẾU THEO DÕI RÁC NHỰA CỦA LỚP – phiên bản 3</title>
-  <link rel="stylesheet" href="theme.css?v=14">
-  <link rel="stylesheet" href="theme-nhom3.css?v=14">
+  <title>PHIẾU THEO DÕI MÀN HÌNH VÀ GIẤC NGỦ – phiên bản 3</title>
+  <link rel="stylesheet" href="theme.css?v=15">
+  <link rel="stylesheet" href="theme-nhom3.css?v=15">
 </head>
 <body class="nhom3">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
   <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
-  <!-- Nhóm 3: RÁC NHỰA LỚP EM – ĐO KHỐI LƯỢNG VÀ PHÂN LOẠI ĐỒ NHỰA DÙNG MỘT LẦN -->
+  <!-- Nhóm 3: MÀN HÌNH VÀ GIẤC NGỦ – THỐNG KÊ THỜI GIAN SỬ DỤNG THIẾT BỊ SỐ VÀ THỜI GIAN NGỦ CỦA HỌC SINH KHỐI 12 -->
   <!-- Phiên bản 3 – thêm phần TÍNH TOÁN LIÊN MÔN.
        Phần HTML (biểu mẫu) do nhóm viết theo Bài 12. Phần <script> do nhóm viết cùng trợ lí AI;
        mọi công thức đã được chuyên gia liên môn của nhóm kiểm chứng bằng tính tay (xem báo cáo, mục Kiểm chứng).
        Khi thử nghiệm, dữ liệu và kết quả tính được gửi bằng GET tới ketqua.html. -->
-  <h2>PHIẾU THEO DÕI RÁC NHỰA CỦA LỚP</h2>
+  <h2>PHIẾU THEO DÕI MÀN HÌNH VÀ GIẤC NGỦ</h2>
   <section class="cau-hoi-stem">
     <span class="nhan-chq">❓ Câu hỏi STEM</span>
-    <p class="chq">Làm thế nào để lớp ghi số đồ nhựa mỗi ngày và biết ngay khối lượng nhựa thải ra trong tuần, trong năm học, loại nhựa gì?</p>
+    <p class="chq">Làm thế nào để thu thập ẩn danh số liệu đo thật về thời gian màn hình, giấc ngủ và tính ngay các số đặc trưng của lớp?</p>
     <div class="stem4">
-      <div class="o-stem o-s"><b>S</b><small>Hóa 12 · Địa 10</small><p>Kí hiệu nhựa 1 – 7 là polymer gì? Loại nào dễ tái chế?</p></div>
-      <div class="o-stem o-t"><b>T</b><small>Tin học 12</small><p>Biểu mẫu cần những ô nào để lớp ghi số đồ nhựa mỗi ngày?</p></div>
-      <div class="o-stem o-e"><b>E</b><small>Kĩ thuật</small><p>Ước tính lệch bao nhiêu so với cân thật? Cải tiến thế nào?</p></div>
-      <div class="o-stem o-m"><b>M</b><small>Toán 10</small><p>Từ khối lượng trung bình một món, ước tính nhựa cả năm học ra sao?</p></div>
+      <div class="o-stem o-s"><b>S</b><small>Sinh học</small><p>Ánh sáng màn hình ảnh hưởng thế nào đến nhịp sinh học và giấc ngủ của học sinh lớp cuối cấp?</p></div>
+      <div class="o-stem o-t"><b>T</b><small>Tin học 12</small><p>Dùng ô time thế nào để tính đúng số giờ ngủ qua nửa đêm?</p></div>
+      <div class="o-stem o-e"><b>E</b><small>Kĩ thuật</small><p>Làm thực nghiệm đối chứng “tắt màn hình 30 phút trước khi ngủ” ra sao? So với khối 10 (Nhóm 4) thế nào?</p></div>
+      <div class="o-stem o-m"><b>M</b><small>Toán 11</small><p>Tính số trung bình, trung vị, mốt của mẫu số liệu ghép nhóm thế nào?</p></div>
     </div>
   </section>
-  <p class="canh">⚠ <b>An toàn:</b> Đeo găng tay khi đếm rác, chỉ cân đồ nhựa đã rửa sạch, rửa tay sau khi làm.</p>
+  <p class="canh">⚠ <b>An toàn:</b> Phiếu ẩn danh; kết quả chỉ là số liệu thống kê, không phải chẩn đoán sức khỏe.</p>
+  <p class="doi-chung">🔁 <b>Khảo sát khối 12 (lớp 12A8)</b> · So sánh với Nhóm 4 (khối 10): khối nào ngủ ít hơn, dùng màn hình nhiều hơn; số trung bình, trung vị, mốt khác nhau thế nào.</p>
   <p class="mau">Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
+  <h3>A. PHIẾU CÁ NHÂN (ẩn danh – không ghi họ tên)</h3>
   <form action="ketqua.html" method="get">
-   <div class="hai-cot">
-    <div class="cot-trai">
     <fieldset>
       <legend>Thông tin chung</legend>
-      <p><label for="lop">Lớp:</label> <select id="lop" name="lop"><option>12A1</option><option>12A3</option><option selected>12A8</option><option>11A7</option><option>11A12</option><option>10A1</option></select>
-         <label for="ngay">Ngày đếm:</label> <input type="date" id="ngay" name="ngay"></p>
+      <p>Khối:
+        <input type="radio" id="k10" name="khoi" value="10"><label for="k10">10</label>
+        <input type="radio" id="k11" name="khoi" value="11"><label for="k11">11</label>
+        <input type="radio" id="k12" name="khoi" value="12" checked><label for="k12">12</label></p>
+      <p><label for="manhinh">Thời gian màn hình trung bình 7 ngày (giờ/ngày, đọc trong Cài đặt của điện thoại):</label>
+        <input type="number" id="manhinh" name="manhinh" min="0" max="24" step="0.1" value="5.2"></p>
+      <p>Dùng điện thoại trong 30 phút trước khi ngủ?
+        <input type="radio" id="t1" name="truocngu" value="Có" checked><label for="t1">Có</label>
+        <input type="radio" id="t2" name="truocngu" value="Không"><label for="t2">Không</label></p>
     </fieldset>
     <fieldset>
-      <legend>Bước 1 – Tính khối lượng trung bình từ mẫu cân</legend>
-      <p><label for="mloai">Loại:</label> <select id="mloai"><option value="chai">Chai nhựa</option><option value="ly">Ly nhựa</option><option value="onghut">Ống hút</option><option value="tui">Túi nilon</option><option value="hop">Hộp xốp</option></select>
-         <label for="mtong">Tổng khối lượng mẫu (g):</label> <input type="number" id="mtong" min="0" step="0.1" value="152">
-         <label for="mso">Số mẫu:</label> <input type="number" id="mso" min="1" step="1" value="10">
-         → <b id="mtb"></b> <input type="button" value="Dùng giá trị này" onclick="dungTB()"></p>
-    </fieldset>
-    <fieldset>
-      <legend>Bước 2 – Số đồ nhựa đếm được trong ngày</legend>
+      <legend>Nhật kí giấc ngủ 7 đêm</legend>
       <table>
-        <tr><th>Loại</th><th>Polymer – kí hiệu nhựa</th><th>Số lượng</th><th>Khối lượng TB (g)</th><th>Khối lượng (g)</th><th>Tỉ lệ</th></tr>
-        <tr><td>Chai nhựa</td><td>PET – kí hiệu 1</td><td><input type="number" id="n_chai" name="n_chai" min="0" step="1" value="30"></td><td><input type="number" id="m_chai" name="m_chai" min="0" step="0.1" value="15"></td><td id="t_chai"></td><td id="p_chai"></td></tr>
-        <tr><td>Ly nhựa</td><td>PP – 5 hoặc PET – 1 (xem đáy ly)</td><td><input type="number" id="n_ly" name="n_ly" min="0" step="1" value="20"></td><td><input type="number" id="m_ly" name="m_ly" min="0" step="0.1" value="10"></td><td id="t_ly"></td><td id="p_ly"></td></tr>
-        <tr><td>Ống hút</td><td>PP – kí hiệu 5</td><td><input type="number" id="n_onghut" name="n_onghut" min="0" step="1" value="40"></td><td><input type="number" id="m_onghut" name="m_onghut" min="0" step="0.1" value="0.5"></td><td id="t_onghut"></td><td id="p_onghut"></td></tr>
-        <tr><td>Túi nilon</td><td>PE – kí hiệu 2 (HDPE) hoặc 4 (LDPE)</td><td><input type="number" id="n_tui" name="n_tui" min="0" step="1" value="15"></td><td><input type="number" id="m_tui" name="m_tui" min="0" step="0.1" value="3"></td><td id="t_tui"></td><td id="p_tui"></td></tr>
-        <tr><td>Hộp xốp</td><td>PS – kí hiệu 6</td><td><input type="number" id="n_hop" name="n_hop" min="0" step="1" value="6"></td><td><input type="number" id="m_hop" name="m_hop" min="0" step="0.1" value="5"></td><td id="t_hop"></td><td id="p_hop"></td></tr>
+        <tr><th>Đêm</th><th>Giờ đi ngủ</th><th>Giờ thức dậy</th><th>Số giờ ngủ</th></tr>
+        <tr><td>Đêm 1</td><td><input type="time" id="ng0" name="ngu_dem1" value="23:30"></td><td><input type="time" id="th0" name="thuc_dem1" value="05:45"></td><td id="gn0"></td></tr>
+        <tr><td>Đêm 2</td><td><input type="time" id="ng1" name="ngu_dem2" value="23:00"></td><td><input type="time" id="th1" name="thuc_dem2" value="06:00"></td><td id="gn1"></td></tr>
+        <tr><td>Đêm 3</td><td><input type="time" id="ng2" name="ngu_dem3" value="00:15"></td><td><input type="time" id="th2" name="thuc_dem3" value="06:00"></td><td id="gn2"></td></tr>
+        <tr><td>Đêm 4</td><td><input type="time" id="ng3" name="ngu_dem4" value="23:45"></td><td><input type="time" id="th3" name="thuc_dem4" value="05:45"></td><td id="gn3"></td></tr>
+        <tr><td>Đêm 5</td><td><input type="time" id="ng4" name="ngu_dem5" value="22:45"></td><td><input type="time" id="th4" name="thuc_dem5" value="05:45"></td><td id="gn4"></td></tr>
+        <tr><td>Đêm 6</td><td><input type="time" id="ng5" name="ngu_dem6" value="01:00"></td><td><input type="time" id="th5" name="thuc_dem6" value="08:30"></td><td id="gn5"></td></tr>
+        <tr><td>Đêm 7</td><td><input type="time" id="ng6" name="ngu_dem7" value="00:30"></td><td><input type="time" id="th6" name="thuc_dem7" value="08:00"></td><td id="gn6"></td></tr>
       </table>
-      <p><label for="sotuan">Số tuần học trong năm học:</label> <input type="number" id="sotuan" name="sotuan" min="1" max="52" step="1" value="35"></p>
     </fieldset>
-    <fieldset>
-      <legend>Bước 3 – Kiểm chứng và so sánh</legend>
-      <p><label for="mthat">Khối lượng cân trực tiếp túi rác nhựa cùng ngày (g):</label> <input type="number" id="mthat" name="mthat" min="0" step="1" value="790"></p>
-      <p><label for="truoc">Khối lượng tuần trước phong trào (kg):</label> <input type="number" id="truoc" name="truoc" min="0" step="0.01" value="3.73">
-         <label for="sau">Tuần sau phong trào (kg):</label> <input type="number" id="sau" name="sau" min="0" step="0.01" value="2.6"></p>
-      <p>Lớp đã phân loại rác nhựa riêng chưa?
-        <input type="radio" id="pl1" name="phanloai" value="Đã phân loại"><label for="pl1">Đã phân loại</label>
-        <input type="radio" id="pl2" name="phanloai" value="Chưa phân loại"><label for="pl2">Chưa phân loại</label></p>
-    </fieldset>
-    </div>
-    <aside class="cot-phai">
     <div class="kq">
-      <h3>KẾT QUẢ TÍNH</h3>
+      <h3>KẾT QUẢ CỦA EM</h3>
       <div id="kq"></div>
       <div class="bieu-do" id="bd"></div>
       <details class="cach-tinh"><summary>Xem cách tính (thay số)</summary>
       <div class="ct" id="ct"></div></details>
+      <p class="mau">Nếu thường xuyên mệt mỏi, em hãy trao đổi với GVCN hoặc nhân viên y tế trường.</p>
     </div>
-    </aside>
-   </div>
-    <input type="hidden" id="kq_ngay" name="kq_khoi_luong_ngay_g">
-    <input type="hidden" id="kq_tuan" name="kq_khoi_luong_tuan_kg">
-    <input type="hidden" id="kq_nam" name="kq_khoi_luong_nam_hoc_kg">
-    <input type="hidden" id="kq_saiso" name="kq_sai_so_phan_tram">
-    <input type="hidden" id="kq_giam" name="kq_phan_tram_giam">
-    <p><input type="submit" value="Gửi phiếu"> <input type="reset" value="Nhập lại"></p>
+    <input type="hidden" id="kq_tb" name="kq_gio_ngu_trung_binh">
+    <p><input type="submit" value="Gửi phiếu (ẩn danh)"> <input type="reset" value="Nhập lại"></p>
   </form>
+
+  <h3>B. THỐNG KÊ CỦA LỚP – MẪU SỐ LIỆU GHÉP NHÓM (Toán 11)</h3>
+  <p class="mau">Nhập số bạn thuộc từng khoảng (tần số).</p>
+  <fieldset>
+    <legend>Giờ ngủ trung bình mỗi đêm (giờ)</legend>
+      <table>
+        <tr><th>Nhóm (giờ ngủ)</th><th>Tần số nᵢ</th><th>Giá trị đại diện cᵢ</th><th>Tần số tích lũy</th></tr>
+        <tr><td>[4; 5)</td><td><input type="number" id="a0" min="0" step="1" value="0"></td><td id="ac0"></td><td id="ak0"></td></tr>
+        <tr><td>[5; 6)</td><td><input type="number" id="a1" min="0" step="1" value="4"></td><td id="ac1"></td><td id="ak1"></td></tr>
+        <tr><td>[6; 7)</td><td><input type="number" id="a2" min="0" step="1" value="14"></td><td id="ac2"></td><td id="ak2"></td></tr>
+        <tr><td>[7; 8)</td><td><input type="number" id="a3" min="0" step="1" value="15"></td><td id="ac3"></td><td id="ak3"></td></tr>
+        <tr><td>[8; 9)</td><td><input type="number" id="a4" min="0" step="1" value="6"></td><td id="ac4"></td><td id="ak4"></td></tr>
+        <tr><td>[9; 10)</td><td><input type="number" id="a5" min="0" step="1" value="1"></td><td id="ac5"></td><td id="ak5"></td></tr>
+      </table>
+      <details class="cach-tinh" open><summary>Kết quả và cách tính</summary>
+      <div class="ct" id="akq"></div></details>
+  </fieldset>
+  <fieldset>
+    <legend>Thời gian màn hình mỗi ngày (giờ)</legend>
+      <table>
+        <tr><th>Nhóm (giờ màn hình)</th><th>Tần số nᵢ</th><th>Giá trị đại diện cᵢ</th><th>Tần số tích lũy</th></tr>
+        <tr><td>[0; 2)</td><td><input type="number" id="b0" min="0" step="1" value="3"></td><td id="bc0"></td><td id="bk0"></td></tr>
+        <tr><td>[2; 4)</td><td><input type="number" id="b1" min="0" step="1" value="10"></td><td id="bc1"></td><td id="bk1"></td></tr>
+        <tr><td>[4; 6)</td><td><input type="number" id="b2" min="0" step="1" value="15"></td><td id="bc2"></td><td id="bk2"></td></tr>
+        <tr><td>[6; 8)</td><td><input type="number" id="b3" min="0" step="1" value="9"></td><td id="bc3"></td><td id="bk3"></td></tr>
+        <tr><td>[8; 10)</td><td><input type="number" id="b4" min="0" step="1" value="3"></td><td id="bc4"></td><td id="bk4"></td></tr>
+      </table>
+      <details class="cach-tinh" open><summary>Kết quả và cách tính</summary>
+      <div class="ct" id="bkq"></div></details>
+  </fieldset>
   <script>
     function so(id) { var x = parseFloat(document.getElementById(id).value); return isNaN(x) ? 0 : x; }
     function f(x, n) { return Number(x).toLocaleString("vi-VN", { maximumFractionDigits: n === undefined ? 2 : n }); }
     function dat(id, v) { document.getElementById(id).value = v; }
     function hien(id, html) { document.getElementById(id).innerHTML = html; }
 
-    var LOAI = ["chai","ly","onghut","tui","hop"], TEN = {"chai":"Chai nhựa","ly":"Ly nhựa","onghut":"Ống hút","tui":"Túi nilon","hop":"Hộp xốp"};
-    function dungTB() { var s = so("mso"); if (s > 0) { dat("m_" + document.getElementById("mloai").value, +(so("mtong") / s).toFixed(2)); tinh(); } }
-    function tinh() {
-      var s = so("mso");
-      hien("mtb", s > 0 ? "m(TB) = " + f(so("mtong")) + " / " + f(s, 0) + " = " + f(so("mtong") / s) + " g" : "số mẫu phải lớn hơn 0");
-      var M = 0, ds = [], lon = "", mlon = -1;
-      LOAI.forEach(function (k) { var m = so("n_" + k) * so("m_" + k); hien("t_" + k, f(m, 1)); M += m;
-        if (so("n_" + k) > 0) ds.push(f(so("n_" + k), 0) + "×" + f(so("m_" + k)));
-        if (m > mlon) { mlon = m; lon = k; } });
-      LOAI.forEach(function (k) { hien("p_" + k, M > 0 ? f(so("n_" + k) * so("m_" + k) / M * 100, 1) + "%" : ""); });
-      var tuan = M * 5 / 1000, nam = tuan * so("sotuan"), that = so("mthat"), tr = so("truoc"), sa = so("sau");
-      var ss = that > 0 ? Math.abs(M - that) / that * 100 : null, giam = tr > 0 ? (tr - sa) / tr * 100 : null;
-      hien("kq", "Khối lượng nhựa trong ngày: <b>" + f(M, 1) + " g</b>; mỗi tuần (5 ngày): <b>" + f(tuan, 3) + " kg</b>; cả năm học: <b>" + f(nam, 1) + " kg</b>" +
-        (M > 0 ? "<br>Chiếm nhiều nhất: <b>" + TEN[lon] + "</b> (" + f(mlon / M * 100, 1) + "%)" : "") +
-        (ss !== null ? "<br>Sai số so với cân thật: <b>" + f(ss, 1) + "%</b> → " + (ss <= 15 ? '<span class="tot">đạt (≤ 15%)</span>' : '<span class="xau">chưa đạt – cân lại mẫu, đếm lại</span>') : "") +
-        (giam !== null ? "<br>Sau phong trào: " + (giam >= 0 ? "giảm <b>" + f(giam, 1) + "%</b>" : "tăng <b>" + f(-giam, 1) + "%</b>") : ""));
-      hien("ct", "m(ngày) = " + (ds.join(" + ") || "0") + " = " + f(M, 1) + " g\n" +
-        "m(tuần) = " + f(M, 1) + " × 5 / 1000 = " + f(tuan, 3) + " kg;  m(năm học) = " + f(tuan, 3) + " × " + f(so("sotuan"), 0) + " ≈ " + f(nam, 1) + " kg" +
-        (ss !== null ? "\nSai số = |" + f(M, 1) + " − " + f(that, 0) + "| / " + f(that, 0) + " × 100% ≈ " + f(ss, 1) + "%" : "") +
-        (giam !== null ? "\n% giảm = (" + f(tr) + " − " + f(sa) + ") / " + f(tr) + " × 100% ≈ " + f(giam, 1) + "%" : ""));
-      var MAU = { chai: "#0ea5e9", ly: "#22c55e", onghut: "#f59e0b", tui: "#a855f7", hop: "#ef4444" }, MA = { chai: "1", ly: "5", onghut: "5", tui: "2/4", hop: "6" };
-      var thanh = "", chip = "";
-      LOAI.forEach(function (k) { var m = so("n_" + k) * so("m_" + k); if (M > 0 && m > 0) thanh += '<span title="' + TEN[k] + '" style="width:' + (m / M * 100) + '%;background:' + MAU[k] + '"></span>';
-        chip += '<span class="chip"><b class="ma">' + MA[k] + '</b>' + TEN[k] + ': ' + f(m, 0) + ' g</span>'; });
-      hien("bd", '<div style="width:100%"><b>Cơ cấu khối lượng nhựa trong ngày</b><div class="thanh-ngang">' + thanh + '</div><div>' + chip + '</div>' +
-        (giam !== null ? '<b>Mức giảm sau phong trào: ' + f(Math.max(giam, 0), 1) + '%</b><div class="tien-do"><span style="width:' + Math.min(Math.max(giam, 0), 100) + '%"></span></div>' : '') + '</div>');
-      dat("kq_ngay", M.toFixed(1)); dat("kq_tuan", tuan.toFixed(3)); dat("kq_nam", nam.toFixed(1));
-      dat("kq_saiso", ss === null ? "" : ss.toFixed(1)); dat("kq_giam", giam === null ? "" : giam.toFixed(1));
+    function phut(s) { if (!s) return null; var a = s.split(":"); return +a[0] * 60 + +a[1]; }
+    function tinhCaNhan() {
+      var tong = 0, dem = 0, ds = [], gio = [];
+      for (var i = 0; i < 7; i++) {
+        var a = phut(document.getElementById("ng" + i).value), b = phut(document.getElementById("th" + i).value);
+        if (a === null || b === null) { hien("gn" + i, ""); continue; }
+        var h = (b - a) / 60; if (h < 0) h += 24;
+        hien("gn" + i, f(h)); tong += h; dem++; ds.push(f(h)); gio.push(h);
+      }
+      if (!dem) { hien("kq", "Hãy nhập giờ đi ngủ và giờ thức dậy."); hien("ct", ""); return; }
+      var tb = tong / dem;
+      var mh = tb >= 8 ? '<span class="tot">đạt khuyến nghị 8 – 10 giờ</span>' : (tb >= 7 ? '<span class="chu">hơi thiếu so với khuyến nghị 8 – 10 giờ</span>' : '<span class="xau">thiếu ngủ so với khuyến nghị 8 – 10 giờ</span>');
+      var goi = [];
+      if (tb < 8) goi.push("Thử đi ngủ sớm hơn 15 – 30 phút.");
+      if (document.getElementById("t1").checked) goi.push("Tắt màn hình hoặc để điện thoại xa giường 30 phút trước khi ngủ.");
+      if (so("manhinh") > 4) goi.push("Dùng tính năng giới hạn thời gian ứng dụng.");
+      hien("kq", "Giờ ngủ trung bình " + dem + " đêm: <b>" + f(tb) + " giờ</b> → " + mh + (goi.length ? "<br>Gợi ý: " + goi.join(" ") : ""));
+      hien("ct", "Số giờ ngủ = giờ thức − giờ ngủ (âm thì cộng 24)\nTrung bình = (" + ds.join(" + ") + ") / " + dem + " ≈ " + f(tb) + " giờ");
+      var cot = "";
+      gio.forEach(function (h, i) { var mau = h >= 8 ? "#4ade80" : (h >= 7 ? "#facc15" : "#f87171");
+        cot += '<div class="cot" style="height:' + (Math.min(h, 10) / 10 * 100) + '%;background:' + mau + '"><i>' + f(h, 1) + '</i><em>Đêm ' + (i + 1) + '</em></div>'; });
+      hien("bd", '<div class="cot-ngu">' + cot + '<div class="vach" style="bottom:' + (8 / 10 * 100) + '%"><b>8 giờ</b></div></div>');
+      dat("kq_tb", tb.toFixed(2));
     }
-    function nhay() { var k = document.querySelector(".kq"); k.classList.remove("vua-doi"); void k.offsetWidth; k.classList.add("vua-doi"); }
-    document.querySelector("form").addEventListener("input", function () { tinh(); nhay(); });
-    document.querySelector("form").addEventListener("reset", function () { setTimeout(tinh, 0); });
-    tinh();
+    function ghepNhom(id_, B) {
+      var n = B.map(function (_, i) { return Math.max(0, so(id_ + i)); }), N = 0, S = 0, tl = [], ds = [];
+      B.forEach(function (b, i) { var c = (b[0] + b[1]) / 2; N += n[i]; S += n[i] * c; tl.push(N); hien(id_ + "c" + i, f(c)); hien(id_ + "k" + i, f(N, 0)); if (n[i] > 0) ds.push(n[i] + "×" + f(c)); });
+      if (!N) { hien(id_ + "kq", "Nhập tần số."); return; }
+      var tb = S / N, p = 0; while (tl[p] < N / 2) p++;
+      var C = p > 0 ? tl[p - 1] : 0, h = B[p][1] - B[p][0], Me = B[p][0] + (N / 2 - C) / n[p] * h;
+      var j = 0; n.forEach(function (x, i) { if (x > n[j]) j = i; });
+      var tr = j > 0 ? n[j - 1] : 0, sa = j < n.length - 1 ? n[j + 1] : 0, mau = (n[j] - tr) + (n[j] - sa);
+      var Mo = mau > 0 ? B[j][0] + (n[j] - tr) / mau * (B[j][1] - B[j][0]) : null;
+      hien(id_ + "kq", "n = " + N + "\n" +
+        "x̄ = (" + ds.join(" + ") + ") / " + N + " = " + f(S) + " / " + N + " ≈ " + f(tb) + " giờ\n" +
+        "Trung vị: n/2 = " + f(N / 2) + " thuộc nhóm [" + B[p][0] + "; " + B[p][1] + ")\n" +
+        "   Me = " + B[p][0] + " + (" + f(N / 2) + " − " + C + ") / " + n[p] + " × " + h + " ≈ " + f(Me) + " giờ\n" +
+        "Mốt: nhóm có tần số lớn nhất [" + B[j][0] + "; " + B[j][1] + ")\n" +
+        (Mo !== null ? "   Mo = " + B[j][0] + " + (" + n[j] + " − " + tr + ") / ((" + n[j] + " − " + tr + ") + (" + n[j] + " − " + sa + ")) × " + (B[j][1] - B[j][0]) + " ≈ " + f(Mo) + " giờ" : "   Không tính được Mo theo công thức (mẫu số bằng 0)"));
+    }
+    var NGU = [[4,5],[5,6],[6,7],[7,8],[8,9],[9,10]], MH = [[0,2],[2,4],[4,6],[6,8],[8,10]];
+    function tatCa() { tinhCaNhan(); ghepNhom("a", NGU); ghepNhom("b", MH); }
+    document.addEventListener("input", tatCa);
+    document.querySelector("form").addEventListener("reset", function () { setTimeout(tatCa, 0); });
+    tatCa();
   </script>
-  <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
+  <div class="ky"><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
   <script>
     document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
     window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
-  <script src="luu-tru.js?v=14"></script>
-  <script src="goi-y-ai.js?v=14"></script>
+  <script src="luu-tru.js?v=15"></script>
+  <script src="goi-y-ai.js?v=15"></script>
 </body>
 </html>

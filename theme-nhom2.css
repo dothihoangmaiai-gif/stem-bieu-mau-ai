@@ -1,10 +1,10 @@
-/* Nhóm 2 – Bữa ăn cân bằng: phong cách "Hồ sơ giáo viên" – xanh lá xô thơm, lá cây */
+/* Nhóm 2 – Ổ điện an toàn (phòng máy): phong cách "Hồ sơ giáo viên" – xanh lá xô thơm */
 @import url("https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap&subset=vietnamese");
 html { background: linear-gradient(180deg, #eef3e8, #f8f6ef 420px); background-attachment: fixed; }
 body {
   --nhan: #3f6b4a; --nhan-2: #7fa36b; --vien: #dbe5d3; --chu: #2b3a2f; --giay: #fff;
   --font-tieu-de: "Lora", Georgia, serif;
-  --thuong-hieu: "🥗 Nhóm 2 · Bữa ăn cân bằng";
+  --thuong-hieu: "🖥️ Nhóm 2 · Ổ điện – Phòng máy";
   --nav-bg: #f6f8f2; --nav-chu: #2f4a36; --nav-gach: #3f6b4a; --nav-nut: #3f6b4a; --nav-nut-chu: #fff;
   --hero-bg: linear-gradient(177deg, transparent 0 83%, #c7d9bb 83% 85%, #fff 85%),
              url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='200' viewBox='0 0 260 200'%3E%3Cg fill='none' stroke='%237fa36b' stroke-width='2' opacity='.55'%3E%3Cpath d='M40 190 C110 140 170 90 250 20'/%3E%3C/g%3E%3Cg fill='%2397b884' opacity='.45'%3E%3Cpath d='M90 150c-30-10-40-35-35-55 25 5 40 25 35 55z'/%3E%3Cpath d='M125 122c5-30 28-42 50-40-3 24-24 40-50 40z'/%3E%3Cpath d='M150 98c-25-15-28-42-18-60 22 10 30 35 18 60z'/%3E%3Cpath d='M190 66c8-26 32-34 52-30-6 22-28 34-52 30z'/%3E%3Cpath d='M205 52c-18-18-15-42-2-56 17 14 17 38 2 56z'/%3E%3C/g%3E%3C/svg%3E") no-repeat right 20px top 18px,

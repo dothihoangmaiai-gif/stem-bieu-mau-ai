@@ -2,32 +2,36 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>PHIẾU TÍNH DINH DƯỠNG BỮA ĂN</title>
-  <link rel="stylesheet" href="theme.css?v=14">
-  <link rel="stylesheet" href="theme-nhom2.css?v=14">
+  <title>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG MÁY</title>
+  <link rel="stylesheet" href="theme.css?v=15">
+  <link rel="stylesheet" href="theme-nhom2.css?v=15">
 </head>
 <body class="nhom2">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
   <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
-  <!-- Nhóm 2: BỮA ĂN CÂN BẰNG – TÍNH NĂNG LƯỢNG VÀ TỈ LỆ CHẤT DINH DƯỠNG BỮA ĂN Ở CĂN TIN -->
+  <!-- Nhóm 2: Ổ ĐIỆN AN TOÀN – KIỂM TRA TẢI ĐIỆN VÀ ĐIỆN NĂNG LÃNG PHÍ TRONG PHÒNG THỰC HÀNH TIN HỌC -->
   <!-- Phiên bản 1 – bản chế tạo đầu tiên, CÓ LỖI để nhóm phát hiện khi thử nghiệm -->
   <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
        Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
-  <h2>PHIẾU TÍNH DINH DƯỠNG BỮA ĂN</h2>
+  <h2>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG MÁY</h2>
   <form action="ketqua.html" method="get">
-    <p>Khối:<br>
-      <input type="radio" id="khoi1" name="khoi1" value="10">
-      <label for="khoi1">10</label><br>
-      <input type="radio" id="khoi2" name="khoi2" value="11">
-      <label for="khoi2">11</label><br>
-      <input type="radio" id="khoi3" name="khoi3" value="12">
-      <label for="khoi3">12</label><br>
+    <p><label for="phong">Phòng máy:</label>
+      <input type="text" id="phong" name="phong"></p>
+    <p>Thiết bị trong phòng:<br>
+      <input type="radio" id="thietbi1" name="thietbi" value="Máy tính">
+      <label for="thietbi1">Máy tính</label><br>
+      <input type="radio" id="thietbi2" name="thietbi" value="Máy chiếu">
+      <label for="thietbi2">Máy chiếu</label><br>
+      <input type="radio" id="thietbi3" name="thietbi" value="Máy lạnh">
+      <label for="thietbi3">Máy lạnh</label><br>
+      <input type="radio" id="thietbi4" name="thietbi" value="Đèn tuýp">
+      <label for="thietbi4">Đèn tuýp</label><br>
+      <input type="radio" id="thietbi5" name="thietbi" value="Thiết bị mạng">
+      <label for="thietbi5">Thiết bị mạng</label><br>
     </p>
-    <p><label for="mon">Món em đã ăn:</label>
-      <input type="text" id="mon" name="mon"></p>
-    <p><label for="nangluong">Năng lượng:</label>
-      <input type="text" id="nangluong" name="nangluong"></p>
-    <p><input type="submit" value="Gửi"></p>
+    <p><label for="congsuat">Công suất:</label>
+      <input type="text" id="congsuat" name="congsuat"></p>
+    <p><input type="submit" value="Kiểm tra"></p>
   </form>
   <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
   <script>
@@ -35,7 +39,7 @@
     window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
-  <script src="luu-tru.js?v=14"></script>
-  <script src="goi-y-ai.js?v=14"></script>
+  <script src="luu-tru.js?v=15"></script>
+  <script src="goi-y-ai.js?v=15"></script>
 </body>
 </html>

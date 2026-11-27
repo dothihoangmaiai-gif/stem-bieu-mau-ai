@@ -115,6 +115,7 @@ a { color: var(--nhan); }
 .tot { color: #15803d; font-weight: 700; } .chu { color: #c2410c; font-weight: 700; } .xau { color: #b91c1c; font-weight: 700; }
 .mau { color: #7a6450; font-size: 13.5px; text-align: center; }
 .canh { color: #b91c1c; font-size: 14px; }
+.doi-chung { background: #f4f6fb; border-left: 4px solid #64748b; padding: 8px 12px; border-radius: 6px; font-size: 14px; }
 
 /* Thanh công cụ: in phiếu, về trang lớp */
 .thanh-cong-cu { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: -6px 0 6px; font-size: 14px; }

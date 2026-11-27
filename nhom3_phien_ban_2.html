@@ -2,67 +2,72 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>PHIẾU THEO DÕI RÁC NHỰA CỦA LỚP</title>
-  <link rel="stylesheet" href="theme.css?v=14">
-  <link rel="stylesheet" href="theme-nhom3.css?v=14">
+  <title>PHIẾU THEO DÕI MÀN HÌNH VÀ GIẤC NGỦ</title>
+  <link rel="stylesheet" href="theme.css?v=15">
+  <link rel="stylesheet" href="theme-nhom3.css?v=15">
 </head>
 <body class="nhom3">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
   <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
-  <!-- Nhóm 3: RÁC NHỰA LỚP EM – ĐO KHỐI LƯỢNG VÀ PHÂN LOẠI ĐỒ NHỰA DÙNG MỘT LẦN -->
+  <!-- Nhóm 3: MÀN HÌNH VÀ GIẤC NGỦ – THỐNG KÊ THỜI GIAN SỬ DỤNG THIẾT BỊ SỐ VÀ THỜI GIAN NGỦ CỦA HỌC SINH KHỐI 12 -->
   <!-- Phiên bản 2 – đã cải tiến sau thử nghiệm -->
   <!-- Khi thử nghiệm, dữ liệu được gửi bằng GET tới ketqua.html để xem lại.
        Khi triển khai thật: action trỏ tới trang xử lí của máy chủ và dùng method="post". -->
-  <h2>PHIẾU THEO DÕI RÁC NHỰA CỦA LỚP</h2>
+  <h2>PHIẾU THEO DÕI MÀN HÌNH VÀ GIẤC NGỦ</h2>
   <form action="ketqua.html" method="get">
     <fieldset>
-      <legend>Thông tin chung</legend>
-    <p><label for="lop">Lớp:</label>
-      <select id="lop" name="lop">
-        <option value="12A1">12A1</option>
-        <option value="12A3">12A3</option>
-        <option value="12A8">12A8</option>
-        <option value="11A7">11A7</option>
-        <option value="11A12">11A12</option>
-        <option value="10A1">10A1</option>
-      </select></p>
-    <p><label for="ngay">Ngày đếm:</label>
-      <input type="date" id="ngay" name="ngay"></p>
-    </fieldset>
-    <fieldset>
-      <legend>Số đồ nhựa đếm được trong ngày</legend>
-    <p><label for="chai">Chai nhựa:</label>
-      <input type="number" id="chai" name="chai" min="0" max="500" step="1"></p>
-    <p><label for="ly">Ly nhựa:</label>
-      <input type="number" id="ly" name="ly" min="0" max="500" step="1"></p>
-    <p><label for="onghut">Ống hút:</label>
-      <input type="number" id="onghut" name="onghut" min="0" max="1000" step="1"></p>
-    <p><label for="tui">Túi nilon:</label>
-      <input type="number" id="tui" name="tui" min="0" max="500" step="1"></p>
-    <p><label for="hopxop">Hộp xốp:</label>
-      <input type="number" id="hopxop" name="hopxop" min="0" max="500" step="1"></p>
-    </fieldset>
-    <fieldset>
-      <legend>Hành động xanh</legend>
-    <p>Lớp đã phân loại rác nhựa riêng chưa?:<br>
-      <input type="radio" id="phanloai1" name="phanloai" value="Đã phân loại">
-      <label for="phanloai1">Đã phân loại</label><br>
-      <input type="radio" id="phanloai2" name="phanloai" value="Chưa phân loại">
-      <label for="phanloai2">Chưa phân loại</label><br>
+      <legend>Thông tin chung (ẩn danh)</legend>
+    <p>Khối:<br>
+      <input type="radio" id="khoi1" name="khoi" value="10">
+      <label for="khoi1">10</label><br>
+      <input type="radio" id="khoi2" name="khoi" value="11">
+      <label for="khoi2">11</label><br>
+      <input type="radio" id="khoi3" name="khoi" value="12">
+      <label for="khoi3">12</label><br>
     </p>
-    <p><label for="ytuong">Ý tưởng giảm rác nhựa:</label><br>
-      <textarea id="ytuong" name="ytuong" rows="4" cols="40"></textarea></p>
+    </fieldset>
+    <fieldset>
+      <legend>Thiết bị số</legend>
+    <p><label for="manhinh">Thời gian màn hình trung bình 7 ngày (giờ/ngày, đọc trong điện thoại):</label>
+      <input type="number" id="manhinh" name="manhinh" min="0" max="24" step="0.1"></p>
+    <p>Mục đích sử dụng:<br>
+      <input type="checkbox" id="mucdich1" name="mucdich" value="Học tập">
+      <label for="mucdich1">Học tập</label><br>
+      <input type="checkbox" id="mucdich2" name="mucdich" value="Mạng xã hội">
+      <label for="mucdich2">Mạng xã hội</label><br>
+      <input type="checkbox" id="mucdich3" name="mucdich" value="Chơi game">
+      <label for="mucdich3">Chơi game</label><br>
+      <input type="checkbox" id="mucdich4" name="mucdich" value="Xem video">
+      <label for="mucdich4">Xem video</label><br>
+      <input type="checkbox" id="mucdich5" name="mucdich" value="Nhắn tin">
+      <label for="mucdich5">Nhắn tin</label><br>
+    </p>
+    </fieldset>
+    <fieldset>
+      <legend>Giấc ngủ</legend>
+    <p><label for="giongu">Giờ đi ngủ thường ngày:</label>
+      <input type="time" id="giongu" name="giongu"></p>
+    <p><label for="giothuc">Giờ thức dậy thường ngày:</label>
+      <input type="time" id="giothuc" name="giothuc"></p>
+    <p>Dùng điện thoại trong 30 phút trước khi ngủ?:<br>
+      <input type="radio" id="truocngu1" name="truocngu" value="Có">
+      <label for="truocngu1">Có</label><br>
+      <input type="radio" id="truocngu2" name="truocngu" value="Không">
+      <label for="truocngu2">Không</label><br>
+    </p>
+    <p><label for="mongmuon">Em muốn được hỗ trợ gì?:</label><br>
+      <textarea id="mongmuon" name="mongmuon" rows="4" cols="40"></textarea></p>
     </fieldset>
     <p><input type="submit" value="Gửi phiếu">
     <input type="reset" value="Nhập lại"></p>
   </form>
-  <div class="ky"><div>Người lập phiếu<br><br><br>……………………</div><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
+  <div class="ky"><div>Giáo viên xác nhận<br><br><br>……………………</div></div>
   <script>
     document.getElementById("ngayin").textContent = new Date().toLocaleDateString("vi-VN");
     window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
-  <script src="luu-tru.js?v=14"></script>
-  <script src="goi-y-ai.js?v=14"></script>
+  <script src="luu-tru.js?v=15"></script>
+  <script src="goi-y-ai.js?v=15"></script>
 </body>
 </html>

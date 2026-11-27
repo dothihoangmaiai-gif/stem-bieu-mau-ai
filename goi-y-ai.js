@@ -5,7 +5,7 @@
 (function () {
   var m = location.pathname.match(/nhom(\d)_phien_ban_3/);
   if (!m || typeof WEB_APP_URL === "undefined") return;
-  var NHOM = m[1];
+  var NHOM = m[1], LOAI = { "1": "dien", "2": "dien", "3": "ngu", "4": "ngu" }[NHOM];
   var kq = document.querySelector(".kq");
   if (!kq) return;
 
@@ -15,45 +15,24 @@
 
   // ---------- Gợi ý tại chỗ (theo quy tắc) ----------
   var QUY_TAC = {
-    "1": function () {
+    "dien": function () {
       var g = [], tl = so("kq_tl"), A = so("kq_a"), P = so("kq_p");
       if (tl !== null) {
         if (tl > 100) g.push("⚠ Phòng đang <b>quá tải " + f(tl) + "%</b>: tắt bớt thiết bị công suất lớn và báo giáo viên ngay.");
-        else if (tl > 80) g.push("Tải " + f(tl) + "% đã gần định mức: không cắm thêm thiết bị như ấm đun, máy sấy.");
+        else if (tl > 80) g.push("Tải " + f(tl) + "% đã gần định mức: không cắm thêm thiết bị" + (NHOM === "2" ? "; nên bật máy tính lần lượt, không bật cùng lúc." : " như ấm đun, máy sấy."));
         else g.push("Tải " + f(tl) + "% nằm trong vùng an toàn (≤ 80%).");
       }
       var lon = null, plon = 0;
-      ["tivi", "loa", "maylanh", "quattran", "den"].forEach(function (k) { var v = parseFloat(chu("t_" + k)); if (v > plon) { plon = v; lon = k; } });
-      var ten = { tivi: "Tivi", loa: "Loa", maylanh: "Máy lạnh", quattran: "Quạt trần", den: "Đèn tuýp" };
-      if (lon && P) g.push(ten[lon] + " chiếm khoảng <b>" + f(plon / P * 100, 0) + "%</b> tổng công suất – nên ưu tiên tắt khi phòng vắng.");
+      document.querySelectorAll('[id^="t_"]').forEach(function (td) { var v = parseFloat(chu(td.id)); if (v > plon) { plon = v; lon = td.parentNode.cells[0].textContent; } });
+      if (lon && P) g.push(lon + " chiếm khoảng <b>" + f(plon / P * 100, 0) + "%</b> tổng công suất – nên ưu tiên tắt khi phòng vắng.");
       if (A) g.push("Quên tắt đang lãng phí khoảng <b>" + f(A) + " kWh/tháng</b>: thử phân công “người tắt điện cuối giờ” rồi đo lại để so sánh.");
+      g.push("Đối chiếu với nhóm " + (NHOM === "1" ? "2 (phòng máy)" : "1 (phòng học thường)") + " để giải thích vì sao tỉ lệ tải hai phòng khác nhau.");
       return g;
     },
-    "2": function () {
-      var g = [], d = so("kq_pd"), b = so("kq_pb"), c = so("kq_pc");
-      function k(id, mac) { var v = so(id); return v === null ? mac : v; }
-      var kh = { d: [k("kd1", 13), k("kd2", 20)], b: [k("kb1", 20), k("kb2", 30)], c: [k("kc1", 50), k("kc2", 65)] };
-      function xet(ten, v, r) {
-        if (v === null) return;
-        if (v < r[0]) g.push(ten + " " + f(v) + "% <b>thấp hơn</b> khoảng " + r[0] + "–" + r[1] + "%.");
-        else if (v > r[1]) g.push(ten + " " + f(v) + "% <b>cao hơn</b> khoảng " + r[0] + "–" + r[1] + "%.");
-      }
-      xet("Đạm", d, kh.d); xet("Béo", b, kh.b); xet("Carbohydrate", c, kh.c);
-      if (!g.length && d !== null) g.push("Cả ba nhóm chất đều nằm trong dải xanh – bữa ăn khá cân đối.");
-      var kc = document.getElementById("dakc");
-      if (kc && !kc.checked) g.push("Nhóm nhớ đối chiếu dải xanh với tài liệu, ghi nguồn rồi đánh dấu “Nhóm đã kiểm chứng”.");
-      return g;
-    },
-    "3": function () {
-      var g = [], ss = so("kq_saiso"), gi = so("kq_giam"), nam = so("kq_nam");
-      if (ss !== null) g.push(ss > 15 ? "Sai số " + f(ss) + "% còn lớn: cân thêm mẫu (≥ 10 món mỗi loại) để khối lượng trung bình chính xác hơn." : "Sai số " + f(ss) + "% ≤ 15%: cách ước tính của nhóm đáng tin cậy.");
-      if (gi !== null) g.push(gi >= 20 ? "Phong trào giảm được <b>" + f(gi) + "%</b> rác nhựa – nên duy trì và chia sẻ cho các lớp khác." : "Mức giảm " + f(gi) + "% còn thấp: thử “mang bình nước, hộp cơm cá nhân” và đo lại sau 1 tuần.");
-      if (nam !== null) g.push("Cả năm học lớp thải khoảng <b>" + f(nam) + " kg</b> nhựa – có thể quy đổi ra số chai để tuyên truyền dễ hiểu hơn.");
-      return g;
-    },
-    "4": function () {
+    "ngu": function () {
       var g = [], tb = so("kq_tb");
       if (tb !== null) g.push(tb < 8 ? "Giờ ngủ trung bình " + f(tb, 2) + " giờ, <b>thiếu</b> so với khuyến nghị 8–10 giờ: thử tắt màn hình 30 phút trước khi ngủ." : "Giờ ngủ trung bình " + f(tb, 2) + " giờ đạt khuyến nghị 8–10 giờ.");
+      g.push("So sánh x̄, Me, Mo của lớp với nhóm " + (NHOM === "3" ? "4 (khối 10)" : "3 (khối 12)") + " để thấy khác biệt giữa hai khối.");
       g.push("Đây chỉ là số liệu thống kê, không phải chẩn đoán sức khỏe.");
       return g;
     }
@@ -71,7 +50,7 @@
 
   function capNhat() {
     var ds = [];
-    try { ds = QUY_TAC[NHOM]() || []; } catch (e) { ds = []; }
+    try { ds = QUY_TAC[LOAI]() || []; } catch (e) { ds = []; }
     ul.innerHTML = ds.map(function (x) { return "<li>" + x + "</li>"; }).join("");
   }
   var form = kq.closest("form") || document.querySelector("form");

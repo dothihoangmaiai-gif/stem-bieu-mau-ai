@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU KIỂM TRA AN TOÀN ĐIỆN PHÒNG HỌC – phiên bản 3</title>
-  <link rel="stylesheet" href="theme.css?v=14">
-  <link rel="stylesheet" href="theme-nhom1.css?v=14">
+  <link rel="stylesheet" href="theme.css?v=15">
+  <link rel="stylesheet" href="theme-nhom1.css?v=15">
 </head>
 <body class="nhom1">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
   <div class="dau-in">Ngày in: <span id="ngayin"></span></div>
-  <!-- Nhóm 1: Ổ ĐIỆN AN TOÀN – KIỂM TRA TẢI ĐIỆN VÀ ĐIỆN NĂNG LÃNG PHÍ TRONG PHÒNG HỌC -->
+  <!-- Nhóm 1: Ổ ĐIỆN AN TOÀN – KIỂM TRA TẢI ĐIỆN VÀ ĐIỆN NĂNG LÃNG PHÍ TRONG PHÒNG HỌC THƯỜNG -->
   <!-- Phiên bản 3 – thêm phần TÍNH TOÁN LIÊN MÔN.
        Phần HTML (biểu mẫu) do nhóm viết theo Bài 12. Phần <script> do nhóm viết cùng trợ lí AI;
        mọi công thức đã được chuyên gia liên môn của nhóm kiểm chứng bằng tính tay (xem báo cáo, mục Kiểm chứng).
@@ -27,6 +27,7 @@
     </div>
   </section>
   <p class="canh">⚠ <b>An toàn:</b> Chỉ đọc nhãn thiết bị; không mở tủ điện, ổ cắm; luôn có giáo viên đi cùng.</p>
+  <p class="doi-chung">🔁 <b>Phòng học thường (B201)</b> · So sánh với Nhóm 2 (phòng thực hành Tin học): phòng nào có tỉ lệ tải cao hơn, thiết bị nào chiếm nhiều công suất nhất, vì sao.</p>
   <p class="mau">Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
   <form action="ketqua.html" method="get">
    <div class="hai-cot">
@@ -151,7 +152,7 @@
     window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
-  <script src="luu-tru.js?v=14"></script>
-  <script src="goi-y-ai.js?v=14"></script>
+  <script src="luu-tru.js?v=15"></script>
+  <script src="goi-y-ai.js?v=15"></script>
 </body>
 </html>
