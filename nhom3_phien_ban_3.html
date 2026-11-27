@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU THEO DÕI RÁC NHỰA CỦA LỚP – phiên bản 3</title>
-  <link rel="stylesheet" href="theme.css?v=11">
-  <link rel="stylesheet" href="theme-nhom3.css?v=11">
+  <link rel="stylesheet" href="theme.css?v=12">
+  <link rel="stylesheet" href="theme-nhom3.css?v=12">
 </head>
 <body class="nhom3">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
@@ -29,6 +29,8 @@
   <p class="canh">⚠ <b>An toàn:</b> Đeo găng tay khi đếm rác, chỉ cân đồ nhựa đã rửa sạch, rửa tay sau khi làm.</p>
   <p class="mau">Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
   <form action="ketqua.html" method="get">
+   <div class="hai-cot">
+    <div class="cot-trai">
     <fieldset>
       <legend>Thông tin chung</legend>
       <p><label for="lop">Lớp:</label> <select id="lop" name="lop"><option>12A1</option><option>12A3</option><option selected>12A8</option><option>11A7</option><option>11A12</option><option>10A1</option></select>
@@ -62,6 +64,8 @@
         <input type="radio" id="pl1" name="phanloai" value="Đã phân loại"><label for="pl1">Đã phân loại</label>
         <input type="radio" id="pl2" name="phanloai" value="Chưa phân loại"><label for="pl2">Chưa phân loại</label></p>
     </fieldset>
+    </div>
+    <aside class="cot-phai">
     <div class="kq">
       <h3>KẾT QUẢ TÍNH</h3>
       <div id="kq"></div>
@@ -69,6 +73,8 @@
       <details class="cach-tinh"><summary>Xem cách tính (thay số)</summary>
       <div class="ct" id="ct"></div></details>
     </div>
+    </aside>
+   </div>
     <input type="hidden" id="kq_ngay" name="kq_khoi_luong_ngay_g">
     <input type="hidden" id="kq_tuan" name="kq_khoi_luong_tuan_kg">
     <input type="hidden" id="kq_nam" name="kq_khoi_luong_nam_hoc_kg">
@@ -111,7 +117,8 @@
       dat("kq_ngay", M.toFixed(1)); dat("kq_tuan", tuan.toFixed(3)); dat("kq_nam", nam.toFixed(1));
       dat("kq_saiso", ss === null ? "" : ss.toFixed(1)); dat("kq_giam", giam === null ? "" : giam.toFixed(1));
     }
-    document.querySelector("form").addEventListener("input", tinh);
+    function nhay() { var k = document.querySelector(".kq"); k.classList.remove("vua-doi"); void k.offsetWidth; k.classList.add("vua-doi"); }
+    document.querySelector("form").addEventListener("input", function () { tinh(); nhay(); });
     document.querySelector("form").addEventListener("reset", function () { setTimeout(tinh, 0); });
     tinh();
   </script>
@@ -121,6 +128,6 @@
     window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
-  <script src="luu-tru.js?v=11"></script>
+  <script src="luu-tru.js?v=12"></script>
 </body>
 </html>

@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHIẾU TÍNH DINH DƯỠNG BỮA ĂN – phiên bản 3</title>
-  <link rel="stylesheet" href="theme.css?v=11">
-  <link rel="stylesheet" href="theme-nhom2.css?v=11">
+  <link rel="stylesheet" href="theme.css?v=12">
+  <link rel="stylesheet" href="theme-nhom2.css?v=12">
 </head>
 <body class="nhom2">
   <div class="thanh-cong-cu"><a href="index.html">← Về trang lớp</a><button type="button" onclick="window.print()">🖨 In phiếu</button></div>
@@ -29,6 +29,8 @@
   <p class="canh">⚠ <b>An toàn:</b> Mục đích là ăn cân đối; không dùng để ăn kiêng hay so sánh cơ thể bạn bè.</p>
   <p class="mau">Các ô đã điền sẵn <b>số liệu mẫu</b>; nhóm thay bằng số liệu đo thật.</p>
   <form action="ketqua.html" method="get">
+   <div class="hai-cot">
+    <div class="cot-trai">
     <fieldset>
       <legend>Thông tin chung</legend>
       <p>Khối:
@@ -62,6 +64,8 @@
       </table>
       <p><label for="nguon">Nguồn tra cứu:</label> <input type="text" id="nguon" name="nguon" size="50" placeholder="ví dụ: tài liệu của Viện Dinh dưỡng Quốc gia"></p>
     </fieldset>
+    </div>
+    <aside class="cot-phai">
     <div class="kq">
       <h3>KẾT QUẢ TÍNH CHO CẢ BỮA</h3>
       <div id="kq"></div>
@@ -69,6 +73,8 @@
       <details class="cach-tinh"><summary>Xem cách tính (thay số)</summary>
       <div class="ct" id="ct"></div></details>
     </div>
+    </aside>
+   </div>
     <input type="hidden" id="kq_e" name="kq_nang_luong_kcal">
     <input type="hidden" id="kq_pd" name="kq_phan_tram_dam">
     <input type="hidden" id="kq_pb" name="kq_phan_tram_beo">
@@ -116,7 +122,8 @@
         '<div class="chu-giai"><b>Tỉ lệ năng lượng</b><br><span class="o-mau" style="background:#ef4444"></span>Đạm ' + f(pd, 1) + '%<br><span class="o-mau" style="background:#f59e0b"></span>Béo ' + f(pb, 1) + '%<br><span class="o-mau" style="background:#22c55e"></span>Carbohydrate ' + f(pc, 1) + '%</div>');
       dat("kq_e", E.toFixed(1)); dat("kq_pd", pd.toFixed(1)); dat("kq_pb", pb.toFixed(1)); dat("kq_pc", pc.toFixed(1));
     }
-    document.querySelector("form").addEventListener("input", tinh);
+    function nhay() { var k = document.querySelector(".kq"); k.classList.remove("vua-doi"); void k.offsetWidth; k.classList.add("vua-doi"); }
+    document.querySelector("form").addEventListener("input", function () { tinh(); nhay(); });
     document.querySelector("form").addEventListener("reset", function () { setTimeout(tinh, 0); });
     tinh();
   </script>
@@ -126,6 +133,6 @@
     window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
     if (/[?&]print=1/.test(location.search)) window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
   </script>
-  <script src="luu-tru.js?v=11"></script>
+  <script src="luu-tru.js?v=12"></script>
 </body>
 </html>
